@@ -5,7 +5,7 @@ speakers:
 location: "Berlin, Germany"
 ---
 
-# Intro to Gno Smart Contract Platform and Blockchain w/ Manfred Touron, Core Contributor at Gno.land
+# Intro to Gno Smart Contract Platform and Blockchain
 
 * https://www.eventbrite.com/e/buckle-up-and-build-with-cosmos-tickets-407865947027 - event info
 * https://www.youtube.com/watch?v=S36kA5RqLvs - video
