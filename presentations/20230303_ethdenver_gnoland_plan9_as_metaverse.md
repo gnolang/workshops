@@ -1,3 +1,35 @@
+# Comments (DELETE)
+
+From a programmer and user perspective
+
+## Trustless trust. - compared with bytecode and binary
+
+The core value of the blockchain is providing trust in a permissionless environment with minimal trust assumptions. 
+
+Because GNO is an interpreter language, the human-readable source code is on-chain. Therefore, we can see and verify the source code and business logic that the VM executes on the chain. It does not rely on a centralized 3rd party to provide optional verification between the source and byte codes.  
+
+
+## Safety - compared with EVM
+
+EVM doe not separate code location and is a variable location in VM memory. It could cause memory collisions in upgradable contracts through delegation calls. It has to be handled by developers and follow an optional EIP 1167. Because gno is an interpreter language, memory management is inherited from golang runtime. This fundamental issue does not exist.
+
+EVM only captures EVM stack overflow error and revert transactions in Berlin Hardfork in April 2021. It causes infamous reentry attacks possible before the Berlin release. The reentry attack must be handled at the language level; it added complexity to the solidity language and consumed unnecessary brain power from Solidity programmers. Gno VM takes care of stack overflow from day one. Therefore reentry attack is prevented automatically. 
+
+## Simplication - comparing with Cosmos SDK
+
+As golang blockchain developers, we don't need to write complicated modules and coordinate the deployment amount nodes. It reduces effort and cost. Also, source code and business logic are verifiable on the chain, and it also removes trust assumptions in the cosmos module binary deployment. 
+
+## Gno + Comsos + IBC
+
+Three critical features in Cosmos add significant value to the trustless trust when they are combined with Gno smart contract.
+
+1) Native multisign support on the chain. For contract deployment, we don't need to rely on a self-deployed or third-party multi-sig contract; it removes the trust assumption of the multi-sig contract deployer, which is controlled by a single account
+
+2) Multi-native token support. We do not need to keep balance and record in contract storage as in ERC20. Gno can update the native balance of each account for tokens, which can be safely be transferred through the IBC cross-chain. It removes the trust assumption of the contract deployer and bridges. 
+
+3) Native on-chain governance. We can use native on-chain governance to minimize the trust assumption of multi-sig key holders of contract deployers. Additional voting approval can be applied to the contract managed by multi-sig key holders.
+
+
 # Who am I?
  * Jae Kwon
  * 2014: Tendermint (BFT PoS), AIB
