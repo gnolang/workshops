@@ -23,26 +23,43 @@
 
 
 # Gno: intuitive VM.
-* EVM: \
+ * EVM: \
   program code (solidity) -> \
     EVM bytecode (new low-level construct) -> \
       EVM implementation (C++/Go/Python/Rust)
-* GNOVM: \
+ * GNOVM: \
   program code (Go) -> \
     Go AST (if, else, func, struct, etc) -> \
       GNOVM implementation (Go)
 
 
 # Gno: auto-persisted
-  * all values are persisted (unless gc)
-  * no need for ORMs, DBs, or binary codecs
-  * more succinct code
+ * all values are persisted (unless gc)
+ * no need for ORMs, DBs, or binary codecs
+ * more succinct code
 
 
 # Gno: auto-merkle-ized
-  * tree structure defined by Gno impl \
+ * tree structure defined by Gno impl \
     e.g. avl tree vs patricia trie in user-zone
-  * permissionless IBC, e.g. "IBC2/GNO"
+ * permissionless IBC, e.g. "IBC2/GNO"
+
+
+# Gno user-defined data-structures
+
+```go
+// gno.land/p/demo/avl/node.gno
+
+// Node
+type Node struct {
+	key       string
+	value     interface{}
+	height    int8
+	size      int
+	leftNode  *Node
+	rightNode *Node
+}
+```
 
 
 # Gno vs Solidity vs CosmosSDK
@@ -77,6 +94,24 @@ contract Primitives {
     function incr() public {
         x += 1;
     }
+}
+```
+
+
+# Gno GRC720 example
+
+```go
+package grc721
+
+type IGRC721 interface {
+	BalanceOf(owner std.Address) (uint64, error)
+	OwnerOf(tid TokenID) (std.Address, error)
+	SafeTransferFrom(from, to std.Address, tid TokenID) error
+	TransferFrom(from, to std.Address, tid TokenID) error
+	Approve(approved std.Address, tid TokenID) error
+	SetApprovalForAll(operator std.Address, approved bool) error
+	GetApproved(tid TokenID) (std.Address, error)
+	IsApprovedForAll(owner, operator std.Address) bool
 }
 ```
 
@@ -116,6 +151,31 @@ func (k *Keeper) Incr(sdk.Context) {
 	}
 	bz = strconv.Itoa(x)
 	store.Set("x", bz)
+}
+```
+
+
+# Gno for social applications
+
+```go
+// from gno.land/r/demo/boards/post.gno
+
+// A Post is a "thread" or a "reply" depending on context.
+// A thread is a Post of a Board that holds other replies.
+type Post struct {
+	board       *Board
+	id          PostID
+	creator     std.Address
+	title       string // optional
+	body        string
+	replies     avl.Tree // Post.id -> *Post
+	repliesAll  avl.Tree // Post.id -> *Post (all replies, for top-level posts)
+	reposts     avl.Tree // Board.id -> Post.id
+	threadID    PostID   // original Post.id
+	parentID    PostID   // parent Post.id (if reply or repost)
+	repostBoard BoardID  // original Board.id (if repost)
+	createdAt   time.Time
+	updatedAt   time.Time
 }
 ```
 
