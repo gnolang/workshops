@@ -4,6 +4,7 @@
  * 2017: Cosmos, CosmosSDK, ICF
  * 2021: Gno
 
+<br/><br/><br/>
 
 # Why Go?
  * simple spec
@@ -13,6 +14,7 @@
  * -> succinct intuitive programs!
  * --> more adoption!!
 
+<br/><br/><br/>
 
 # e.g. diamond inheritance problem
  * Solidity and Python use "C3", but complex \
@@ -21,6 +23,7 @@
  * Go supports arbitrary struct embedding \
     simpler conflict resolution
 
+<br/><br/><br/>
 
 # Go, but why Gno?
  * deterministic
@@ -28,6 +31,7 @@
  * auto-persistence
  * auto-merklization
 
+<br/><br/><br/>
 
 # Gno: intuitive VM.
  * EVM: \
@@ -39,18 +43,21 @@
     Go AST (if, else, func, struct, etc) -> \
       GNOVM implementation (Go)
 
+<br/><br/><br/>
 
 # Gno: auto-persisted
  * all values are persisted (unless gc)
  * no need for ORMs, DBs, or binary codecs
  * more succinct code
 
+<br/><br/><br/>
 
 # Gno: auto-merkle-ized
  * tree structure defined by Gno impl \
     e.g. avl tree vs patricia trie in user-zone
  * permissionless IBC, e.g. "IBC2/GNO"
 
+<br/><br/><br/>
 
 # Gno user-defined data-structures
 
@@ -68,6 +75,7 @@ type Node struct {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno vs Solidity vs CosmosSDK
 
@@ -84,6 +92,7 @@ func Incr() {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno vs Solidity
  * "Solidity is a curly-bracket language designed to target the Ethereum Virtual Machine (EVM)."
@@ -104,6 +113,7 @@ contract Primitives {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno GRC720 example
 
@@ -122,6 +132,7 @@ type IGRC721 interface {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno vs CosmosSDK
  * "ctx"
@@ -161,6 +172,7 @@ func (k *Keeper) Incr(sdk.Context) {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno for social applications
 
@@ -186,12 +198,14 @@ type Post struct {
 }
 ```
 
+<br/><br/><br/>
 
 # Gno vs Gno.land
  * Gno == language
  * Gno.land == GnoVM + Tendermint2
  * available as ICS consumer zones too
 
+<br/><br/><br/>
 
 # GNOVM license model
  * Copyleft but with strong attribution
@@ -200,6 +214,7 @@ type Post struct {
  * -> your success is our success
  * Your GNO contracts are licensed how you want
 
+<br/><br/><br/>
 
 # Gno.land vs Plan9
  * Plan9 (since late 1980s): \
@@ -207,6 +222,7 @@ type Post struct {
  * Go (2017): \
     Robert Griesemer, Rob Pike and Ken Thompson
 
+<br/><br/><br/>
 
 # What is a "metaverse"?
  * a virtual world?
@@ -215,11 +231,14 @@ type Post struct {
  * logos completeness theorem: \
    logos -> physics -> logos -> physics...
 
+<br/><br/><br/>
 
 # Gno.land is Plan9 as metaverse
  * UNIX: everything is a file
  * PLAN9: UNIX + pervasive network
  * GNO.LAND: everything is a Go object + IBC
+
+<br/><br/><br/>
 
 # Governance
  * focus on expertise and values
@@ -228,6 +247,7 @@ type Post struct {
  * top tier has sufficient (1) contributions, (2) expertise, and (3) values
  * $GNOT: a fee token with self governance 
 
+<br/><br/><br/>
 
 # Action Items
  * follow github.com/gnolang/gno
