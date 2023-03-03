@@ -1,3 +1,10 @@
+# Who am I?
+ * Jae Kwon
+ * 2014: Tendermint (BFT PoS), AIB
+ * 2017: Cosmos, CosmosSDK, ICF
+ * 2021: Gno
+
+
 # Why Go?
  * simple spec
  * type-check safety
