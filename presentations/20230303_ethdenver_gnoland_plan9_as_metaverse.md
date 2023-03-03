@@ -15,9 +15,9 @@ EVM does not separate contract code and variable location in VM memory. It could
 
 EVM only captures EVM stack overflow error and revert transactions in Berlin Hardfork in April 2021. Therefore, it causes infamous reentry attacks possible before the Berlin release. The reentry attack must be handled at the language level; it added complexity to the solidity language and consumed unnecessary brain power from Solidity programmers. Gno VM takes care of stack overflow from day one. Therefore reentry attack is prevented automatically. 
 
-## Simplication - compared with Cosmos SDK
+## Simplification - compared with Cosmos SDK
 
-As golang blockchain developers, we don't need to write complicated modules and coordinate the deployment among validator nodes. It reduces effort and cost. Since source code and business logic are verifiable on the chain, it also reduced trust assumptions in the cosmos module binary. 
+As golang blockchain developers, we don't need to write complicated modules and coordinate the deployment among validator nodes. It reduces go to market effort and cost. Since source code and business logic are verifiable on the chain, it also reduced trust assumptions in the cosmos module binary. 
 
 ## Gno + Comsos + IBC
 
