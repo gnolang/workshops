@@ -186,6 +186,14 @@ type Post struct {
  * available as ICS consumer zones too
 
 
+# GNOVM license model
+ * Copyleft but with strong attribution
+ * Strong attribution in code and main README
+ * Link back to Gno.land from your main interface for X years
+ * -> your success is our success
+ * Your GNO contracts are licensed how you want
+
+
 # Gno.land vs Plan9
  * Plan9 (since late 1980s): \
     Rob Pike, Ken Thompson, Dave Presotto, and Phil Winterbottom
@@ -212,14 +220,6 @@ type Post struct {
  * tiers of members
  * top tier has sufficient (1) contributions, (2) expertise, and (3) values
  * $GNOT: a fee token with self governance 
-
-
-# GNOVM license model
- * Copyleft but with strong attribution
- * Strong attribution in code and main README
- * Link back to Gno.land from your main interface for X years
- * -> your success is our success
- * Your GNO contracts are licensed how you want
 
 
 # Action Items
