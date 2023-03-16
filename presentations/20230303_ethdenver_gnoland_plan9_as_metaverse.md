@@ -115,7 +115,7 @@ contract Primitives {
 
 <br/><br/><br/>
 
-# Gno GRC720 example
+# Gno GRC721 example
 
 ```go
 package grc721
