@@ -1,0 +1,6 @@
+# MacOS Leftovers
+.DS_Store
+
+# Editor Leftovers
+.vscode
+.idea
