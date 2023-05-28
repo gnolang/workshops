@@ -23,7 +23,7 @@ A gno.land Package is simply a bundle of functionality. Most importantly, it doe
 
 ## Realms
 
-A Realm is a Smart Contract on gno.land, written in Gno. In contrast to Packages, Realms *do* contain state (can hold values), they are imported using the `import "gno.land/r/..."` syntax. 
+A Realm is a Smart Contract on gno.land, written in Gno. In contrast to Packages, Realms *do* contain state (can hold values), they are imported using the `import "gno.land/r/..."` syntax.
 
 Additionally, Realms can optionally expose a `Render` method for Markdown, that can display internal Realm state to the user using an intuitive UI. We will get more into `Render` methods in a second, and how we can write them correctly.
 
@@ -33,7 +33,7 @@ As mentioned before, we will be building a small forum that users can interact w
 
 Essentially, the preliminary look and feel of the forum homepage will look something like this:
 
-![Look and feel](/assets/2023-03-16--online-milos/1.png)
+![Look and feel](./assets/1.png)
 
 Posts are sorted into categories, and opening a category lists all the posts tied to it. Opening a post opens the post and its accompanying comment section.
 
@@ -41,7 +41,7 @@ We mentioned earlier that we would like to split up our code into Realms and Pac
 
 Having this in mind, it is easy to split up the functionality between Realms and Packages.
 
-![Packages and realms](/assets/2023-03-16--online-milos/2.png)
+![Packages and realms](./assets/2.png)
 
 The Package we’re building `gno.land/p/demo/forum` will be a generic forum scaffolding that any custom forum instance can utilize. These include things like a `Post`, `Comment` and `Forum`.
 
@@ -115,20 +115,20 @@ Like regular Go, Gno adheres to the same syntax and nuances. We define the singl
 ```go
 // Post represents a single forum post
 type Post struct {
-	id uint
+    id uint
 
-	title    string
-	body     string
-	category string
+    title    string
+    body     string
+    category string
 
-	comments []*Comment
-	author   std.Address
+    comments []*Comment
+    author   std.Address
 }
 ```
 
 There are a couple of things happening here. A post has an ID that is assigned to it, a title, body, and category. Additionally, it also contains author information and a list of comments. We will define the `Comment` type in a second.
 
-Notice the type for the `author` field – it’s `std.Address`. 
+Notice the type for the `author` field – it’s `std.Address`.
 
 Gnolang has an import system that differs from regular Go. The `std` package is a `builtin` Gnolang package that is accessible in any Gnolang file, and is resolved when compiling / running the file.
 
@@ -141,14 +141,14 @@ import "std"
 
 // Post represents a single forum post
 type Post struct {
-	id uint
+    id uint
 
-	title    string
-	body     string
-	category string
+    title    string
+    body     string
+    category string
 
-	comments []*Comment
-	author   std.Address
+    comments []*Comment
+    author   std.Address
 }
 ```
 
@@ -157,18 +157,18 @@ Remember, Packages do not hold state, so it is impossible to have a `Post` initi
 ```go
 // NewPost creates a new forum post
 func NewPost(
-	id uint,
-	title string,
-	body string,
-	author std.Address,
+    id uint,
+    title string,
+    body string,
+    author std.Address,
 ) *Post {
-	return &Post{
-		id:       id,
-		title:    title,
-		body:     body,
-		author:   author,
-		comments: make([]*Comment, 0),
-	}
+    return &Post{
+        id:       id,
+        title:    title,
+        body:     body,
+        author:   author,
+        comments: make([]*Comment, 0),
+    }
 }
 ```
 
@@ -177,42 +177,42 @@ Additionally, we can also define several getters and setters for manipulating po
 ```go
 // GetID returns the post's ID
 func (p *Post) GetID() uint {
-	return p.id
+    return p.id
 }
 
 // GetTitle returns the post's title
 func (p *Post) GetTitle() string {
-	return p.title
+    return p.title
 }
 
 // GetBody returns the post's body
 func (p *Post) GetBody() string {
-	return p.body
+    return p.body
 }
 
 // GetAuthor returns the post's author (address)
 func (p *Post) GetAuthor() std.Address {
-	return p.author
+    return p.author
 }
 
 // GetCategory returns the post's category
 func (p *Post) GetCategory() string {
-	return p.category
+    return p.category
 }
 
 // SetCategory sets the post's category
 func (p *Post) SetCategory(category string) {
-	p.category = category
+    p.category = category
 }
 
 // AddComment adds a new comment to a post
 func (p *Post) AddComment(comment *Comment) {
-	p.comments = append(p.comments, comment)
+    p.comments = append(p.comments, comment)
 }
 
 // GetComments returns the comments on a post
 func (p *Post) GetComments() []*Comment {
-	return p.comments
+    return p.comments
 }
 ```
 
@@ -225,70 +225,70 @@ import "std"
 
 // Post represents a single forum post
 type Post struct {
-	id uint
+    id uint
 
-	title    string
-	body     string
-	category string
+    title    string
+    body     string
+    category string
 
-	comments []*Comment
-	author   std.Address
+    comments []*Comment
+    author   std.Address
 }
 
 // NewPost creates a new forum post
 func NewPost(
-	id uint,
-	title string,
-	body string,
-	author std.Address,
+    id uint,
+    title string,
+    body string,
+    author std.Address,
 ) *Post {
-	return &Post{
-		id:       id,
-		title:    title,
-		body:     body,
-		author:   author,
-		comments: make([]*Comment, 0),
-	}
+    return &Post{
+        id:       id,
+        title:    title,
+        body:     body,
+        author:   author,
+        comments: make([]*Comment, 0),
+    }
 }
 
 // GetID returns the post's ID
 func (p *Post) GetID() uint {
-	return p.id
+    return p.id
 }
 
 // GetTitle returns the post's title
 func (p *Post) GetTitle() string {
-	return p.title
+    return p.title
 }
 
 // GetBody returns the post's body
 func (p *Post) GetBody() string {
-	return p.body
+    return p.body
 }
 
 // GetAuthor returns the post's author (address)
 func (p *Post) GetAuthor() std.Address {
-	return p.author
+    return p.author
 }
 
 // GetCategory returns the post's category
 func (p *Post) GetCategory() string {
-	return p.category
+    return p.category
 }
 
 // SetCategory sets the post's category
 func (p *Post) SetCategory(category string) {
-	p.category = category
+    p.category = category
 }
 
 // AddComment adds a new comment to a post
 func (p *Post) AddComment(comment *Comment) {
-	p.comments = append(p.comments, comment)
+    p.comments = append(p.comments, comment)
 }
 
 // GetComments returns the comments on a post
 func (p *Post) GetComments() []*Comment {
-	return p.comments
+    return p.comments
 }
 ```
 
@@ -302,27 +302,27 @@ package forum
 import "std"
 
 type Comment struct {
-	body string
+    body string
 
-	author std.Address
+    author std.Address
 }
 
 // NewComment creates a new comment
 func NewComment(body string) *Comment {
-	return &Comment{
-		body:   body,
-		author: std.GetOrigCaller(),
-	}
+    return &Comment{
+        body:   body,
+        author: std.GetOrigCaller(),
+    }
 }
 
 // GetBody returns the comment body
 func (c *Comment) GetBody() string {
-	return c.body
+    return c.body
 }
 
 // GetAuthor returns the comment author
 func (c *Comment) GetAuthor() std.Address {
-	return c.author
+    return c.author
 }
 ```
 
@@ -339,32 +339,32 @@ We can define several test files, one for the `Post`, and one for the `Comment`.
 package forum
 
 import (
-	"std"
-	"testing"
+    "std"
+    "testing"
 
-	"gno.land/p/demo/testutils"
+    "gno.land/p/demo/testutils"
 )
 
 // TestComment_New verifies that a
 // new forum post comment can be created successfully
 func TestComment_New(t *testing.T) {
-	const (
-		body   string      = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-		author std.Address = testutils.TestAddress("author")
-	)
+    const (
+        body   string      = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        author std.Address = testutils.TestAddress("author")
+    )
 
-	// Create a new post
-	std.TestSetOrigCaller(author)
-	p := NewComment(body)
+    // Create a new post
+    std.TestSetOrigCaller(author)
+    p := NewComment(body)
 
-	// Check that the data matches
-	if p.GetBody() != body {
-		t.Fatalf("invalid body")
-	}
+    // Check that the data matches
+    if p.GetBody() != body {
+        t.Fatalf("invalid body")
+    }
 
-	if p.GetAuthor().String() != author.String() {
-		t.Fatalf("invalid author")
-	}
+    if p.GetAuthor().String() != author.String() {
+        t.Fatalf("invalid author")
+    }
 }
 ```
 
@@ -379,47 +379,47 @@ Likewise, we can write out a test for creating a `Post`:
 package forum
 
 import (
-	"std"
-	"testing"
+    "std"
+    "testing"
 
-	"gno.land/p/demo/testutils"
+    "gno.land/p/demo/testutils"
 )
 
 // TestPost_New verifies that a
 // new forum post can be created successfully
 func TestPost_New(t *testing.T) {
-	var (
-		id       uint        = 123
-		title                = "Example Post Title"
-		body                 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-		category             = "category 1"
-		author   std.Address = testutils.TestAddress("author")
-	)
+    var (
+        id       uint        = 123
+        title                = "Example Post Title"
+        body                 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        category             = "category 1"
+        author   std.Address = testutils.TestAddress("author")
+    )
 
-	// Create a new post
-	p := NewPost(id, title, body, author)
-	p.SetCategory(category)
+    // Create a new post
+    p := NewPost(id, title, body, author)
+    p.SetCategory(category)
 
-	// Check that the data matches
-	if p.GetID() != id {
-		t.Fatalf("invalid ID")
-	}
+    // Check that the data matches
+    if p.GetID() != id {
+        t.Fatalf("invalid ID")
+    }
 
-	if p.GetTitle() != title {
-		t.Fatalf("invalid title")
-	}
+    if p.GetTitle() != title {
+        t.Fatalf("invalid title")
+    }
 
-	if p.GetBody() != body {
-		t.Fatalf("invalid body")
-	}
+    if p.GetBody() != body {
+        t.Fatalf("invalid body")
+    }
 
-	if p.GetCategory() != category {
-		t.Fatalf("invalid category")
-	}
+    if p.GetCategory() != category {
+        t.Fatalf("invalid category")
+    }
 
-	if p.GetAuthor().String() != author.String() {
-		t.Fatalf("invalid author")
-	}
+    if p.GetAuthor().String() != author.String() {
+        t.Fatalf("invalid author")
+    }
 }
 ```
 
@@ -458,20 +458,20 @@ With this in mind, we can define the base `Forum` type:
 package forum
 
 import (
-	"std"
+    "std"
 
-	"gno.land/p/demo/avl"
+    "gno.land/p/demo/avl"
 )
 
 // Forum represents a single forum instance
 type Forum struct {
-	name string
+    name string
 
-	posts      avl.Tree // post id -> post
-	categories avl.Tree // category name -> []post (for lookups)
+    posts      avl.Tree // post id -> post
+    categories avl.Tree // category name -> []post (for lookups)
 
-	admin      std.Address
-	moderators avl.Tree // category name -> []address
+    admin      std.Address
+    moderators avl.Tree // category name -> []address
 }
 ```
 
@@ -493,28 +493,28 @@ We need to define a constructor for the `Forum` instance:
 ```go
 // NewForum creates a new forum instance
 func NewForum(
-	name string,
-	categories []string,
-	admin std.Address,
+    name string,
+    categories []string,
+    admin std.Address,
 ) *Forum {
-	// Create a new forum instance
-	f := &Forum{
-		name:       name,
-		categories: avl.Tree{},
-		posts:      avl.Tree{},
-		admin:      admin,
-		moderators: avl.Tree{},
-	}
+    // Create a new forum instance
+    f := &Forum{
+        name:       name,
+        categories: avl.Tree{},
+        posts:      avl.Tree{},
+        admin:      admin,
+        moderators: avl.Tree{},
+    }
 
-	// Instantiate the categories
-	for _, category := range categories {
-		f.categories.Set(category, make([]*Post, 0))
+    // Instantiate the categories
+    for _, category := range categories {
+        f.categories.Set(category, make([]*Post, 0))
 
-		// Instantiate the initial moderator set
-		f.moderators.Set(category, []std.Address{admin})
-	}
+        // Instantiate the initial moderator set
+        f.moderators.Set(category, []std.Address{admin})
+    }
 
-	return f
+    return f
 }
 ```
 
@@ -525,75 +525,75 @@ Further on, we define the getter logic for the `Forum` type:
 ```go
 // GetName returns the forum name
 func (f Forum) GetName() string {
-	return f.name
+    return f.name
 }
 
 // GetCategories fetches the forum categories
 func (f Forum) GetCategories() []string {
-	var (
-		categories = make([]string, f.categories.Size())
-		index      = 0
-	)
+    var (
+        categories = make([]string, f.categories.Size())
+        index      = 0
+    )
 
-	f.categories.Iterate("", "", func(category *avl.Node) bool {
-		// Add the category to the list
-		categories[index] = category.Key()
+    f.categories.Iterate("", "", func(category *avl.Node) bool {
+        // Add the category to the list
+        categories[index] = category.Key()
 
-		index++
+        index++
 
-		// Continue iteration
-		return false
-	})
+        // Continue iteration
+        return false
+    })
 
-	return categories
+    return categories
 }
 
 // GetComments fetches the comments for a specific post
 func (f Forum) GetComments(postID uint) []*Comment {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return nil
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return nil
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	return post.GetComments()
+    return post.GetComments()
 }
 
 // GetCategoryPosts fetches the posts associated with a specific category
 func (f Forum) GetCategoryPosts(category string) []*Post {
-	categoryPostsRaw, found := f.categories.Get(category)
-	if !found {
-		// No posts found for this category
-		return nil
-	}
+    categoryPostsRaw, found := f.categories.Get(category)
+    if !found {
+        // No posts found for this category
+        return nil
+    }
 
-	return categoryPostsRaw.([]*Post)
+    return categoryPostsRaw.([]*Post)
 }
 
 // GetPosts returns all posts on the forum
 func (f Forum) GetPosts() []*Post {
-	posts := make([]*Post, f.posts.Size())
+    posts := make([]*Post, f.posts.Size())
 
-	index := 0
-	f.posts.Iterate("", "", func(n *avl.Node) bool {
-		posts[index] = n.Value().(*Post)
+    index := 0
+    f.posts.Iterate("", "", func(n *avl.Node) bool {
+        posts[index] = n.Value().(*Post)
 
-		return false
-	})
+        return false
+    })
 
-	return posts
+    return posts
 }
 
 // GetPost returns a post using the ID, if any
 func (f Forum) GetPost(postID string) *Post {
-	post, found := f.posts.Get(postID)
-	if !found {
-		return nil
-	}
+    post, found := f.posts.Get(postID)
+    if !found {
+        return nil
+    }
 
-	return post.(*Post)
+    return post.(*Post)
 }
 ```
 
@@ -607,10 +607,10 @@ One more significant thing to note from this code segment is the use of `ufmt.Sp
 package forum
 
 import (
-	"std"
+    "std"
 
-	"gno.land/p/demo/avl"
-	"gno.land/p/demo/ufmt"
+    "gno.land/p/demo/avl"
+    "gno.land/p/demo/ufmt"
 )
 ```
 
@@ -622,76 +622,76 @@ Furthermore, we need to define methods for manipulating the total post count, ad
 // AddModerator adds a moderator for the category,
 // and returns a status indicating if it was a success
 func (f Forum) AddModerator(
-	moderator std.Address,
-	category string,
+    moderator std.Address,
+    category string,
 ) bool {
-	// Check if the caller is the admin
-	if !f.isAdmin(std.GetOrigCaller()) {
-		return false
-	}
+    // Check if the caller is the admin
+    if !f.isAdmin(std.GetOrigCaller()) {
+        return false
+    }
 
-	// Check if the category exists
-	moderatorsRaw, found := f.moderators.Get(category)
-	if !found {
-		// Category is invalid
-		return false
-	}
+    // Check if the category exists
+    moderatorsRaw, found := f.moderators.Get(category)
+    if !found {
+        // Category is invalid
+        return false
+    }
 
-	if f.isModerator(moderator, category) {
-		// This moderator already exists for this category
-		return false
-	}
+    if f.isModerator(moderator, category) {
+        // This moderator already exists for this category
+        return false
+    }
 
-	// Add the moderator to the moderator set
-	moderators, _ := moderatorsRaw.([]std.Address)
-	moderators = append(moderators, moderator)
+    // Add the moderator to the moderator set
+    moderators, _ := moderatorsRaw.([]std.Address)
+    moderators = append(moderators, moderator)
 
-	// Save the new moderator set
-	f.moderators.Set(category, moderators)
+    // Save the new moderator set
+    f.moderators.Set(category, moderators)
 
-	return true
+    return true
 }
 
 // AddPost adds a new post to the forum
 func (f Forum) AddPost(post *Post) bool {
-	// Check if the post exists
-	_, found := f.posts.Get(ufmt.Sprintf("%d", post.GetID()))
-	if found {
-		// Post with this ID already exists
-		return false
-	}
+    // Check if the post exists
+    _, found := f.posts.Get(ufmt.Sprintf("%d", post.GetID()))
+    if found {
+        // Post with this ID already exists
+        return false
+    }
 
-	// Check if the category exists
-	postsRaw, found := f.categories.Get(post.GetCategory())
-	if !found {
-		// Invalid category specified
-		return false
-	}
+    // Check if the category exists
+    postsRaw, found := f.categories.Get(post.GetCategory())
+    if !found {
+        // Invalid category specified
+        return false
+    }
 
-	// Add the post reference
-	posts, _ := postsRaw.([]*Post)
-	posts = append(posts, post)
-	f.categories.Set(post.GetCategory(), posts)
+    // Add the post reference
+    posts, _ := postsRaw.([]*Post)
+    posts = append(posts, post)
+    f.categories.Set(post.GetCategory(), posts)
 
-	// Save the post
-	f.posts.Set(ufmt.Sprintf("%d", post.GetID()), post)
+    // Save the post
+    f.posts.Set(ufmt.Sprintf("%d", post.GetID()), post)
 
-	return true
+    return true
 }
 
 // AddComment appends a new comment to a post, if it exists
 func (f Forum) AddComment(postID uint, body string) bool {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return false
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return false
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	post.AddComment(NewComment(body))
+    post.AddComment(NewComment(body))
 
-	return true
+    return true
 }
 
 // RemovePost removes the specific post
@@ -700,77 +700,77 @@ func (f Forum) AddComment(postID uint, body string) bool {
 // to demonstrate how post removal can work.
 // In this example, only moderators can remove posts
 func (f Forum) RemovePost(postID uint) bool {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return false
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return false
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	// Check if the caller is a moderator for this category
-	if !f.isModerator(std.GetOrigCaller(), post.GetCategory()) {
-		// User is not a moderator, continue
-		return false
-	}
+    // Check if the caller is a moderator for this category
+    if !f.isModerator(std.GetOrigCaller(), post.GetCategory()) {
+        // User is not a moderator, continue
+        return false
+    }
 
-	// Remove the post from the posts repo
-	_, removed := f.posts.Remove(ufmt.Sprintf("%d", postID))
-	if !removed {
-		// Unable to remove post
-		return false
-	}
+    // Remove the post from the posts repo
+    _, removed := f.posts.Remove(ufmt.Sprintf("%d", postID))
+    if !removed {
+        // Unable to remove post
+        return false
+    }
 
-	// Remove the post from the category
-	categoryPostsRaw, found := f.categories.Get(post.GetCategory())
-	if !found {
-		// Category for this post is not found (impossible)
-		return false
-	}
+    // Remove the post from the category
+    categoryPostsRaw, found := f.categories.Get(post.GetCategory())
+    if !found {
+        // Category for this post is not found (impossible)
+        return false
+    }
 
-	categoryPosts, _ := categoryPostsRaw.([]*Post)
+    categoryPosts, _ := categoryPostsRaw.([]*Post)
 
-	for index, post := range categoryPosts {
-		// Check if this is the post to be deleted
-		if post.GetID() == postID {
-			// Prune out the element
-			posts := append(categoryPosts[:index], categoryPosts[index+1:]...)
+    for index, post := range categoryPosts {
+        // Check if this is the post to be deleted
+        if post.GetID() == postID {
+            // Prune out the element
+            posts := append(categoryPosts[:index], categoryPosts[index+1:]...)
 
-			f.categories.Set(post.GetCategory(), posts)
+            f.categories.Set(post.GetCategory(), posts)
 
-			break
-		}
-	}
+            break
+        }
+    }
 
-	return true
+    return true
 }
 
 // isAdmin checks if the address belongs to the forum admin
 func (f Forum) isAdmin(address std.Address) bool {
-	return address.String() == f.admin.String()
+    return address.String() == f.admin.String()
 }
 
 // isModerator checks if the address matches a moderator for the given category
 func (f Forum) isModerator(address std.Address, category string) bool {
-	// Grab the category moderator list
-	moderatorsRaw, found := f.moderators.Get(category)
-	if !found {
-		// Category does not exist
-		return false
-	}
+    // Grab the category moderator list
+    moderatorsRaw, found := f.moderators.Get(category)
+    if !found {
+        // Category does not exist
+        return false
+    }
 
-	// Check to see if this moderator exists
-	moderators, _ := moderatorsRaw.([]std.Address)
+    // Check to see if this moderator exists
+    moderators, _ := moderatorsRaw.([]std.Address)
 
-	// This lookup can be improved if we keep a map of moderators
-	// instead of a list, but for demo purposes this is acceptable
-	for _, moderator := range moderators {
-		if moderator.String() == address {
-			return true
-		}
-	}
+    // This lookup can be improved if we keep a map of moderators
+    // instead of a list, but for demo purposes this is acceptable
+    for _, moderator := range moderators {
+        if moderator.String() == address {
+            return true
+        }
+    }
 
-	return false
+    return false
 }
 ```
 
@@ -781,160 +781,160 @@ Finally, our `forum.gno` file should look something like this:
 package forum
 
 import (
-	"std"
+    "std"
 
-	"gno.land/p/demo/avl"
-	"gno.land/p/demo/ufmt"
+    "gno.land/p/demo/avl"
+    "gno.land/p/demo/ufmt"
 )
 
 // Forum represents a single forum instance
 type Forum struct {
-	name string
+    name string
 
-	posts      avl.Tree // post id -> post
-	categories avl.Tree // category name -> []post (for lookups)
+    posts      avl.Tree // post id -> post
+    categories avl.Tree // category name -> []post (for lookups)
 
-	admin      std.Address
-	moderators avl.Tree // category name -> []address
+    admin      std.Address
+    moderators avl.Tree // category name -> []address
 }
 
 // NewForum creates a new forum instance
 func NewForum(
-	name string,
-	categories []string,
-	admin std.Address,
+    name string,
+    categories []string,
+    admin std.Address,
 ) *Forum {
-	// Create a new forum instance
-	f := &Forum{
-		name:       name,
-		categories: avl.Tree{},
-		posts:      avl.Tree{},
-		admin:      admin,
-		moderators: avl.Tree{},
-	}
+    // Create a new forum instance
+    f := &Forum{
+        name:       name,
+        categories: avl.Tree{},
+        posts:      avl.Tree{},
+        admin:      admin,
+        moderators: avl.Tree{},
+    }
 
-	// Instantiate the categories
-	for _, category := range categories {
-		f.categories.Set(category, make([]*Post, 0))
+    // Instantiate the categories
+    for _, category := range categories {
+        f.categories.Set(category, make([]*Post, 0))
 
-		// Instantiate the initial moderator set
-		f.moderators.Set(category, []std.Address{admin})
-	}
+        // Instantiate the initial moderator set
+        f.moderators.Set(category, []std.Address{admin})
+    }
 
-	return f
+    return f
 }
 
 // GetName returns the forum name
 func (f Forum) GetName() string {
-	return f.name
+    return f.name
 }
 
 // GetCategories fetches the forum categories
 func (f Forum) GetCategories() []string {
-	var (
-		categories = make([]string, f.categories.Size())
-		index      = 0
-	)
+    var (
+        categories = make([]string, f.categories.Size())
+        index      = 0
+    )
 
-	f.categories.Iterate("", "", func(category *avl.Node) bool {
-		// Add the category to the list
-		categories[index] = category.Key()
+    f.categories.Iterate("", "", func(category *avl.Node) bool {
+        // Add the category to the list
+        categories[index] = category.Key()
 
-		index++
+        index++
 
-		// Continue iteration
-		return false
-	})
+        // Continue iteration
+        return false
+    })
 
-	return categories
+    return categories
 }
 
 // AddModerator adds a moderator for the category,
 // and returns a status indicating if it was a success
 func (f Forum) AddModerator(
-	moderator std.Address,
-	category string,
+    moderator std.Address,
+    category string,
 ) bool {
-	// Check if the caller is the admin
-	if !f.isAdmin(std.GetOrigCaller()) {
-		return false
-	}
+    // Check if the caller is the admin
+    if !f.isAdmin(std.GetOrigCaller()) {
+        return false
+    }
 
-	// Check if the category exists
-	moderatorsRaw, found := f.moderators.Get(category)
-	if !found {
-		// Category is invalid
-		return false
-	}
+    // Check if the category exists
+    moderatorsRaw, found := f.moderators.Get(category)
+    if !found {
+        // Category is invalid
+        return false
+    }
 
-	if f.isModerator(moderator, category) {
-		// This moderator already exists for this category
-		return false
-	}
+    if f.isModerator(moderator, category) {
+        // This moderator already exists for this category
+        return false
+    }
 
-	// Add the moderator to the moderator set
-	moderators, _ := moderatorsRaw.([]std.Address)
-	moderators = append(moderators, moderator)
+    // Add the moderator to the moderator set
+    moderators, _ := moderatorsRaw.([]std.Address)
+    moderators = append(moderators, moderator)
 
-	// Save the new moderator set
-	f.moderators.Set(category, moderators)
+    // Save the new moderator set
+    f.moderators.Set(category, moderators)
 
-	return true
+    return true
 }
 
 // AddPost adds a new post to the forum
 func (f Forum) AddPost(post *Post) bool {
-	// Check if the post exists
-	_, found := f.posts.Get(ufmt.Sprintf("%d", post.GetID()))
-	if found {
-		// Post with this ID already exists
-		return false
-	}
+    // Check if the post exists
+    _, found := f.posts.Get(ufmt.Sprintf("%d", post.GetID()))
+    if found {
+        // Post with this ID already exists
+        return false
+    }
 
-	// Check if the category exists
-	postsRaw, found := f.categories.Get(post.GetCategory())
-	if !found {
-		// Invalid category specified
-		return false
-	}
+    // Check if the category exists
+    postsRaw, found := f.categories.Get(post.GetCategory())
+    if !found {
+        // Invalid category specified
+        return false
+    }
 
-	// Add the post reference
-	posts, _ := postsRaw.([]*Post)
-	posts = append(posts, post)
-	f.categories.Set(post.GetCategory(), posts)
+    // Add the post reference
+    posts, _ := postsRaw.([]*Post)
+    posts = append(posts, post)
+    f.categories.Set(post.GetCategory(), posts)
 
-	// Save the post
-	f.posts.Set(ufmt.Sprintf("%d", post.GetID()), post)
+    // Save the post
+    f.posts.Set(ufmt.Sprintf("%d", post.GetID()), post)
 
-	return true
+    return true
 }
 
 // AddComment appends a new comment to a post, if it exists
 func (f Forum) AddComment(postID uint, body string) bool {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return false
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return false
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	post.AddComment(NewComment(body))
+    post.AddComment(NewComment(body))
 
-	return true
+    return true
 }
 
 // GetComments fetches the comments for a specific post
 func (f Forum) GetComments(postID uint) []*Comment {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return nil
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return nil
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	return post.GetComments()
+    return post.GetComments()
 }
 
 // RemovePost removes the specific post
@@ -943,112 +943,112 @@ func (f Forum) GetComments(postID uint) []*Comment {
 // to demonstrate how post removal can work.
 // In this example, only moderators can remove posts
 func (f Forum) RemovePost(postID uint) bool {
-	postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
-	if !found {
-		// Post does not exist
-		return false
-	}
+    postRaw, found := f.posts.Get(ufmt.Sprintf("%d", postID))
+    if !found {
+        // Post does not exist
+        return false
+    }
 
-	post, _ := postRaw.(*Post)
+    post, _ := postRaw.(*Post)
 
-	// Check if the caller is a moderator for this category
-	if !f.isModerator(std.GetOrigCaller(), post.GetCategory()) {
-		// User is not a moderator, continue
-		return false
-	}
+    // Check if the caller is a moderator for this category
+    if !f.isModerator(std.GetOrigCaller(), post.GetCategory()) {
+        // User is not a moderator, continue
+        return false
+    }
 
-	// Remove the post from the posts repo
-	_, removed := f.posts.Remove(ufmt.Sprintf("%d", postID))
-	if !removed {
-		// Unable to remove post
-		return false
-	}
+    // Remove the post from the posts repo
+    _, removed := f.posts.Remove(ufmt.Sprintf("%d", postID))
+    if !removed {
+        // Unable to remove post
+        return false
+    }
 
-	// Remove the post from the category
-	categoryPostsRaw, found := f.categories.Get(post.GetCategory())
-	if !found {
-		// Category for this post is not found (impossible)
-		return false
-	}
+    // Remove the post from the category
+    categoryPostsRaw, found := f.categories.Get(post.GetCategory())
+    if !found {
+        // Category for this post is not found (impossible)
+        return false
+    }
 
-	categoryPosts, _ := categoryPostsRaw.([]*Post)
+    categoryPosts, _ := categoryPostsRaw.([]*Post)
 
-	for index, post := range categoryPosts {
-		// Check if this is the post to be deleted
-		if post.GetID() == postID {
-			// Prune out the element
-			posts := append(categoryPosts[:index], categoryPosts[index+1:]...)
+    for index, post := range categoryPosts {
+        // Check if this is the post to be deleted
+        if post.GetID() == postID {
+            // Prune out the element
+            posts := append(categoryPosts[:index], categoryPosts[index+1:]...)
 
-			f.categories.Set(post.GetCategory(), posts)
+            f.categories.Set(post.GetCategory(), posts)
 
-			break
-		}
-	}
+            break
+        }
+    }
 
-	return true
+    return true
 }
 
 // isAdmin checks if the address belongs to the forum admin
 func (f Forum) isAdmin(address std.Address) bool {
-	return address.String() == f.admin.String()
+    return address.String() == f.admin.String()
 }
 
 // isModerator checks if the address matches a moderator for the given category
 func (f Forum) isModerator(address std.Address, category string) bool {
-	// Grab the category moderator list
-	moderatorsRaw, found := f.moderators.Get(category)
-	if !found {
-		// Category does not exist
-		return false
-	}
+    // Grab the category moderator list
+    moderatorsRaw, found := f.moderators.Get(category)
+    if !found {
+        // Category does not exist
+        return false
+    }
 
-	// Check to see if this moderator exists
-	moderators, _ := moderatorsRaw.([]std.Address)
+    // Check to see if this moderator exists
+    moderators, _ := moderatorsRaw.([]std.Address)
 
-	// This lookup can be improved if we keep a map of moderators
-	// instead of a list, but for demo purposes this is acceptable
-	for _, moderator := range moderators {
-		if moderator.String() == address {
-			return true
-		}
-	}
+    // This lookup can be improved if we keep a map of moderators
+    // instead of a list, but for demo purposes this is acceptable
+    for _, moderator := range moderators {
+        if moderator.String() == address {
+            return true
+        }
+    }
 
-	return false
+    return false
 }
 
 // GetCategoryPosts fetches the posts associated with a specific category
 func (f Forum) GetCategoryPosts(category string) []*Post {
-	categoryPostsRaw, found := f.categories.Get(category)
-	if !found {
-		// No posts found for this category
-		return nil
-	}
+    categoryPostsRaw, found := f.categories.Get(category)
+    if !found {
+        // No posts found for this category
+        return nil
+    }
 
-	return categoryPostsRaw.([]*Post)
+    return categoryPostsRaw.([]*Post)
 }
 
 // GetPosts returns all posts on the forum
 func (f Forum) GetPosts() []*Post {
-	posts := make([]*Post, f.posts.Size())
+    posts := make([]*Post, f.posts.Size())
 
-	index := 0
-	f.posts.Iterate("", "", func(n *avl.Node) bool {
-		posts[index] = n.Value().(*Post)
+    index := 0
+    f.posts.Iterate("", "", func(n *avl.Node) bool {
+        posts[index] = n.Value().(*Post)
 
-		return false
-	})
+        return false
+    })
 
-	return posts
+    return posts
 }
 
 // GetPost returns a post using the ID, if any
 func (f Forum) GetPost(postID string) *Post {
-	post, found := f.posts.Get(postID)
-	if !found {
-		return nil
-	}
+    post, found := f.posts.Get(postID)
+    if !found {
+        return nil
+    }
 
-	return post.(*Post)
+    return post.(*Post)
 }
 ```
 
@@ -1059,190 +1059,190 @@ We can also define several tests for this `Forum` package type, inside `forum_te
 package forum
 
 import (
-	"std"
-	"testing"
+    "std"
+    "testing"
 
-	"gno.land/p/demo/testutils"
+    "gno.land/p/demo/testutils"
 )
 
 // TestForum_New verifies that a new forum
 // can be initialized correctly
 func TestForum_New(t *testing.T) {
-	var (
-		name       = "forum name"
-		categories = []string{"category 1", "category 2", "category 3"}
-		admin      = testutils.TestAddress("admin")
-	)
+    var (
+        name       = "forum name"
+        categories = []string{"category 1", "category 2", "category 3"}
+        admin      = testutils.TestAddress("admin")
+    )
 
-	// Create a new forum instance
-	f := NewForum(name, categories, admin)
+    // Create a new forum instance
+    f := NewForum(name, categories, admin)
 
-	// Verify it has been initialized correctly
-	if f.GetName() != name {
-		t.Fatalf("invalid name")
-	}
+    // Verify it has been initialized correctly
+    if f.GetName() != name {
+        t.Fatalf("invalid name")
+    }
 
-	if !f.isAdmin(admin) {
-		t.Fatalf("invalid admin")
-	}
+    if !f.isAdmin(admin) {
+        t.Fatalf("invalid admin")
+    }
 
-	for index, category := range f.GetCategories() {
-		if categories[index] != category {
-			t.Fatalf("invalid category")
-		}
-	}
+    for index, category := range f.GetCategories() {
+        if categories[index] != category {
+            t.Fatalf("invalid category")
+        }
+    }
 }
 
 // TestForum_AddPost verifies that the post can
 // be added to the forum
 func TestForum_AddPost(t *testing.T) {
-	var (
-		// Forum info
-		name       = "forum name"
-		categories = []string{"category 1"}
-		admin      = testutils.TestAddress("admin")
+    var (
+        // Forum info
+        name       = "forum name"
+        categories = []string{"category 1"}
+        admin      = testutils.TestAddress("admin")
 
-		// Post info
-		author       = testutils.TestAddress("author")
-		postID       = uint(0)
-		postCategory = categories[0]
-		postTitle    = "post title"
-		postBody     = "post body"
-	)
+        // Post info
+        author       = testutils.TestAddress("author")
+        postID       = uint(0)
+        postCategory = categories[0]
+        postTitle    = "post title"
+        postBody     = "post body"
+    )
 
-	// Create a new forum instance
-	f := NewForum(name, categories, admin)
+    // Create a new forum instance
+    f := NewForum(name, categories, admin)
 
-	// Create a new post
-	p := NewPost(postID, postTitle, postBody, author)
-	p.SetCategory(postCategory)
+    // Create a new post
+    p := NewPost(postID, postTitle, postBody, author)
+    p.SetCategory(postCategory)
 
-	// Add the post
-	if !f.AddPost(p) {
-		t.Fatalf("unable to add post to forum")
-	}
+    // Add the post
+    if !f.AddPost(p) {
+        t.Fatalf("unable to add post to forum")
+    }
 
-	// Get all the posts
-	posts := f.GetPosts()
-	if len(posts) != 1 {
-		t.Fatalf("invalid number of posts")
-	}
+    // Get all the posts
+    posts := f.GetPosts()
+    if len(posts) != 1 {
+        t.Fatalf("invalid number of posts")
+    }
 
-	// Get all the category posts
-	categoryPosts := f.GetCategoryPosts(categories[0])
-	if len(categoryPosts) != 1 {
-		t.Fatalf("invalid number of category posts")
-	}
+    // Get all the category posts
+    categoryPosts := f.GetCategoryPosts(categories[0])
+    if len(categoryPosts) != 1 {
+        t.Fatalf("invalid number of category posts")
+    }
 }
 
 // TestForum_RemovePost verifies that a post
 // can be removed by the moderator and admin users
 func TestForum_RemovePost(t *testing.T) {
-	var (
-		admin     = testutils.TestAddress("admin")
-		moderator = testutils.TestAddress("moderator")
+    var (
+        admin     = testutils.TestAddress("admin")
+        moderator = testutils.TestAddress("moderator")
 
-		categories = []string{"category 1", "category 2"}
-	)
+        categories = []string{"category 1", "category 2"}
+    )
 
-	// Create a new forum instance
-	f := NewForum(
-		"forum example",
-		categories,
-		admin,
-	)
+    // Create a new forum instance
+    f := NewForum(
+        "forum example",
+        categories,
+        admin,
+    )
 
-	// Add a moderator for a category
-	std.TestSetOrigCaller(admin)
-	f.AddModerator(moderator, categories[0])
+    // Add a moderator for a category
+    std.TestSetOrigCaller(admin)
+    f.AddModerator(moderator, categories[0])
 
-	// Add two posts, one to be removed by the admin
-	// and the other to be removed by the moderator
-	p := NewPost(0, "", "", testutils.TestAddress("author"))
-	p.SetCategory(categories[0])
-	if !f.AddPost(p) {
-		t.Fatalf("unable to add post")
-	}
+    // Add two posts, one to be removed by the admin
+    // and the other to be removed by the moderator
+    p := NewPost(0, "", "", testutils.TestAddress("author"))
+    p.SetCategory(categories[0])
+    if !f.AddPost(p) {
+        t.Fatalf("unable to add post")
+    }
 
-	p = NewPost(1, "", "", testutils.TestAddress("author"))
-	p.SetCategory(categories[0])
-	if !f.AddPost(p) {
-		t.Fatalf("unable to add post")
-	}
+    p = NewPost(1, "", "", testutils.TestAddress("author"))
+    p.SetCategory(categories[0])
+    if !f.AddPost(p) {
+        t.Fatalf("unable to add post")
+    }
 
-	if len(f.GetPosts()) != 2 {
-		t.Fatalf("invalid number of posts")
-	}
+    if len(f.GetPosts()) != 2 {
+        t.Fatalf("invalid number of posts")
+    }
 
-	// Remove a post as the admin
-	std.TestSetOrigCaller(admin)
-	if !f.RemovePost(0) {
-		t.Fatalf("unable to remove post as admin")
-	}
+    // Remove a post as the admin
+    std.TestSetOrigCaller(admin)
+    if !f.RemovePost(0) {
+        t.Fatalf("unable to remove post as admin")
+    }
 
-	// Remove a post as a moderator
-	std.TestSetOrigCaller(moderator)
-	if !f.RemovePost(1) {
-		t.Fatalf("unable to remove post as moderator")
-	}
+    // Remove a post as a moderator
+    std.TestSetOrigCaller(moderator)
+    if !f.RemovePost(1) {
+        t.Fatalf("unable to remove post as moderator")
+    }
 
-	// Check that both posts were removed
-	if len(f.GetPosts()) != 0 {
-		t.Fatalf("invalid number of posts, should be 0")
-	}
+    // Check that both posts were removed
+    if len(f.GetPosts()) != 0 {
+        t.Fatalf("invalid number of posts, should be 0")
+    }
 
-	if len(f.GetCategoryPosts(categories[0])) != 0 {
-		t.Fatalf("invalid number of category posts, should be 0")
-	}
+    if len(f.GetCategoryPosts(categories[0])) != 0 {
+        t.Fatalf("invalid number of category posts, should be 0")
+    }
 }
 
 // TestForum_AddComment verifies that a comment
 // can be added by a user to a post
 func TestForum_AddComment(t *testing.T) {
-	// Create a new forum instance
-	f := NewForum(
-		"forum example",
-		[]string{"category 1"},
-		testutils.TestAddress("admin"),
-	)
+    // Create a new forum instance
+    f := NewForum(
+        "forum example",
+        []string{"category 1"},
+        testutils.TestAddress("admin"),
+    )
 
-	// Create a new post
-	p := NewPost(0, "", "", testutils.TestAddress("pAuthor"))
-	p.SetCategory("category 1")
-	if !f.AddPost(p) {
-		t.Fatalf("unable to add post")
-	}
+    // Create a new post
+    p := NewPost(0, "", "", testutils.TestAddress("pAuthor"))
+    p.SetCategory("category 1")
+    if !f.AddPost(p) {
+        t.Fatalf("unable to add post")
+    }
 
-	// Add a comment to the post
-	var (
-		commentAuthor = testutils.TestAddress("commenter")
-		commentBody   = "Example comment body"
-	)
+    // Add a comment to the post
+    var (
+        commentAuthor = testutils.TestAddress("commenter")
+        commentBody   = "Example comment body"
+    )
 
-	std.TestSetOrigCaller(commentAuthor)
-	if !f.AddComment(p.GetID(), commentBody) {
-		t.Fatalf("unable to add comment to post")
-	}
+    std.TestSetOrigCaller(commentAuthor)
+    if !f.AddComment(p.GetID(), commentBody) {
+        t.Fatalf("unable to add comment to post")
+    }
 
-	comments := f.GetComments(p.GetID())
-	if len(comments) != 1 {
-		t.Fatalf("invalid comment number")
-	}
+    comments := f.GetComments(p.GetID())
+    if len(comments) != 1 {
+        t.Fatalf("invalid comment number")
+    }
 
-	if comments[0].GetAuthor().String() != commentAuthor.String() {
-		t.Fatalf("invalid comment authro")
-	}
+    if comments[0].GetAuthor().String() != commentAuthor.String() {
+        t.Fatalf("invalid comment authro")
+    }
 
-	if comments[0].GetBody() != commentBody {
-		t.Fatalf("invalid comment body")
-	}
+    if comments[0].GetBody() != commentBody {
+        t.Fatalf("invalid comment body")
+    }
 }
 ```
 
 Running the `gnodev` tool will verify our tests are passing:
 
 ```bash
-gnodev test --verbose examples/gno.land/p/demo/forum 
+gnodev test --verbose examples/gno.land/p/demo/forum
 
 === RUN   TestComment_New
 --- PASS: TestComment_New (0.00s)
@@ -1272,28 +1272,28 @@ We create a new file, but this time inside the `examples/gno.land/r/demo/forum` 
 package forum
 
 import (
-	"bytes"
-	"std"
-	"strings"
+    "bytes"
+    "std"
+    "strings"
 
-	"gno.land/p/demo/forum"
-	"gno.land/p/demo/ufmt"
+    "gno.land/p/demo/forum"
+    "gno.land/p/demo/ufmt"
 )
 
 // State of the Realm
 var (
-	name = "Gno Overflow"
-	admin      std.Address = "g1yqfh6eghagkheclq0vkz49useseydelg6uxznc"
-	categories             = []string{"General", "Announcements", "Devs"}
+    name = "Gno Overflow"
+    admin      std.Address = "g1yqfh6eghagkheclq0vkz49useseydelg6uxznc"
+    categories             = []string{"General", "Announcements", "Devs"}
 
-	f           *forum.Forum
-	forumPrefix      = "/r/demo/forum:" // used for routing
-	postIndex   uint = 0
+    f           *forum.Forum
+    forumPrefix      = "/r/demo/forum:" // used for routing
+    postIndex   uint = 0
 )
 
 // init constructs the forum instance during deployment
 func init() {
-	f = forum.NewForum(name, categories, admin)
+    f = forum.NewForum(name, categories, admin)
 }
 ```
 
@@ -1323,54 +1323,54 @@ Namely, we want to expose a couple of methods users can call:
 ```go
 // AddModerator adds a new moderator to the forum
 func AddModerator(moderator std.Address, category string) string {
-	if !f.AddModerator(moderator, category) {
-		return "unable to add moderator"
-	}
+    if !f.AddModerator(moderator, category) {
+        return "unable to add moderator"
+    }
 
-	return "moderator successfully added"
+    return "moderator successfully added"
 }
 
 // AddPost adds a new post to the forum
 func AddPost(
-	title string,
-	body string,
-	category string,
+    title string,
+    body string,
+    category string,
 ) string {
-	// Create a new post
-	p := forum.NewPost(postIndex, title, body, std.GetOrigCaller())
-	p.SetCategory(category)
+    // Create a new post
+    p := forum.NewPost(postIndex, title, body, std.GetOrigCaller())
+    p.SetCategory(category)
 
-	// Add the post to the forum
-	if !f.AddPost(p) {
-		return "unable to add post"
-	}
+    // Add the post to the forum
+    if !f.AddPost(p) {
+        return "unable to add post"
+    }
 
-	// Increment the global post index
-	postIndex++
+    // Increment the global post index
+    postIndex++
 
-	return ufmt.Sprintf("post successfully added with ID %d", postIndex-1)
+    return ufmt.Sprintf("post successfully added with ID %d", postIndex-1)
 }
 
 // AddComment adds a new comment to a post
 func AddComment(
-	postID uint,
-	body string,
+    postID uint,
+    body string,
 ) string {
-	// Add the post to the forum
-	if !f.AddComment(postID, body) {
-		return "unable to add comment"
-	}
+    // Add the post to the forum
+    if !f.AddComment(postID, body) {
+        return "unable to add comment"
+    }
 
-	return "comment successfully added"
+    return "comment successfully added"
 }
 
 // RemovePost removes a post from the forum
 func RemovePost(postID uint) string {
-	if f.RemovePost(postID) {
-		return "post successfully removed"
-	}
+    if f.RemovePost(postID) {
+        return "post successfully removed"
+    }
 
-	return "unable to remove post"
+    return "unable to remove post"
 }
 ```
 
@@ -1390,7 +1390,7 @@ To start the website, we can run from the root of the repo:
 
 This serves up the `gnoland` website, where we can inspect existing Packages and Realms:
 
-![Gno.land website](/assets/2023-03-16--online-milos/3.png)
+![Gno.land website](./assets/3.png)
 
 When viewing a Package, the source code is displayed, but when viewing a Realm, the result of its `Render` method is displayed instead. Again, this is because Packages do not hold any state to display.
 
@@ -1410,36 +1410,36 @@ The `path` argument is the `gnoland` website path that’s being viewed.
 
 If we go back to our forum mockup, we can see that our forum homepage should contain the list of categories (which are links), and that opening up each one will present us a list of posts for that category. Additionally, when clicking on a specific post, the post page opens and displays the accompanying comments.
 
-![Look and feel](/assets/2023-03-16--online-milos/1.png)
+![Look and feel](./assets/1.png)
 
 Having this in mind, and understanding the `path` parameter, we can define our `Render` logic for this Realm:
 
 ```go
 // Render displays the forum's content
 func Render(path string) string {
-	// Get the resource path
-	parts := strings.Split(path, "/")
+    // Get the resource path
+    parts := strings.Split(path, "/")
 
-	switch {
-	case path == "":
-		return renderHomepage()
-	case len(parts) == 2 && parts[0] == "post":
-		post := f.GetPost(parts[1])
-		if post == nil {
-			return "post not found"
-		}
+    switch {
+    case path == "":
+        return renderHomepage()
+    case len(parts) == 2 && parts[0] == "post":
+        post := f.GetPost(parts[1])
+        if post == nil {
+            return "post not found"
+        }
 
-		return renderPost(post)
-	case len(parts) == 2 && parts[0] == "category":
-		categoryPosts := f.GetCategoryPosts(parts[1])
-		if len(categoryPosts) == 0 {
-			return "no posts found"
-		}
+        return renderPost(post)
+    case len(parts) == 2 && parts[0] == "category":
+        categoryPosts := f.GetCategoryPosts(parts[1])
+        if len(categoryPosts) == 0 {
+            return "no posts found"
+        }
 
-		return renderPostList(categoryPosts)
-	default:
-		return "post not found"
-	}
+        return renderPostList(categoryPosts)
+    default:
+        return "post not found"
+    }
 }
 ```
 
@@ -1452,89 +1452,89 @@ This is why we’ve defined a special `forumPrefix`, so we can provide links in 
 ```go
 // renderPostList renders a list of posts with their links
 func renderPostList(posts []*forum.Post) string {
-	var b bytes.Buffer
+    var b bytes.Buffer
 
-	for _, post := range posts {
-		postURL := ufmt.Sprintf("%s%s%d", forumPrefix, "post/", post.GetID())
-		b.WriteString(
-			ufmt.Sprintf("### [%s](%s)\n", post.GetTitle(), postURL),
-		)
-	}
+    for _, post := range posts {
+        postURL := ufmt.Sprintf("%s%s%d", forumPrefix, "post/", post.GetID())
+        b.WriteString(
+            ufmt.Sprintf("### [%s](%s)\n", post.GetTitle(), postURL),
+        )
+    }
 
-	return b.String()
+    return b.String()
 }
 
 // renderHomepage renders the homepage
 func renderHomepage() string {
-	var b bytes.Buffer
+    var b bytes.Buffer
 
-	// Write welcome message
-	b.WriteString(
-		ufmt.Sprintf("## Welcome to the %s forum!\n\n", f.GetName()),
-	)
+    // Write welcome message
+    b.WriteString(
+        ufmt.Sprintf("## Welcome to the %s forum!\n\n", f.GetName()),
+    )
 
-	// For each category, write the name
-	for _, category := range f.GetCategories() {
-		categoryURL := ufmt.Sprintf("%s%s%s", forumPrefix, "category/", category)
-		b.WriteString(
-			ufmt.Sprintf("## [Category: %s](%s)\n", category, categoryURL),
-		)
-	}
+    // For each category, write the name
+    for _, category := range f.GetCategories() {
+        categoryURL := ufmt.Sprintf("%s%s%s", forumPrefix, "category/", category)
+        b.WriteString(
+            ufmt.Sprintf("## [Category: %s](%s)\n", category, categoryURL),
+        )
+    }
 
-	return b.String()
+    return b.String()
 }
 
 // renderPost renders a post and its accompanying comments
 func renderPost(p *forum.Post) string {
-	var b bytes.Buffer
+    var b bytes.Buffer
 
-	// Write the title
-	b.WriteString(
-		ufmt.Sprintf("## %s\n", p.GetTitle()),
-	)
+    // Write the title
+    b.WriteString(
+        ufmt.Sprintf("## %s\n", p.GetTitle()),
+    )
 
-	// Write the author and ID
-	b.WriteString(
-		ufmt.Sprintf("id: %d; author: **%s** \n", p.GetID(), p.GetAuthor().String()),
-	)
+    // Write the author and ID
+    b.WriteString(
+        ufmt.Sprintf("id: %d; author: **%s** \n", p.GetID(), p.GetAuthor().String()),
+    )
 
-	// Write the body
-	b.WriteString(
-		ufmt.Sprintf("\n%s\n", p.GetBody()),
-	)
+    // Write the body
+    b.WriteString(
+        ufmt.Sprintf("\n%s\n", p.GetBody()),
+    )
 
-	// Write the comment section
-	b.WriteString("## Comments\n\n")
+    // Write the comment section
+    b.WriteString("## Comments\n\n")
 
-	comments := p.GetComments()
-	if len(comments) == 0 {
-		b.WriteString("No comments to display")
-	} else {
-		for _, comment := range comments {
-			b.WriteString(renderComment(comment))
+    comments := p.GetComments()
+    if len(comments) == 0 {
+        b.WriteString("No comments to display")
+    } else {
+        for _, comment := range comments {
+            b.WriteString(renderComment(comment))
 
-			b.WriteString("\n")
-		}
-	}
+            b.WriteString("\n")
+        }
+    }
 
-	return b.String()
+    return b.String()
 }
 
 // renderComment renders a single comment
 func renderComment(c *forum.Comment) string {
-	var b bytes.Buffer
+    var b bytes.Buffer
 
-	// Write out the body
-	b.WriteString(
-		ufmt.Sprintf("%s\n\n", c.GetBody()),
-	)
+    // Write out the body
+    b.WriteString(
+        ufmt.Sprintf("%s\n\n", c.GetBody()),
+    )
 
-	// Write out the author
-	b.WriteString(
-		ufmt.Sprintf("author: %s\n", c.GetAuthor().String()),
-	)
+    // Write out the author
+    b.WriteString(
+        ufmt.Sprintf("author: %s\n", c.GetAuthor().String()),
+    )
 
-	return b.String()
+    return b.String()
 }
 ```
 
@@ -1577,7 +1577,7 @@ gnokey add --recover AdminKey
 
 By following the prompts, we can create a private key, and extract out the associated address.
 
-![Gnokey demo](/assets/2023-03-16--online-milos/gnokey.gif)
+![Gnokey demo](./assets/gnokey.gif)
 
 Running `gnokey list` will provide us the information we need:
 
@@ -1670,7 +1670,7 @@ GAS USED:   1518734
 
 ### Deploying the Realm
 
-Deploying the Realm is the same process as deploying the Package. 
+Deploying the Realm is the same process as deploying the Package.
 
 We need to make 1 adjustment to our Realm code, now that we’ve generated an address.
 
@@ -1683,9 +1683,9 @@ We need to modify the admin address of our Realm so that we can modify our forum
 
 // State of the Realm
 var (
-	// ...
-	admin      std.Address = "g1ery8mvnnggr4fm5md9cj99hljr3seml9em6dnf"
-	// ...
+    // ...
+    admin      std.Address = "g1ery8mvnnggr4fm5md9cj99hljr3seml9em6dnf"
+    // ...
 )
 
 // ...
@@ -1726,7 +1726,7 @@ http://127.0.0.1:8888/p/demo/forum/
 
 which will give us an overview of the source code for our Package.
 
-![Package source code](/assets/2023-03-16--online-milos/4.png)
+![Package source code](./assets/4.png)
 
 To view our deployed `Forum` Realm, we can visit:
 
@@ -1734,7 +1734,7 @@ To view our deployed `Forum` Realm, we can visit:
 http://127.0.0.1:8888/r/demo/forum
 ```
 
-![Realm render](/assets/2023-03-16--online-milos/5.png)
+![Realm render](./assets/5.png)
 
 Since our `Render` method path is the base path, the homepage is being rendered, that contains links to specific category posts.
 
@@ -1764,9 +1764,9 @@ Remember, our Realm `AddPost` method takes in 3 parameters:
 ```bash
 // AddPost adds a new post to the forum
 func AddPost(
-	title string,
-	body string,
-	category string,
+    title string,
+    body string,
+    category string,
 ) string {
 // ...
 }
@@ -1783,9 +1783,9 @@ GAS USED:   612352
 
 We can view this post by opening the forum homepage, clicking on the `Category: General` link, and clicking on the post title:
 
-![Posts in general](/assets/2023-03-16--online-milos/6.png)
+![Posts in general](./assets/6.png)
 
-![Post overview](/assets/2023-03-16--online-milos/7.png)
+![Post overview](./assets/7.png)
 
 ### Adding a comment
 
@@ -1816,7 +1816,7 @@ GAS USED:   335442
 
 Now, if we open up the post, we will see our newly added comment there:
 
-![Comment overview](/assets/2023-03-16--online-milos/8.png)
+![Comment overview](./assets/8.png)
 
 ## Closing
 
