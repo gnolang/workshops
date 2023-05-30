@@ -13,7 +13,6 @@ https://github.com/gnolang
 ## History of Smart Contracts
 
 ## 1994, the inception of smart contracts
-
 * Nick Szabo proposed smart contracts, predating blockchain
 * computerized transaction **protocol** that executes the terms of a contract
 * no need for a middleman
@@ -21,14 +20,12 @@ https://github.com/gnolang
 * not limited to finance
 
 ## 2009, smart contracts meet blockchain
-
 * Bitcoin
 * introduce the concept of programmable money and digital scarcity
 * not Turing complete, limited capabilities
 * i.e., multisig transactions are a form of smart contract
 
 ## 2015, the dawn of complex smart contracts
-
 * Ethereum (EVM)
 * turing complete, allowing for the deployment of complex smart contracts
 * opens up a world of possibilites for dApps
@@ -36,7 +33,6 @@ https://github.com/gnolang
 * 10M+ contracts deployed on Ethereum (2022)
 
 ## 2019, the rise of WASM smart contracts
-
 * Cosmos pioneers with CosmWasm, Polkadot follows
 * tackles EVM's stack limit and computational inefficiencies
 * attracts diverse developers
@@ -44,7 +40,6 @@ https://github.com/gnolang
 * note: Solana uniquely uses Rust with a different VM bytecode
 
 ## quick recap
-
 * **1994**: Szabo's "smart contracts" idea
 * **2009**: Bitcoin introduces programmable money
 * **2015**: Ethereum adds complex smart contracts
@@ -55,7 +50,6 @@ https://github.com/gnolang
 .background ./assets/gno-bg-grayscale.png
 
 ## Gno: a new era in smart contracting
-
 * Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
 * Gno.land: first L1 using Gnolang
 * built on Tendermint2 in the Cosmos/IBC ecosystem
@@ -64,7 +58,6 @@ https://github.com/gnolang
 * relates to Solidity, aspires to exceed it on multiple fronts
 
 ## Why Go?
-
 * a good established language
 * simple, intuitive
 * type-check safety
@@ -72,7 +65,6 @@ https://github.com/gnolang
 * object-oriented, embedding, composability
 
 ## Go, but why Gno?
-
 * designed for blockchain
 * deterministic
 * interpreted
@@ -81,7 +73,6 @@ https://github.com/gnolang
 * auto-merkle-ized
 
 ## Gno: intuitive VM
-
 **EVM**
 
 1. program code (Solidity) ->
@@ -95,7 +86,6 @@ https://github.com/gnolang
 3. GnoVM implementation (Go)
 
 ## Gno: auto-persistence
-
 * all values are preserved effortlessly
 * no need for ORMs, DBs, or binary codecs
 * blurs the line between memory and storage
@@ -104,7 +94,6 @@ https://github.com/gnolang
 .code ./code/simple-persistency.gno
 
 ## Gno: auto-merkleization
-
 * the way you implement structures in Gno is how it's persisted and merkleized
 * transparent and verifiable state for external observers
 * enables direct implementation of interchain protocols in smart contracts
@@ -112,7 +101,6 @@ https://github.com/gnolang
 .code ./code/user-defined-data-structs.gno
 
 ## Gno: imports
-
 * runtime
 * support complex structs
 * low-cost
@@ -121,7 +109,6 @@ https://github.com/gnolang
 .code ./code/import.gno
 
 ## Gno vs Solidity
-
 * "Solidity is a curly-bracket language designed to target the EVM."
 * Solidity is still actively evolving
 * The most intuitive target is AST (not a bytecode VM)
@@ -129,50 +116,43 @@ https://github.com/gnolang
 .code ./code/solidity-persistency.sol
 
 ## Gno GRC721 example
-
 .code ./code/grc721.gno
+
+## Gno vs Rust/Solana
+.code ./code/solana-counter.rs
 
 ## Gno vs Rust/WASM
 
-## Gno vs Go/CosmWasm
+XXX
 
+## Gno vs Go/CosmWasm
 .code ./code/cosmwasm-go.go
 
-## Gno vs CosmosSD
-
-* "ctx"
-* determinism
-* keeper/handler pattern
-* binary codec (no ORM)
-
+## Gno vs CosmosSDK
 .code ./code/cosmos-sdk.go
 
 ## Gno for social applications
-
 .code ./code/social-app.gno
 
-## Gno SDK
+// ## Gno SDK
+// * onchain chain configuration
+// * VM is configured by the chain
+// * chain can read and interact with contracts
+// * onchain upgradability, super low maintenance
+// * designed for 100y runtime
 
-* chicken-egg problem solved
-* VM is configured by the chain
-* chain can read and interact with contracts
-* onchain upgradability, super low maintenance
-* designed for 100y runtime
+// ## GnoVM license model
+// * Copyleft but with strong attribution
+// * -> your success is our success
+// * Your GNO contracts are licensed how you want
 
-## GnoVM license model
-
-* Copyleft but with strong attribution
-* -> your success is our success
-* Your GNO contracts are licensed how you want
-
-## GitHub of smart contracts
-
+## a "GitHub" for smart contracts
 * source code is always available
-* imports are made at runtime
-* contracts have human-readable names
+* runtime metrics for each realms, packages, imports
+* contracts have human-readable names, prefixed with users or organizations
+* metadata around the code (authors, organizations, versions)
 
 ## interchain
-
 * IBC
 * IBCx
 * ICS

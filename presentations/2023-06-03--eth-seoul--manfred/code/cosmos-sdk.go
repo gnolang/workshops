@@ -1,29 +1,28 @@
-// cli/cli.go
-// msg.go
-// handler.go
-// keeper.go  <-- here
-//  * with binary encoding/decoding of x.
-//  * no 'x' variable.
-//  * could use Amino-based object store.
+package keeper // OMIT
+// cli/cli.go, msg.go, handler.go, keeper.go
+//  * keeper/handler pattern
+//  * "ctx"
+//  * binary codec
+//  * determinism
+import (
+	"strconv" // OMIT
+	// OMIT
+	"github.com/gnolang/gno/pkgs/sdk"
+)
 
-type Keeper struct {
-  // expected to be prefix store.
-  storeKey               storetypes.StoreKey
-}
+type Keeper struct{ storeKey storetypes.StoreKey } // expected to be prefix store.
 
 func (k *Keeper) Incr(sdk.Context) {
-  store := ctx.KVStore(k.storeKey)
-  bz := store.Get("x")
-  if bz == nil {
-    panic("XXX")
-  }
-  x, err := strconv.Atoi(bz)
-
-  x += 1 // all we wanted
-
-  if err != nil {
-    panic("XXX")
-  }
-  bz = strconv.Itoa(x)
-  store.Set("x", bz)
+	store := ctx.KVStore(k.storeKey)
+	bz := store.Get("x")
+	if bz == nil {
+		panic("XXX")
+	}
+	x, err := strconv.Atoi(bz)
+	if err != nil {
+		panic("XXX")
+	}
+	x += 1 // all we wanted
+	bz = strconv.Itoa(x)
+	store.Set("x", bz)
 }
