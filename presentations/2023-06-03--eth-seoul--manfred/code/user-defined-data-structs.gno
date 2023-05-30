@@ -1,3 +1,4 @@
+// user-defined data-structures
 // gno.land/p/demo/avl/node.gno
 package avl // OMIT
 

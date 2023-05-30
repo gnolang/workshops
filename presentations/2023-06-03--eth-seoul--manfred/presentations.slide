@@ -1,9 +1,8 @@
-# A Journey into Gno.land
-The Evolution of Smart Contract -- Eth Seoul 2023
+# A journey into Gno.land
+the evolution of smart contract -- Eth Seoul
 3 Jun 2023
 Tags: gnolang, gnoland, gno, smart contract, blockchain, solidity, rust, wasm
 Summary: This talk will detail out a timeline beginning with the very first smart contracts, how they evolved into blockchain then comparing current Smart Contract platforms from Solidity, Rust and most recently, Gno.lang.
-
 
 Manfred Touron
 VP Eng., Gno.land
@@ -44,7 +43,7 @@ https://github.com/gnolang
 * Rust leads with better tooling
 * note: Solana uniquely uses Rust with a different VM bytecode
 
-## smart contracts, a quick recap
+## quick recap
 
 * **1994**: Szabo's "smart contracts" idea
 * **2009**: Bitcoin introduces programmable money
@@ -53,8 +52,6 @@ https://github.com/gnolang
 * concept to reality in 20 years, adoption in 10
 
 ## Gno.land
-
-##
 .background ./assets/gno-bg-grayscale.png
 
 ## Gno: a new era in smart contracting
@@ -73,9 +70,9 @@ https://github.com/gnolang
 * garbage-collected
 * object-oriented, embedding, composability
 
-## Why Gno?
+## Go, but why Gno?
 
-* designed for smart contracts
+* designed for blockchain
 * deterministic
 * interpreted
 * intuitive VM
@@ -98,10 +95,12 @@ https://github.com/gnolang
 
 ## Gno: auto-persistence
 
-* all values are preserved erffortlessly
+* all values are preserved effortlessly
 * no need for ORMs, DBs, or binary codecs
 * blurs the line between memory and storage
 * promotes concise and efficient code
+
+.code ./code/simple-persistency.gno
 
 ## Gno: auto-merkleization
 
@@ -109,11 +108,55 @@ https://github.com/gnolang
 * transparent and verifiable state for external observers
 * enables direct implementation of interchain protocols in smart contracts
 
-## Gno user-defined data structs
-
 .code ./code/user-defined-data-structs.gno
 
-// TODO: continue
+## Gno vs Solidity
+
+* "Solidity is a curly-bracket language designed to target the EVM."
+* Solidity is still actively evolving
+* The most intuitive target is AST (not a bytecode VM)
+
+.code ./code/solidity-persistency.sol
+
+## Gno GRC721 example
+
+.code ./code/grc721.gno
+
+## Gno vs CosmosSDK
+
+* "ctx"
+* determinism
+* keeper/handler pattern
+* binary codec (no ORM)
+
+.code ./code/cosmos-sdk.go
+
+## Gno for social applications
+
+.code ./code/social-app.gno
+
+## Gno vs Gno.land
+
+* Gno == language
+* Gno.land == GnoVM + Tendermint2
+* Proof-of-Contributions
+* available as ICS provider
+* GitHub of contracts
+
+## GnoVM license model
+
+* Copyleft but with strong attribution
+* -> your success is our success
+* Your GNO contracts are licensed how you want
+
+## GitHub of smart contracts
+
+...
+
+## What is a "metaverse"?
+
+...
+
 
 // Ideas
 // - Inception wasm, starknet
