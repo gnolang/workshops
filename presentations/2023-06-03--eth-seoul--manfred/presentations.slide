@@ -1,49 +1,130 @@
-# The Evolution of smart contract: A journey into Gno.land
-Eth Seoul 2023
+# A Journey into Gno.land
+The Evolution of Smart Contract -- Eth Seoul 2023
 3 Jun 2023
-Tags: foo, bar, baz
-Summary: XXX
+Tags: gnolang, gnoland, gno, smart contract, blockchain, solidity, rust, wasm
+Summary: This talk will detail out a timeline beginning with the very first smart contracts, how they evolved into blockchain then comparing current Smart Contract platforms from Solidity, Rust and most recently, Gno.lang.
+
 
 Manfred Touron
-VP Eng.,   Gno.land (Tendermint)
+VP Eng., Gno.land
 https://gno.land/
 https://github.com/gnolang
 @moul
 
-## section 1
+## History of Smart Contracts
 
-This talk will detail out a timeline beginning with the very first smart contracts, how they evolved into blockchain then comparing current Smart Contract platforms from Solidity, Rust and most recently, Gno.lang.
+## 1994, the inception of smart contracts
 
-## Title of Slide or Section (must begin with ##)
+* Nick Szabo proposed smart contracts, predating blockchain
+* computerized transaction **protocol** that executes the terms of a contract
+* no need for a middleman
+* analogy: vending machine, a primitive form of smart contracts
+* not limited to finance
 
-Some Text
+## 2009, smart contracts meet blockchain
 
-### Subsection {#anchor}
+* Bitcoin
+* introduce the concept of programmable money and digital scarcity
+* not Turing complete, limited capabilities
+* i.e., multisig transactions are a form of smart contract
 
-- bullets
-- more bullets
-- a bullet continued
-  on the next line
+## 2015, the dawn of complex smart contracts
 
-#### Sub-subsection
+* Ethereum (EVM)
+* turing complete, allowing for the deployment of complex smart contracts
+* opens up a world of possibilites for dApps
+* bytecode is built from the ground up
+* 10M+ contracts deployed on Ethereum (2022)
 
-Some More text
+## 2019, the rise of WASM smart contracts
 
-  Preformatted text (code block)
-  is indented (by one tab, or four spaces)
+* Cosmos pioneers with CosmWasm, Polkadot follows
+* tackles EVM's stack limit and computational inefficiencies
+* attracts diverse developers
+* Rust leads with better tooling
+* note: Solana uniquely uses Rust with a different VM bytecode
 
-Further Text, including command invocations.
+## smart contracts, a quick recap
 
-## Section 2: Example formatting {#fmt}
+* **1994**: Szabo's "smart contracts" idea
+* **2009**: Bitcoin introduces programmable money
+* **2015**: Ethereum adds complex smart contracts
+* **2019**: WASM emerges
+* concept to reality in 20 years, adoption in 10
 
-Formatting:
+## Gno.land
 
-_italic_
-// A comment that is completely ignored.
-: Speaker notes.
-**bold**
-`program`
-Markup—_especially italic text_—can easily be overused.
-_Why use scoped\_ptr_? Use plain **\*ptr** instead.
+##
+.background ./assets/gno-bg-grayscale.png
 
-Visit [the Go home page](https://golang.org/).
+## Gno: a new era in smart contracting
+
+* Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+* Gno.land: first L1 using Gnolang
+* built on Tendermint2 in the Cosmos/IBC ecosystem
+* aims for simplicity, security, scalability
+* relates to Solidity, aspires to exceed it on multiple fronts
+
+## Why Go?
+
+* a good established language
+* simple, intuitive
+* type-check safety
+* garbage-collected
+* object-oriented, embedding, composability
+
+## Why Gno?
+
+* designed for smart contracts
+* deterministic
+* interpreted
+* intuitive VM
+* auto-persisted
+* auto-merkle-ized
+
+## Gno: intuitive VM
+
+**EVM**
+
+1. program code (Solidity) ->
+2. EVM bytecode (new low-level construct) ->
+3. EVM implementation (C++/Go/Python/Rust)
+
+**GnoVM**, everything is Go
+
+1. program code (Go) ->
+2. Go AST (if, else, func, struct, etc) ->
+3. GnoVM implementation (Go)
+
+## Gno: auto-persistence
+
+* all values are preserved erffortlessly
+* no need for ORMs, DBs, or binary codecs
+* blurs the line between memory and storage
+* promotes concise and efficient code
+
+## Gno: auto-merkleization
+
+* the way you implement structures in Gno is how it's persisted and merkleized
+* transparent and verifiable state for external observers
+* enables direct implementation of interchain protocols in smart contracts
+
+## Gno user-defined data structs
+
+.code ./code/user-defined-data-structs.gno
+
+// TODO: continue
+
+// Ideas
+// - Inception wasm, starknet
+// - Post defi era
+// - Social coordination
+// - Democracy
+// - DAO
+// - Communication
+// - Transparency accountability
+// - web2 -> web3
+// - tools, dapp viewer, etc
+// - IBC2
+// - POC
+// - Game of Realms
