@@ -151,27 +151,29 @@ XXX
 * runtime metrics for each realms, packages, imports
 * contracts have human-readable names, prefixed with users or organizations
 * metadata around the code (authors, organizations, versions)
+* discover, audit, use, fork
+* paid OSS
 
-## interchain
-* IBC
-* IBCx
-* ICS
-* ICSx
+## Interchain
+* built to scale smart contracts
+* IBC, IBCx
+* ICS, ICSx
+* everything is a Go object + persistence + IBC = metaverse
 
-## Proof of contribution
-
+## Governance
 * Proof-of-Contributions
+* focus on expertise and values
+* -> remove financial incentives!
+* tiered memberships
+* top tier has sufficient (1) contributions, (2) expertise, and (3) values
+* $GNOT: a fee token with self governance
 
+## Action Items
 
-
-## What is a "metaverse"?
-
-// ...
-
-## Next steps
-
-* contribute -> https://github.com/gnolang/gno
-* Game of realms competition
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
 
 // Ideas
 // - Inception wasm, starknet
