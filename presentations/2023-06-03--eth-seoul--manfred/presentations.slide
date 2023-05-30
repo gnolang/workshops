@@ -59,6 +59,7 @@ https://github.com/gnolang
 * Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
 * Gno.land: first L1 using Gnolang
 * built on Tendermint2 in the Cosmos/IBC ecosystem
+* new consensus: proof of contributions
 * aims for simplicity, security, scalability
 * relates to Solidity, aspires to exceed it on multiple fronts
 
@@ -110,6 +111,15 @@ https://github.com/gnolang
 
 .code ./code/user-defined-data-structs.gno
 
+## Gno: imports
+
+* runtime
+* support complex structs
+* low-cost
+* per-realm state
+
+.code ./code/import.gno
+
 ## Gno vs Solidity
 
 * "Solidity is a curly-bracket language designed to target the EVM."
@@ -122,7 +132,13 @@ https://github.com/gnolang
 
 .code ./code/grc721.gno
 
-## Gno vs CosmosSDK
+## Gno vs Rust/WASM
+
+## Gno vs Go/CosmWasm
+
+.code ./code/cosmwasm-go.go
+
+## Gno vs CosmosSD
 
 * "ctx"
 * determinism
@@ -135,13 +151,13 @@ https://github.com/gnolang
 
 .code ./code/social-app.gno
 
-## Gno vs Gno.land
+## Gno SDK
 
-* Gno == language
-* Gno.land == GnoVM + Tendermint2
-* Proof-of-Contributions
-* available as ICS provider
-* GitHub of contracts
+* chicken-egg problem solved
+* VM is configured by the chain
+* chain can read and interact with contracts
+* onchain upgradability, super low maintenance
+* designed for 100y runtime
 
 ## GnoVM license model
 
@@ -151,12 +167,31 @@ https://github.com/gnolang
 
 ## GitHub of smart contracts
 
-// ...
+* source code is always available
+* imports are made at runtime
+* contracts have human-readable names
+
+## interchain
+
+* IBC
+* IBCx
+* ICS
+* ICSx
+
+## Proof of contribution
+
+* Proof-of-Contributions
+
+
 
 ## What is a "metaverse"?
 
 // ...
 
+## Next steps
+
+* contribute -> https://github.com/gnolang/gno
+* Game of realms competition
 
 // Ideas
 // - Inception wasm, starknet
