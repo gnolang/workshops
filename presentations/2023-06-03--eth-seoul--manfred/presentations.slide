@@ -1,0 +1,203 @@
+# A journey into Gno.land
+the evolution of smart contract -- Eth Seoul
+3 Jun 2023
+Tags: gnolang, gnoland, gno, smart contract, blockchain, solidity, rust, wasm
+Summary: This talk will detail out a timeline beginning with the very first smart contracts, how they evolved into blockchain then comparing current Smart Contract platforms from Solidity, Rust and most recently, Gno.lang.
+
+Manfred Touron
+VP Eng., Gno.land
+https://gno.land/
+https://github.com/gnolang
+@moul
+
+## History of Smart Contracts
+
+## 1994, the inception of smart contracts
+* Nick Szabo proposed smart contracts, predating blockchain
+* computerized transaction **protocol** that executes the terms of a contract
+* no need for a middleman
+* analogy: vending machine, a primitive form of smart contracts
+* not limited to finance
+
+## 2009, smart contracts meet blockchain
+* Bitcoin
+* introduce the concept of programmable money and digital scarcity
+* not Turing complete, limited capabilities
+* i.e., multisig transactions are a form of smart contract
+
+## 2015, the dawn of complex smart contracts
+* Ethereum (EVM)
+* turing complete, allowing for the deployment of complex smart contracts
+* opens up a world of possibilites for dApps
+* bytecode is built from the ground up
+* 10M+ contracts deployed on Ethereum (2022)
+
+## 2019, the rise of WASM smart contracts
+* Cosmos pioneers with CosmWasm, Polkadot follows
+* tackles EVM's stack limit and computational inefficiencies
+* attracts diverse developers
+* Rust leads with better tooling
+* note: Solana uniquely uses Rust with a different VM bytecode
+
+## quick recap
+* **1994**: Szabo's "smart contracts" idea
+* **2009**: Bitcoin introduces programmable money
+* **2015**: Ethereum adds complex smart contracts
+* **2019**: WASM emerges
+* concept to reality in 20 years, adoption in 10
+
+## Gno.land
+.background ./assets/gno-bg-grayscale.png
+
+## Gno: a new era in smart contracting
+* Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+* Gno.land: first L1 using Gnolang
+* built on Tendermint2 in the Cosmos/IBC ecosystem
+* new consensus: proof of contributions
+* aims for simplicity, security, scalability
+* relates to Solidity, aspires to exceed it on multiple fronts
+
+## Why Go?
+* a good, established language
+* simple, intuitive
+* type-check safety
+* garbage-collected
+* object-oriented, embedding, composability
+
+## Go, but why Gno?
+* designed for blockchain
+* deterministic
+* interpreted
+* intuitive VM
+* auto-persisted
+* auto-merkle-ized
+
+## Gno: intuitive VM
+**EVM**
+
+1. program code (Solidity) ->
+2. EVM bytecode (new low-level construct) ->
+3. EVM implementation (C++/Go/Python/Rust)
+
+**GnoVM**, everything is Go
+
+1. program code (Go) ->
+2. Go AST (if, else, func, struct, etc) ->
+3. GnoVM implementation (Go)
+
+## Gno: auto-persistence
+* all values are preserved effortlessly
+* no need for ORMs, DBs, or binary codecs
+* blurs the line between memory and storage
+* promotes concise and efficient code
+
+.code ./code/simple-persistency.gno
+
+## Gno vs Solidity
+* "Solidity is a curly-bracket language designed to target the EVM."
+* Solidity is still actively evolving
+* The most intuitive target is AST (not a bytecode VM)
+
+.code ./code/solidity-persistency.sol
+
+// ## Gno vs Rust/Solana
+// .code ./code/solana-counter.rs
+
+## Gno vs Rust/WASM
+.code ./code/cosmwasm-rust.rs
+
+## Gno vs Go/CosmWasm
+.code ./code/cosmwasm-go.go
+
+## Gno vs CosmosSDK
+.code ./code/cosmos-sdk.go
+
+## Gno vs Go
+.code ./code/go-persistent.go
+
+## Gno: auto-merkleization
+* the way you implement structures in Gno is how it's persisted and merkleized
+* transparent and verifiable state for external observers
+* enables direct implementation of interchain protocols in smart contracts
+
+.code ./code/user-defined-data-structs.gno
+
+## Gno: imports, as simple as in web2
+* runtime-based imports for seamless dependency flow comprehension
+* support for complex structs, beyond primitive types
+* cost-effective: Dependencies loaded once, enabling remote function calls as local
+* automatic and independent per-realm state persistence
+
+.code ./code/import.gno
+
+## Gno GRC721 example
+.code ./code/grc721.gno
+
+## Gno: a well-known, new language
+* Solidity, learn a new language for a specific purpose
+* Wasm, existing languages with custom libraries for state management, routing, codecs, etc
+* Gno, similar to Golang, yet offers a simplified experience
+
+## Gno: not only for DeFi
+* -> social coordination
+
+.code ./code/social-app.gno
+
+// ## Gno SDK
+// * onchain chain configuration
+// * VM is configured by the chain
+// * chain can read and interact with contracts
+// * onchain upgradability, super low maintenance
+// * designed for 100y runtime
+
+// ## GnoVM license model
+// * Copyleft but with strong attribution
+// * -> your success is our success
+// * Your GNO contracts are licensed how you want
+
+## Gno.land: your GitHub for contracts
+* always available source code
+* user/organization-prefixed human-readable names -> `r/united-builders/dex`
+* runtime metrics, package details, imports
+* comprehensive code metadata (authors, organizations, versions, reviews, issues)
+* advancing paid/fair open-source software
+* -> discover, audit, use, and fork with ease
+
+## Gno: interchain & scalability
+- solve scalable smart contracts
+- connect with Cosmos/IBC ecosystem
+- utilize existing IBC and innovate with IBCx
+- bridge to ICS producer chains in Cosmos
+- enable gnovm-powered chains as ICS consumers on Gno.land
+
+// ## Gno: metaverse
+// * everything is a Go object + persistence + IBC = metaverse
+
+## Gno.land: proof of contributions, governance
+* Proof-of-Contributions
+* focus on expertise and values
+* -> remove financial incentives!
+* tiered memberships
+* top tier has sufficient (1) contributions, (2) expertise, and (3) values
+* $GNOT: a fee token with self governance
+
+## Action Items
+
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
+
+// Ideas
+// - Inception wasm, starknet
+// - Post defi era
+// - Social coordination
+// - Democracy
+// - DAO
+// - Communication
+// - Transparency accountability
+// - web2 -> web3
+// - tools, dapp viewer, etc
+// - IBC2
+// - POC
+// - Game of Realms
