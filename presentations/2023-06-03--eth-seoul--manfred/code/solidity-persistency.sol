@@ -3,9 +3,9 @@
 pragma solidity ^0.8.17;
 
 contract Primitives {
-    int x = 0;
+    uint x = 0;
 
     function incr() public {
-        x += 1;
+        x += 1; // HL
     }
 }

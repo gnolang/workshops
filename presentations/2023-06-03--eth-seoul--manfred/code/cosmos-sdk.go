@@ -1,9 +1,6 @@
 package keeper // OMIT
-// cli/cli.go, msg.go, handler.go, keeper.go
-//  * keeper/handler pattern
-//  * "ctx"
-//  * binary codec
-//  * determinism
+// cli/cli.go, msg.go, handler.go, >keeper.go<
+//  * keeper/handler pattern, "ctx", binary codec, determinism
 import (
 	"strconv" // OMIT
 	// OMIT
@@ -22,7 +19,7 @@ func (k *Keeper) Incr(sdk.Context) {
 	if err != nil {
 		panic("XXX")
 	}
-	x += 1 // all we wanted
+	x += 1 // all we wanted // HL
 	bz = strconv.Itoa(x)
 	store.Set("x", bz)
 }
