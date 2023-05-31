@@ -122,12 +122,12 @@ https://github.com/gnolang
 
 .code ./code/user-defined-data-structs.gno
 
-## Gno: imports
-* as simple as in web2
+## Gno: imports, as simple as in web2
 * runtime-based imports for seamless dependency flow comprehension
 * support for complex structs, beyond primitive types
 * cost-effective: Dependencies loaded once, enabling remote function calls as local
 * automatic and independent per-realm state persistence
+
 .code ./code/import.gno
 
 ## Gno GRC721 example
@@ -139,7 +139,8 @@ https://github.com/gnolang
 * Gno, similar to Golang, yet offers a simplified experience
 
 ## Gno for social applications
-* after DeFi, decentralized social coordination
+* not only DeFi -> social coordination
+
 .code ./code/social-app.gno
 
 // ## Gno SDK
