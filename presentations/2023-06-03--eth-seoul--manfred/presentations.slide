@@ -100,8 +100,8 @@ https://github.com/gnolang
 
 .code ./code/solidity-persistency.sol
 
-## Gno vs Rust/Solana
-.code ./code/solana-counter.rs
+// ## Gno vs Rust/Solana
+// .code ./code/solana-counter.rs
 
 ## Gno vs Rust/WASM
 .code ./code/cosmwasm-rust.rs
@@ -138,8 +138,8 @@ https://github.com/gnolang
 * Wasm, existing languages with custom libraries for state management, routing, codecs, etc
 * Gno, similar to Golang, yet offers a simplified experience
 
-## Gno for social applications
-* not only DeFi -> social coordination
+## Gno: not only for DeFi
+* -> social coordination
 
 .code ./code/social-app.gno
 
@@ -163,10 +163,12 @@ https://github.com/gnolang
 * advancing paid/fair open-source software
 * -> discover, audit, use, and fork with ease
 
-## Interchain & scalability
-* one of the core goals is to to solve scalable smart contracts
-* will connect to Cosmos/IBC ecosystem through existing IBC and innovate on interchain protocols with IBCx
-* will connect to existing ICS producer chains in the Cosmos and will allow other gnovm-powered chains to be ICS consumer on Gno
+## Gno: interchain & scalability
+- solve scalable smart contracts
+- connect with Cosmos/IBC ecosystem
+- utilize existing IBC and innovate with IBCx
+- bridge to ICS producer chains in Cosmos
+- enable gnovm-powered chains as ICS consumers on Gno.land
 
 // ## Gno: metaverse
 // * everything is a Go object + persistence + IBC = metaverse
