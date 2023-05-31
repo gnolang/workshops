@@ -123,26 +123,24 @@ https://github.com/gnolang
 .code ./code/user-defined-data-structs.gno
 
 ## Gno: imports
-* runtime
-* support complex structs
-* low-cost
-* per-realm state
-
+* as simple as in web2
+* runtime-based imports for seamless dependency flow comprehension
+* support for complex structs, beyond primitive types
+* cost-effective: Dependencies loaded once, enabling remote function calls as local
+* automatic and independent per-realm state persistence
 .code ./code/import.gno
 
 ## Gno GRC721 example
 .code ./code/grc721.gno
 
-
-
-## Gno for social applications
-.code ./code/social-app.gno
-
 ## Gno: a well-known, new language
-
 * Solidity, learn a new language for a specific purpose
 * Wasm, existing languages with custom libraries for state management, routing, codecs, etc
 * Gno, similar to Golang, yet offers a simplified experience
+
+## Gno for social applications
+* after DeFi, decentralized social coordination
+.code ./code/social-app.gno
 
 // ## Gno SDK
 // * onchain chain configuration
@@ -156,21 +154,23 @@ https://github.com/gnolang
 // * -> your success is our success
 // * Your GNO contracts are licensed how you want
 
-## a "GitHub" for smart contracts
-* source code is always available
-* runtime metrics for each realms, packages, imports
-* contracts have human-readable names, prefixed with users or organizations
-* metadata around the code (authors, organizations, versions)
-* discover, audit, use, fork
-* paid OSS
+## Gno.land: your GitHub for contracts
+* always available source code
+* user/organization-prefixed human-readable names -> `r/united-builders/dex`
+* runtime metrics, package details, imports
+* comprehensive code metadata (authors, organizations, versions, reviews, issues)
+* advancing paid/fair open-source software
+* -> discover, audit, use, and fork with ease
 
-## Interchain
-* built to scale smart contracts
-* IBC, IBCx
-* ICS, ICSx
-* everything is a Go object + persistence + IBC = metaverse
+## Interchain & scalability
+* one of the core goals is to to solve scalable smart contracts
+* will connect to Cosmos/IBC ecosystem through existing IBC and innovate on interchain protocols with IBCx
+* will connect to existing ICS producer chains in the Cosmos and will allow other gnovm-powered chains to be ICS consumer on Gno
 
-## Governance
+// ## Gno: metaverse
+// * everything is a Go object + persistence + IBC = metaverse
+
+## Gno.land: proof of contributions, governance
 * Proof-of-Contributions
 * focus on expertise and values
 * -> remove financial incentives!
