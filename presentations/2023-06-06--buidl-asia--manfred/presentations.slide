@@ -10,50 +10,250 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
-## Proof of *
+## What is Gno?
+* Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+* Gno.land: first L1 using Gnolang
+* built on Tendermint2 in the Cosmos/IBC ecosystem
+* aims for simplicity, security, scalability
 
-* proof of work
-* proof of stake
-* proof of authority
-* proof of ...
+## What is proof of contribution (PoC)?
+- a consensus mechanism (PoW, PoS, PoA, ...)
+- remove financial incentives
+- focus on expertise and values
+- **disclaimer: still WIP!**
+- $CONTRIBUTION
 
-## Proof of nothing
+## What's a (good) contribution?
+- can follow a template, or be free-form
+- can be onchain, on github, other
+- can match a predefined task/bounty, or not
+- can be small, can be big, can be tech-related or not
+- can be a final approved solution, or a useful documented failure that pushs the knoledge forward
+- can be a full solution, or a part of it
+- the thing that makes a contribution "good" or not, is that a DAO responsible to review your contribution believes that it was a good one
 
-a.k.a, no decentralization
+## Example of contributions
+- code
+- review code
+- write tutorials
+- make useful research
+- write tutorials
+- organizing workshops, meetups
+- help organizing the work, taking notes, transcripting meeting
+- writing books
 
-## Proof of work
+## What's the Evaluation DAO?
+- review contributions and allocate contribution points
+- can be hybrid, composed of individual reviewers, area leaders, and bots
+- has to review contributions and allocate points
+- has the mission to bootstrap and grow itself
+- has the mission push the ecosystem forward
+- will have tiered memberhsips, and expertises
 
-## Proof of stake
+## What's the Contributors DAO?
+- one side/part/feature? of the more global Contributors DAO, who owns the chain
+- composed of indivudual, human, contributors; mostly
+- the owners of the chain
+- will have tiered memberships
+- will have experts, leaders
+- will have areas and sub-areas (subDAOs)
+- will start small, can scale to 1000s or more
+- list of members and levels mostly managed by the Evaluation DAO
 
-## Proof of authority
+## Not limited to a single chain / IBC / zones
 
-## Gno.land
+## Proof of contribution -- expertise, values?
 
-## 
+- thanks to multiple membership level we can expect to have:
+- levels with few constraints where it's easy to get started and harder to raise
 
-* proof of ...
+.code ./code/tiered-memberships.txt
 
+## Evaluation DAO
 
-## Proof of dAuthority (authority is a DAO)
+- has a mission to scale itself
+- aims to decentralize the review
+- aims to scale the reviews
+- aims to attribute contributing score and expertises on public keys
+- part of GoR
 
-## Contributors > Investors
+## Proof of contribution -- Satoshi Score?
 
-## Validator set
+- on platforms like PoW and PoS, someone with a huge amount of money could more easily take a very high voting power
+- on PoC, we can expect that takeovers would be made nearly impossible because it's harder and slower to become high-tiered member, we can expect to have a very good uniqueness efficiency (1 tiered member is 1 human)
+- with a reasonable amount of high-level members, we can expect to have at least 2 kind of votes considered very decentralized: 1-vote-per-member; and dynamic voting power based on the tiered level
+- we can have like in PoS someone arriving in one day and taking most of the voting power because they are rich
 
-## IBC license
+## Can I use PoC on my blockchain?
 
-## Voting power
+- you can, but it's difficult and slow to set up, while PoS and PoW are a way easier and faster to run
+- alternatively, you will be able to use ICS and increase your security thanks to gno.land
 
-## Proof of Contributions
+## Governance
+ * focus on expertise and values
+ * -> remove financial incentives!
+ * tiers of members
+ * top tier has sufficient (1) contributions, (2) expertise, and (3) values
+ * $GNOT: a fee token with self governance
 
-## Satoshi score
+- Graphic: Simple conceptual diagram of PoC.
+- Proof-of-Contribution, a concept that is planned to replace Proof-of-Stake in the Gno.land blockchain.
+- Game of realms: ongoing competition, preliminary phase to proof-of-contributions
 
-## ICSx
+## What is Game of realms?
 
-## Multiple voting power, by expertise
+- similar to game of stakes
+- experiment to test PoC
+- to developer the first bricks
+- to bootstrap the contributors' community
 
-## Governance++
+## Deep dives
 
-## Gnode
+## Why do we need a consensus mechanism, and why its quality and features matter?
 
-## Internet of DAOs
+- to achieve network security and decentralization (validators)
+- to prevent takeovers
+- to prevent alliances
+
+## Gno.land Contributors DAO
+
+-
+
+## Why proof of contributions?
+
+- Tokens can be a corrupting factor for projects
+- Some people prioritize making money over project principles and values
+- Creating a governance model independent of financial fungible tokens
+- No Land aims to be independent of tokenomics for governance
+- Fee token will exist but won't govern No Land
+- License model allows creation of custom Power Chains with any token
+- The goal is to have at least one blockchain independent of tokenomics for governance
+- No Land aims to serve as a GitHub-like platform for other chains.
+
+## How proof of contributions works?
+
+- validator set: similar to PoA, but authority == DAO of contributors
+
+- how to manage exceptions: book
+
+## What's a contribution
+
+## How to manage conflict
+
+## Isn't it too slow/heavy/constraintful?
+
+## Is it safe enough for advanced cases?
+
+## Contributors at the center of the security consensus
+
+## Voting powerS
+
+## A new model for validators
+
+## A network of chains, ICS
+
+## The case of the book writer
+
+## Specialization
+
+## Progressive DAOization
+
+## What to expect for the future?
+
+## In 1y
+
+- mainnet
+- gnovm v1.0
+- 10s core contributors
+- 100s of simple contributors
+
+## In 10y
+
+- mainnets
+- gnovm vX?
+- gnovm alternatives/forks?
+- 100s core contributors
+- 10000s of simple contributors
+
+## In 100y
+
+## Not only a DAO token, but the thing behind consensus
+
+## Interchain / IBC / ICS / Hub
+
+## Game of Realms: Overview
+- Overview of Game of Realms, explaining that it's divided into two phases and that the project is currently in phase 1.
+- Graphic: Timeline of Game of Realms' phases.
+
+## Phase 1: Tasks and Evaluation
+- Describe the primary tasks of phase 1: Evaluation DAO, Tutorials, and Governance Module.
+- Discuss how contributions are evaluated in this phase and the role of the Evaluation DAO.
+- Graphic: Flowchart showing the process of contribution submission, review, and reward allocation.
+
+## Phase 2: Evaluation DAO in action
+- Discuss the role of the Evaluation DAO in phase 2, where it reviews old and ongoing contributions.
+- Graphic: Diagram showing the Evaluation DAO in action, reviewing and allocating points to contributions.
+
+## The Contribution Process
+- Detail the process of contributing to the project, including registration, submitting tasks, and participating in community discussions.
+- Graphic: Step-by-step guide or flowchart of the contribution process.
+
+## Fairness and Transparency in Proof of Contribution
+- Discuss how the Proof of Contribution model ensures fairness and transparency in rewarding contributors. Explain the concept of "point dilution" and how contributors won't lose points.
+- Graphic: A graphical representation of how points are allocated and diluted.
+
+## Benefits of Proof of Contribution
+- Discuss the benefits of PoC, such as onboarding more contributors, improving the project, bootstrapping genesis of contributors for the future mainnet, and identifying the best participants for jobs and partnerships.
+- Graphic: A list of benefits or a diagram illustrating the benefits of PoC.
+
+## Future of Gno.land
+- Discuss the future of Gno.land and the ongoing role of PoC after the Game of Realms competition ends.
+- Graphic: A roadmap showing future plans for Gno.land.
+
+// ## Proof of *
+//
+// * proof of work
+// * proof of stake
+// * proof of authority
+// * proof of ...
+//
+// ## Proof of nothing
+//
+// a.k.a, no decentralization
+//
+// ## Proof of work
+//
+// ## Proof of stake
+//
+// ## Proof of authority
+//
+// ## Gno.land
+//
+// ##
+//
+// * proof of ...
+//
+//
+// ## Proof of dAuthority (authority is a DAO)
+//
+// ## Contributors > Investors
+//
+// ## Validator set
+//
+// ## IBC license
+//
+// ## Voting power
+//
+// ## Proof of Contributions
+//
+// ## Satoshi score
+//
+// ## ICSx
+//
+// ## Multiple voting power, by expertise
+//
+// ## Governance++
+//
+// ## Gnode
+//
+// ## Internet of DAOs
