@@ -11,38 +11,36 @@ https://github.com/gnolang
 @moul
 
 ## What is Gno?
-* Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
-* Gno.land: first L1 using Gnolang
-* built on Tendermint2 in the Cosmos/IBC ecosystem
-* aims for simplicity, security, scalability
+- Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+- Gno.land: first L1 using Gnolang
+- built on Tendermint2 in the Cosmos/IBC ecosystem
+- aims for simplicity, security, scalability, transparency, trust
 
 ## What is proof of contribution (PoC)?
 - a consensus mechanism (PoW, PoS, PoA, ...)
 - remove financial incentives
 - focus on expertise and values
-- **disclaimer: still WIP!**
 - $CONTRIBUTION
+- **disclaimer: still WIP!**
 
-## What's a (good) contribution?
-- can follow a template, or be free-form
-- can be onchain, on github, other
-- can match a predefined task/bounty, or not
-- can be small, can be big, can be tech-related or not
-- can be a final approved solution, or a useful documented failure that pushs the knoledge forward
-- can be a full solution, or a part of it
-- the thing that makes a contribution "good" or not, is that a DAO responsible to review your contribution believes that it was a good one
+## What makes a (good) contribution?
+- template or free-form
+- on-chain, on GitHub, or other platforms
+- matching predefined tasks or independent
+- small or large, tech-related or not
+- approved solution or valuable documented failure/second choice
+- complete or part of a solution
+- -> judged by the **Evaluation DAO**
 
-## Example of contributions
-- code
-- review code
-- write tutorials
-- make useful research
-- write tutorials
-- organizing workshops, meetups
-- help organizing the work, taking notes, transcripting meeting
-- writing books
+## Examples of contributions
+- code, review code
+- make useful research, analyze the competition and make report
+- write tutorials, guides, examples
+- organizing workshops, meetups, moderate online communities
+- help streamlining the work, taking notes, transcripting meeting, helping in tasks management
+- write books (one release, but 1 year of work alone before, and multiple years of travel to present the book)
 
-## What's the Evaluation DAO?
+## What is the Evaluation DAO?
 - review contributions and allocate contribution points
 - can be hybrid, composed of individual reviewers, area leaders, and bots
 - has to review contributions and allocate points
@@ -50,7 +48,7 @@ https://github.com/gnolang
 - has the mission push the ecosystem forward
 - will have tiered memberhsips, and expertises
 
-## What's the Contributors DAO?
+## What is the Contributors DAO?
 - one side/part/feature? of the more global Contributors DAO, who owns the chain
 - composed of indivudual, human, contributors; mostly
 - the owners of the chain
@@ -136,7 +134,7 @@ https://github.com/gnolang
 
 - how to manage exceptions: book
 
-## What's a contribution
+## What is a contribution
 
 ## How to manage conflict
 
@@ -176,6 +174,10 @@ https://github.com/gnolang
 - 10000s of simple contributors
 
 ## In 100y
+
+@@ Example of challenges
+
+- ELO?
 
 ## Not only a DAO token, but the thing behind consensus
 
