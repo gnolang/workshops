@@ -1,0 +1,9 @@
+// not real data, concept only
+
+L1: Contribution-based, automatic?
+L2: Can L2 invite N L1 participants?
+L3: DAO with voting power to promote L2, can slash L1/L2 for misconduct?
+L4: KYC requirement?
+L5: Active L4 for 1 year?
+L6: Elected lead in at least one domain/area?
+L7: TBD (To be determined)
