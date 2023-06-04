@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A journey into Gno.land</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='/static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>A journey into Gno.land</h1>
+        <h3>the evolution of smart contract -- Eth Seoul</h3>
+        <h3>3 June 2023</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h2>History of Smart Contracts</h2>
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>1994, the inception of smart contracts</h3>
+        <ul>
+<li>Nick Szabo proposed smart contracts, predating blockchain</li>
+<li>computerized transaction <strong>protocol</strong> that executes the terms of a contract</li>
+<li>no need for a middleman</li>
+<li>analogy: vending machine, a primitive form of smart contracts</li>
+<li>not limited to finance</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>2009, smart contracts meet blockchain</h3>
+        <ul>
+<li>Bitcoin</li>
+<li>introduce the concept of programmable money and digital scarcity</li>
+<li>not Turing complete, limited capabilities</li>
+<li>i.e., multisig transactions are a form of smart contract</li>
+</ul>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>2015, the dawn of complex smart contracts</h3>
+        <ul>
+<li>Ethereum (EVM)</li>
+<li>turing complete, allowing for the deployment of complex smart contracts</li>
+<li>opens up a world of possibilites for dApps</li>
+<li>bytecode is built from the ground up</li>
+<li>10M+ contracts deployed on Ethereum (2022)</li>
+</ul>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>2019, the rise of WASM smart contracts</h3>
+        <ul>
+<li>Cosmos pioneers with CosmWasm, Polkadot follows</li>
+<li>tackles EVM's stack limit and computational inefficiencies</li>
+<li>attracts diverse developers</li>
+<li>Rust leads with better tooling</li>
+<li>note: Solana uniquely uses Rust with a different VM bytecode</li>
+</ul>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>quick recap</h3>
+        <ul>
+<li><strong>1994</strong>: Szabo's &quot;smart contracts&quot; idea</li>
+<li><strong>2009</strong>: Bitcoin introduces programmable money</li>
+<li><strong>2015</strong>: Ethereum adds complex smart contracts</li>
+<li><strong>2019</strong>: WASM emerges</li>
+<li>concept to reality in 20 years, adoption in 10</li>
+</ul>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article class="background" style="background-image: url('./assets/gno-bg-grayscale.png')">
+      
+        <h2>Gno.land</h2>
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: a new era in smart contracting</h3>
+        <ul>
+<li>Gnolang/GnoVM: comprehensive smart contract suite, based on Golang</li>
+<li>Gno.land: first L1 using Gnolang</li>
+<li>built on Tendermint2 in the Cosmos/IBC ecosystem</li>
+<li>new consensus: proof of contributions</li>
+<li>aims for simplicity, security, scalability</li>
+<li>relates to Solidity, aspires to exceed it on multiple fronts</li>
+</ul>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Why Go?</h3>
+        <ul>
+<li>a good, established language</li>
+<li>simple, intuitive</li>
+<li>type-check safety</li>
+<li>garbage-collected</li>
+<li>object-oriented, embedding, composability</li>
+</ul>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Go, but why Gno?</h3>
+        <ul>
+<li>designed for blockchain</li>
+<li>deterministic</li>
+<li>interpreted</li>
+<li>intuitive VM</li>
+<li>auto-persisted</li>
+<li>auto-merkle-ized</li>
+</ul>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: intuitive VM</h3>
+        <p><strong>EVM</strong></p>
+<ol>
+<li>program code (Solidity) -&gt;</li>
+<li>EVM bytecode (new low-level construct) -&gt;</li>
+<li>EVM implementation (C++/Go/Python/Rust)</li>
+</ol>
+<p><strong>GnoVM</strong>, everything is Go</p>
+<ol>
+<li>program code (Go) -&gt;</li>
+<li>Go AST (if, else, func, struct, etc) -&gt;</li>
+<li>GnoVM implementation (Go)</li>
+</ol>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: auto-persistence</h3>
+        <ul>
+<li>all values are preserved effortlessly</li>
+<li>no need for ORMs, DBs, or binary codecs</li>
+<li>blurs the line between memory and storage</li>
+<li>promotes concise and efficient code</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// realm package gno.land/r/manfred/demo</span>
+<span num="3"></span>
+<span num="4">var x int</span>
+<span num="5"></span>
+<span num="6">func Incr() {</span>
+<span num="7">    <b>x &#43;= 1</b></span>
+<span num="8">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno vs Solidity</h3>
+        <ul>
+<li>&quot;Solidity is a curly-bracket language designed to target the EVM.&quot;</li>
+<li>Solidity is still actively evolving</li>
+<li>The most intuitive target is AST (not a bytecode VM)</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// contract 0x503b6dd2fc5b285cdfef...</span>
+<span num="2">// address, code, obfuscated.</span>
+<span num="3">pragma solidity ^0.8.17;</span>
+<span num="4"></span>
+<span num="5">contract Primitives {</span>
+<span num="6">    uint x = 0;</span>
+<span num="7"></span>
+<span num="8">    function incr() public {</span>
+<span num="9">        <b>x &#43;= 1;</b></span>
+<span num="10">    }</span>
+<span num="11">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno vs Rust/WASM</h3>
+        
+  <div class="code" >
+<pre><span num="1">#[cfg_attr(not(feature = &#34;library&#34;), entry_point)]</span>
+<span num="2">pub fn execute(</span>
+<span num="3">    deps: DepsMut,</span>
+<span num="4">    _env: Env,</span>
+<span num="5">    info: MessageInfo,</span>
+<span num="6">    msg: ExecuteMsg,</span>
+<span num="7">) -&gt; Result&lt;Response, ContractError&gt; {</span>
+<span num="8">    match msg {</span>
+<span num="9">        ExecuteMsg::Increment {} =&gt; increment(deps),</span>
+<span num="10">    }</span>
+<span num="11">}</span>
+<span num="12"></span>
+<span num="13">pub fn increment(deps: DepsMut) -&gt; Result&lt;Response, ContractError&gt; {</span>
+<span num="14">    STATE.update(deps.storage, |mut state| -&gt; Result&lt;_, ContractError&gt; {</span>
+<span num="15">        <b>state.count &#43;= 1;</b></span>
+<span num="16">        Ok(state)</span>
+<span num="17">    })?;</span>
+<span num="18"></span>
+<span num="19">    Ok(Response::new().add_attribute(&#34;method&#34;, &#34;increment&#34;))</span>
+<span num="20">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno vs Go/CosmWasm</h3>
+        
+  <div class="code" >
+<pre><span num="1">func executeEnqueue(deps *std.Deps, _ types.Env, _ types.MessageInfo, enqueue *Enqueue) (*types.Response, error) {</span>
+<span num="2">    iter := deps.Storage.Range(nil, nil, std.Descending)</span>
+<span num="3">    nextKey := []byte{FirstKey}</span>
+<span num="4">    dbKey, _, err := iter.Next()</span>
+<span num="5">    if err == nil {</span>
+<span num="6">        <b>nextKey[0] = dbKey[0] &#43; 1</b></span>
+<span num="7">    }</span>
+<span num="8">    value, err := (Item{Value: enqueue.Value}).MarshalJSON()</span>
+<span num="9">    if err != nil {</span>
+<span num="10">        return nil, err</span>
+<span num="11">    }</span>
+<span num="12">    deps.Storage.Set(nextKey, value)</span>
+<span num="13">    return &amp;types.Response{}, nil</span>
+<span num="14">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno vs CosmosSDK</h3>
+        
+  <div class="code" >
+<pre><span num="2">// cli/cli.go, msg.go, handler.go, &gt;keeper.go&lt;</span>
+<span num="3">//  * keeper/handler pattern, &#34;ctx&#34;, binary codec, determinism</span>
+<span num="4">import (</span>
+<span num="7">    &#34;github.com/gnolang/gno/pkgs/sdk&#34;</span>
+<span num="8">)</span>
+<span num="9"></span>
+<span num="10">type Keeper struct{ storeKey storetypes.StoreKey } // expected to be prefix store.</span>
+<span num="11"></span>
+<span num="12">func (k *Keeper) Incr(sdk.Context) {</span>
+<span num="13">    store := ctx.KVStore(k.storeKey)</span>
+<span num="14">    bz := store.Get(&#34;x&#34;)</span>
+<span num="15">    if bz == nil {</span>
+<span num="16">        panic(&#34;XXX&#34;)</span>
+<span num="17">    }</span>
+<span num="18">    x, err := strconv.Atoi(bz)</span>
+<span num="19">    if err != nil {</span>
+<span num="20">        panic(&#34;XXX&#34;)</span>
+<span num="21">    }</span>
+<span num="22">    <b>x &#43;= 1 // all we wanted</b></span>
+<span num="23">    bz = strconv.Itoa(x)</span>
+<span num="24">    store.Set(&#34;x&#34;, bz)</span>
+<span num="25">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno vs Go</h3>
+        
+  <div class="code" >
+<pre><span num="1">package counter</span>
+<span num="2"></span>
+<span num="3">import (</span>
+<span num="4">    &#34;io/ioutil&#34;</span>
+<span num="5">    &#34;strconv&#34;</span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">func IncrementCounter() (int, error) {</span>
+<span num="9">    counterBytes, err := ioutil.ReadFile(&#34;counter.txt&#34;)</span>
+<span num="10">    if err != nil {</span>
+<span num="11">        return 0, err</span>
+<span num="12">    }</span>
+<span num="13">    counter, err := strconv.Atoi(string(counterBytes))</span>
+<span num="14">    if err != nil {</span>
+<span num="15">        return 0, err</span>
+<span num="16">    }</span>
+<span num="17">    <b>counter &#43;= 1</b></span>
+<span num="18">    err = ioutil.WriteFile(&#34;counter.txt&#34;, []byte(strconv.Itoa(counter)), 0644)</span>
+<span num="19">    if err != nil {</span>
+<span num="20">        return 0, err</span>
+<span num="21">    }</span>
+<span num="22">    return counter, nil</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: auto-merkleization</h3>
+        <ul>
+<li>the way you implement structures in Gno is how it's persisted and merkleized</li>
+<li>transparent and verifiable state for external observers</li>
+<li>enables direct implementation of interchain protocols in smart contracts</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// user-defined data-structures</span>
+<span num="2">// gno.land/p/demo/avl/node.gno</span>
+<span num="4"></span>
+<span num="5"><b>type Node struct {</b></span>
+<span num="6">    key       string</span>
+<span num="7">    value     interface{}</span>
+<span num="8">    height    int8</span>
+<span num="9">    size      int</span>
+<span num="10">    leftNode  *Node</span>
+<span num="11">    rightNode *Node</span>
+<span num="12">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">19</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: imports, as simple as in web2</h3>
+        <ul>
+<li>runtime-based imports for seamless dependency flow comprehension</li>
+<li>support for complex structs, beyond primitive types</li>
+<li>cost-effective: Dependencies loaded once, enabling remote function calls as local</li>
+<li>automatic and independent per-realm state persistence</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// gno.land/r/moul/basics/import/v1/contract.gno</span>
+<span num="3"></span>
+<span num="4">import (</span>
+<span num="5">    &#34;gno.land/p/demo/avl&#34;</span>
+<span num="6">    &#34;gno.land/p/demo/dom&#34;</span>
+<span num="7">)</span>
+<span num="8"></span>
+<span num="9">func Render(path string) string {</span>
+<span num="10">    thread := dom.Plot{Name: &#34;Hello!&#34;}</span>
+<span num="11">    thread.AddPost(&#34;Foo&#34;, &#34;foo foo foo&#34;)</span>
+<span num="12">    thread.AddPost(&#34;Bar&#34;, &#34;bar bar bar&#34;)</span>
+<span num="13">    return thread.String()</span>
+<span num="14">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">20</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno GRC721 example</h3>
+        
+  <div class="code" >
+<pre><span num="1">package grc721</span>
+<span num="2"></span>
+<span num="3">type IGRC721 interface {</span>
+<span num="4">    BalanceOf(owner std.Address) (uint64, error)</span>
+<span num="5">    OwnerOf(tid TokenID) (std.Address, error)</span>
+<span num="6">    SafeTransferFrom(from, to std.Address, tid TokenID) error</span>
+<span num="7">    TransferFrom(from, to std.Address, tid TokenID) error</span>
+<span num="8">    Approve(approved std.Address, tid TokenID) error</span>
+<span num="9">    SetApprovalForAll(operator std.Address, approved bool) error</span>
+<span num="10">    GetApproved(tid TokenID) (std.Address, error)</span>
+<span num="11">    IsApprovedForAll(owner, operator std.Address) bool</span>
+<span num="12">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">21</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: a well-known, new language</h3>
+        <ul>
+<li>Solidity, learn a new language for a specific purpose</li>
+<li>Wasm, existing languages with custom libraries for state management, routing, codecs, etc</li>
+<li>Gno, similar to Golang, yet offers a simplified experience</li>
+</ul>
+
+      
+      <span class="pagenumber">22</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: not only for DeFi</h3>
+        <ul>
+<li>-&gt; social coordination</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// from gno.land/r/demo/boards/post.gno</span>
+<span num="2"></span>
+<span num="3">// A Post is a &#34;thread&#34; or a &#34;reply&#34; depending on context.</span>
+<span num="4">// A thread is a Post of a Board that holds other replies.</span>
+<span num="5">type Post struct {</span>
+<span num="6">    board       *Board</span>
+<span num="7">    id          PostID</span>
+<span num="8">    creator     std.Address</span>
+<span num="9">    title       string // optional</span>
+<span num="10">    body        string</span>
+<span num="11">    replies     avl.Tree // Post.id -&gt; *Post</span>
+<span num="12">    repliesAll  avl.Tree // Post.id -&gt; *Post (all replies, for top-level posts)</span>
+<span num="13">    reposts     avl.Tree // Board.id -&gt; Post.id</span>
+<span num="14">    threadID    PostID   // original Post.id</span>
+<span num="15">    parentID    PostID   // parent Post.id (if reply or repost)</span>
+<span num="16">    repostBoard BoardID  // original Board.id (if repost)</span>
+<span num="17">    createdAt   time.Time</span>
+<span num="18">    updatedAt   time.Time</span>
+<span num="19">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">23</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: your GitHub for contracts</h3>
+        <ul>
+<li>always available source code</li>
+<li>user/organization-prefixed human-readable names -&gt; <code>r/united-builders/dex</code></li>
+<li>runtime metrics, package details, imports</li>
+<li>comprehensive code metadata (authors, organizations, versions, reviews, issues)</li>
+<li>advancing paid/fair open-source software</li>
+<li>-&gt; discover, audit, use, and fork with ease</li>
+</ul>
+
+      
+      <span class="pagenumber">24</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno: interchain &amp; scalability</h3>
+        <ul>
+<li>solve scalable smart contracts</li>
+<li>connect with Cosmos/IBC ecosystem</li>
+<li>utilize existing IBC and innovate with IBCx</li>
+<li>bridge to ICS producer chains in Cosmos</li>
+<li>enable gnovm-powered chains as ICS consumers on Gno.land</li>
+</ul>
+
+      
+      <span class="pagenumber">25</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: proof of contributions, governance</h3>
+        <ul>
+<li>Proof-of-Contributions</li>
+<li>focus on expertise and values</li>
+<li>-&gt; remove financial incentives!</li>
+<li>tiered memberships</li>
+<li>top tier has sufficient (1) contributions, (2) expertise, and (3) values</li>
+<li>$GNOT: a fee token with self governance</li>
+</ul>
+
+      
+      <span class="pagenumber">26</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Action Items</h3>
+        <ul>
+<li>follow github.com/gnolang/gno</li>
+<li>visit gno.land</li>
+<li>help us create &quot;Game of Realms&quot;</li>
+<li>contribute!</li>
+</ul>
+
+      
+      <span class="pagenumber">27</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+<p class="link"><a href="https://gno.land/" target="_blank">https://gno.land/</a></p><p class="link"><a href="https://github.com/gnolang" target="_blank">https://github.com/gnolang</a></p><p class="link"><a href="http://twitter.com/moul" target="_blank">@moul</a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>

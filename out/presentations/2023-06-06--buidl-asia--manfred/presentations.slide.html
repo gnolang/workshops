@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Proof of Contribution in Gno.land</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='/static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>Proof of Contribution in Gno.land</h1>
+        <h3>An innovative path to revolutionize the concept of fair rewards to open source contributors -- BUIDL Asia</h3>
+        <h3>6 June 2023</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>What is Gno?</h3>
+        <ul>
+<li>Gnolang/GnoVM: comprehensive smart contract suite, based on Golang</li>
+<li>Gno.land: first L1 using Gnolang</li>
+<li>built on Tendermint2 in the Cosmos/IBC ecosystem</li>
+<li>aims for fairness, simplicity, security, scalability</li>
+<li>-&gt; long-term viability</li>
+</ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is proof of contribution (PoC)?</h3>
+        <ul>
+<li>consensus mechanism (PoW, PoS, PoA, etc.)</li>
+<li>removes financial incentives</li>
+<li>focus on expertise and values</li>
+<li><strong>disclaimer: still WIP!</strong></li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What makes a (good) contribution?</h3>
+        <ul>
+<li>quality, collaboration ≥ final merge status -&gt; rewarding useful failures</li>
+<li>template or free-form; onchain, on GitHub, or other platforms; tech-related, or not</li>
+<li>predefined tasks or unsollicited, complete or part of a solution</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"># examples of contributions</span>
+<span num="2"></span>
+<span num="3">- coding and code reviewing</span>
+<span num="4">- conducting research and analyzing competition</span>
+<span num="5">- writing tutorials, guides, and examples</span>
+<span num="6">- organizing workshops, meetups, and moderating online communities</span>
+<span num="7">- assisting with work streamlining, note-taking, and task management</span>
+<span num="8">- authoring a book with a decade-long impact</span>
+</pre>
+</div>
+<ul>
+<li>-&gt; judged by the <strong>Evaluation DAO</strong></li>
+</ul>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is the Evaluation DAO?</h3>
+        <ul>
+<li>a smart contract framework</li>
+<li>for reviewing, measuring, and accepting contributions</li>
+<li>not the consensus mechanism but rather a platform</li>
+<li>scales itself -&gt; managed by its members; serving as entrypoint to become a new member</li>
+<li>V1 is currently being developed as a GoR (Game of Realms) task</li>
+<li>score: <strong>^worx</strong></li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">        &#43;---------------1. propose a contribution-------------&#43;</span>
+<span num="2">        |                                                     v</span>
+<span num="3">&#43;--------------&#43;                                     &#43;----------------&#43;</span>
+<span num="4">|              |--------3. improve, negotiate-------&gt;|                |</span>
+<span num="5">| contributor  |                                     | Evaluation DAO |</span>
+<span num="6">|              |&lt;-------4. distribute ^worx----------|                |</span>
+<span num="7">&#43;--------------&#43;                                     &#43;----------------&#43;</span>
+<span num="8">        ^                                                     |</span>
+<span num="9">        &#43;---------------2. review, challenge------------------&#43;</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>^worx: gamified contributions</h3>
+        <ul>
+<li>symbol for quantifying contributions</li>
+<li>broadens contribution definition beyond traditional work</li>
+<li>signifies appreciation for all forms of contribution, fostering engagement, creativity and collaboration</li>
+<li>plural form for diversity and unquantifiable nature of contributions</li>
+<li>not tradable (not <code>$WORX</code>), but holds value within the community</li>
+<li>potential for annotations with tags with tags for automatic quantified expertises</li>
+<li>empowers contributors, promotes a sense of ownership</li>
+<li>one of the main metrics used in the <strong>Contributors DAO</strong></li>
+</ul>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is the Contributors DAO?</h3>
+        <ul>
+<li>ecosystem for recognizing, coordinating, and incentivizing contributors</li>
+<li>the community owning the chain, responsible for its evolution</li>
+<li>tiered memberships with different rules and powers</li>
+<li>manages funding, elects validators, and participate in governance</li>
+<li>scalable from various community sizes, with <strong>subDAOs</strong> for specialized coordination</li>
+<li>top tier has sufficient (1) contributions, (2) expertise, and (3) values</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// not real data, concept only</span>
+<span num="2"></span>
+<span num="3">L1: Contribution-based, automatic?</span>
+<span num="4">L2: Can L2 invite N L1 participants?</span>
+<span num="5">L3: DAO with voting power to promote L2, can slash L1/L2 for misconduct?</span>
+<span num="6">L4: KYC requirement?</span>
+<span num="7">L5: Active L4 for 1 year?</span>
+<span num="8">L6: Elected lead in at least one domain/area?</span>
+<span num="9">L7: TBD (To be determined)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What are SubDAOs?</h3>
+        <ul>
+<li>tree structure of interconnected DAOs</li>
+<li>enables secure interaction and seamless collaboration
+<ul>
+<li>↓ top-down: vision, OKRs, and budget</li>
+<li>↑ bottom-up: local backlog, contributions, reports, and governance</li>
+</ul>
+</li>
+<li>independent `interface{}** DAO implementations</li>
+<li>support horizontal scaling and specialized communities</li>
+<li>designed for IBCx</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">- Contributors DAO</span>
+<span num="2">  - Tendermint2</span>
+<span num="3">  - Gno.land</span>
+<span num="4">    - devrels: CLIs, SDKs, and /p/</span>
+<span num="5">    - validators</span>
+<span num="6">  - Gnolang/GnoVM</span>
+<span num="7">  - Partnership A</span>
+<span num="8">  - Partnership B</span>
+<span num="9">  - ...</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is proof of contribution?</h3>
+        <ul>
+<li>consensus mechanism securing and decentralizing gno.land, replacing PoS</li>
+<li>PoDA, &quot;proof of <em>decentralized</em> authority&quot;</li>
+<li>incentivizes good contributions via the <strong>Evaluation DAO</strong> and <strong>^worx</strong></li>
+<li>scalable through specialized <strong>subDAOs</strong> communities</li>
+<li>potential for high decentralization efficiency (Satoshi score)</li>
+<li>enables collaborative ecosystem and new <strong>governance</strong> possibilities</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">&#43;------------------&#43;</span>
+<span num="2">| Contributors DAO |-----configures and ---&#43;</span>
+<span num="3">&#43;------------------&#43;    triggers rewards   |</span>
+<span num="4">                                           v                  &#43;------------------&#43;</span>
+<span num="5">&#43;-----------&#43;                        &#43;-----------&#43;     &#43;-X%--&gt;|   contributors   |</span>
+<span num="6">|           |                        |chain fees |     |      &#43;------------------&#43;</span>
+<span num="7">|   users   |---------$GNOT---------&gt;|  bucket   |-----&#43;-Y%--&gt;|    validators    |</span>
+<span num="8">|           |                        |           |     |      &#43;------------------&#43;</span>
+<span num="9">&#43;-----------&#43;                        &#43;-----------&#43;     &#43;-Z%--&gt;| contract authors |</span>
+<span num="10">                                                              &#43;------------------&#43;</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>New governance possibilities</h3>
+        <ul>
+<li>incentivized participation: rewards drive active engagement</li>
+<li>knowledgeable contributors: invested in project success, enforced DYOR</li>
+<li>scalable governance: accommodates specialized communities</li>
+<li>transparent decision-making: visible rationale through onchain forums</li>
+<li>adaptive and flexible: varied voting options for targeted outcomes</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"># voting options and filters examples</span>
+<span num="2"></span>
+<span num="3">- individual voting: each member has one vote</span>
+<span num="4">- contributor level restriction: limited to contributors with level &gt;= 2</span>
+<span num="5">- ^worx voting power: voting power determined by ^worx balance</span>
+<span num="6">- targeted metrics: additional metrics for specialized votes</span>
+<span num="7">  - $GNOT, $ibc/ATOM, grc20</span>
+<span num="8">  - firstContributionAge, lastContributionAge, isValidator, isRealmWriter, ...</span>
+<span num="9">- weighted voting: validators (67%) and contract-writers (33%)</span>
+<span num="10">- multi-criteria approach: combination of criteria for voting</span>
+<span num="11">- ...</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Why proof of contributions?</h3>
+        <ul>
+<li>mitigates corrupting influence of tokens on projects</li>
+<li>minimizes risks of sybil attacks, takeovers, and alliances</li>
+<li>enables decentralized voting with individual votes and dynamic voting power based on tiered levels</li>
+<li>emphasizes project principales and values over monetary gains</li>
+<li>promotes independence and decentralization through multiple voting methods</li>
+<li>empower <strong>other chains</strong></li>
+</ul>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Can I use PoC on my blockchain?</h3>
+        <ul>
+<li>possible but challenging</li>
+<li>consider integrating with gno.land via ICSx for enhanced security</li>
+<li>implement subDAOs for your project</li>
+<li>strive for a safer ecosystem of blockchains</li>
+<li>goal: have at least one blockchain independent of tokenomics for governance</li>
+</ul>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is Game of realms?</h3>
+        <ul>
+<li>ongoing competition for contributors</li>
+<li>experimental phase for proof of contributions</li>
+<li>building <strong>Evaluation DAO</strong>, and the new governance module</li>
+<li>earn $ATOM and become member on mainnet genesis</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">     ______                              ____   ____             __</span>
+<span num="3">    / ____/___ _____ ___  ___     ____  / __/  / __ \___  ____ _/ /___ ___  _____</span>
+<span num="4">   / / __/ __ `/ __ `__ \/ _ \   / __ \/ /_   / /_/ / _ \/ __ `/ / __ `__ \/ ___/</span>
+<span num="5">  / /_/ / /_/ / / / / / /  __/  / /_/ / __/  / _, _/  __/ /_/ / / / / / / (__  )</span>
+<span num="6">  \____/\__,_/_/ /_/ /_/\___/   \____/_/    /_/ |_|\___/\__,_/_/_/ /_/ /_/____/</span>
+<span num="7"> </span>
+<span num="8"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Action Items</h3>
+        <ul>
+<li>follow github.com/gnolang/gno</li>
+<li>visit gno.land</li>
+<li>help us create &quot;Game of Realms&quot;</li>
+<li>contribute!</li>
+</ul>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+<p class="link"><a href="https://gno.land/" target="_blank">https://gno.land/</a></p><p class="link"><a href="https://github.com/gnolang" target="_blank">https://github.com/gnolang</a></p><p class="link"><a href="http://twitter.com/moul" target="_blank">@moul</a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
