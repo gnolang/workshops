@@ -1,9 +1,0 @@
-- Contributors DAO
-  - Tendermint2
-  - Gno.land
-    - devrels: CLIs, SDKs, and /p/
-    - validators
-  - Gnolang/GnoVM
-  - Partnership A
-  - Partnership B
-  - ...
