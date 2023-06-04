@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gno.land for Go Developers</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>Gno.land for Go Developers</h1>
+        <h3>Building Your App in Web3 -- Getting to Gno</h3>
+        <h3>5 June 2023</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>What is Gno?</h3>
+        <ul>
+<li>Gnolang/GnoVM: comprehensive smart contract suite, based on Golang</li>
+<li>Gno.land: first L1 using Gnolang</li>
+<li>built on Tendermint2 in the Cosmos/IBC ecosystem</li>
+<li>new consensus: proof of contributions</li>
+<li>aims for fairness, simplicity, security, scalability</li>
+<li>-&gt; long-term viability</li>
+</ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Why Go?</h3>
+        <ul>
+<li>a good, established language</li>
+<li>simple, intuitive</li>
+<li>type-check safety</li>
+<li>garbage-collected</li>
+<li>object-oriented, embedding, composability</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Why Gno?</h3>
+        <ul>
+<li>optimized for blockchain</li>
+<li>deterministic execution</li>
+<li>auto-persisted, without ORM</li>
+<li>interpreted</li>
+<li>auto-merkle-ized with rich types</li>
+<li>built-in rendering</li>
+<li>auto-generated documentation</li>
+<li>&quot;std&quot;</li>
+</ul>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>hello.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package demo</span>
+<span num="2"></span>
+<span num="3">func Hello(name string) string {</span>
+<span num="4">    return &#34;Hello &#34; &#43; name &#43; &#34;!&#34;</span>
+<span num="5">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>incr.gno</h3>
+        
+  <div class="code" >
+<pre><span num="2">var x int</span>
+<span num="3"></span>
+<span num="4">func Incr() {</span>
+<span num="5">    x &#43;= 1</span>
+<span num="6">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>render.gno</h3>
+        
+  <div class="code" >
+<pre><span num="3">func greetings(name string) string { // private</span>
+<span num="4">    return &#34;Welcome, &#34; &#43; name &#43; &#34;!&#34;</span>
+<span num="5">}</span>
+<span num="6"></span>
+<span num="7">func Render(path string) string {</span>
+<span num="8">    switch {</span>
+<span num="9">    case path == &#34;hello&#34;:</span>
+<span num="10">        return &#34;world!&#34;</span>
+<span num="11">    case strings.HasPrefix(path, &#34;greetings/&#34;):</span>
+<span num="12">        name := strings.Split(path, &#34;/&#34;)[1] // take string after slash</span>
+<span num="13">        name = strings.Title(name)          // capitalize first letter</span>
+<span num="14">        return greetings(name)</span>
+<span num="15">    }</span>
+<span num="16">    return &#34;404&#34;</span>
+<span num="17">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>imports.gno</h3>
+        
+  <div class="code" >
+<pre><span num="2">import (</span>
+<span num="3">    &#34;gno.land/p/demo/avl&#34;</span>
+<span num="4">    &#34;gno.land/p/demo/dom&#34;</span>
+<span num="5">)</span>
+<span num="6"></span>
+<span num="7">func Render(path string) string {</span>
+<span num="8">    thread := dom.Plot{Name: &#34;Hello!&#34;}</span>
+<span num="9">    thread.AddPost(&#34;Foo&#34;, &#34;foo foo foo&#34;)</span>
+<span num="10">    thread.AddPost(&#34;Bar&#34;, &#34;bar bar bar&#34;)</span>
+<span num="11">    return thread.String()</span>
+<span num="12">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>grc20.gno</h3>
+        
+  <div class="code" >
+<pre><span num="2">import (</span>
+<span num="5">    &#34;gno.land/p/demo/grc/grc20&#34; </span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">var Token *grc20.Token</span>
+<span num="9"></span>
+<span num="10">func init() {</span>
+<span num="11">    minter := grc20.NewAdminToken(&#34;Foo&#34;, &#34;FOO&#34;, 4)</span>
+<span num="12">    minter.Mint(&#34;g1u7y667z64x2h7vc6fmpcprgey4ck233jaww9zq&#34;, 10_000*10_000)</span>
+<span num="13">    Token = minter.GRC20() // expose an unprivileged token</span>
+<span num="14">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>boards/post.gno</h3>
+        
+  <div class="code" >
+<pre><span num="2">// A Post is a &#34;thread&#34; or a &#34;reply&#34; depending on context.</span>
+<span num="3">// A thread is a Post of a Board that holds other replies.</span>
+<span num="4">type Post struct {</span>
+<span num="5">    board       *Board</span>
+<span num="6">    id          PostID</span>
+<span num="7">    creator     std.Address</span>
+<span num="8">    title       string // optional</span>
+<span num="9">    body        string</span>
+<span num="10">    replies     avl.Tree // Post.id -&gt; *Post</span>
+<span num="11">    repliesAll  avl.Tree // Post.id -&gt; *Post (all replies, for top-level posts)</span>
+<span num="12">    reposts     avl.Tree // Board.id -&gt; Post.id</span>
+<span num="13">    threadID    PostID   // original Post.id</span>
+<span num="14">    parentID    PostID   // parent Post.id (if reply or repost)</span>
+<span num="15">    repostBoard BoardID  // original Board.id (if repost)</span>
+<span num="16">    createdAt   time.Time</span>
+<span num="17">    updatedAt   time.Time</span>
+<span num="18">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>board</h3>
+        
+<div class="image">
+  <img src="assets/board.png" height="500">
+</div>
+<figcaption>source: <a href="https://test3.gno.land/r/demo/boards:testboard" target="_blank">test3.gno.land/r/demo/boards:testboard</a></figcaption>
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>post</h3>
+        
+<div class="image">
+  <img src="assets/post.png" height="500">
+</div>
+<figcaption>source: <a href="https://test3.gno.land/r/demo/boards:testboard/2" target="_blank">test3.gno.land/r/demo/boards:testboard/2</a></figcaption>
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>source code available</h3>
+        
+<div class="image">
+  <img src="assets/listdir.png" height="500">
+</div>
+<figcaption>source: <a href="https://test3.gno.land/r/demo/boards/" target="_blank">test3.gno.land/r/demo/boards/</a></figcaption>
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>source code available</h3>
+        
+<div class="image">
+  <img src="assets/source.png" height="500">
+</div>
+<figcaption>source: <a href="https://test3.gno.land/r/demo/boards/post.gno" target="_blank">test3.gno.land/r/demo/boards/post.gno</a></figcaption>
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>use the CLI for TDD</h3>
+        
+  <div class="code" >
+<pre><span num="1"># install the &#34;gno&#34; CLI</span>
+<span num="2">$&gt; git clone git@github.com:gnolang/gno.git</span>
+<span num="3">$&gt; cd ./gno</span>
+<span num="4">$&gt; make install_gno</span>
+<span num="5"></span>
+<span num="6"># run test</span>
+<span num="7">$&gt; gno test --verbose .</span>
+<span num="8">=== RUN   TestPackage</span>
+<span num="9">--- PASS: TestPackage (0.01s)</span>
+<span num="10">ok      ./.     0.50s</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Why do we need smart-contracts?</h3>
+        <ul>
+<li>remove middleman</li>
+<li>increase trust and transparency</li>
+<li>not limited to DeFi</li>
+<li>vital for the future</li>
+<li>focus on empowering simplicity</li>
+</ul>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Game of Realms</h3>
+        <ul>
+<li>ongoing competition for contributors</li>
+<li>experimental phase for proof of contributions</li>
+<li>building <strong>Evaluation DAO</strong>, and the new governance module</li>
+<li>earn $ATOM and become member on mainnet genesis</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">     ______                              ____   ____             __</span>
+<span num="3">    / ____/___ _____ ___  ___     ____  / __/  / __ \___  ____ _/ /___ ___  _____</span>
+<span num="4">   / / __/ __ `/ __ `__ \/ _ \   / __ \/ /_   / /_/ / _ \/ __ `/ / __ `__ \/ ___/</span>
+<span num="5">  / /_/ / /_/ / / / / / /  __/  / /_/ / __/  / _, _/  __/ /_/ / / / / / / (__  )</span>
+<span num="6">  \____/\__,_/_/ /_/ /_/\___/   \____/_/    /_/ |_|\___/\__,_/_/_/ /_/ /_/____/</span>
+<span num="7"> </span>
+<span num="8"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Action Items</h3>
+        <ul>
+<li>follow github.com/gnolang/gno</li>
+<li>visit gno.land</li>
+<li>help us create &quot;Game of Realms&quot;</li>
+<li>contribute!</li>
+</ul>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+<p class="link"><a href="https://gno.land/" target="_blank">https://gno.land/</a></p><p class="link"><a href="https://github.com/gnolang" target="_blank">https://github.com/gnolang</a></p><p class="link"><a href="http://twitter.com/moul" target="_blank">@moul</a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
