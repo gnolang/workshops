@@ -67,7 +67,7 @@ https://github.com/gnolang
   - ↓ top-down: vision, OKRs, and budget
   - ↑ bottom-up: local backlog, contributions, reports, and governance
 - independent `interface{}** DAO implementations
-- support vertical scaling and specialized communities
+- support horizontal scaling and specialized communities
 - designed for IBCx
 
 .code ./code/subdaos.txt
