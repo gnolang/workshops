@@ -21,12 +21,18 @@ jobs:
       - run: go install golang.org/x/tools/cmd/present
 
       - name: start server and mirror it with wget
-        run:
-          go run golang.org/x/tools/cmd/present -http 0.0.0.0:3999 &
+        run: |
+          go run golang.org/x/tools/cmd/present -http=127.0.0.1:3999 -play=false -orighost=gnolang.github.io &
           sleep 5
-          wget --mirror http://localhost:3999 -P out --no-host-directories --page-requisites --adjust-extension
+          wget --mirror http://localhost:3999 -P workshops --no-host-directories --page-requisites --adjust-extension --convert-links
+
+          # hacks: wget is missing styles.css (injected in JS)
+          wget --mirror http://localhost:3999/static/styles.css -P workshops --no-host-directories --page-requisites --adjust-extension --convert-links
+          sed -i='' s@/static/@/workshops/static/@ workshops/static/slides.js
+
+      - run: find workshops/ -type f -ls
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./workshops
