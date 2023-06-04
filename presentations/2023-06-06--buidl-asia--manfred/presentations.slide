@@ -36,7 +36,6 @@ https://github.com/gnolang
 - for reviewing, measuring, and accepting contributions
 - not the consensus mechanism but rather a platform
 - scales itself -> managed by its members; serving as entrypoint to become a new member
-- will have tiered memberships with different rules and powers
 - V1 is currently being developed as a GoR (Game of Realms) task
 - score: **^worx**
 
@@ -47,17 +46,15 @@ https://github.com/gnolang
 - plural form for diversity and unquantifiable nature of contributions
 - not tradable (not `$WORX`), but holds value within the community
 - potential for annotations with tags with tags for automatic quantified expertises
+- empowers contributors, promotes a sense of ownership
 - one of the main metrics used in the **Contributors DAO**
 
 ## What is the Contributors DAO?
-- composed of contributors, primarily individuals
-- owners of the chain, responsible for governance
-- manages some funding pools
-- aims for high transparency and accountability
-- scalable from small to thousands of members
-- membership and levels managed by the Evaluation DAO
-- part of the SubDAOs tree
-- will have its own SubDAOs' children
+- ecosystem for recognizing, coordinating, and incentivizing contributors
+- the community owning the chain, responsible for its evolution
+- tiered memberships with different rules and powers
+- manages funding, elects validators, and participate in governance
+- scalable from various community sizes, with **subDAOs** for specialized coordination
 
 ## What are SubDAOs?
 - "IDAO", IBC for DAOs, "internet of DAOs""
