@@ -10,20 +10,97 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
-## Go environment
+## What is Gno?
+* Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+* Gno.land: first L1 using Gnolang
+* built on Tendermint2 in the Cosmos/IBC ecosystem
+* new consensus: proof of contributions
+* aims for fairness, simplicity, security, scalability
+* -> long-term viability
 
-## Gno environment
+## Why Go?
+* a good, established language
+* simple, intuitive
+* type-check safety
+* garbage-collected
+* object-oriented, embedding, composability
 
-## Dev in local (TDD)
+## Why Gno?
+- optimized for blockchain
+- deterministic execution
+- auto-persisted, without ORM
+- interpreted
+- auto-merkle-ized with rich types
+- built-in rendering
+- auto-generated documentation
+- "std"
 
-## Dev in local (full experience)
+## hello.gno
 
-## Publish on staging
+.code ./code/hello.gno
 
-## Publish on testnets
+## incr.gno
 
-## First contract
+.code ./code/incr.gno
 
-## Something more complex
+## render.gno
 
-## Reusing existing libraries
+.code ./code/render.gno
+
+## imports.gno
+
+.code ./code/imports.gno
+
+## grc20.gno
+
+.code ./code/grc20.gno
+
+## boards/post.gno
+
+.code ./code/post.gno
+
+## board
+
+.image ./assets/board.png 500 _
+.caption source: [[https://test3.gno.land/r/demo/boards:testboard]]
+
+## post
+
+.image ./assets/post.png 500 _
+.caption source: [[https://test3.gno.land/r/demo/boards:testboard/2]]
+
+## source code available
+
+.image ./assets/listdir.png 500 _
+.caption source: [[https://test3.gno.land/r/demo/boards/]]
+
+## source code available
+
+.image ./assets/source.png 500 _
+.caption source: [[https://test3.gno.land/r/demo/boards/post.gno]]
+
+## use the CLI for TDD
+
+.code ./code/tdd.sh
+
+## Why do we need smart-contracts?
+
+- remove middleman
+- increase trust and transparency
+- not limited to DeFi
+- vital for the future
+- focus on empowering simplicity
+
+## Game of Realms
+- ongoing competition for contributors
+- experimental phase for proof of contributions
+- building **Evaluation DAO**, and the new governance module
+- earn $ATOM and become member on mainnet genesis
+
+.code ./code/gor-banner.txt
+
+## Action Items
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
