@@ -1,0 +1,14 @@
+- Contributors DAO
+  - Gno.land
+    - CLIs
+    - SDKs
+    - p/
+  - Gnolang/GnoVM
+    - Parser, Preprocessor
+    - Virtual Machine
+  - Gno DevX
+    - Gno Studio
+    - Indexers
+    - Wallets, etc
+  - Tendermint2
+    - Amino

@@ -14,11 +14,11 @@ https://github.com/gnolang
 - Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
 - Gno.land: first L1 using Gnolang
 - built on Tendermint2 in the Cosmos/IBC ecosystem
-- aims for simplicity, security, scalability, transparency, trust
+- aims for fairness, simplicity, security, scalability, and long-term viability
 
 ## What is proof of contribution (PoC)?
-- a consensus mechanism (PoW, PoS, PoA, ...)
-- remove financial incentives
+- consensus mechanism (PoW, PoS, PoA, etc.)
+- removes financial incentives
 - focus on expertise and values
 - $CONTRIBUTION
 - **disclaimer: still WIP!**
@@ -33,32 +33,50 @@ https://github.com/gnolang
 - -> judged by the **Evaluation DAO**
 
 ## Examples of contributions
-- code, review code
-- make useful research, analyze the competition and make report
-- write tutorials, guides, examples
-- organizing workshops, meetups, moderate online communities
-- help streamlining the work, taking notes, transcripting meeting, helping in tasks management
-- write books (one release, but 1 year of work alone before, and multiple years of travel to present the book)
+- coding and code reviewing
+- conducting research and analyzing competition
+- writing tutorials, guides, and examples
+- organizing workshops, meetups, and moderating online communities
+- assisting with work streamlining, note-taking, and task management
+- authoring a book with a decade-long impact
 
 ## What is the Evaluation DAO?
-- review contributions and allocate contribution points
-- can be hybrid, composed of individual reviewers, area leaders, and bots
-- has to review contributions and allocate points
-- has the mission to bootstrap and grow itself
-- has the mission push the ecosystem forward
-- will have tiered memberhsips, and expertises
+- reviews and assigns contribution points
+- hybrid structure with individual reviewers, area leaders, and potentially bots
+- mission to bootstrap and advance the ecosystem
+- tiered memberships
+- diverse expertise, can elect area leaders
+- V1 developed during GoR (Game of Realms)
+- feature of the top-level Contributors DAO
 
 ## What is the Contributors DAO?
-- one side/part/feature? of the more global Contributors DAO, who owns the chain
-- composed of indivudual, human, contributors; mostly
-- the owners of the chain
-- will have tiered memberships
-- will have experts, leaders
-- will have areas and sub-areas (subDAOs)
-- will start small, can scale to 1000s or more
-- list of members and levels mostly managed by the Evaluation DAO
+- composed of contributors, primarily individuals
+- owners of the chain, responsible for governance
+- manages some funding pools
+- aims for high transparency and accountability
+- scalable from small to thousands of members
+- membership and levels managed by the Evaluation DAO
+- part of the SubDAOs tree
+- will have its own SubDAOs' children
 
-## Not limited to a single chain / IBC / zones
+## What are SubDAOs?
+- "IDAO", IBC for DAOs, "internet of DAOs""
+- -> a tree structure, composed of DAOs with relationships
+- robust relationship protocol
+- -> top-down -> vision, OKRs, budget
+- -> bottom-up -> backlog, contributions, reports
+- DAOs are `interface{}` implementations
+- automatic dashboards, reports
+
+.code ./code/subdaos.txt
+
+## What is proof of contribution?
+
+- a consensus mechanism, securing and decentralizing a chain
+- and a whole DAO ecosystem to govern the chain and the ecosystem
+- -> Evaluation DAO, Contributors DAO, SubDAOs, etc.
+
+## Not limited to a single chain -> IBC
 
 ## Proof of contribution -- expertise, values?
 
