@@ -14,3 +14,4 @@ _(incomplete, please open PRs)_
 ## Resources
 
 * https://github.com/moul/gno-basics - Repo used by @moul to create example-oriented code snippet and generate outputs for slides.
+* HTML preview of presentations made using `present` - https://gnolang.github.io/workshops/presentations.html
