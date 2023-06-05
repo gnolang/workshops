@@ -37,7 +37,7 @@ https://github.com/gnolang
 - not the consensus mechanism but rather a platform
 - scales itself -> managed by its members; serving as entrypoint to become a new member
 - V1 is currently being developed as a GoR (Game of Realms) task
-- score: **^worx**
+- score: **^worx** -> **WorxDAO**
 
 .code ./code/evaluation-flow.txt
 
@@ -56,27 +56,29 @@ https://github.com/gnolang
 - the community owning the chain, responsible for its evolution
 - tiered memberships with different rules and powers
 - manages funding, elects validators, and participate in governance
-- scalable from various community sizes, with **subDAOs** for specialized coordination
+- scalable from various community sizes, with **Gnode** for specialized coordination
 - top tier has sufficient (1) contributions, (2) expertise, and (3) values
 
 .code ./code/tiered-memberships.txt
 
-## What are SubDAOs?
-- tree structure of interconnected DAOs
-- enables secure interaction and seamless collaboration
-  - ↓ top-down: vision, OKRs, and budget
-  - ↑ bottom-up: local backlog, contributions, reports, and governance
-- independent `interface{}** DAO implementations
-- support horizontal scaling and specialized communities
-- designed for IBCx
+## What are Gnodes?
+- `Gnodes`: interconnected DAOs for scaling and specialized communities
+- enable secure collaboration and seamless integration, facilitating transparent ecosystem management at scale
+- layers and overlays for different perspectives:
+  - first layer: entities, people, and connections to projects and teams
+  - second layer: relationships between entities, burn rate, payments (the "basic income" layer)
+  - third layer: conflicts of interest, ownership stakes (privacy-preserving)
+- varying structures, some treelike
+- designed for interchain (IBCx)
+- `Gnode`: is independent and flexible (`type Gnode interface{BaseGnode, ...}`)
 
-.code ./code/subdaos.txt
+// .code ./code/subdaos.txt
 
 ## What is proof of contribution?
 - consensus mechanism securing and decentralizing gno.land, replacing PoS
 - PoDA, "proof of _decentralized_ authority"
-- incentivizes good contributions via the **Evaluation DAO** and **^worx**
-- scalable through specialized **subDAOs** communities
+- incentivizes good contributions via the **WorxDAO** (Evaluation DAO)
+- scalable through specialized **Gnode** communities
 - potential for high decentralization efficiency (Satoshi score)
 - enables collaborative ecosystem and new **governance** possibilities
 
@@ -102,7 +104,7 @@ https://github.com/gnolang
 ## Can I use PoC on my blockchain?
 - possible but challenging
 - consider integrating with gno.land via ICSx for enhanced security
-- implement subDAOs for your project
+- implement Gnode for your project
 - strive for a safer ecosystem of blockchains
 - goal: have at least one blockchain independent of tokenomics for governance
 
