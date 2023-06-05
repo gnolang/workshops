@@ -131,7 +131,7 @@
 <li>not the consensus mechanism but rather a platform</li>
 <li>scales itself -&gt; managed by its members; serving as entrypoint to become a new member</li>
 <li>V1 is currently being developed as a GoR (Game of Realms) task</li>
-<li>score: <strong>^worx</strong></li>
+<li>score: <strong>^worx</strong> -&gt; <strong>WorxDAO</strong></li>
 </ul>
 
   <div class="code" >
@@ -181,7 +181,7 @@
 <li>the community owning the chain, responsible for its evolution</li>
 <li>tiered memberships with different rules and powers</li>
 <li>manages funding, elects validators, and participate in governance</li>
-<li>scalable from various community sizes, with <strong>subDAOs</strong> for specialized coordination</li>
+<li>scalable from various community sizes, with <strong>Gnode</strong> for specialized coordination</li>
 <li>top tier has sufficient (1) contributions, (2) expertise, and (3) values</li>
 </ul>
 
@@ -206,32 +206,21 @@
   
       <article >
       
-        <h3>What are SubDAOs?</h3>
+        <h3>What are Gnodes?</h3>
         <ul>
-<li>tree structure of interconnected DAOs</li>
-<li>enables secure interaction and seamless collaboration
+<li><code>Gnodes</code>: interconnected DAOs for scaling and specialized communities</li>
+<li>enable secure collaboration and seamless integration, facilitating transparent ecosystem management at scale</li>
+<li>layers and overlays for different perspectives:
 <ul>
-<li>↓ top-down: vision, OKRs, and budget</li>
-<li>↑ bottom-up: local backlog, contributions, reports, and governance</li>
+<li>first layer: entities, people, and connections to projects and teams</li>
+<li>second layer: relationships between entities, burn rate, payments (the &quot;basic income&quot; layer)</li>
+<li>third layer: conflicts of interest, ownership stakes (privacy-preserving)</li>
 </ul>
 </li>
-<li>independent `interface{}** DAO implementations</li>
-<li>support horizontal scaling and specialized communities</li>
-<li>designed for IBCx</li>
+<li>varying structures, some treelike</li>
+<li>designed for interchain (IBCx)</li>
+<li><code>Gnode</code>: is independent and flexible (<code>type Gnode interface{BaseGnode, ...}</code>)</li>
 </ul>
-
-  <div class="code" >
-<pre><span num="1">- Contributors DAO</span>
-<span num="2">  - Tendermint2</span>
-<span num="3">  - Gno.land</span>
-<span num="4">    - devrels: CLIs, SDKs, and /p/</span>
-<span num="5">    - validators</span>
-<span num="6">  - Gnolang/GnoVM</span>
-<span num="7">  - Partnership A</span>
-<span num="8">  - Partnership B</span>
-<span num="9">  - ...</span>
-</pre>
-</div>
 
       
       <span class="pagenumber">8</span>
@@ -245,8 +234,8 @@
         <ul>
 <li>consensus mechanism securing and decentralizing gno.land, replacing PoS</li>
 <li>PoDA, &quot;proof of <em>decentralized</em> authority&quot;</li>
-<li>incentivizes good contributions via the <strong>Evaluation DAO</strong> and <strong>^worx</strong></li>
-<li>scalable through specialized <strong>subDAOs</strong> communities</li>
+<li>incentivizes good contributions via the <strong>WorxDAO</strong> (Evaluation DAO)</li>
+<li>scalable through specialized <strong>Gnode</strong> communities</li>
 <li>potential for high decentralization efficiency (Satoshi score)</li>
 <li>enables collaborative ecosystem and new <strong>governance</strong> possibilities</li>
 </ul>
@@ -327,7 +316,7 @@
         <ul>
 <li>possible but challenging</li>
 <li>consider integrating with gno.land via ICSx for enhanced security</li>
-<li>implement subDAOs for your project</li>
+<li>implement Gnode for your project</li>
 <li>strive for a safer ecosystem of blockchains</li>
 <li>goal: have at least one blockchain independent of tokenomics for governance</li>
 </ul>
