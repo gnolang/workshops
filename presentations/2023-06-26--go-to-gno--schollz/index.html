@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>go -> gno</title>
+    <meta charset="utf-8">
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body {
+        font-family: 'Roboto Mono';
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    .remark-slide-content h1 {
+        font-size: 3em;
+    }
+
+    .remark-slide-content h2 {
+        font-size: 2em;
+    }
+
+    .remark-slide-content h3 {
+        font-size: 1.6em;
+    }
+
+    .footnote {
+        position: absolute;
+        bottom: 3em;
+    }
+
+    li p {
+        line-height: 1.25em;
+    }
+
+    .red {
+        color: #fa0000;
+    }
+
+    .large {
+        font-size: 2em;
+    }
+
+    a,
+    a>code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+    }
+
+    code {
+        background: #d7d8d2;
+        border-radius: 5px;
+    }
+
+    .remark-code,
+    .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+    }
+
+    .remark-code-line-highlighted {
+        background-color: #373832;
+    }
+
+
+    .pull-left {
+        float: left;
+        width: 47%;
+    }
+
+    .pull-right {
+        float: right;
+        width: 47%;
+    }
+
+    .pull-right~p {
+        clear: both;
+    }
+
+    #slideshow .slide .content code {
+        font-size: 0.8em;
+    }
+
+    #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+    }
+
+    .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+    }
+
+    .inverse h1,
+    .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+    }
+
+    /* Slide-specific styling */
+    #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+    }
+
+    #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top: 151px;
+        right: 140px;
+    }
+
+    #slide-how .slides h3 {
+        margin-top: 0.2em;
+    }
+
+    #slide-how .slides .first,
+    #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+    }
+
+    #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+    }
+
+    #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+    }
+
+    /* Two-column layout */
+    .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+    }
+
+    .left-column h2:last-of-type,
+    .left-column h3:last-child {
+        color: #000;
+    }
+
+    .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+    }
+
+    .left-column>h2:not(:first-child),
+    .left-column>h3 {
+        margin-top: 0.4em;
+    }
+
+    .footnote {
+        font-size: 0.8em;
+    }
+
+    .remark-inline-code {
+        padding: 0.25em;
+    }
+    </style>
+</head>
+
+<body>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+#go -> gno
+### building a microblog
+### https://www.youtube.com/watch?v=F-_dadxcRJM
+zack scholl ([@schollz](https://github.com/schollz))
+<!-- .footnote[Go directly to [project site](https://github.com/gnab/remark)] -->
+---
+layout: false
+.left-column[
+  ## go -> gno
+]
+.right-column[
+Gno is an interpreted version of the programming language Go.
+
+Gno allows Go developers (like myself) a low-friction way to write **smart contracts**
+without having to learn an exclusive language.
+
+[Gno.land](https://localhost:8888) is the platform to write the smart contracts.
+
+More information about Gno.land ecosystem: https://gno.land/about
+
+Today I will focus getting up and running with Gno, assuming you know some Go. I will go over the workflow and syntax using a practical example of a "microblog" smart contract.
+
+]
+---
+layout: false
+.left-column[
+  ## go -> gno
+  ## prerequisites
+]
+.right-column[
+Working with Gno is as easy as working in Go - the syntax is near identical but workflow is different.
+
+First make sure you have Go installed. Then I recommend installing Visual Studio Code w/ the [Gno extension](https://marketplace.visualstudio.com/items?itemName=harry-hov.gno) by Hariom Verma. Then install `gofumpt`:
+
+```bash
+go install mvdan.cc/gofumpt@latest
+```
+
+and clone the Gno project:
+
+```bash
+git clone https://github.com/gnolang/gno
+cd gno
+```
+
+Build the Gno project utilities and `gno.land`:
+
+```bash
+make install
+cd gno.land && make build
+``` 
+
+
+.footnote[.red[*] Anytime you make changes to the Gno project you may have to rebuild `gno.land` or Gno tools.] 
+]
+---
+.left-column[
+  ## go -> gno
+  ## prerequisites
+  ## keys
+  ### - generating
+]
+.right-column[
+First create a key. This will be used to make transactions against the blockchain. For now it will be used for local development.
+
+```bash
+> gnokey generate
+brush laugh sure area film ...
+```
+
+Copy the bip39 mnemonic. Now we will actually add the key:
+
+```bash
+gnokey add --recover yourkey
+```
+
+Enter the passphrase twice and then enter the bip39 mnemonic generated earlier.
+
+Now you should see your key when listing them:
+
+```bash
+> gnokey list 
+0. yourkey (local) - addr: youraddress ...
+```
+
+]
+---
+.left-column[
+  ## go -> gno
+  ## prerequisites
+  ## keys
+  ### - generating
+  ### - genesis
+]
+.right-column[
+For local development, you should add the key address ("`addr`") to the `genesis_balances.txt` so that you have tokens to make transactions. Get the address:
+
+```bash
+> gnokey list
+0. yourkey (local) - addr: youraddress pub: ...
+```
+
+Copy the address, `youraddress` and now edit `gno.land/genesis/genesis_balances.txt` and add the line at the end with your address:
+
+```bash
+youraddress=10000000000ugnot # @yourkey 
+```
+
+This makes development easy without having to utilize a faucet.
+]
+
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+]
+.right-column[
+[Gno.land](https://gno.land) is the platform to write smart contracts in Gno, providing a transition between web2 and web3.
+
+As a Go developer, the Gno.land platform allows you to create smart contracts that can act as web servers that return Markdown. 
+
+A "realm" on Gno.land basically is a package with a `Render(path) string` function, which takes a path, processes it, and returns markdown.
+
+
+The Markdown can be used to generate the webpage and can display useful information about the smart contract state (number of tokens, ownership, etc.).
+
+
+
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ### - spinning up
+]
+.right-column[
+Lets spin up a local instance of Gno.land and create a user with our address. 
+
+The realm [gno.land/r/demo/users](http://localhost:8888/r/demo/users) makes it easy to add and view users.
+
+I like to make a script, `start.sh` to easily spin-up an environment:
+
+```bash
+#!/bin/bash
+
+pkill -f 'build/gnoland'
+pkill -f 'build/gnoweb'
+rm -rf gno.land/testdir
+cd gno.land && ./build/gnoland & 
+sleep 5
+cd gno.land && ./build/gnoweb -bind 0.0.0.0:8888 & 
+sleep 2
+```
+
+You can run that script and wait a few seconds for the `gno.land` server and `gnoweb` interface to spin-up:
+
+```bash
+./start_gno.land.sh
+```
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ### - spinning up
+  ### - transactions
+]
+.right-column[
+Before continuing, its also easiest if you save your password to a file, e.g. "`password`" and use that when making transaction calls.
+
+Then you can create a user with this transaction command:
+
+```bash
+cat password | gnokey maketx call \
+    --pkgpath "gno.land/r/demo/users" --func "Register" \
+    --args "" --args "yourname" --args "yourprofile" \
+    --gas-fee "1000000ugnot" --gas-wanted "2000000" \
+    --broadcast --chainid dev --remote localhost:26657 \
+    --send "200000000ugnot" -insecure-password-stdin=true \
+    yourkey
+```
+
+Now you will be able to see your user in the realm:
+
+- [gno.land/r/demo/users:yourname](http://localhost:8888/r/demo/users:yourname)
+
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ### - spinning up
+  ### - transactions
+  ### - maketx
+]
+.right-column[
+The `gnokey maketx` allows you to call a function within a realm. For `/r/demo/users` the function is `Register`. 
+
+One of the cool things about `gno.land` is that the source is available for every smart contract, for example the users realm: [/r/demo/users/users.gno](http://localhost:8888/r/demo/users/users.gno).
+
+The function `Register` has three arguments - `(inviter std.Address, name string, profile string)`. The arguments are inputs to 
+to the `gnokey maktex` as `--args` arguments:
+
+```bash
+--args "" --args "yourname" --args "yourprofile"
+```
+
+The first argument is the address of the inviter (blank since we don't have one). The second argument is your name, as will be shown in the profile, and the final argument is any info you want to be shown on your page.
+
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ### - spinning up
+  ### - transactions
+  ### - maketx
+  ### - routing
+]
+.right-column[
+The `gno.land` exists as a repository of realms that can be utilized within your own smart contracts. 
+
+The route of the realm is given by its package path.  In this example it is `/r/demo/users`. 
+
+The rendering of the realm can take other arguments, which are designated after the colon, `:`. For example, `yourname` is an argument to the render function in this path: [gno.land/r/demo/users:yourname](http://localhost:8888/r/demo/users:yourname).
+
+If we look at the `Render()` function of this realm (this is the function that is run when you go to the site), it will pull out the username using the semicolon: [gno.land/r/demo/users/users.gno](http://localhost:8888/r/demo/users/users.gno).
+
+```go
+func Render(path string) (markdown string) {
+    // path is everything after ":"
+    ...
+}
+```
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ### - add package
+]
+.right-column[
+Microblog is a realm that lets users have feeds of time-dated posts. It lives at `/r/demo/microblog`.
+
+To use a realm, we need to add to Gno.land using a transaction to add the microblog packages, and then add the microblog realms
+
+(I will get into the details of the realm and package, but first lets try it.)
+
+We start by adding the only package needed for microblog:
+
+```bash
+cat password | gnokey maketx addpkg \
+    --pkgpath "gno.land/p/demo/microblog" \
+    --pkgdir "examples/gno.land/p/demo/microblog" \
+    --deposit 100000000ugnot --gas-fee 1000000ugnot \
+    --gas-wanted 2000000 --broadcast --chainid dev \
+    --remote localhost:26657 --insecure-password-stdin=true \
+    yourkey
+```
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ### - add package
+  ### - add realm
+]
+.right-column[
+Then add the realm, which happens to be the same path except its `/r/` instead of `/p/`:
+
+```bash
+cat password | gnokey maketx addpkg \
+    --pkgpath "gno.land/r/demo/microblog" \
+    --pkgdir "examples/gno.land/r/demo/microblog" \
+    --deposit 100000000ugnot --gas-fee 1000000ugnot \
+    --gas-wanted 2000000 --broadcast --chainid dev \
+    --remote localhost:26657 --insecure-password-stdin=true \
+    yourkey
+```
+
+We can check to see that its up by going to its site: 
+- [gno.land/r/demo/microblog](http://localhost:8888/r/demo/microblog)
+
+It will be blank because we have not added any information to it yet.
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ### - add package
+  ### - add realm
+  ### - add post
+]
+.right-column[
+There is basically just one function: `NewPost(text string)` which you can call to add some post to your feed:
+
+```bash
+cat password | gnokey maketx call \
+    --pkgpath "gno.land/r/demo/microblog" \
+    --func "NewPost" --args "*hello*, **world**." \
+    --gas-fee "1000000ugnot" --gas-wanted "2000000" \
+    --broadcast --chainid dev --remote localhost:26657 \
+    --send "200000000ugnot" -insecure-password-stdin=true \
+    yourkey
+```
+
+Now your post will show up on [the microblog realm](http://localhost:8888/r/demo/microblog).
+
+The realm itself is very simple. It calls `Render` to render markdown that is used to generate the html of `gno.land` and it has a function for adding posts. 
+
+The main guts of the realm is in the package, `/p/demo/microblog`:
+- [gno.land/p/demo/microblog/microblog.gno](http://localhost:8888/p/demo/microblog/microblog.gno).
+
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+]
+.right-column[
+A *realm* is Gno code with state, that represents a smart contract with storage and coins. Realms have a `Render(path string) string` function that will be called when making a transaction.
+
+A *package* is Gno code that does not have state. Usually it is code that may be used by many realms. However you can also import realms. This can have any functions or structures exported to be used within realms.
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+]
+.right-column[
+Lets look at the microblog package to understand the differences between Gno and Go: 
+- [gno.land/p/demo/microblog/microblog.gno](http://localhost:8888/p/demo/microblog/microblog.gno)
+
+This looks just like Go code, with a few subtle differences, most notable in the imports:
+
+```go
+package microblog
+
+import (
+    "errors"
+    "sort"
+    "std"  <- !!!
+    "strings"
+    "time"
+
+    "gno.land/p/demo/avl"  <- !!!
+    "gno.land/p/demo/ufmt"  <- !!!
+    "gno.land/r/demo/users"  <- !!!
+)
+...
+```
+
+These imports are transpiled from `.gno` to `.go` code and have special properties.
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+]
+.right-column[
+There is a special import, `std`. 
+
+The `std` package is a Gno-specific package that lets you access the caller's address, using `std.GetOrigCaller()` and store addresses using the type `std.Address`. 
+
+For example, when a `NewPost` is called to microblog it gets the user from the key:
+
+```go
+func (m *Microblog) NewPost(text string) error {
+    author := std.GetOrigCaller() // <- returns address 
+                                  //    as std.Address
+    _, found := m.Pages.Get(author.String())
+    if !found {
+        m.Pages.Set(author.String(), &Page{
+            Author:    author,
+            CreatedAt: time.Now(),
+        })
+    }
+
+    page, err := m.GetPage(author.String())
+    if err != nil {
+        return err
+    }
+    return page.NewPost(text)
+}
+```
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+  ### - avl.Tree
+]
+.right-column[
+The `avl.Tree` is imported with `gno.land/p/demo/avl`. This data structure is a self-balancing binary search tree. 
+
+Gno is completely determistic 
+for accountability ([#452](https://github.com/gnolang/gno/issues/452)) so
+only one path exists between states for validators to reach consesus. The `avl.Tree` can be used as a determistic map since Go's map ordering is indeterminate ([#311](https://github.com/gnolang/gno/issues/311)).
+
+Here's a tiny demo:
+
+```go
+t := avl.Tree{}
+t.Set("mystring",&MyStructure)
+v, found := t.Get("mystring")
+if (found) {
+    v2 := v.(*MyStructure) // cast it back
+}
+```
+
+Make sure to cast here because it stores as an `interface{}`.
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+  ### - avl.Tree
+]
+.right-column[
+For example, in the [microblog code](http://localhost:8888/p/demo/microblog/microblog.gno), `avl.Tree` stores pages:
+
+```go
+func NewMicroblog(title string, prefix string) (m *Microblog) {
+    return &Microblog{
+        Title:  title,
+        Prefix: prefix,
+        Pages:  avl.Tree{},
+    }
+}
+```
+
+which can be retrieved through `Get` or `Iterate`:
+
+```go
+func (m *Microblog) GetPages() []*Page {
+    var (
+        pages = make([]*Page, m.Pages.Size())
+        index = 0
+    )
+    m.Pages.Iterate("", "", func(key string, value interface{}) bool {
+        pages[index] = value.(*Page)
+        index++
+        return false
+    })
+    sort.Sort(byLastPosted(pages))
+    return pages
+}
+```
+]
+---
+.left-column[
+## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+  ### - avl.Tree
+  ### - reflection
+]
+.right-column[
+As of June 2023 Gno does not support reflection ([#750](https://github.com/gnolang/gno/issues/750)) 
+which means some of the Go standard library does not work in Gno.
+
+For example, `fmt` uses reflection. In Gno, you can instead use `gno.land/p/demo/ufmt`
+ which is a micro-implementation of the `fmt` library. This is the library that you can use to do formatting with basic types, like using `ufmt.Sprintf`.
+
+For example, in microblog, the `ufmt` package is used to format the title:
+
+```golang
+ufmt.Sprintf("# %s\n\n", m.Title)
+```
+]
+---
+.left-column[
+  ## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+  ### - avl.Tree
+  ### - reflection
+]
+.right-column[
+The lack of reflection affects some other packages, like `sort`. Currently you cannot use `sort.Slice` because the code uses reflection and is not ported to Gno.
+
+However, you can use the classic method of implementing `Len()`, `Swap(i, j int)` and `Less(i, j int) bool` to do sorting.  
+
+For example in the [microblog code](http://localhost:8888/p/demo/microblog/microblog.gno):
+
+```go
+// byLastPosted implements sort.Interface for []Page based on
+// the LastPosted field.
+type byLastPosted []*Page
+
+func (a byLastPosted) Len() int           { return len(a) }
+func (a byLastPosted) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a byLastPosted) Less(i, j int) bool { return a[i].LastPosted.After(a[j].LastPosted) }
+...
+...
+sort.Sort(byLastPosted(pages))
+```
+]
+---
+.left-column[
+  ## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ### - std
+  ### - avl.Tree
+  ### - reflection
+  ### - realms
+]
+.right-column[
+The other main difference between Go and Gno is the imports.
+
+While the standard library is the same, its currently not possible to import 3rd party code, other than realms + packages. This may change in the future.
+
+Currently, there are already [many available packages](https://github.com/gnolang/gno/tree/master/examples/gno.land/p/demo) and [many available realms](https://github.com/gnolang/gno/tree/master/examples/gno.land/r/demo) which can be imported. 
+
+In microblog we use the realm for users, the package for `avl.Tree` and the package for `ufmt`, which are accessed using the prefix `gno.land/`:
+
+```go
+package microblog
+
+import (
+    ...
+    "gno.land/p/demo/avl"  <-
+    "gno.land/p/demo/ufmt" <-
+    "gno.land/r/demo/users"  <-
+)
+...
+```
+
+
+]
+---
+.left-column[
+  ## go -> gno
+  ## prerequisites
+  ## keys
+  ## gno.land
+  ## microblog
+  ## realms vs packages
+  ## go vs gno
+  ## conclusion
+]
+.right-column[
+
+This is just the tip of the iceberg when it comes to Gno and Go.
+
+Most anything you can do in Go, you can do in Gno (with the caveats mentioned).
+
+For more information checkout the resouces here: 
+
+- https://github.com/gnolang/awesome-gno
+
+
+]
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+    var slideshow = remark.create();
+    </script>
+</body>
+
+</html>
