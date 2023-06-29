@@ -8,7 +8,7 @@ This repo contains materials that can be used to organize workshops or make pres
 |-------------------|----------------|-----------------------------------|----------------|-----------|----------|
 | 03.16.2023 | Miloš Živković, Gno.land Core | How to Build a Forum in Gno.land  | [Tutorial](https://hackmd.io/iB9CgSeZRwac9fbJTR7r2Q?view)    | [Recording](https://www.youtube.com/watch?v=gmP-mH-64HA) | Beginner |
 | 01.20.2023 | Miloš Živković, Gno.land Core | Gno.land Demo | No documentation | [Recording](https://www.youtube.com/watch?v=-BlnEXCs0eI) | Beginner
-| 06.26.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: How to build a microblog | [Tutorial coming soon] |  [Recording](https://www.youtube.com/watch?v=F-_dadxcRJM&feature=youtu.be) | Beginner
+| 06.26.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: How to build a microblog | [Tutorial](https://github.com/gnolang/workshops/tree/main/presentations/2023-06-26--go-to-gno--schollz) |  [Recording](https://www.youtube.com/watch?v=F-_dadxcRJM&feature=youtu.be) | Beginner
 
 _(incomplete, please open PRs)_
 
