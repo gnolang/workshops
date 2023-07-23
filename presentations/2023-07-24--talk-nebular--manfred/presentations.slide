@@ -1,0 +1,27 @@
+# Gno SDK
+An alternative to Cosmos SDK for GnoVM-based chains on Tendermint2.
+24 Jul 2023
+Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
+Summary: TODO
+
+Manfred Touron
+VP Eng., Gno.land
+https://gno.land/
+https://github.com/gnolang
+@moul
+
+## Plan
+
+- TM2
+- IBC-centric
+- Goroutine and channels
+- Local IBC
+- IBC2, Cross-border payments -> Cross-border services
+- https://v1.cosmos.network/sdk#https://v1.cosmos.network/sdk#
+- Example with proof of contribution
+- Example with hypothetical proof of stake
+- Example of chain cofnig
+- Low maintenance for validators
+- Improved transparency
+- New release process
+- Cohabitation between 2 SDKs
