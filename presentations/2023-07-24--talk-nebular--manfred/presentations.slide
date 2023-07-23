@@ -4,14 +4,32 @@ An alternative to Cosmos SDK for GnoVM-based chains on Tendermint2.
 Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
 Summary: TODO
 
-Manfred Touron
+zManfred Touron
 VP Eng., Gno.land
 https://gno.land/
 https://github.com/gnolang
 @moul
 
 ## What is Gno?
-See previous slides
+- Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+- Gno.land: first L1 using Gnolang
+- built on Tendermint2 in the Cosmos/IBC ecosystem
+- aims for fairness, simplicity, security, scalability
+- -> long-term viability
+
+## Why Gnolang?
+- optimized for blockchain
+- deterministic execution
+- auto-persisted, without ORM
+- interpreted
+- auto-merkle-ized with rich types
+- built-in rendering
+- auto-generated documentation
+- "std"
+
+## XXX.gno
+
+.code ./code/demo.gno
 
 ## What is Gnolang?
 See previous slides
@@ -64,3 +82,25 @@ TODO
 TODO
 
 - New release process with DAO vote
+
+## Comparison with Cosmos SDK
+
+TODO
+
+## Having Cosmos SDK _and_ Gno SDK at the same time
+
+TODO
+
+## What is Game of realms?
+- ongoing competition for contributors
+- experimental phase for proof of contributions
+- building **Evaluation DAO**, and the new governance module
+- earn $ATOM and become member on mainnet genesis
+
+.code ./code/gor-banner.txt
+
+## Action Items
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
