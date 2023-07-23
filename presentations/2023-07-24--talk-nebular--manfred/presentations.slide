@@ -10,18 +10,43 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
-## Plan
-
-- TM2
-- IBC-centric
+## What is Gno?
+See previous slides
+## What is Gnolang?
+See previous slides
+## What is Gno.land?
+See previous slides
+## What is Tendermint2?
+See previous slides
+## How Gno.land connects to existing Cosmos chains?
+IBC/ICS
+## What IBCx will look like?
+- ...
+- local IBC
 - Goroutine and channels
-- Local IBC
 - IBC2, Cross-border payments -> Cross-border services
+## Gno SDKs & Clients
+
+- tm2-js-client (RPC)
+- gnovm-js-client extension to tm2-js-client to understands how gnovm works, i.e, contracts
+- gnoland-js-client, composition of tm2-js-client, gnovm-js-client, and configuration for gno.land -> what should be used by apps
+- GNO SDK, golang set of tools to write custom appchains using GnoVM
+
+## What is Gno SDK?
+
+- alternative to Cosmos SDK to create appchains with Tendermint2
+- ...
 - https://v1.cosmos.network/sdk#https://v1.cosmos.network/sdk#
-- Example with proof of contribution
-- Example with hypothetical proof of stake
-- Example of chain cofnig
+- Cohabitation between 2 SDKs
 - Low maintenance for validators
 - Improved transparency
-- New release process
-- Cohabitation between 2 SDKs
+
+## Gno SDK Example: chain config
+
+## Gno SDK Example: proof of contribution
+
+## Gno SDK Example: proof of stake
+
+## Gno SDK release process:
+
+- New release process with DAO vote
