@@ -12,19 +12,25 @@ https://github.com/gnolang
 
 ## What is Gno?
 See previous slides
+
 ## What is Gnolang?
 See previous slides
+
 ## What is Gno.land?
 See previous slides
+
 ## What is Tendermint2?
 See previous slides
+
 ## How Gno.land connects to existing Cosmos chains?
 IBC/ICS
+
 ## What IBCx will look like?
 - ...
 - local IBC
 - Goroutine and channels
 - IBC2, Cross-border payments -> Cross-border services
+
 ## Gno SDKs & Clients
 
 - tm2-js-client (RPC)
