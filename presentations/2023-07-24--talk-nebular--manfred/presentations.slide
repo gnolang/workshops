@@ -1,23 +1,24 @@
-# Gno SDK
-An alternative to Cosmos SDK for GnoVM-based chains on Tendermint2.
+# Examining Gno Core Stack
+Differences between the Cosmos SDK and the Gnolang SDK
 24 Jul 2023
 Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
 Summary: TODO
 
-zManfred Touron
+Manfred Touron
 VP Eng., Gno.land
 https://gno.land/
 https://github.com/gnolang
 @moul
 
 ## What is Gno?
+- Timeless code ecosystem
 - Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
 - Gno.land: first L1 using Gnolang
 - built on Tendermint2 in the Cosmos/IBC ecosystem
 - aims for fairness, simplicity, security, scalability
 - -> long-term viability
 
-## Why Gnolang?
+## What is Gnolang?
 - optimized for blockchain
 - deterministic execution
 - auto-persisted, without ORM
@@ -27,17 +28,14 @@ https://github.com/gnolang
 - auto-generated documentation
 - "std"
 
-## XXX.gno
+## demo.gno
 
 .code ./code/demo.gno
 
-## What is Gnolang?
+## What is Tendermint2?
 See previous slides
 
 ## What is Gno.land?
-See previous slides
-
-## What is Tendermint2?
 See previous slides
 
 ## How Gno.land connects to existing Cosmos chains?
@@ -49,6 +47,10 @@ IBC/ICS
 - Goroutine and channels
 - IBC2, Cross-border payments -> Cross-border services
 
+## Gno vs CosmosSDK
+
+.code ./code/cosmos-sdk.go
+
 ## Gno SDKs & Clients
 
 - tm2-js-client (RPC)
@@ -58,6 +60,7 @@ IBC/ICS
 
 ## What is Gno SDK?
 
+- framework for building blockchain applications
 - alternative to Cosmos SDK to create appchains with Tendermint2
 - ...
 - https://v1.cosmos.network/sdk#https://v1.cosmos.network/sdk#
