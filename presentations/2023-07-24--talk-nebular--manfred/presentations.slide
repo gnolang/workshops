@@ -28,21 +28,25 @@ https://github.com/gnolang
 - auto-generated documentation
 - "std"
 
-## demo.gno
+## Increment a counter in Gno
 
 .code ./code/demo.gno
 
-## Gno vs CosmosSDK
+## Increment a counter in Cosmos SDK
 
 .code ./code/cosmos-sdk.go
 
-## What is Tendermint2?
-See previous slides
+## Increment a counter in Cosmwasm/Rust
+
+.code ./code/cosmwasm-rust.rs
+
+## Increment a counter in a Go app
+
+.code ./code/goapp.go
 
 ## What is Gno.land?
 - GnoVM + Tendermint2
-- GnoHub, GitHub of Gnolang
-- home of the pure packages and realms
+- "GnoHub", home of Gno realms and pure packages
 
 ## Gno.land interop
 - IBC soon after mainnet
@@ -69,7 +73,7 @@ See previous slides
 ## Gno SDK
 - contract-centric
 - reduce needs for validator upgrades
-- increased transparency and auditability
+- transparency and auditability of the contract, but for chains
 - instant finality for governance
 - same level of transparency for contracts, but for chain configuration
 - at first, we focus on creating bridges between the chain and contracts, then it will be made a generic SDK
