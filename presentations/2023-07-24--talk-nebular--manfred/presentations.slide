@@ -29,49 +29,47 @@ https://github.com/gnolang
 - "std"
 
 ## Increment a counter in Gno
-
 .code ./code/demo.gno
 
 ## Increment a counter in Cosmos SDK
-
 .code ./code/cosmos-sdk.go
 
 ## Increment a counter in Cosmwasm/Rust
-
 .code ./code/cosmwasm-rust.rs
 
 ## Increment a counter in a Go app
-
 .code ./code/goapp.go
 
 ## What is Gno.land?
 - GnoVM + Tendermint2
-- "GnoHub", home of Gno realms and pure packages
+- "GnoHub", home of Gno realms and pure packages (IBCx)
+- timeless
+- first of a series of GnoVM chains
 
 ## Gno.land interop
 - IBC soon after mainnet
 - ICS consumer of the Cosmos hub
 - ICS provider for GnoVM chains
-- Specialized nodes and sharding, x.gno.land
+- specialized nodes and sharding, x.gno.land
 - IBC2/GNO/x
 
 ## IBC2/GNO/x
-- The first implementation looks like go channels (In, Out) from contracts PoV
-- Preserves type-safety and rich type 
-- Permissionless IBC
-- Local IBC
-- Could be linked with non-gno and non-cosmos chains, i.e., `.gno<->.sol`
+- the first implementation looks like go channels (In, Out) from contracts PoV
+- preserves type-safety and rich type 
+- permissionless IBC
+- local IBC
+- could be linked with non-gno and non-cosmos chains, i.e., `.gno<->.sol`
 - IBC is "Cross-border payments"; IBCx is "Cross-border applications"
 
 ## Gno clients vs Gno SDK
-- Clients: series of clients to interact with the chain and create richer dApps:
+- clients: series of clients to interact with the chain and create richer dApps:
   - `tm2-js-client`, generic RPC client for chains build with Tendermint2
   - `gnovm-js-client` extension to publish, read, inspect and interact with contracts
   - `gnoland-js-client`, uses the two above + configuration to interact with the gno.land chain -> for most developers
 - Gno SDK: Golang library to customize appChains using GnoVM and Tendermint2, similar goal with Cosmos SDK
 
 ## Gno SDK
-- contract-centric
+- realm/contract-centric
 - reduce needs for validator upgrades
 - transparency and auditability of the contract, but for chains
 - instant finality for governance
@@ -80,77 +78,19 @@ https://github.com/gnolang
 - chicken-egg problem
 
 ## Gno SDK _potential_ API
-- `if sdk.RealmExists("gno.land/r/demo/foo")`: simple chicken-egg problem resolving
-- `r := sdk.GetRealm("gno.land/r/demo/foo")`: load the realm as a Go object
-- `v, err := r.GetState("whitelisted")`: retrieve the state of a variable without executing the contract, cheap
-- `ret, err := r.Call("HasAccess", ...args)`: similar to calling the contract from a transaction, more dynamic but expensive
-- `r.Send(abci.Event{...})`: appends an event to contract's incoming queue, consumed later with `evt := <-std.Recv()`
-- `e := r.Recv()`: reads events from contract's outgoing queue
-- `banker := r.Banker.XXX`: interact with realms' bankers methods
-- `sdk.Subscribe(filterFn, callbackFn)`: subscribe to specific events to trigger actions
+.code code/gno-sdk-api.go
 
 ## GnoSDK example: chain configuration
-- `r/system/config.{Propose/Apply/...}`: contributors DAO votes for chain configuration changes (runtime limits, etc)
-- `baseapp.go: sdk.Subscribe(configChangedFilterFn, applyConfigChange)`: the baseapp subscribes to changes happening in the contract
-- `sdk.GetRealm("r/system/config").GetState("chainCfg")` to fetch the expected configuration
-- apply changes during `abci.EndBlocker`
+.code code/gno-sdk-chainconfig.go
 
 ## GnoSDK example: proof-of-contribution
-- `r/system/validators.{Propose/Apply/...}`: the contributors DAO governs the validator set (PoA, where A is a DAO)
-- `baseapp.go: sdk.Subscribe(valsetChangedFilterFn, applyValsetChangeInTM2)`: the baseapp subscribes to changes happening in the contract
-- `sdk.GetRealm("r/system/validators").GetState("valupdates")` to fetch the list of approved updates to apply
-- apply converted list of `[]abci.ValidatorUpdate` during `abci.EndBlocker`
+.code code/gno-sdk-valset.go
 
 ## GnoSDK example: chain fees distribution
-- chain fees (gas) are sent to `sdk.GetRealm("r/system/rewards").Banker`
-- `r/system/rewards.Distribute`: distribution logic implemented in contract, querying other contracts, applying rules
-- `r/system/rewards` imports and queries other contracts to distribute to validators (`r/system/validators`), contributors (`r/gnoland/worxdao`)
-- notable chain events can be sent through `r.GetRealm("...").Send` to notify any relevant event (double sig, etc)
+.code code/gno-sdk-distribution.go
 
 ## GnoSDK example: namespace support for package paths
-- hook when `AddPkg` is called in a transaction
-- `if !sdk.HasRealm("r/system/names") { continue }`: no filtering at genesis or for devnets
-- `sdk.GetRealm("r/system/names").Call("GetGroups", "manfred")`: returns list of available personal and team namespaces (manfred, gnocore, teamfoo)
-- `if matches { continue }`
-
-## Gno & AppChains
-- .
-
-## What is Gno SDK?
-
-- framework for building blockchain applications
-- alternative to Cosmos SDK to create appchains with Tendermint2
-- ...
-- https://v1.cosmos.network/sdk#https://v1.cosmos.network/sdk#
-- Cohabitation between 2 SDKs
-- Low maintenance for validators
-- Improved transparency
-
-## Gno SDK Example: chain config
-
-TODO
-
-## Gno SDK Example: proof of contribution
-
-TODO
-
-## Gno SDK Example: proof of stake
-
-TODO
-
-## Gno SDK release process:
-
-TODO
-
-- New release process with DAO vote
-
-## Comparison with Cosmos SDK
-
-TODO
-
-## Having Cosmos SDK _and_ Gno SDK at the same time
-
-TODO
+.code code/gno-sdk-names.go
 
 ## What is Game of realms?
 - ongoing competition for contributors
