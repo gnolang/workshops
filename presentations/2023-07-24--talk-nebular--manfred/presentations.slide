@@ -22,8 +22,8 @@ https://github.com/gnolang
 - optimized for blockchain
 - deterministic execution
 - auto-persisted, without ORM
-- interpreted
-- auto-merkle-ized with rich types
+- interpreted, apps + lib
+- auto-merkle-ized, with rich types
 - built-in rendering
 - auto-generated documentation
 - "std"
@@ -32,31 +32,72 @@ https://github.com/gnolang
 
 .code ./code/demo.gno
 
-## What is Tendermint2?
-See previous slides
-
-## What is Gno.land?
-See previous slides
-
-## How Gno.land connects to existing Cosmos chains?
-IBC/ICS
-
-## What IBCx will look like?
-- ...
-- local IBC
-- Goroutine and channels
-- IBC2, Cross-border payments -> Cross-border services
-
 ## Gno vs CosmosSDK
 
 .code ./code/cosmos-sdk.go
 
-## Gno SDKs & Clients
+## What is Tendermint2?
+See previous slides
 
-- tm2-js-client (RPC)
-- gnovm-js-client extension to tm2-js-client to understands how gnovm works, i.e, contracts
-- gnoland-js-client, composition of tm2-js-client, gnovm-js-client, and configuration for gno.land -> what should be used by apps
-- GNO SDK, golang set of tools to write custom appchains using GnoVM
+## What is Gno.land?
+- GnoVM + Tendermint2
+- GnoHub, GitHub of Gnolang
+- home of the pure packages and realms
+
+## Gno.land interop
+- IBC soon after mainnet
+- ICS consumer of the Cosmos hub
+- ICS provider for GnoVM chains
+- Specialized nodes and sharding, x.gno.land
+- IBC2/GNO/x
+
+## IBC2/GNO/x
+- The first implementation looks like go channels (In, Out) from contracts PoV
+- Preserves type-safety and rich type 
+- Permissionless IBC
+- Local IBC
+- Could be linked with non-gno and non-cosmos chains, i.e., `.gno<->.sol`
+- IBC is "Cross-border payments"; IBCx is "Cross-border applications"
+
+## Gno clients vs Gno SDK
+- Clients: series of clients to interact with the chain and create richer dApps:
+  - `tm2-js-client`, generic RPC client for chains build with Tendermint2
+  - `gnovm-js-client` extension to publish, read, inspect and interact with contracts
+  - `gnoland-js-client`, uses the two above + configuration to interact with the gno.land chain -> for most developers
+- Gno SDK: Golang library to customize appChains using GnoVM and Tendermint2, similar goal with Cosmos SDK
+
+## Gno SDK
+- contract-centric
+- reduce needs for validator upgrades
+- increased transparency and auditability
+- instant finality for governance
+- same level of transparency for contracts, but for chain configuration
+- at first, we focus on creating bridges between the chain and contracts, then it will be made a generic SDK
+
+## Gno SDK _potential_ API
+- `r := sdk.GetRealm("gno.land/r/demo/foo")`: load the realm as a Go object
+- `v, err := r.GetState("whitelisted")`: retrieve the state of a variable without executing the contract, cheap
+- `ret, err := r.Call("HasAccess", ...args)`: similar to calling the contract from a transaction, more dynamic but expensive
+- `r.Send(abci.Event{...})`: appends an event to contract's incoming queue, consumed later with `evt := <-std.Recv()`
+- `e := r.Recv()`: reads events from contract's outgoing queue
+- `banker := r.Banker.XXX`: interact with realms' bankers methods
+- `sdk.Subscribe(filterFn, callbackFn)`: subscribe to specific events to trigger actions
+
+## Gno.land customization example: proof-of-contribution
+- `r/system/validators.{Propose/Apply/...}`: the contributors DAO governs the validator set (PoA, where A is a DAO)
+- `baseapp.go: sdk.Subscribe(valsetChangedFilterFn, applyValsetChangeInTM2)`: the baseapp subscribes to changes happening in the contract
+- `sdk.GetRealm("r/system/validators").GetState("valupdates")` to fetch the list of approved updates to apply
+- apply converted list of `[]abci.ValidatorUpdate` during `abci.EndBlocker`
+
+## Gno.land customization example: rewards
+- chain fees (gas) are sent to `sdk.GetRealm("r/system/rewards").Banker`
+- `r/system/rewards.Distribute`: distribution logic implemented in contract, querying other contracts, applying rules
+- `r/system/rewards` imports and queries other contracts to distribute to validators (`r/system/validators`), contributors (`r/gnoland/worxdao`)
+- notable chain events can be sent through `r.GetRealm("...").Send` to notify any relevant event (double sig, etc)
+
+## Gno & AppChains
+
+- 
 
 ## What is Gno SDK?
 
