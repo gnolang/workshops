@@ -70,12 +70,12 @@ https://github.com/gnolang
 
 ## Gno SDK
 - realm/contract-centric
-- reduce needs for validator upgrades
-- transparency and auditability of the contract, but for chains
+- minimized validator upgrades, enhanced system stability
+- unified transparency: clear contracts and chain configuration
 - instant finality for governance
-- same level of transparency for contracts, but for chain configuration
-- at first, we focus on creating bridges between the chain and contracts, then it will be made a generic SDK
-- chicken-egg problem
+- bridging chains and contracts, seamless integration & versatility
+- addressing chicken-egg problem
+- gno.land is the initial version, generic SDK to come after
 
 ## Gno SDK _potential_ API
 .code code/gno-sdk-api.go
