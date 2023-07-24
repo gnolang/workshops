@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examining Gno Core Stack</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>Examining Gno Core Stack</h1>
+        <h3>Differences between the Cosmos SDK and the Gnolang SDK</h3>
+        <h3>24 July 2023</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>What is Gno?</h3>
+        <ul>
+<li>Timeless code ecosystem</li>
+<li>Gnolang/GnoVM: comprehensive smart contract suite, based on Golang</li>
+<li>Gno.land: first L1 using Gnolang</li>
+<li>built on Tendermint2 in the Cosmos/IBC ecosystem</li>
+<li>aims for fairness, simplicity, security, scalability</li>
+<li>-&gt; long-term viability</li>
+</ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is Gnolang?</h3>
+        <ul>
+<li>optimized for blockchain</li>
+<li>deterministic execution</li>
+<li>auto-persisted, without ORM</li>
+<li>interpreted, apps + lib</li>
+<li>auto-merkle-ized, with rich types</li>
+<li>built-in rendering</li>
+<li>auto-generated documentation</li>
+<li>&quot;std&quot;</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Increment a counter in Gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package demo</span>
+<span num="2"></span>
+<span num="3">var x int</span>
+<span num="4"></span>
+<span num="5">func Incr() {</span>
+<span num="6">    x &#43;= 1</span>
+<span num="7">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Increment a counter in Cosmos SDK</h3>
+        
+  <div class="code" >
+<pre><span num="2">// cli/cli.go, msg.go, handler.go, &gt;keeper.go&lt;</span>
+<span num="3">//  * keeper/handler pattern, &#34;ctx&#34;, binary codec, determinism</span>
+<span num="4">import (</span>
+<span num="7">    &#34;github.com/gnolang/gno/pkgs/sdk&#34;</span>
+<span num="8">)</span>
+<span num="9"></span>
+<span num="10">type Keeper struct{ storeKey storetypes.StoreKey } // expected to be prefix store.</span>
+<span num="11"></span>
+<span num="12">func (k *Keeper) Incr(sdk.Context) {</span>
+<span num="13">    store := ctx.KVStore(k.storeKey)</span>
+<span num="14">    bz := store.Get(&#34;x&#34;)</span>
+<span num="15">    if bz == nil {</span>
+<span num="16">        panic(&#34;XXX&#34;)</span>
+<span num="17">    }</span>
+<span num="18">    x, err := strconv.Atoi(bz)</span>
+<span num="19">    if err != nil {</span>
+<span num="20">        panic(&#34;XXX&#34;)</span>
+<span num="21">    }</span>
+<span num="22">    <b>x &#43;= 1 // all we wanted</b></span>
+<span num="23">    bz = strconv.Itoa(x)</span>
+<span num="24">    store.Set(&#34;x&#34;, bz)</span>
+<span num="25">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Increment a counter in Cosmwasm/Rust</h3>
+        
+  <div class="code" >
+<pre><span num="1">#[cfg_attr(not(feature = &#34;library&#34;), entry_point)]</span>
+<span num="2">pub fn execute(</span>
+<span num="3">    deps: DepsMut,</span>
+<span num="4">    _env: Env,</span>
+<span num="5">    info: MessageInfo,</span>
+<span num="6">    msg: ExecuteMsg,</span>
+<span num="7">) -&gt; Result&lt;Response, ContractError&gt; {</span>
+<span num="8">    match msg {</span>
+<span num="9">        ExecuteMsg::Increment {} =&gt; increment(deps),</span>
+<span num="10">    }</span>
+<span num="11">}</span>
+<span num="12"></span>
+<span num="13">pub fn increment(deps: DepsMut) -&gt; Result&lt;Response, ContractError&gt; {</span>
+<span num="14">    STATE.update(deps.storage, |mut state| -&gt; Result&lt;_, ContractError&gt; {</span>
+<span num="15">        <b>state.count &#43;= 1;</b></span>
+<span num="16">        Ok(state)</span>
+<span num="17">    })?;</span>
+<span num="18"></span>
+<span num="19">    Ok(Response::new().add_attribute(&#34;method&#34;, &#34;increment&#34;))</span>
+<span num="20">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Increment a counter in a Go app</h3>
+        
+  <div class="code" >
+<pre><span num="1">package counter</span>
+<span num="2"></span>
+<span num="3">import (</span>
+<span num="4">    &#34;io/ioutil&#34;</span>
+<span num="5">    &#34;strconv&#34;</span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">func IncrementCounter() (int, error) {</span>
+<span num="9">    counterBytes, err := ioutil.ReadFile(&#34;counter.txt&#34;)</span>
+<span num="10">    if err != nil {</span>
+<span num="11">        return 0, err</span>
+<span num="12">    }</span>
+<span num="13">    counter, err := strconv.Atoi(string(counterBytes))</span>
+<span num="14">    if err != nil {</span>
+<span num="15">        return 0, err</span>
+<span num="16">    }</span>
+<span num="17">    <b>counter &#43;= 1</b></span>
+<span num="18">    err = ioutil.WriteFile(&#34;counter.txt&#34;, []byte(strconv.Itoa(counter)), 0644)</span>
+<span num="19">    if err != nil {</span>
+<span num="20">        return 0, err</span>
+<span num="21">    }</span>
+<span num="22">    return counter, nil</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is Gno.land?</h3>
+        <ul>
+<li>GnoVM + Tendermint2</li>
+<li>&quot;GnoHub&quot;, home of Gno realms and pure packages (IBCx)</li>
+<li>first of a series of GnoVM chains</li>
+<li>simple, secure, reliable, trustable</li>
+</ul>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land interop</h3>
+        <ul>
+<li>IBC soon after mainnet</li>
+<li>ICS consumer of the Cosmos hub</li>
+<li>ICS provider for GnoVM chains</li>
+<li>specialized nodes and sharding, x.gno.land</li>
+<li>IBC2/GNO/x</li>
+</ul>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>IBC2/GNO/x</h3>
+        <ul>
+<li>the first implementation looks like go channels (In, Out) from contracts PoV</li>
+<li>preserves type-safety and rich type</li>
+<li>permissionless IBC</li>
+<li>local IBC</li>
+<li>could be linked with non-gno and non-cosmos chains, i.e., <code>.gno&lt;-&gt;.sol</code></li>
+<li>IBC is &quot;Cross-border payments&quot;; IBCx is &quot;Cross-border applications&quot;</li>
+</ul>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno clients vs Gno SDK</h3>
+        <ul>
+<li>clients: series of clients to interact with the chain and create richer dApps:
+<ul>
+<li><code>tm2-js-client</code>, generic RPC client for chains build with Tendermint2</li>
+<li><code>gnovm-js-client</code> extension to publish, read, inspect and interact with contracts</li>
+<li><code>gnoland-js-client</code>, uses the two above + configuration to interact with the gno.land chain -&gt; for most developers</li>
+</ul>
+</li>
+<li>Gno SDK: Golang library to customize appChains using GnoVM and Tendermint2, similar goal with Cosmos SDK</li>
+</ul>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno SDK</h3>
+        <ul>
+<li>realm/contract-centric</li>
+<li>minimized validator upgrades, enhanced system stability</li>
+<li>unified transparency: clear contracts and chain configuration</li>
+<li>instant finality for governance</li>
+<li>bridging chains and contracts, seamless integration &amp; versatility</li>
+<li>addressing chicken-egg problem</li>
+<li>gno.land is the initial version, generic SDK to come after</li>
+</ul>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno SDK _potential_ API</h3>
+        
+  <div class="code" >
+<pre><span num="1">// simple chicken-egg problem resolving</span>
+<span num="2">if sdk.RealmExists(&#34;gno.land/r/demo/foo&#34;) {}</span>
+<span num="3"></span>
+<span num="4">// load the realm as a Go object</span>
+<span num="5">r := sdk.GetRealm(&#34;gno.land/r/demo/foo&#34;)</span>
+<span num="6"></span>
+<span num="7">// retrieve the state of a variable without executing the contract, cheap</span>
+<span num="8">v, _ := r.GetState(&#34;things&#34;)</span>
+<span num="9"></span>
+<span num="10">// similar to calling the contract from a transaction, more dynamic but expensive</span>
+<span num="11">ret, _ := r.Call(&#34;HasAccess&#34;, ...args)</span>
+<span num="12"></span>
+<span num="13">// appends an event to contract&#39;s incoming queue, consumed later with `evt := &lt;-std.Recv()`</span>
+<span num="14">r.Send(abci.Event{...})</span>
+<span num="15"></span>
+<span num="16">// reads events from contract&#39;s outgoing queue</span>
+<span num="17">e := r.Recv()</span>
+<span num="18"></span>
+<span num="19">// interact with realms&#39; bankers methods</span>
+<span num="20">banker := r.Banker.XXX</span>
+<span num="21"></span>
+<span num="22">// subscribe to specific events to trigger actions</span>
+<span num="23">sdk.Subscribe(filterFn, callbackFn)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>GnoSDK example: chain configuration</h3>
+        
+  <div class="code" >
+<pre><span num="1">// r/system/config: contributors DAO votes for chain configuration changes (runtime limits, etc)</span>
+<span num="2">func Propose() {}</span>
+<span num="3">func Apply{} </span>
+<span num="4"></span>
+<span num="5">// baseapp: the baseapp subscribes to changes happening in the contract</span>
+<span num="6">sdk.Subscribe(configChangedFilterFn, applyConfigChange)</span>
+<span num="7"></span>
+<span num="8">// baseapp: to fetch the expected configuration</span>
+<span num="9">sdk.GetRealm(&#34;r/system/config&#34;).GetState(&#34;chainCfg&#34;)</span>
+<span num="10"></span>
+<span num="11">// baseapp: during abci.EndBlocker</span>
+<span num="12">bft.XXX(opts...)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>GnoSDK example: proof-of-contribution</h3>
+        
+  <div class="code" >
+<pre><span num="1">// r/system/config: contributors DAO votes for chain configuration changes (runtime limits, etc)</span>
+<span num="2">func Propose() {}</span>
+<span num="3">func Apply() {}</span>
+<span num="4"></span>
+<span num="5">// baseapp: the baseapp subscribes to changes happening in the contract</span>
+<span num="6">sdk.Subscribe(valsetChangedFilterFn, applyValsetFn)</span>
+<span num="7"></span>
+<span num="8">// baseapp: to fetch the expected configuration</span>
+<span num="9">updates := sdk.GetRealm(&#34;r/system/validators&#34;).GetState(&#34;updates&#34;)</span>
+<span num="10"></span>
+<span num="11">// baseapp: during abci.EndBlocker</span>
+<span num="12">bft.ValidateValidatorUpdates(updates)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>GnoSDK example: chain fees distribution</h3>
+        
+  <div class="code" >
+<pre><span num="1">// baseapp: chain fees (gas) are sent to the rewards&#39; banker.</span>
+<span num="2">gasDestination := sdk.GetRealm(&#34;r/system/rewards&#34;).Banker().Addr()</span>
+<span num="3"></span>
+<span num="4">// r/system/rewards: Distribution logic implemented in the contract,</span>
+<span num="5">// querying other contracts, applying rules.</span>
+<span num="6">import &#34;gno.land/r/system/validators&#34;</span>
+<span num="7">import &#34;gno.land/r/gnoland/dao&#34;</span>
+<span num="8">func Distribute() {</span>
+<span num="9">    // Split rewards among recipients.</span>
+<span num="10">}</span>
+<span num="11"></span>
+<span num="12">// Baseapp: Relevant chain events (double sig, etc.) can be sent to the contract.</span>
+<span num="13">r.GetRealm(&#34;r/system/rewards&#34;).Send(abci.Event{})</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>GnoSDK example: namespace support for package paths</h3>
+        
+  <div class="code" >
+<pre><span num="1">// baseapp: hook when `AddPkg` is called in a transaction</span>
+<span num="2">sdk.Subscribe(filterFn, callbackFn)</span>
+<span num="3"></span>
+<span num="4">// baseapp: if realm does not exist, skip validation</span>
+<span num="5">if !sdk.HasRealm(&#34;r/system/names&#34;) {</span>
+<span num="6">    return true</span>
+<span num="7">}</span>
+<span num="8"></span>
+<span num="9">// baseapp: returns list of available personal and team namespaces (manfred, gnocore, teamfoo)</span>
+<span num="10">sdk.GetRealm(&#34;r/system/names&#34;).Call(&#34;GetGroups&#34;, &#34;manfred&#34;)</span>
+<span num="11"></span>
+<span num="12">// baseapp: if namespace matches</span>
+<span num="13">if matches {</span>
+<span num="14">    return true</span>
+<span num="15">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is Game of realms?</h3>
+        <ul>
+<li>ongoing competition for contributors</li>
+<li>experimental phase for proof of contributions</li>
+<li>building <strong>Evaluation DAO</strong>, and the new governance module</li>
+<li>earn $ATOM and become member on mainnet genesis</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">     ______                              ____   ____             __</span>
+<span num="3">    / ____/___ _____ ___  ___     ____  / __/  / __ \___  ____ _/ /___ ___  _____</span>
+<span num="4">   / / __/ __ `/ __ `__ \/ _ \   / __ \/ /_   / /_/ / _ \/ __ `/ / __ `__ \/ ___/</span>
+<span num="5">  / /_/ / /_/ / / / / / /  __/  / /_/ / __/  / _, _/  __/ /_/ / / / / / / (__  )</span>
+<span num="6">  \____/\__,_/_/ /_/ /_/\___/   \____/_/    /_/ |_|\___/\__,_/_/_/ /_/ /_/____/</span>
+<span num="7"> </span>
+<span num="8"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Action Items</h3>
+        <ul>
+<li>follow github.com/gnolang/gno</li>
+<li>visit gno.land</li>
+<li>help us create &quot;Game of Realms&quot;</li>
+<li>contribute!</li>
+</ul>
+
+      
+      <span class="pagenumber">19</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+<p class="link"><a href="https://gno.land/" target="_blank">https://gno.land/</a></p><p class="link"><a href="https://github.com/gnolang" target="_blank">https://github.com/gnolang</a></p><p class="link"><a href="http://twitter.com/moul" target="_blank">@moul</a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
