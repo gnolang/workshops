@@ -1,0 +1,14 @@
+## Conceptual Overview
+- Prior to the emergence of GitHub, Git and open-source technology were prevalent, yet they existed in a scattered manner, requiring arduous navigational methods for developers. GitHub revolutionized this process, providing a consolidated, user-friendly platform that enhanced the experience of producing and consuming open-source software. Without platforms like GitHub, the open-source landscape would still be functional, yet substantially fragmented and less accessible.
+- AWS and Ethereum offer similar promises as platforms where developers can execute their code. However, Ethereum provides users with a higher degree of trust due to its immutable contracts and the possibility of verifying source code against bytecode. Despite these benefits, it still lacks the ability to host and manage code in a unified, transparent manner. Gno.land, on the other hand, blends these features, providing a level of transparency reminiscent of Ethereum, combined with the convenience and functionality of GitHub.
+- Gno.land aims to be more than a mere platform for code execution. Instead, it aspires to be a fusion of GitHub's intuitive user experience, AWS's flexibility, and Ethereum's transparency. Gno.land hosts source code and implements systems to enhance its quality, like on-chain reviews, audit pipelines, and vanity metrics. 
+- Our interpreted version of Go, Gnovm, ensures that the contracts on Gno.land remain perpetually transparent. Much like GitHub's removal of the need for manual tarball downloads and checksum verifications, Gnovm allows the source code to reside directly on the chain.
+- One of the key benefits of interpreted contracts like Gnovm, as compared to EVM's compiled contracts, is that they allow more precise tracking and metrics for dependencies. This provides a more focused and trustworthy experience during contract reviews.
+- Envision Gno.land as an ever-evolving GitHub for smart contracts, with similar functionalities but extended to include data and dependencies. We aim to create the most trustworthy platform for both users and developers, while simultaneously promoting a culture of high-quality open-source development.
+- Now, visualize Gno.land as a colossal, multi-user REPL. A place where anyone can create new packages, interact with existing ones, and everything is live. It's akin to a massively multiplayer online role-playing game (MMORPG) for developers, where the code you write enhances your own account/user experience.
+- Ultimately, we are striving to transform Gno.land into a new norm for the developer community. Once widely adopted, it would make today's technology appear less secure and trustworthy in comparison.
+
+## Relevant Resources
+- Multi-user REPL concept: https://github.com/gnolang/hackerspace/issues/16
+- MMORPG concept for developers: https://github.com/gnolang/hackerspace/issues/4
+- Additional presentations: https://github.com/gnolang/workshops/tree/main/presentations
