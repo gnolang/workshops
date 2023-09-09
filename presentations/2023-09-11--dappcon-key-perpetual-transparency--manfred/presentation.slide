@@ -1,3 +1,15 @@
+# Gno.land: The Key To Perpetual Transparency
+11 Sep 2023
+Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
+Summary: TODO
+
+Manfred Touron
+VP Eng., Gno.land
+https://gno.land/
+https://github.com/gnolang
+@moul
+
+## TMP1
 ## Conceptual Overview
 - Prior to the emergence of GitHub, Git and open-source technology were prevalent, yet they existed in a scattered manner, requiring arduous navigational methods for developers. GitHub revolutionized this process, providing a consolidated, user-friendly platform that enhanced the experience of producing and consuming open-source software. Without platforms like GitHub, the open-source landscape would still be functional, yet substantially fragmented and less accessible.
 - AWS and Ethereum offer similar promises as platforms where developers can execute their code. However, Ethereum provides users with a higher degree of trust due to its immutable contracts and the possibility of verifying source code against bytecode. Despite these benefits, it still lacks the ability to host and manage code in a unified, transparent manner. Gno.land, on the other hand, blends these features, providing a level of transparency reminiscent of Ethereum, combined with the convenience and functionality of GitHub.
@@ -12,3 +24,20 @@
 - Multi-user REPL concept: https://github.com/gnolang/hackerspace/issues/16
 - MMORPG concept for developers: https://github.com/gnolang/hackerspace/issues/4
 - Additional presentations: https://github.com/gnolang/workshops/tree/main/presentations
+## TMP2
+
+## What is Game of realms?
+- ongoing competition for contributors
+- experimental phase for proof of contributions
+- building **Evaluation DAO**, and the new governance module
+- earn $ATOM and become member on mainnet genesis
+
+.code ./code/gor-banner.txt
+
+## Action Items
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
+
+
