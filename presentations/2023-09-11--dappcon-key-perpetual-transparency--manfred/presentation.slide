@@ -9,6 +9,116 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
+## About Gno: A New Era in Smart Contracting
+
+Gnolang/GnoVM: Comprehensive smart contract suite, based on Golang (Go)
+Gno.land is the first L1 using Gnolang (Gno), a new language based on Go created by Cosmos co-founder Jae Kwon
+Built on Tendermint2 in the Cosmos/IBC ecosystem, Gno.land is secured by a novel consensus mechanism: Proof of Contribution 
+Prioritizing simplicity, security, scalability
+Gno.land + Gnolang: Chain + language
+- Gno.land + GnoVM: Can be run standalone (linked to its L1)
+- Gno: Ecosystem + CLI (GnoVM CLI)
+- Gnoweb: strong discovery tool for devs (+ identity)
+
+## Open Source Origins
+
+OSS concepts:
+- Reusability (customization + responsible author attribution via forking)
+- Shared responsibility
+- Transparency
+- Public accessibility
+  - Security through greater number of eyes on project
+
+## Current landscape
+
+GitHub: singular location for storing, reviewing, updating and discussing code
+Ethereum: decentralized hosting/execution environment
+AWS: hosting/execution environment
+
+## Ethereum
+
+Ethereum provides limited transparency in that it relies on verification of bytecode to ensure that a contract deployed at a specified address is doing what it says it is doing.
+
+Bytecode verification + decompilation often relies on 
+3rd-party tools which can fail or introduce additional 
+trust assumptions.
+
+Examples:
+	
+	https://ethervm.io/decompile
+https://etherscan.io/verifyContract
+
+Uniswap Universal Router
+
+.image images/eth-explorer.png
+
+## Future: Gno.land = OSS 2.0
+
+- Hosting solution + trusted execution environment with full source-code auditability rather than bytecode verification/decompilation
+- A GitHub 2.0 for all other gnovm chains to rely on
+
+Borrows from OSS:
+	- Import
+	- Reuse
+	- Fork
+
+Extends OSS:
+	- Verify
+	- Execute
+
+## Future: Gno.land
+
+Gno.land aims to serve as a decentralized code repository and code execution environment.
+As illustrated on the next slide, other gnovm-based chains can interoperate with gno.land through IBC (inter-blockchain communication protocol) enabling the import of necessary libraries much like we have grown accustomed to go getting source code from Github.
+
+$ go get https://github.com/openzeppelin/math
+
+$ gno get gno.land/p/openzeppelin/math
+
+## Future: Gno.land
+
+.image images/gnoland-deps.png
+
+## Gno(lang)
+
+Gno (language) is an interpreted version of [Go](https://golang.org/) designed as a good entry point for web2 developers as it uses the same structure as Go but is optimized specifically for building smart contracts which in the Gno world are referred to as Realms.
+
+Highlights:
+- Designed for blockchain
+- Deterministic
+- Intuitive VM
+- Transparent and verifiable state for external observers (auto-merkleization)
+- Enables direct implementation of Interchain protocols in smart contracts (auto-merkleization)
+
+Instead of app-specific chains, Gnolang envisions [IBC](https://ibcprotocol.org/), as an internet of smart contracts (as shown on previous page, 6).
+
+## Tooling
+
+- Gno.land: The client
+- Gnokey: Account management
+- Gnoweb: Web interface; blog, realms, website, faucet
+- Gnofaucet: Interacts with Gno.land to issue test funds
+
+External:
+- Adena: The de-facto web wallet for interacting with Gno.land
+- Gnoscan: The first block explorer for Gno.land
+- Gno IDE; coming soon!
+
+## Gno.land: timeline
+
+Current stage: testnet
+
+(Provide development timeline/current progress here)
+
+## Resources
+
+Contact sheet; QR codes
+
+https://gno.land (+ https://gno.land/game-of-realms)
+https://github.com/gnolang/gno
+https://twitter.com/_gnoland
+
+
 ## TMP1
 ## Conceptual Overview
 - Prior to the emergence of GitHub, Git and open-source technology were prevalent, yet they existed in a scattered manner, requiring arduous navigational methods for developers. GitHub revolutionized this process, providing a consolidated, user-friendly platform that enhanced the experience of producing and consuming open-source software. Without platforms like GitHub, the open-source landscape would still be functional, yet substantially fragmented and less accessible.
