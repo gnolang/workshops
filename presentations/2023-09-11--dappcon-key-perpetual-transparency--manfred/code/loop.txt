@@ -1,0 +1,12 @@
+ 
+                          +----------+           +--------------+
+                          |          |           | Read, Audit, |
+                          | Explore  |---------->|  Debug, Use  |
+ Loop, for perpetual      |          |           +--------------+
+       transparency.      +----------+                   |
+                                ^  +-----------------+   |
+                                |  | Import, Extend, |   |
+                                +--|  Compose, Fork  |<--+
+                                   +-----------------+
+
+ 

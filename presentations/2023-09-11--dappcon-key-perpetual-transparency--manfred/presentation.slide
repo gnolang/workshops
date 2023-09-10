@@ -9,9 +9,12 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
-## Disclaimer
+## Bonjour, dAppcon!
 
-For the clarity and simplicity of this presentation, I reference "GitHub" as a representative product, but the same principles can be applied to similar platforms like GitLab. Similarly, when I mention "Open-Source," it's a general term that can also encompass concepts like free software. Please interpret these terms broadly.
+.code ./code/hello-its-manfred.txt
+
+## Intro to Gno
+.background ./assets/gno-bg-grayscale.png
 
 ## Intro to Gno: a new era in smart sontracting, and open-source
 
@@ -54,12 +57,18 @@ For the clarity and simplicity of this presentation, I reference "GitHub" as a r
 
 ## Gno.land: GitHub for smart contracts
 
+.background ./assets/gno-bg-grayscale.png
+
+## Gno.land: GitHub for smart contracts
+
 - Gno.land encourages reusing, importing, forking, and composing contracts.
 - Provides source code, execution, metadata, and metrics (including deps/libraries).
 - Metrics act as trust indicators, akin to GitHub stars or forks or NPM downloads.
 - Developers can inspect contract creators (user or organization), similar to GitHub.
 - Enables dependency monitoring, boosting transparency and trust.
 - More than a platform, Gno.land is a developer community.
+
+.code ./code/hello-world.go
 
 ## Gno.land: simplifying smart contract development
 
@@ -76,6 +85,8 @@ For the clarity and simplicity of this presentation, I reference "GitHub" as a r
 - Contracts on Gno.land: Source code and state combined.
 - Access contract state with its source, and printf debug like it's local.
 
+.code ./code/repl-debug.txt
+
 ## Gno.land: proof-of-contribution, rewarding good code
 
 - Gno.land replaces Proof of Stake with Proof of Contribution.
@@ -83,6 +94,12 @@ For the clarity and simplicity of this presentation, I reference "GitHub" as a r
 - Developers are encouraged to write good quality code.
 - Aligns with open-source ethos of community contribution and recognition.
 - Proof of Contribution benefits both the project and the developer.
+
+.code ./code/poc-bucket.txt
+
+## New Open-Source paradigm
+
+.background ./assets/gno-bg-grayscale.png
 
 ## Beyond the langage, a new open-source paradigm
 
@@ -98,6 +115,8 @@ For the clarity and simplicity of this presentation, I reference "GitHub" as a r
 - Our platform integrates execution, auditability, verification, and trust.
 - Given the surge of Gno contracts, conventional open-source might appear constrained.
 - It's akin to the GitHub effect on its own ecosystem.
+
+.code ./code/oss-ethos.txt
 
 ## The GitHub Revolution
 
@@ -118,6 +137,8 @@ For the clarity and simplicity of this presentation, I reference "GitHub" as a r
 - Champion transparency, collaboration and trust in modern development.
 - Reward meaningful code with Proof of Contribution.
 
+.code ./code/loop.txt
+
 Join us in our testnet phase to co-create the future.
 
 ## What is Game of realms?
@@ -134,3 +155,7 @@ Join us in our testnet phase to co-create the future.
 * visit gno.land
 * help us create "Game of Realms"
 * contribute!
+
+## Thank you
+
+.background ./assets/gno-bg-grayscale.png
