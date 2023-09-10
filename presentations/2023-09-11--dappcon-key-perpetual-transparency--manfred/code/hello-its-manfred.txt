@@ -1,0 +1,22 @@
+ 
+       ++
+       ++++
+        ++++
+      ++++++++++
+     +++       |
+     ++         |               Hello! I'm Manfred.
+     +  -==   ==|               As you might deduce from my accent,
+    (   <*>   <*>               I hail from France. 🇫🇷🥖
+     |           |
+     |         __|              A Quick Note:
+     |      +++                 In this presentation, when I mention 'GitHub' or
+      \      =+                 'Open-Source', keep in mind that the same ideas
+       \      +                 apply to platforms like 'GitLab' and encompass
+       |\++++++                 concepts like 'free software'.
+       |  ++++      ||//        Please take these terms broadly.
+   ____|   |____   _||/__
+  /     ---     \  \|  |||
+ /  _ _  _     / \   \ /
+ | / / //_//_//  |   | |
+ 
+ 

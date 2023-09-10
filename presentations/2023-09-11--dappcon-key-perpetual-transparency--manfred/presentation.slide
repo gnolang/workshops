@@ -1,0 +1,161 @@
+# Gno.land: The Key To Perpetual Transparency
+11 Sep 2023
+Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
+Summary: TODO
+
+Manfred Touron
+VP Eng., Gno.land
+https://gno.land/
+https://github.com/gnolang
+@moul
+
+## Bonjour, dAppcon!
+
+.code ./code/hello-its-manfred.txt
+
+## Intro to Gno
+
+// .background ./assets/gno-bg-grayscale.png
+
+## Intro to Gno: a new era in smart sontracting, and open-source
+
+- Gno: Comprehensive smart contract suite: Gno.land (chain) + Gnolang (language).
+- Created by Cosmos co-founder Jae Kwon.
+- Gno.land: The first L1 using Gnolang, a Go-based language for smart contracts.
+- Built on Tendermint2, Cosmos/IBC, secured by Proof of Contribution.
+- Prioritizes simplicity, security, and scalability.
+- Gnoweb: Integrated dApp server for contract interactions, no extra servers needed.
+
+.code ./code/gnoland-schema.txt
+
+## Gnolang, a multi-user programming language
+
+- Gnolang: Go-based language for smart contracting.
+- Powers Gno.land and future GnoVM-based blockchains.
+- Multi-user design enhances developer and app interaction.
+- Creates shared virtual environment, akin to developer MMORPG.
+
+.code ./code/deps.txt
+
+## Multi-User programming, deep contract interactions
+
+- Contracts: callable and importable, unifying apps and libraries.
+- Breaks from GitHub/NPM (libraries) or Ethereum/AWS (apps) norms.
+- Imported contracts offer type safety, rich types.
+- Dependencies maintain state; changes during interaction are applied.
+- Enables cheap, efficient interactions with concise code.
+
+.code ./code/deep-contract-interactions.go
+
+## Multi-user programming: transparency, readability, audibility
+
+- GnoVM uses human-readable paths for contracts, unlike EVM's hashes.
+- No bytecodes, just plain, readable source code.
+- Promotes simplicity, removes ambiguity for users and developers.
+- Enhances contract discovery, reading, and auditing.
+
+.code ./code/source-bytecode.txt
+
+## Gno.land: GitHub for smart contracts
+
+// .background ./assets/gno-bg-grayscale.png
+
+## Gno.land: GitHub for smart contracts
+
+- Gno.land encourages reusing, importing, forking, and composing contracts.
+- Provides source code, execution, metadata, and metrics (including deps/libraries).
+- Metrics act as trust indicators, akin to GitHub stars or forks or NPM downloads.
+- Developers can inspect contract creators (user or organization), similar to GitHub.
+- Enables dependency monitoring, boosting transparency and trust.
+- More than a platform, Gno.land is a developer community.
+
+.code ./code/hello-world.go
+
+## Gno.land: simplifying smart contract development
+
+- Remember the arrival of GitHub? Open-source existed, but it wasn't simple or social.
+- It replaced the tedious process of finding and compiling tarballs with easy browsing and discovery.
+- Gno.land aims to do the same for smart contracts.
+- It's not just about executing contracts, but also about reusing, importing, forking, and composing them.
+- Gno.land: Making smart contract development easier and more accessible.
+
+## Gno.land: applying the GitHub effect to contract execution
+
+- Merging GitHub's source code management with contract execution.
+- Key feature? Transparent, reusable, accessible contract state (data).
+- Contracts on Gno.land: Source code and state combined.
+- Access contract state with its source, and printf debug like it's local.
+
+.code ./code/repl-debug.txt
+
+## Gno.land: proof-of-contribution, rewarding good code
+
+- Gno.land replaces Proof of Stake with Proof of Contribution.
+- Focus shifts from investment to contributions.
+- Developers are encouraged to write good quality code.
+- Aligns with open-source ethos of community contribution and recognition.
+- Proof of Contribution benefits both the project and the developer.
+
+.code ./code/poc-bucket.txt
+
+## New Open-Source paradigm
+
+// .background ./assets/gno-bg-grayscale.png
+
+## Beyond the langage, a new open-source paradigm
+
+- Open-source is about creating new knowledge and fostering connections.
+- Traditional smart contracts have been focused on isolation, existing in bubbles.
+- Gno.land aims to bring the spirit of open-source to smart contracts.
+- We envision a constantly growing creative world with new contracts, libraries, interconnections, and possibilities.
+
+## Amplifying Open-Source
+
+- Gno.land enriches, rather than challenges, open-source.
+- We treasure open-source and magnify its foundation.
+- Our platform integrates execution, auditability, verification, and trust.
+- Given the surge of Gno contracts, conventional open-source might appear constrained.
+- It's akin to the GitHub effect on its own ecosystem.
+
+.code ./code/oss-ethos.txt
+
+## The GitHub Revolution
+
+**Before GitHub:**
+- Open-source existed, but it was isolated and challenging.
+- Collaboration was tedious; discovery was a maze.
+- Trust and transparency were often compromised.
+
+**After GitHub:**
+- Open-source became social, accessible, and dynamic.
+- Trust in code through community endorsements (stars, forks).
+- Can we even imagine reverting? It would be a massive step back.
+
+## Gno.land's Ambition
+
+- Elevate smart contracts as GitHub transformed open-source.
+- Make bytecode contracts and clouds feel dated.
+- Champion transparency, collaboration and trust in modern development.
+- Reward meaningful code with Proof of Contribution.
+
+.code ./code/loop.txt
+
+Join us in our testnet phase to co-create the future.
+
+## What is Game of realms?
+
+- ongoing competition for contributors
+- experimental phase for proof of contributions
+- building **Evaluation DAO**, and the new governance module
+- earn $ATOM and become member on mainnet genesis
+
+.code ./code/gor-banner.txt
+
+## Action Items
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!
+
+// ## Thank you
+// .background ./assets/gno-bg-grayscale.png
