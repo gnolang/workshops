@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gno.land: The Key To Perpetual Transparency</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>Gno.land: The Key To Perpetual Transparency</h1>
+        
+        <h3>11 September 2023</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>Bonjour, dAppcon!</h3>
+        
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">       &#43;&#43;</span>
+<span num="3">       &#43;&#43;&#43;&#43;</span>
+<span num="4">        &#43;&#43;&#43;&#43;</span>
+<span num="5">      &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;</span>
+<span num="6">     &#43;&#43;&#43;       |</span>
+<span num="7">     &#43;&#43;         |               Hello! I&#39;m Manfred.</span>
+<span num="8">     &#43;  -==   ==|               As you might deduce from my accent,</span>
+<span num="9">    (   &lt;*&gt;   &lt;*&gt;               I hail from France. 🇫🇷🥖</span>
+<span num="10">     |           |</span>
+<span num="11">     |         __|              A Quick Note:</span>
+<span num="12">     |      &#43;&#43;&#43;                 In this presentation, when I mention &#39;GitHub&#39; or</span>
+<span num="13">      \      =&#43;                 &#39;Open-Source&#39;, keep in mind that the same ideas</span>
+<span num="14">       \      &#43;                 apply to platforms like &#39;GitLab&#39; and encompass</span>
+<span num="15">       |\&#43;&#43;&#43;&#43;&#43;&#43;                 concepts like &#39;free software&#39;.</span>
+<span num="16">       |  &#43;&#43;&#43;&#43;      ||//        Please take these terms broadly.</span>
+<span num="17">   ____|   |____   _||/__</span>
+<span num="18">  /     ---     \  \|  |||</span>
+<span num="19"> /  _ _  _     / \   \ /</span>
+<span num="20"> | / / //_//_//  |   | |</span>
+<span num="21"> </span>
+<span num="22"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h2>Intro to Gno</h2>
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Intro to Gno: a new era in smart sontracting, and open-source</h3>
+        <ul>
+<li>Gno: Comprehensive smart contract suite: Gno.land (chain) + Gnolang (language).</li>
+<li>Created by Cosmos co-founder Jae Kwon.</li>
+<li>Gno.land: The first L1 using Gnolang, a Go-based language for smart contracts.</li>
+<li>Built on Tendermint2, Cosmos/IBC, secured by Proof of Contribution.</li>
+<li>Prioritizes simplicity, security, and scalability.</li>
+<li>Gnoweb: Integrated dApp server for contract interactions, no extra servers needed.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">  &#43;----------&#43;      &#43;----------&#43;-------&#43;----------------&#43;</span>
+<span num="2">  |          |      |          |       |    Gnolang     |</span>
+<span num="3">  | Wallets  |-----&gt;|          | GnoVM &#43;----------------&#43;</span>
+<span num="4">  |          |      |          |       |Execution State |</span>
+<span num="5">  &#43;----------&#43;      |          &#43;-------&#43;-----&#43;----------&#43;</span>
+<span num="6">                    | Gno.land |             |   BFT    |</span>
+<span num="7">  &#43;----------&#43;      |          | Tendermint2 &#43;----------&#43;</span>
+<span num="8">  |          |      |          |             |   IBC    |--interchain--&gt;  ...</span>
+<span num="9">  |  Gnoweb  |-----&gt;|          &#43;-------------&#43;----------&#43;</span>
+<span num="10">  |          |      |          | Proof-of-Contribution  |</span>
+<span num="11">  &#43;----------&#43;      &#43;----------&#43;------------------------&#43;</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gnolang, a multi-user programming language</h3>
+        <ul>
+<li>Gnolang: Go-based language for smart contracting.</li>
+<li>Powers Gno.land and future GnoVM-based blockchains.</li>
+<li>Multi-user design enhances developer and app interaction.</li>
+<li>Creates shared virtual environment, akin to developer MMORPG.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">Contracts start standalone, then grow interconnected for better reusability.</span>
+<span num="2"></span>
+<span num="3">                        ┌────────────────────────────┐</span>
+<span num="4">                        │                            │</span>
+<span num="5">                        │                            ▼</span>
+<span num="6">    ┌───────┐       ┌───────┐       ┌───────┐    ┌───────┐     ┌───────┐</span>
+<span num="7">    │   E   │──────▶│   C   │──────▶│   A   │    │   B   │     │   D   │</span>
+<span num="8">    └───────┘       └───────┘       └───────┘    └───────┘     └───────┘</span>
+<span num="9">        │                               ▲            ▲             │</span>
+<span num="10">        │                               │            │             │</span>
+<span num="11">        └───────────────────────────────┘            └─────────────┘</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Multi-User programming, deep contract interactions</h3>
+        <ul>
+<li>Contracts: callable and importable, unifying apps and libraries.</li>
+<li>Breaks from GitHub/NPM (libraries) or Ethereum/AWS (apps) norms.</li>
+<li>Imported contracts offer type safety, rich types.</li>
+<li>Dependencies maintain state; changes during interaction are applied.</li>
+<li>Enables cheap, efficient interactions with concise code.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">package foobar</span>
+<span num="2"></span>
+<span num="3">import (</span>
+<span num="4">    &#34;gno.land/r/foo20&#34; // a grc20 token</span>
+<span num="5">    &#34;gno.land/r/users&#34; // equivalent of ENS</span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">func TransferToUsername(username string, amount int) {</span>
+<span num="9">    user := users.Lookup(username)</span>
+<span num="10">    foo20.Transfer(user.Addr(), amount)</span>
+<span num="11">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Multi-user programming: transparency, readability, audibility</h3>
+        <ul>
+<li>GnoVM uses human-readable paths for contracts, unlike EVM's hashes.</li>
+<li>No bytecodes, just plain, readable source code.</li>
+<li>Promotes simplicity, removes ambiguity for users and developers.</li>
+<li>Enhances contract discovery, reading, and auditing.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">                                                                     &#43;--------------&#43;</span>
+<span num="2">                &#43;---------&#43;    Uploads     &#43;-------&#43;     Runs        |   Contract   |</span>
+<span num="3"> GnoVM          |Developer|--source code--&gt;| GnoVM |--Source Code---&gt;|  Execution   |</span>
+<span num="4">                &#43;---------&#43;                &#43;-------&#43;                 &#43;--------------&#43;</span>
+<span num="5"></span>
+<span num="6"></span>
+<span num="7">                &#43;---------&#43;                 &#43;-----&#43;       Runs       &#43;--------------&#43;</span>
+<span num="8">                |Developer|           &#43;----&gt;| EVM |-----Bytecode----&gt;|   Contract   |</span>
+<span num="9">                &#43;---------&#43;           |     &#43;-----&#43;                  |  Execution   |</span>
+<span num="10"> EVM                 |                |                              &#43;--------------&#43;</span>
+<span num="11">                  Writes           Uploads</span>
+<span num="12">                source code        Bytecode</span>
+<span num="13">                     |  &#43;-------&#43;     |</span>
+<span num="14">                     &#43;-&gt;|Compile|-----&#43;</span>
+<span num="15">                        &#43;-------&#43;</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h2>Gno.land: GitHub for smart contracts</h2>
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: GitHub for smart contracts</h3>
+        <ul>
+<li>Gno.land encourages reusing, importing, forking, and composing contracts.</li>
+<li>Provides source code, execution, metadata, and metrics (including deps/libraries).</li>
+<li>Metrics act as trust indicators, akin to GitHub stars or forks or NPM downloads.</li>
+<li>Developers can inspect contract creators (user or organization), similar to GitHub.</li>
+<li>Enables dependency monitoring, boosting transparency and trust.</li>
+<li>More than a platform, Gno.land is a developer community.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">package hello</span>
+<span num="2"></span>
+<span num="3">func Greetings() string {</span>
+<span num="4">    return &#34;Hello World!&#34;</span>
+<span num="5">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: simplifying smart contract development</h3>
+        <ul>
+<li>Remember the arrival of GitHub? Open-source existed, but it wasn't simple or social.</li>
+<li>It replaced the tedious process of finding and compiling tarballs with easy browsing and discovery.</li>
+<li>Gno.land aims to do the same for smart contracts.</li>
+<li>It's not just about executing contracts, but also about reusing, importing, forking, and composing them.</li>
+<li>Gno.land: Making smart contract development easier and more accessible.</li>
+</ul>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: applying the GitHub effect to contract execution</h3>
+        <ul>
+<li>Merging GitHub's source code management with contract execution.</li>
+<li>Key feature? Transparent, reusable, accessible contract state (data).</li>
+<li>Contracts on Gno.land: Source code and state combined.</li>
+<li>Access contract state with its source, and printf debug like it's local.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">$&gt; import &#34;gno.land/r/forum&#34;</span>
+<span num="2">$&gt; print(forum.Debug())</span>
+<span num="3">{</span>
+<span num="4">  ...</span>
+<span num="5">  ...</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land: proof-of-contribution, rewarding good code</h3>
+        <ul>
+<li>Gno.land replaces Proof of Stake with Proof of Contribution.</li>
+<li>Focus shifts from investment to contributions.</li>
+<li>Developers are encouraged to write good quality code.</li>
+<li>Aligns with open-source ethos of community contribution and recognition.</li>
+<li>Proof of Contribution benefits both the project and the developer.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">                                                              &#43;------------------&#43;</span>
+<span num="2">&#43;-----------&#43;                        &#43;-----------&#43;     &#43;-X%--&gt;|   contributors   |</span>
+<span num="3">|           |                        |chain fees |     |      &#43;------------------&#43;</span>
+<span num="4">|   users   |---------$GNOT---------&gt;|  bucket   |-----&#43;-Y%--&gt;|    validators    |</span>
+<span num="5">|           |                        |           |     |      &#43;------------------&#43;</span>
+<span num="6">&#43;-----------&#43;                        &#43;-----------&#43;     &#43;-Z%--&gt;| contract authors |</span>
+<span num="7">                                                              &#43;------------------&#43;</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h2>New Open-Source paradigm</h2>
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Beyond the langage, a new open-source paradigm</h3>
+        <ul>
+<li>Open-source is about creating new knowledge and fostering connections.</li>
+<li>Traditional smart contracts have been focused on isolation, existing in bubbles.</li>
+<li>Gno.land aims to bring the spirit of open-source to smart contracts.</li>
+<li>We envision a constantly growing creative world with new contracts, libraries, interconnections, and possibilities.</li>
+</ul>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Amplifying Open-Source</h3>
+        <ul>
+<li>Gno.land enriches, rather than challenges, open-source.</li>
+<li>We treasure open-source and magnify its foundation.</li>
+<li>Our platform integrates execution, auditability, verification, and trust.</li>
+<li>Given the surge of Gno contracts, conventional open-source might appear constrained.</li>
+<li>It's akin to the GitHub effect on its own ecosystem.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">                              Open-Source Ethos</span>
+<span num="3"></span>
+<span num="4"></span>
+<span num="5">               1. Freedom to Run          7. Meritocracy</span>
+<span num="6">               2. Freedom to Study        8. Community-Centric</span>
+<span num="7">               3. Freedom to Modify       9. Open Standards</span>
+<span num="8">               4. Freedom to Distribute   10. License Integrity</span>
+<span num="9">               5. Collaboration           11. Inclusivity</span>
+<span num="10">               6. Transparency            12. Sustainability</span>
+<span num="11"></span>
+<span num="12"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>The GitHub Revolution</h3>
+        <p><strong>Before GitHub:</strong></p>
+<ul>
+<li>Open-source existed, but it was isolated and challenging.</li>
+<li>Collaboration was tedious; discovery was a maze.</li>
+<li>Trust and transparency were often compromised.</li>
+</ul>
+<p><strong>After GitHub:</strong></p>
+<ul>
+<li>Open-source became social, accessible, and dynamic.</li>
+<li>Trust in code through community endorsements (stars, forks).</li>
+<li>Can we even imagine reverting? It would be a massive step back.</li>
+</ul>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Gno.land&#39;s Ambition</h3>
+        <ul>
+<li>Elevate smart contracts as GitHub transformed open-source.</li>
+<li>Make bytecode contracts and clouds feel dated.</li>
+<li>Champion transparency, collaboration and trust in modern development.</li>
+<li>Reward meaningful code with Proof of Contribution.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">                          &#43;----------&#43;           &#43;--------------&#43;</span>
+<span num="3">                          |          |           | Read, Audit, |</span>
+<span num="4">                          | Explore  |----------&gt;|  Debug, Use  |</span>
+<span num="5"> Loop, for perpetual      |          |           &#43;--------------&#43;</span>
+<span num="6">       transparency.      &#43;----------&#43;                   |</span>
+<span num="7">                                ^  &#43;-----------------&#43;   |</span>
+<span num="8">                                |  | Import, Extend, |   |</span>
+<span num="9">                                &#43;--|  Compose, Fork  |&lt;--&#43;</span>
+<span num="10">                                   &#43;-----------------&#43;</span>
+<span num="11"></span>
+<span num="12"> </span>
+</pre>
+</div>
+<p>Join us in our testnet phase to co-create the future.</p>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What is Game of realms?</h3>
+        <ul>
+<li>ongoing competition for contributors</li>
+<li>experimental phase for proof of contributions</li>
+<li>building <strong>Evaluation DAO</strong>, and the new governance module</li>
+<li>earn $ATOM and become member on mainnet genesis</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1"> </span>
+<span num="2">     ______                              ____   ____             __</span>
+<span num="3">    / ____/___ _____ ___  ___     ____  / __/  / __ \___  ____ _/ /___ ___  _____</span>
+<span num="4">   / / __/ __ `/ __ `__ \/ _ \   / __ \/ /_   / /_/ / _ \/ __ `/ / __ `__ \/ ___/</span>
+<span num="5">  / /_/ / /_/ / / / / / /  __/  / /_/ / __/  / _, _/  __/ /_/ / / / / / / (__  )</span>
+<span num="6">  \____/\__,_/_/ /_/ /_/\___/   \____/_/    /_/ |_|\___/\__,_/_/_/ /_/ /_/____/</span>
+<span num="7"> </span>
+<span num="8"> </span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Action Items</h3>
+        <ul>
+<li>follow github.com/gnolang/gno</li>
+<li>visit gno.land</li>
+<li>help us create &quot;Game of Realms&quot;</li>
+<li>contribute!</li>
+</ul>
+
+      
+      <span class="pagenumber">19</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land
+  </p>
+  
+<p class="link"><a href="https://gno.land/" target="_blank">https://gno.land/</a></p><p class="link"><a href="https://github.com/gnolang" target="_blank">https://github.com/gnolang</a></p><p class="link"><a href="http://twitter.com/moul" target="_blank">@moul</a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
