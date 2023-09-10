@@ -14,7 +14,8 @@ https://github.com/gnolang
 .code ./code/hello-its-manfred.txt
 
 ## Intro to Gno
-.background ./assets/gno-bg-grayscale.png
+
+// .background ./assets/gno-bg-grayscale.png
 
 ## Intro to Gno: a new era in smart sontracting, and open-source
 
@@ -57,7 +58,7 @@ https://github.com/gnolang
 
 ## Gno.land: GitHub for smart contracts
 
-.background ./assets/gno-bg-grayscale.png
+// .background ./assets/gno-bg-grayscale.png
 
 ## Gno.land: GitHub for smart contracts
 
@@ -99,7 +100,7 @@ https://github.com/gnolang
 
 ## New Open-Source paradigm
 
-.background ./assets/gno-bg-grayscale.png
+// .background ./assets/gno-bg-grayscale.png
 
 ## Beyond the langage, a new open-source paradigm
 
@@ -156,6 +157,5 @@ Join us in our testnet phase to co-create the future.
 * help us create "Game of Realms"
 * contribute!
 
-## Thank you
-
-.background ./assets/gno-bg-grayscale.png
+// ## Thank you
+// .background ./assets/gno-bg-grayscale.png
