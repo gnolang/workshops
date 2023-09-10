@@ -9,6 +9,10 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
+## Disclaimer
+
+For the clarity and simplicity of this presentation, I reference "GitHub" as a representative product, but the same principles can be applied to similar platforms like GitLab. Similarly, when I mention "Open-Source," it's a general term that can also encompass concepts like free software. Please interpret these terms broadly.
+
 ## Intro to Gno: a new era in smart sontracting, and open-source
 
 - Gno: Comprehensive smart contract suite: Gno.land (chain) + Gnolang (language).
@@ -87,7 +91,6 @@ https://github.com/gnolang
 - Gno.land aims to bring the spirit of open-source to smart contracts.
 - We envision a constantly growing creative world with new contracts, libraries, interconnections, and possibilities.
 
-
 ## Amplifying Open-Source
 
 - Gno.land enriches, rather than challenges, open-source.
@@ -96,30 +99,29 @@ https://github.com/gnolang
 - Given the surge of Gno contracts, conventional open-source might appear constrained.
 - It's akin to the GitHub effect on its own ecosystem.
 
-## Conclusion: join us in shaping the future
+## The GitHub Revolution
 
-- Gno.land is currently in testnet.
-- We're seeking early adopters, builders and tinkerers to build on Gno.
+**Before GitHub:**
+- Open-source existed, but it was isolated and challenging.
+- Collaboration was tedious; discovery was a maze.
+- Trust and transparency were often compromised.
 
------
+**After GitHub:**
+- Open-source became social, accessible, and dynamic.
+- Trust in code through community endorsements (stars, forks).
+- Can we even imagine reverting? It would be a massive step back.
 
-## Conceptual Overview
-- Prior to the emergence of GitHub, Git and open-source technology were prevalent, yet they existed in a scattered manner, requiring arduous navigational methods for developers. GitHub revolutionized this process, providing a consolidated, user-friendly platform that enhanced the experience of producing and consuming open-source software. Without platforms like GitHub, the open-source landscape would still be functional, yet substantially fragmented and less accessible.
-- AWS and Ethereum offer similar promises as platforms where developers can execute their code. However, Ethereum provides users with a higher degree of trust due to its immutable contracts and the possibility of verifying source code against bytecode. Despite these benefits, it still lacks the ability to host and manage code in a unified, transparent manner. Gno.land, on the other hand, blends these features, providing a level of transparency reminiscent of Ethereum, combined with the convenience and functionality of GitHub.
-- Gno.land aims to be more than a mere platform for code execution. Instead, it aspires to be a fusion of GitHub's intuitive user experience, AWS's flexibility, and Ethereum's transparency. Gno.land hosts source code and implements systems to enhance its quality, like on-chain reviews, audit pipelines, and vanity metrics. 
-- Our interpreted version of Go, Gnovm, ensures that the contracts on Gno.land remain perpetually transparent. Much like GitHub's removal of the need for manual tarball downloads and checksum verifications, Gnovm allows the source code to reside directly on the chain.
-- One of the key benefits of interpreted contracts like Gnovm, as compared to EVM's compiled contracts, is that they allow more precise tracking and metrics for dependencies. This provides a more focused and trustworthy experience during contract reviews.
-- Envision Gno.land as an ever-evolving GitHub for smart contracts, with similar functionalities but extended to include data and dependencies. We aim to create the most trustworthy platform for both users and developers, while simultaneously promoting a culture of high-quality open-source development.
-- Now, visualize Gno.land as a colossal, multi-user REPL. A place where anyone can create new packages, interact with existing ones, and everything is live. It's akin to a massively multiplayer online role-playing game (MMORPG) for developers, where the code you write enhances your own account/user experience.
-- Ultimately, we are striving to transform Gno.land into a new norm for the developer community. Once widely adopted, it would make today's technology appear less secure and trustworthy in comparison.
+## Gno.land's Ambition
 
-## Relevant Resources
-- Multi-user REPL concept: https://github.com/gnolang/hackerspace/issues/16
-- MMORPG concept for developers: https://github.com/gnolang/hackerspace/issues/4
-- Additional presentations: https://github.com/gnolang/workshops/tree/main/presentations
-## TMP2
+- Elevate smart contracts as GitHub transformed open-source.
+- Make bytecode contracts and clouds feel dated.
+- Champion transparency, collaboration and trust in modern development.
+- Reward meaningful code with Proof of Contribution.
+
+Join us in our testnet phase to co-create the future.
 
 ## What is Game of realms?
+
 - ongoing competition for contributors
 - experimental phase for proof of contributions
 - building **Evaluation DAO**, and the new governance module
@@ -132,5 +134,3 @@ https://github.com/gnolang
 * visit gno.land
 * help us create "Game of Realms"
 * contribute!
-
-
