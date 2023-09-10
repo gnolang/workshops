@@ -9,117 +9,100 @@ https://gno.land/
 https://github.com/gnolang
 @moul
 
-## About Gno: A New Era in Smart Contracting
+## Intro to Gno: a new era in smart sontracting, and open-source
 
-Gnolang/GnoVM: Comprehensive smart contract suite, based on Golang (Go)
-Gno.land is the first L1 using Gnolang (Gno), a new language based on Go created by Cosmos co-founder Jae Kwon
-Built on Tendermint2 in the Cosmos/IBC ecosystem, Gno.land is secured by a novel consensus mechanism: Proof of Contribution 
-Prioritizing simplicity, security, scalability
-Gno.land + Gnolang: Chain + language
-- Gno.land + GnoVM: Can be run standalone (linked to its L1)
-- Gno: Ecosystem + CLI (GnoVM CLI)
-- Gnoweb: strong discovery tool for devs (+ identity)
+- Gno: Comprehensive smart contract suite: Gno.land (chain) + Gnolang (language).
+- Created by Cosmos co-founder Jae Kwon.
+- Gno.land: The first L1 using Gnolang, a Go-based language for smart contracts.
+- Built on Tendermint2, Cosmos/IBC, secured by Proof of Contribution.
+- Prioritizes simplicity, security, and scalability.
+- Gnoweb: Integrated dApp server for contract interactions, no extra servers needed.
 
-## Open Source Origins
+.code ./code/gnoland-schema.txt
 
-OSS concepts:
-- Reusability (customization + responsible author attribution via forking)
-- Shared responsibility
-- Transparency
-- Public accessibility
-  - Security through greater number of eyes on project
+## Gnolang, a multi-user programming language
 
-## Current landscape
+- Gnolang: Go-based language for smart contracting.
+- Powers Gno.land and future GnoVM-based blockchains.
+- Multi-user design enhances developer and app interaction.
+- Creates shared virtual environment, akin to developer MMORPG.
 
-GitHub: singular location for storing, reviewing, updating and discussing code
-Ethereum: decentralized hosting/execution environment
-AWS: hosting/execution environment
+.code ./code/deps.txt
 
-## Ethereum
+## Multi-User programming, deep contract interactions
 
-Ethereum provides limited transparency in that it relies on verification of bytecode to ensure that a contract deployed at a specified address is doing what it says it is doing.
+- Contracts: callable and importable, unifying apps and libraries.
+- Breaks from GitHub/NPM (libraries) or Ethereum/AWS (apps) norms.
+- Imported contracts offer type safety, rich types.
+- Dependencies maintain state; changes during interaction are applied.
+- Enables cheap, efficient interactions with concise code.
 
-Bytecode verification + decompilation often relies on 
-3rd-party tools which can fail or introduce additional 
-trust assumptions.
+.code ./code/deep-contract-interactions.go
 
-Examples:
-	
-	https://ethervm.io/decompile
-https://etherscan.io/verifyContract
+## Multi-user programming: transparency, readability, audibility
 
-Uniswap Universal Router
+- GnoVM uses human-readable paths for contracts, unlike EVM's hashes.
+- No bytecodes, just plain, readable source code.
+- Promotes simplicity, removes ambiguity for users and developers.
+- Enhances contract discovery, reading, and auditing.
 
-.image images/eth-explorer.png
+.code ./code/source-bytecode.txt
 
-## Future: Gno.land = OSS 2.0
+## Gno.land: GitHub for smart contracts
 
-- Hosting solution + trusted execution environment with full source-code auditability rather than bytecode verification/decompilation
-- A GitHub 2.0 for all other gnovm chains to rely on
+- Gno.land encourages reusing, importing, forking, and composing contracts.
+- Provides source code, execution, metadata, and metrics (including deps/libraries).
+- Metrics act as trust indicators, akin to GitHub stars or forks or NPM downloads.
+- Developers can inspect contract creators (user or organization), similar to GitHub.
+- Enables dependency monitoring, boosting transparency and trust.
+- More than a platform, Gno.land is a developer community.
 
-Borrows from OSS:
-	- Import
-	- Reuse
-	- Fork
+## Gno.land: simplifying smart contract development
 
-Extends OSS:
-	- Verify
-	- Execute
+- Remember the arrival of GitHub? Open-source existed, but it wasn't simple or social.
+- It replaced the tedious process of finding and compiling tarballs with easy browsing and discovery.
+- Gno.land aims to do the same for smart contracts.
+- It's not just about executing contracts, but also about reusing, importing, forking, and composing them.
+- Gno.land: Making smart contract development easier and more accessible.
 
-## Future: Gno.land
+## Gno.land: applying the GitHub effect to contract execution
 
-Gno.land aims to serve as a decentralized code repository and code execution environment.
-As illustrated on the next slide, other gnovm-based chains can interoperate with gno.land through IBC (inter-blockchain communication protocol) enabling the import of necessary libraries much like we have grown accustomed to go getting source code from Github.
+- Merging GitHub's source code management with contract execution.
+- Key feature? Transparent, reusable, accessible contract state (data).
+- Contracts on Gno.land: Source code and state combined.
+- Access contract state with its source, and printf debug like it's local.
 
-$ go get https://github.com/openzeppelin/math
+## Gno.land: proof-of-contribution, rewarding good code
 
-$ gno get gno.land/p/openzeppelin/math
+- Gno.land replaces Proof of Stake with Proof of Contribution.
+- Focus shifts from investment to contributions.
+- Developers are encouraged to write good quality code.
+- Aligns with open-source ethos of community contribution and recognition.
+- Proof of Contribution benefits both the project and the developer.
 
-## Future: Gno.land
+## Beyond the langage, a new open-source paradigm
 
-.image images/gnoland-deps.png
-
-## Gno(lang)
-
-Gno (language) is an interpreted version of [Go](https://golang.org/) designed as a good entry point for web2 developers as it uses the same structure as Go but is optimized specifically for building smart contracts which in the Gno world are referred to as Realms.
-
-Highlights:
-- Designed for blockchain
-- Deterministic
-- Intuitive VM
-- Transparent and verifiable state for external observers (auto-merkleization)
-- Enables direct implementation of Interchain protocols in smart contracts (auto-merkleization)
-
-Instead of app-specific chains, Gnolang envisions [IBC](https://ibcprotocol.org/), as an internet of smart contracts (as shown on previous page, 6).
-
-## Tooling
-
-- Gno.land: The client
-- Gnokey: Account management
-- Gnoweb: Web interface; blog, realms, website, faucet
-- Gnofaucet: Interacts with Gno.land to issue test funds
-
-External:
-- Adena: The de-facto web wallet for interacting with Gno.land
-- Gnoscan: The first block explorer for Gno.land
-- Gno IDE; coming soon!
-
-## Gno.land: timeline
-
-Current stage: testnet
-
-(Provide development timeline/current progress here)
-
-## Resources
-
-Contact sheet; QR codes
-
-https://gno.land (+ https://gno.land/game-of-realms)
-https://github.com/gnolang/gno
-https://twitter.com/_gnoland
+- Open-source is about creating new knowledge and fostering connections.
+- Traditional smart contracts have been focused on isolation, existing in bubbles.
+- Gno.land aims to bring the spirit of open-source to smart contracts.
+- We envision a constantly growing creative world with new contracts, libraries, interconnections, and possibilities.
 
 
-## TMP1
+## Amplifying Open-Source
+
+- Gno.land enriches, rather than challenges, open-source.
+- We treasure open-source and magnify its foundation.
+- Our platform integrates execution, auditability, verification, and trust.
+- Given the surge of Gno contracts, conventional open-source might appear constrained.
+- It's akin to the GitHub effect on its own ecosystem.
+
+## Conclusion: join us in shaping the future
+
+- Gno.land is currently in testnet.
+- We're seeking early adopters, builders and tinkerers to build on Gno.
+
+-----
+
 ## Conceptual Overview
 - Prior to the emergence of GitHub, Git and open-source technology were prevalent, yet they existed in a scattered manner, requiring arduous navigational methods for developers. GitHub revolutionized this process, providing a consolidated, user-friendly platform that enhanced the experience of producing and consuming open-source software. Without platforms like GitHub, the open-source landscape would still be functional, yet substantially fragmented and less accessible.
 - AWS and Ethereum offer similar promises as platforms where developers can execute their code. However, Ethereum provides users with a higher degree of trust due to its immutable contracts and the possibility of verifying source code against bytecode. Despite these benefits, it still lacks the ability to host and manage code in a unified, transparent manner. Gno.land, on the other hand, blends these features, providing a level of transparency reminiscent of Ethereum, combined with the convenience and functionality of GitHub.
