@@ -1,0 +1,107 @@
+# Examining Gno Core Stack
+Differences between the Cosmos SDK and the Gnolang SDK
+24 Jul 2023
+Tags: gnolang, gnoland, gno, gnosdk, cosmos, proof-of-contribution, consensus, tendermint, bft, smart contract, blockchain
+Summary: TODO
+
+Manfred Touron
+VP Eng., Gno.land
+https://gno.land/
+https://github.com/gnolang
+@moul
+
+## What is Gno?
+- Timeless code ecosystem
+- Gnolang/GnoVM: comprehensive smart contract suite, based on Golang
+- Gno.land: first L1 using Gnolang
+- built on Tendermint2 in the Cosmos/IBC ecosystem
+- aims for fairness, simplicity, security, scalability
+- -> long-term viability
+
+## What is Gnolang?
+- optimized for blockchain
+- deterministic execution
+- auto-persisted, without ORM
+- interpreted, apps + lib
+- auto-merkle-ized, with rich types
+- built-in rendering
+- auto-generated documentation
+- "std"
+
+## Increment a counter in Gno
+.code ./code/demo.gno
+
+## Increment a counter in Cosmos SDK
+.code ./code/cosmos-sdk.go
+
+## Increment a counter in Cosmwasm/Rust
+.code ./code/cosmwasm-rust.rs
+
+## Increment a counter in a Go app
+.code ./code/goapp.go
+
+## What is Gno.land?
+- GnoVM + Tendermint2
+- "GnoHub", home of Gno realms and pure packages (IBCx)
+- first of a series of GnoVM chains
+- simple, secure, reliable, trustable
+
+## Gno.land interop
+- IBC soon after mainnet
+- ICS consumer of the Cosmos hub
+- ICS provider for GnoVM chains
+- specialized nodes and sharding, x.gno.land
+- IBC2/GNO/x
+
+## IBC2/GNO/x
+- the first implementation looks like go channels (In, Out) from contracts PoV
+- preserves type-safety and rich type 
+- permissionless IBC
+- local IBC
+- could be linked with non-gno and non-cosmos chains, i.e., `.gno<->.sol`
+- IBC is "Cross-border payments"; IBCx is "Cross-border applications"
+
+## Gno clients vs Gno SDK
+- clients: series of clients to interact with the chain and create richer dApps:
+  - `tm2-js-client`, generic RPC client for chains build with Tendermint2
+  - `gnovm-js-client` extension to publish, read, inspect and interact with contracts
+  - `gnoland-js-client`, uses the two above + configuration to interact with the gno.land chain -> for most developers
+- Gno SDK: Golang library to customize appChains using GnoVM and Tendermint2, similar goal with Cosmos SDK
+
+## Gno SDK
+- realm/contract-centric
+- minimized validator upgrades, enhanced system stability
+- unified transparency: clear contracts and chain configuration
+- instant finality for governance
+- bridging chains and contracts, seamless integration & versatility
+- addressing chicken-egg problem
+- gno.land is the initial version, generic SDK to come after
+
+## Gno SDK _potential_ API
+.code code/gno-sdk-api.go
+
+## GnoSDK example: chain configuration
+.code code/gno-sdk-chainconfig.go
+
+## GnoSDK example: proof-of-contribution
+.code code/gno-sdk-valset.go
+
+## GnoSDK example: chain fees distribution
+.code code/gno-sdk-distribution.go
+
+## GnoSDK example: namespace support for package paths
+.code code/gno-sdk-names.go
+
+## What is Game of realms?
+- ongoing competition for contributors
+- experimental phase for proof of contributions
+- building **Evaluation DAO**, and the new governance module
+- earn $ATOM and become member on mainnet genesis
+
+.code ./code/gor-banner.txt
+
+## Action Items
+* follow github.com/gnolang/gno
+* visit gno.land
+* help us create "Game of Realms"
+* contribute!

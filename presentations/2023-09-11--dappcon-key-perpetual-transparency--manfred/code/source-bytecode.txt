@@ -1,0 +1,15 @@
+                                                                     +--------------+
+                +---------+    Uploads     +-------+     Runs        |   Contract   |
+ GnoVM          |Developer|--source code-->| GnoVM |--Source Code--->|  Execution   |
+                +---------+                +-------+                 +--------------+
+
+
+                +---------+                 +-----+       Runs       +--------------+
+                |Developer|           +---->| EVM |-----Bytecode---->|   Contract   |
+                +---------+           |     +-----+                  |  Execution   |
+ EVM                 |                |                              +--------------+
+                  Writes           Uploads
+                source code        Bytecode
+                     |  +-------+     |
+                     +->|Compile|-----+
+                        +-------+
