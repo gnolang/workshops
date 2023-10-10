@@ -25,9 +25,9 @@ Gno was created by Cosmos co-founder Jae Kwon.
 
 Gno is optimized for blockchain - it has deterministic execution for executing on distributed systems. 
 
-*Practically speaking*, Gno is Go without `crypto/rand`, web calls, and imports from non-deterministic libraries. Gno code is transpiled into Go code which then leverages the Go compiler system.
+*practically speaking*, Gno is Go without `crypto/rand`, web calls, and imports from non-deterministic libraries. Gno code is transpiled into Go code which then leverages the Go compiler system.
 
-*If you can write Go code, you can write Gno code.*
+**If you can write Go code, you can write Gno code.**
 
 If you write Gno code, you can immediately write "smart contracts".
 
@@ -353,69 +353,10 @@ lets now create the `examples/gno.land/p/demo/riff/riff.gno` file.
 ]
 .right-column[
 
-### riff.gno
+lets create and write code for RIFF:
 
-```go
-package riff
-
-import (
-  "encoding/binary"
-  "io"
-)
-
-type Writer struct {
-  io.Writer
-}
-
-func NewWriter(w io.Writer, fileType []byte, fileSize uint32) (w2 *Writer, err error) {
-  w2 = &Writer{w}
-  _, err = w2.Write([]byte("RIFF"))
-  if err != nil {
-    return
-  }
-  // convert filesize to uint32
-  fileSizeBytes := make([]byte, 4)
-  binary.LittleEndian.PutUint32(fileSizeBytes, fileSize)
-
-  _, err = w2.Write(fileSizeBytes)
-  if err != nil {
-    return
-  }
-  _, err = w2.Write(fileType)
-  if err != nil {
-    return
-  }
-  return
-}
-
-func (w *Writer) WriteChunk(chunkID []byte, chunkSize uint32) (n int, err error) {
-  n1, err := w.Write(chunkID)
-  n = n1
-  if err != nil {
-    return
-  }
-
-  chunkSizeBytes := make([]byte, 4)
-  binary.LittleEndian.PutUint32(chunkSizeBytes, chunkSize)
-
-  n2, err := w.Write(chunkSizeBytes)
-  n += n2
-  return
-}
-
-func (w *Writer) WriteUint32(v uint32) (n int, err error) {
-  b := make([]byte, 4)
-  binary.LittleEndian.PutUint32(b, v)
-  n, err = w.Write(b)
-  return
-}
-
-func (w *Writer) WriteUint16(v uint16) (n int, err error) {
-  b := make([]byte, 2)
-  binary.LittleEndian.PutUint16(b, v)
-  n, err = w.Write(b)
-  return
-}
+```bash
+./examples/gno.land/p/demo/audio/riff/riff.gno
 ```
 
 ]
@@ -435,7 +376,13 @@ func (w *Writer) WriteUint16(v uint16) (n int, err error) {
 
 testing is done the same way as Go. you create a test package `yourfile_test.gno` and you can then create automated tests.
 
-there is already one setup for the `riff` package. you can run a test using the `gno` tool:
+there is already one setup for the `riff` package:
+
+```bash
+./examples/gno.land/p/demo/audio/riff/riff_test.gno
+```
+
+you can run a test using the `gno` tool:
 
 ```bash
 > gno test --verbose examples/gno.land/p/demo/audio/riff
@@ -488,6 +435,26 @@ func (w *Writer) WriteSamples(samples []Sample) (err error)
 ### bytebeat overview
 ### riff package
 ### wav package
+]
+.right-column[
+
+lets look at the code for the wav package
+
+```bash
+./examples/gno.land/p/demo/audio/wav/wav.gno
+```
+
+]
+---
+
+.left-column[
+## what is ...
+## local gno
+## writing gno
+### packages v. realms
+### bytebeat overview
+### riff package
+### wav package
 ### bytebeat package
 ]
 .right-column[
@@ -505,6 +472,27 @@ func ByteBeat(seconds uint32,
 ```
 
 since this package is designed to be used with the bytebeat realm, we will return a `string` since gno.land communicates through strings. in this case the string will be the base64-encoded WAVE file format audio.
+
+]
+---
+
+.left-column[
+## what is ...
+## local gno
+## writing gno
+### packages v. realms
+### bytebeat overview
+### riff package
+### wav package
+### bytebeat package
+]
+.right-column[
+
+lets look at the code for the bytebeat package:
+
+```bash
+./examples/gno.land/p/demo/audio/bytebeat/bytebeat.gno
+```
 
 ]
 ---
@@ -576,6 +564,29 @@ func AddComment(msg string) string {
   })
   ...
 }
+```
+
+]
+
+
+---
+.left-column[
+## what is ...
+## local gno
+## writing gno
+### packages v. realms
+### bytebeat overview
+### riff package
+### wav package
+### bytebeat package
+### bytebeat realm
+]
+.right-column[
+
+lets write some code for the bytebeat realm:
+
+```bash
+./examples/gno.land/r/demo/bytebeat/bytebeat.gno
 ```
 
 ]
