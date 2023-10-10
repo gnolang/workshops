@@ -153,8 +153,8 @@ I will help you get started with the tooling, the ecosystem, and some first step
 open ide and install `gnopls` and `gofumpt`. then search for and install the `Gno` VScode extension.
 
 ```bash
-go install -v github.com/harry-hov/gnopls@latest
-go install -v mvdan.cc/gofumpt@latest
+> go install -v github.com/harry-hov/gnopls@latest
+> go install -v mvdan.cc/gofumpt@latest
 ```
 
 ]
@@ -173,15 +173,15 @@ go install -v mvdan.cc/gofumpt@latest
 today we will use a forked version of Gno that removes limits for allocation and CPU usage and has some ready code for today's tutorial:
 
 ```bash
-git clone https://github.com/schollz/gno
-cd gno
-git checkout bytebeat-workshop
+> git clone https://github.com/schollz/gno
+> cd gno
+> git checkout bytebeat-workshop
 ```
 
 open up the `gno` folder in the visual studio code ide. lets build everything first:
 
 ```bash
-make build
+> make build
 ```
 
 this will install the `gno` toolchain, build the `gno.land` that runs the `gno.land` node (locally), and build the `gnoweb` server that runs the frontend interface to gno.land.
@@ -307,12 +307,10 @@ but first, lets write some gno.
 
 ### generating audio files
 
-before we get to bytebeat, we need a way to generate an audio file from Gno.
-
 streaming audio comes in many formats, but one of the most common for uncompressed audio is the WAVE File format (`.wav`) which is a subset of the RIFF file format. the canonical [wave file format is well-defined](http://soundfile.sapp.org/doc/WaveFormat/):
 
 <center>
-<img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif" alt="drawing" width="280"/>
+<img src="wave-bytes.gif" alt="drawing" width="570"/>
 </center>
 
 ]
@@ -613,7 +611,7 @@ now we are finished with packages and realms, we can spin up a test net and uplo
 first we will spinup a test net on our local machine to upload our package + realms.
 
 ```bash
-make run
+> make run
 ```
 
 which is a quick way to kill old servers, delete their content, and then spin up the gno.land server and web interface. i.e.: 
@@ -626,7 +624,6 @@ cd gno.land && ./build/gnoland start >/dev/null 2>&1 &
 sleep 5
 cd gno.land && ./build/gnoweb & 
 sleep 3
-
 ```
 ]
 ---
