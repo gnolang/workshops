@@ -801,7 +801,8 @@ You can specify `--pkgpath` to target a realm and then use `--func` to specify t
 
 ### create more bytebeat realms!
 
-simply change the bytebeat function callback and you can create a new realm!
+
+[find more bytebeat formulas here for inspiration](https://macumbista.net/wp-content/uploads/2016/11/music_formula_collection.txt).
 
 ```go
   data = bytebeat.ByteBeat(seconds, 8000, func(t int) int {
