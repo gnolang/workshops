@@ -173,8 +173,8 @@ open ide and install `gnopls` and `gofumpt`. then search for and install the `Gn
 today we will use a forked version of Gno that removes limits for allocation and CPU usage and has some ready code for today's tutorial:
 
 ```bash
-> git clone https://github.com/schollz/gno
-> cd gno
+> git clone https://github.com/schollz/gno bytebeat-workshop
+> cd bytebeat-workshop
 > git checkout bytebeat-workshop
 ```
 
@@ -715,7 +715,7 @@ to ease pushing packages and realms during development, you can add a flag `--in
 ```bash
 cat password | gnokey maktex addpkg \
   ... (same as before) ... \
-  ---insecure-password-stdin=true YOURKEY
+  --insecure-password-stdin=true YOURKEY
 ```
 
 for now, this is encapsulated in the `Makefile` when you run
