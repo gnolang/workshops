@@ -778,7 +778,7 @@ remember we exported `AddComment`? we can utilize that function with our key and
 
 ```bash 
 gnokey maketx call --pkgpath "gno.land/r/demo/bytebeat/v1" \
-  --func "AddComment" --args "hello, world!" \
+  --func "AddComment" --args "hello, world" \
   --gas-fee 1000000ugnot --gas-wanted 8000000  \
   --broadcast --chainid dev --remote localhost:26657 \
   YOURKEY
