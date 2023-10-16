@@ -9,6 +9,7 @@ This repo contains materials that can be used to organize workshops or make pres
 | 03.16.2023 | Miloš Živković, Gno.land Core | How to Build a Forum in Gno.land  | [Tutorial](https://hackmd.io/iB9CgSeZRwac9fbJTR7r2Q?view)    | [Recording](https://www.youtube.com/watch?v=gmP-mH-64HA) | Beginner |
 | 01.20.2023 | Miloš Živković, Gno.land Core | Gno.land Demo | No documentation | [Recording](https://www.youtube.com/watch?v=-BlnEXCs0eI) | Beginner
 | 06.26.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: How to build a microblog | [Tutorial](https://github.com/gnolang/workshops/tree/main/presentations/2023-06-26--go-to-gno--schollz) |  [Recording](https://www.youtube.com/watch?v=F-_dadxcRJM&feature=youtu.be) | Beginner
+| 08.26.2023 | Jae Kwon, Founder of Gno.land | Gno.land: A Transactional Paradigm of Reality | [Presentationk at Blockchain Application Stanford Summit] |  [Recording](https://www.youtube.com/watch?v=Dx8dI6evcP0&t=3s) | 
 | 09.26.2023 | Morgan Bazalgette, Gno Core Team | Chess the Gnolang Way | [Tutorial](https://github.com/gnolang/gnochess/blob/main/tutorial/01_getting_started/README.md) |  [Recording](https://www.youtube.com/watch?v=JQh7LhqW7ns) | Beginner
 | 10.12.2023 | Zack Scholl, Gno.land Tinke | Go to Gno: Generating Audio with Smart Contracts | [Tutorial] |  [Recording](https://www.youtube.com/watch?v=lmmUIEHhdqA) | Beginner
 
