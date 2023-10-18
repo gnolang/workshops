@@ -3,7 +3,7 @@ name: github-pages
 
 on:
   push:
-    branches: [dev/morgan/chess-slides-demo]
+    branches: [main]
   #schedule:
   #  - cron: "42 * * * *"
 
