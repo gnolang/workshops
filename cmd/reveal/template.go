@@ -6,7 +6,7 @@ import (
 )
 
 // https://revealjs.com/config/
-// pointers everywhere so we don't accientally copy over stuff we don't need.
+// pointers everywhere so we don't accidentally copy over stuff we don't need.
 type revealConfig struct {
 	Controls                        *bool     `yaml:"controls" json:"controls,omitempty"`
 	ControlsTutorial                *bool     `yaml:"controlsTutorial" json:"controlsTutorial,omitempty"`
