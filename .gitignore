@@ -4,3 +4,6 @@
 # Editor Leftovers
 .vscode
 .idea
+
+# generated files from reveal tool
+slides.html
