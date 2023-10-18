@@ -16,9 +16,12 @@ jobs:
 
       - uses: actions/setup-go@v4
         with:
-          go-version: '1.20.x'
+          go-version: "1.20.x"
 
-      - run: go install golang.org/x/tools/cmd/present
+      - run: go install golang.org/x/tools/cmd/present ./cmd/reveal
+
+      - name: convert .reveal.md files
+        run: reveal presentations/*/*.reveal.md
 
       - name: start server and mirror it with wget
         run: |
