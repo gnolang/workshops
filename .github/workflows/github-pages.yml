@@ -33,7 +33,7 @@ jobs:
           wget --mirror http://localhost:3999/static/styles.css -P workshops --no-host-directories --page-requisites --adjust-extension --convert-links
           # hacks: copy over the images
           # (at time of writing, they come from rendered markdown files, which wget can't follow)
-          for i in presentations/*/*.{png,jpg,jpeg}; do cp $i workshops/$i; done
+          for i in presentations/*/*.{png,jpg,jpeg}; do cp $i workshops/$i; done || true
           sed -i='' s@/static/@/workshops/static/@ workshops/static/slides.js
 
       - run: find workshops/ -type f -ls
