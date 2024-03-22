@@ -1,0 +1,17 @@
+[build]
+base = "ui"
+
+publish = "dist"
+
+command = "yarn build && yarn install"
+
+[buid.environment]
+VITE_CHAIN_ID   = "portal-loop"
+VITE_CHAIN_RPC  = "wss://rpc.gno.land:443/websocket"
+VITE_REALM_PATH = "gno.land/r/demo/memeland
+
+# [context.deploy-preview]
+# environment = { VITE_REALM_PATH = "gno.land/r/demo/dev/memeland/v1" }
+
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
