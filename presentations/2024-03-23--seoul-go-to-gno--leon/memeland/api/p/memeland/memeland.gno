@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"gno.land/p/demo/avl"
-	"gno.land/p/demo/ownable"
 	"gno.land/p/demo/seqid"
 )
 
@@ -20,7 +19,6 @@ type Post struct {
 }
 
 type Memeland struct {
-	*ownable.Ownable
 	Posts       []*Post
 	MemeCounter seqid.ID
 }
@@ -46,11 +44,6 @@ func (m *Memeland) Upvote(id string) string {}
 // Returns empty JSON object if there are no posts in the specified range.
 func (m *Memeland) GetPostsInRange(startTimestamp, endTimestamp int64, page, pageSize int, sortBy string) string {
 }
-
-// RemovePost allows the owner to remove a post with a specific ID
-// Panics if id is an empty string, post with ID doesn't exist, or caller is not an owner
-// If successful, returns the ID of the removed post
-func (m *Memeland) RemovePost(id string) string {}
 
 // getPost gets a post by ID
 func (m *Memeland) getPost(id string) *Post {}

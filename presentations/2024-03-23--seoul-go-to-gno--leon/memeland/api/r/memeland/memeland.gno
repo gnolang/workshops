@@ -1,7 +1,6 @@
 package memeland
 
 import (
-	"std"
 	"time"
 
 	"gno.land/p/demo/memeland"
@@ -11,7 +10,6 @@ var m *memeland.Memeland
 
 func init() {
 	m = memeland.NewMemeland()
-	m.TransferOwnership("g125em6arxsnj49vx35f0n0z34putv5ty3376fg5")
 }
 
 func PostMeme(data string, timestamp int64) string {
@@ -24,20 +22,6 @@ func Upvote(id string) string {
 
 func GetPostsInRange(startTimestamp, endTimestamp int64, page, pageSize int, sortBy string) string {
 	return m.GetPostsInRange(startTimestamp, endTimestamp, page, pageSize, sortBy)
-}
-
-func RemovePost(id string) string {
-	return m.RemovePost(id)
-}
-
-func GetOwner() std.Address {
-	return m.Owner()
-}
-
-func TransferOwnership(newOwner std.Address) {
-	if err := m.TransferOwnership(newOwner); err != nil {
-		panic(err)
-	}
 }
 
 func Render(path string) string {
