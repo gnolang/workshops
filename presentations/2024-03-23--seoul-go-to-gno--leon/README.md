@@ -27,14 +27,80 @@ make build && make install
 `gno.land/`
 
 ```
-cd ../gno.land
+cd gno.land
 make build && make install
 ```
 
-3. `gnodev` - tooling to help you develop Gno apps faster
+3. `gnodev` - a tool to help you develop Gno apps faster
 ```
-cd ..
 make install.gnodev
 ```
 
-> `install.gnodev` can be found in the root Makefile.
+> The `install.gnodev` command can be found in the root Makefile.
+
+
+## Start the Challenge
+
+The Challenge is to write the Memeland package from scratch.
+
+In the `api/p/memeland` folder you will be able to find the
+[template package file](./memeland/api/p/memeland/memeland.gno), as well
+as tests that should be passing when you are done with the Challenge.
+
+To start tests, run `gno test . -v` in the `api/p/memeland` folder. You should 
+get the following output before starting: 
+
+```bash
+❯ gno test . -v      
+=== RUN   TestPostMeme
+panic: implement me
+--- FAIL: TestPostMeme (0.00s)
+=== RUN   TestGetPostsInRangePagination
+panic: implement me
+--- FAIL: TestGetPostsInRangePagination (0.00s)
+=== RUN   TestGetPostsInRangeByTimestamp
+panic: implement me
+--- FAIL: TestGetPostsInRangeByTimestamp (0.00s)
+=== RUN   TestGetPostsInRangeByUpvote
+panic: implement me
+--- FAIL: TestGetPostsInRangeByUpvote (0.00s)
+=== RUN   TestNoPosts
+panic: implement me
+--- FAIL: TestNoPosts (0.00s)
+=== RUN   TestUpvote
+panic: implement me
+--- FAIL: TestUpvote (0.00s)
+.: test pkg: failed: "TestPostMeme"; failed: "TestGetPostsInRangePagination"; failed: "TestGetPostsInRangeByTimestamp"; failed: "TestGetPostsInRangeByUpvote"; failed: "TestNoPosts"; failed: "TestUpvote"
+FAIL
+FAIL    .       0.57s
+FAIL
+FAIL
+FAIL: 0 build errors, 1 test errors
+```
+
+After completing the challenge, all tests should be passing.
+
+## Running a local frontend
+
+Memeland comes with a pre-built UI, which can be found in the`ui/`
+folder. Once you have implemented all the needed functions in the Memeland package,
+you can fully run your version of Memeland.
+
+### `gnodev`
+
+`gnodev` is a tool that will deploy your Gno code to a local gno.land node, 
+and expose an RPC endpoint for the UI to connect to it. Start `gnodev`, giving
+it the paths to the Memeland package and realm folders:
+
+```
+gnodev ./api/p/memeland ./api/r/memeland
+```
+
+Then, in the UI folder:
+- Install all necessary dependencies with `yarn`,
+- make a `.env` file from the `.env.example`,
+- run `yarn dev` to start a vite server for your UI
+
+
+
+
