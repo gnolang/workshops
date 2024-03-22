@@ -96,11 +96,24 @@ it the paths to the Memeland package and realm folders:
 gnodev ./api/p/memeland ./api/r/memeland
 ```
 
-Then, in the UI folder:
+Then, in the `ui/` folder:
 - Install all necessary dependencies with `yarn`,
 - make a `.env` file from the `.env.example`,
 - run `yarn dev` to start a vite server for your UI
 
+## Adena wallet
 
+To connect and interact with the Memeland app, you need to install the 
+[Adena wallet](https://adena.app). After installing Adena,
+create a new account with the following mnemonic:
 
+```
+source bonus chronic canvas draft south burst lottery vacant surface solve popular case indicate oppose farm nothing bullet exhibit title speed wink action roast
+```
 
+After completing this step, you will be able to interact with the Memeland app.
+
+**Congratulations! You've completed the Go to Gno Builder Challenge!**
+
+Please upload your code to a GitHub repository and send the link to Leon, 
+at `leon.hudak@tendermint.com`.
