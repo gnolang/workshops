@@ -25,16 +25,22 @@ type Memeland struct {
 
 // NewMemeland returns a pointer to a new Memeland object
 // Initializes all the subfields
-func NewMemeland() *Memeland {}
+func NewMemeland() *Memeland {
+	panic("implement me")
+}
 
 // PostMeme - Adds a new post at timestamp, with data
 // Panics in case data is empty or timestamp is invalid
 // Returns the ID of the created Post
-func (m *Memeland) PostMeme(data string, timestamp int64) string {}
+func (m *Memeland) PostMeme(data string, timestamp int64) string {
+	panic("implement me")
+}
 
 // Upvote increases the upvote count of a specific Post
 // Panics if specified ID doesn't exist, or the user has already upvoted
-func (m *Memeland) Upvote(id string) string {}
+func (m *Memeland) Upvote(id string) string {
+	panic("implement me")
+}
 
 // GetPostsInRange returns a JSON object containing marshalled Posts in a specific timestamp range
 // Timestamps are given as Unix seconds
@@ -43,10 +49,13 @@ func (m *Memeland) Upvote(id string) string {}
 // Panics if page < 1, pageSize < 1, or pageSize > 10
 // Returns empty JSON object if there are no posts in the specified range.
 func (m *Memeland) GetPostsInRange(startTimestamp, endTimestamp int64, page, pageSize int, sortBy string) string {
+	panic("implement me")
 }
 
 // getPost gets a post by ID
-func (m *Memeland) getPost(id string) *Post {}
+func (m *Memeland) getPost(id string) *Post {
+	panic("implement me")
+}
 
 // PostsToJSONString converts a slice of Post structs into a JSON string
 func PostsToJSONString(posts []*Post) string {
