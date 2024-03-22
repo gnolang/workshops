@@ -75,6 +75,7 @@ func PostsToJSONString(posts []*Post) string {
 }
 
 // PostToJSONString returns a Post formatted as a JSON string
+// Note: Gno currently does not support reflection, which is why JSON marshalling is unavailable
 func PostToJSONString(post *Post) string {
 	var sb strings.Builder
 

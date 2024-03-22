@@ -1,6 +1,9 @@
 # Go to Gno Builder Challenge
 
-Welcome to the Go to Gno Builder Challenge. Check out the sections below
+Welcome to the **Go to Gno Builder Challenge**.
+The Challenge is to write the Memeland package from scratch.
+
+Check out the sections below
 to get started.
 
 ## Installation
@@ -40,8 +43,6 @@ make install.gnodev
 
 
 ## Start the Challenge
-
-The Challenge is to write the Memeland package from scratch.
 
 In the `api/p/memeland` folder you will be able to find the
 [template package file](./memeland/api/p/memeland/memeland.gno), as well
