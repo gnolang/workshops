@@ -116,5 +116,5 @@ After completing this step, you will be able to interact with the Memeland app.
 
 **Congratulations! You've completed the Go to Gno Builder Challenge!**
 
-Please upload your code to a GitHub repository and send the link to Leon, 
-at `leon.hudak@tendermint.com`.
+Please upload your code to a GitHub repository and submit your work
+[here](https://forms.gle/94Qr9VcbySefpmco8).
