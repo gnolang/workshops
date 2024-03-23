@@ -94,7 +94,7 @@ and expose an RPC endpoint for the UI to connect to it. Start `gnodev`, giving
 it the paths to the Memeland package and realm folders:
 
 ```
-gnodev ./api/p/memeland ./api/r/memeland
+gnodev --node-rpc-listener 127.0.0.1:26657 ./api/p/memeland ./api/r/memeland
 ```
 
 Then, in the `ui/` folder:
