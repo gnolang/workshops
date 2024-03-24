@@ -3,7 +3,7 @@ package memeland
 import (
 	"time"
 
-	"gno.land/p/demo/memeland"
+	"gno.land/p/example/memeland"
 )
 
 var m *memeland.Memeland
