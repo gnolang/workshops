@@ -1,3 +1,3 @@
-module gno.land/r/demo/memeland
+module gno.land/r/example/memeland
 
-require gno.land/p/demo/memeland v0.0.0-latest
+require gno.land/p/example/memeland v0.0.0-latest
