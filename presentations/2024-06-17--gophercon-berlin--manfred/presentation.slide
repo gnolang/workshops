@@ -1,0 +1,112 @@
+# Envisioning a Go-Powered Ecosystem: The Ultimate Go Computer
+20 Jun 2024  
+Tags: golang, gnolang  
+Summary: TODO
+
+Manfred Touron  
+VP Eng., Gno.land  
+https://gno.land/  
+https://github.com/gnolang  
+@moul  
+
+## Bonjour, GopherCon EU!
+
+```go
+// hello-its-manfred.txt
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, GopherCon EU! It's Manfred.")
+}
+```
+
+## Intro
+
+- **Goal**: Introduce the concept of an **all-in Go machine**.
+- **Current State**: Go development splits focus between **Go logic** and
+  **non-Go glueing/bridging** (UI/CLI, TCP, HTTP, gRPC, API, db/SQL, FS/Storage,
+  ...).
+- **Vision**: Remove **everything** that isn't Go.
+
+## What Would a Go Computer Be Like?
+
+Imagine a machine where Go is the only paradigm for all levels of computing:
+- **Interface**: The CLI syntax is Go.
+- **Components**: Programs, libraries, and tools are Go packages.
+- **Deployment**: Go packages have unique identifiers, their import paths.
+- **Orchestration**: The kernel is a Go runtime.
+- **Storage**: Go memory is the storage.
+- ...
+
+*Disclaimer: These slides present a mental exercise of what such a computer
+could look like. This is not a critique of current practices, but an exploration
+of using Go everywhere.*
+
+## Key Concepts
+
+- **No Marshaling**
+- **No Flag Parsing**
+- **No Compilation**
+- **No FileSystem/Databases**
+- **No main(), no exit**
+
+## No Marshaling
+
+- **Current State**: Marshaling data between Go and other formats (JSON,
+  Protobuf, etc.).
+- **New Approach**: Work with Go types directly.
+
+.code code/no-marshaling-before.go
+.code code/no-marshaling-after.go
+
+## No Flag Parsing
+
+- **Current State**: Parsing flags for command-line arguments (a.k.a., shell).
+- **New Approach**: Use Go imports and interact with dependencies in pure Go.
+
+.code code/no-flag-before.go
+.code code/no-flag-after.go
+
+## No Compilation
+
+- **Current State**: Separate compilation (source) and execution phases
+  (binaries), relying on the OS to run your apps.
+- **New Approach**: Directly call exported methods from other apps or via your
+  CLI. A single shared VM runtime.
+
+.code code/no-compile-before.go
+.code code/no-compile-after.go
+
+## No FileSystem/Databases
+
+- **Current State**: Using file systems and databases with marshaling, and
+  potential failures.
+- **New Approach**: Memory is the storage, and it is automatically persisted.
+
+.code code/no-fs-before.go
+.code code/no-fs-after.go
+
+## No main(), no exit
+
+- **Current State**: Programs have a main() function and can exit. **Start/Stop**.
+- **New Approach**: Programs are paused and resumed. An imperative language to write reactive apps. **Resume/Pause**.
+
+.code code/no-main-before.go
+.code code/no-main-after.go
+
+## Conclusion
+
+- **100% Go**: Eliminate intermediary layers. Focus purely on structs and functions.
+- **High Composability**: Seamlessly write, import, and execute Go code.
+- **Inspiration**: Apply Go to all computing levels, like Chuck Moore with Forth and the Plan 9 team with their OS.
+
+> Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away. -- _Antoine de Saint-Exupéry_
+
+## What We're Doing at Gno.land
+
+- **GnoVM**: A new VM to run interpreted Go code, with automatic memory persistence allowing the composition of apps by importing them in Go.
+- **Gno.land**: Using GnoVM and a decentralized transaction system to provide a permissionless multiuser virtual Go computer.
+  - Explore more: [github.com/gnolang/gno](https://github.com/gnolang/gno)
+- **Join Us at GopherCon US**: Attend our talk and workshop in July.
