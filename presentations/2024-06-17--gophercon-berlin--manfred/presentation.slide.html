@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Envisioning a Go-Powered Ecosystem: The Ultimate Go Computer</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>Envisioning a Go-Powered Ecosystem: The Ultimate Go Computer</h1>
+        <h3>20 Jun 2024  </h3>
+        
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land  
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>Bonjour, GopherCon EU!</h3>
+        <pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello, GopherCon EU! It's Manfred.&quot;)
+}
+</code></pre>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Intro</h3>
+        <ul>
+<li><strong>Goal</strong>: Introduce the concept of an <strong>all-in Go machine</strong>.</li>
+<li><strong>Current State</strong>: Go development splits focus between <strong>Go logic</strong> and
+<strong>non-Go glueing/bridging</strong> (UI/CLI, TCP, HTTP, gRPC, API, db/SQL, FS/Storage,
+...).</li>
+<li><strong>Vision</strong>: Remove <strong>everything</strong> that isn't Go.</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What Would a Go Computer Be Like?</h3>
+        <p>Imagine a machine where Go is the only paradigm for all levels of computing:</p>
+<ul>
+<li><strong>Interface</strong>: The CLI syntax is Go.</li>
+<li><strong>Components</strong>: Programs, libraries, and tools are Go packages.</li>
+<li><strong>Deployment</strong>: Go packages have unique identifiers, their import paths.</li>
+<li><strong>Orchestration</strong>: The kernel is a Go runtime.</li>
+<li><strong>Storage</strong>: Go memory is the storage.</li>
+<li>...</li>
+</ul>
+<p><em>Disclaimer: These slides present a mental exercise of what such a computer
+could look like. This is not a critique of current practices, but an exploration
+of using Go everywhere.</em></p>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Key Concepts</h3>
+        <ul>
+<li><strong>No Marshaling</strong></li>
+<li><strong>No Flag Parsing</strong></li>
+<li><strong>No Compilation</strong></li>
+<li><strong>No FileSystem/Databases</strong></li>
+<li><strong>No main(), no exit</strong></li>
+</ul>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>No Marshaling</h3>
+        <ul>
+<li><strong>Current State</strong>: Marshaling data between Go and other formats (JSON,
+Protobuf, etc.).</li>
+<li><strong>New Approach</strong>: Work with Go types directly.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">func SomeHandler(w http.ResponseWriter, r *http.Request) {</span>
+<span num="2">    data := MyStruct{Field: &#34;value&#34;} // go logic</span>
+<span num="3">    _, err := json.NewEncoder(w).Encode(data)</span>
+<span num="4">}</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">func SomeHandler() MyStruct {</span>
+<span num="2">    data := MyStruct{Field: &#34;value&#34;}</span>
+<span num="3">    return data</span>
+<span num="4">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>No Flag Parsing</h3>
+        <ul>
+<li><strong>Current State</strong>: Parsing flags for command-line arguments (a.k.a., shell).</li>
+<li><strong>New Approach</strong>: Use Go imports and interact with dependencies in pure Go.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">func main() {</span>
+<span num="2">    flag.StringVar(&amp;myStringFlag, &#34;stringFlag&#34;, &#34;default&#34;, &#34;usage&#34;)</span>
+<span num="3">    flag.IntVar(&amp;myIntFlag, &#34;intFlag&#34;, 0, &#34;usage&#34;)</span>
+<span num="4">    flag.Parse()</span>
+<span num="5">    MyFunc(*myStringFlag, *myIntFlag)</span>
+<span num="6">}</span>
+<span num="7"></span>
+<span num="8">$&gt; myprogram --stringFlag foo --intFlag 42</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">$&gt; mypackage.MyFunc(&#34;stringValue&#34;, 42)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>No Compilation</h3>
+        <ul>
+<li><strong>Current State</strong>: Separate compilation (source) and execution phases
+(binaries), relying on the OS to run your apps.</li>
+<li><strong>New Approach</strong>: Directly call exported methods from other apps or via your
+CLI. A single shared VM runtime.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// Current approach</span>
+<span num="2">// Compile and run the binary from the CLI</span>
+<span num="3">// $ go build -o myapp</span>
+<span num="4">// $ ./myapp</span>
+<span num="5"></span>
+<span num="6">package main</span>
+<span num="7"></span>
+<span num="8">func main() {</span>
+<span num="9">    mypackage.MyFunc()</span>
+<span num="10">}</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">// Unified approach</span>
+<span num="2">import &#34;my/package&#34;</span>
+<span num="3">mypackage.MyFunc()</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>No FileSystem/Databases</h3>
+        <ul>
+<li><strong>Current State</strong>: Using file systems and databases with marshaling, and
+potential failures.</li>
+<li><strong>New Approach</strong>: Memory is the storage, and it is automatically persisted.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">import &#34;database/sql&#34;</span>
+<span num="2">db, err := sql.Open(&#34;driver&#34;, &#34;source&#34;)</span>
+<span num="3">_, err := db.Exec(&#34;CREATE TABLE IF NOT EXISTS users ...&#34;)</span>
+<span num="4">_, err := db.Exec(&#34;INSERT INTO users ...&#34;)</span>
+<span num="5">rows, err := db.Query(&#34;SELECT fields FROM users ...&#34;)</span>
+<span num="6">defer rows.Close()</span>
+<span num="7">for rows.Next() { /* logic */}</span>
+<span num="8">err := rows.Err()</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">type User struct {</span>
+<span num="2">    Name string</span>
+<span num="3">    Age  int</span>
+<span num="4">}</span>
+<span num="5">var users []User</span>
+<span num="6">users = append(users, User{&#34;John Doe&#34;, 30})</span>
+<span num="7">for _, user := range users {</span>
+<span num="8">    /* logic */</span>
+<span num="9">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>No main(), no exit</h3>
+        <ul>
+<li><strong>Current State</strong>: Programs have a main() function and can exit. <strong>Start/Stop</strong>.</li>
+<li><strong>New Approach</strong>: Programs are paused and resumed. An imperative language to write reactive apps. <strong>Resume/Pause</strong>.</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">func main() {</span>
+<span num="2">    // logic</span>
+<span num="3">}</span>
+<span num="4">func init() {</span>
+<span num="5">    // logic</span>
+<span num="6">}</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">func Foo() {</span>
+<span num="2">    // logic</span>
+<span num="3">}</span>
+<span num="4"></span>
+<span num="5">$&gt; myprogram.Foo() // resumes, executes, pauses</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>Conclusion</h3>
+        <ul>
+<li><strong>100% Go</strong>: Eliminate intermediary layers. Focus purely on structs and functions.</li>
+<li><strong>High Composability</strong>: Seamlessly write, import, and execute Go code.</li>
+<li><strong>Inspiration</strong>: Apply Go to all computing levels, like Chuck Moore with Forth and the Plan 9 team with their OS.</li>
+</ul>
+<blockquote>
+<p>Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away. -- <em>Antoine de Saint-Exupéry</em></p>
+</blockquote>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>What We&#39;re Doing at Gno.land</h3>
+        <ul>
+<li><strong>GnoVM</strong>: A new VM to run interpreted Go code, with automatic memory persistence allowing the composition of apps by importing them in Go.</li>
+<li><strong>Gno.land</strong>: Using GnoVM and a decentralized transaction system to provide a permissionless multiuser virtual Go computer.
+<ul>
+<li>Explore more: <a href="https://github.com/gnolang/gno" target="_blank" rel="noopener">github.com/gnolang/gno</a></li>
+</ul>
+</li>
+<li><strong>Join Us at GopherCon US</strong>: Attend our talk and workshop in July.</li>
+</ul>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., Gno.land  
+  </p>
+  
+<p class="link"><a href="https://gno.land/%20%20" target="_blank">https://gno.land/  </a></p><p class="link"><a href="https://github.com/gnolang%20%20" target="_blank">https://github.com/gnolang  </a></p><p class="link"><a href="http://twitter.com/moul%20%20" target="_blank">@moul  </a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
