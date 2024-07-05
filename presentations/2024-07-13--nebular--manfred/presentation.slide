@@ -1,0 +1,41 @@
+# Gno examples
+13 Jul 2024
+Tags: golang, gnolang  
+Summary: TODO
+
+Manfred Touron  
+VP Eng., Gno.land  
+https://gno.land/  
+https://github.com/gnolang  
+@moul  
+
+## Bonjour, Nebular!
+
+```go
+// hello-its-manfred.txt
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, Nebular! It's Manfred.")
+}
+```
+
+## Intro
+
+- **GRC20 Token**: Implement a GRC20 token standard similar to ERC20 in Solidity.
+- **Name Resolution**: Create a decentralized name resolution system.
+- **Whitelisting**: Develop a whitelisting mechanism for access control.
+- **Boards and Posts**: Build a forum-like system with boards and posts.
+- **Memeland**: Create a social platform for sharing memes.
+- **Decentralized Exchange (DEX)**: Implement a simple decentralized exchange.
+- **Atomic Swap**: Demonstrate a simple atomic swap mechanism.
+- **Remote Appliance Control**: Enable remote control of an appliance.
+- **Game Character Movement**: Program a game character with customizable movement.
+- **Carmel**: Implement a system to put money behind responses, similar to a jury system with discovery and responses.
+- **Social Account Recovery**: Develop a system for social account recovery.
+- **Full Node Registry**: Create a registry for full nodes with a payment system.
+- **Micropayment Channels**: Implement micropayment channels for small transactions.
+- **Programmable Datastore**: Develop a realm that stores simple data with programmable attributes, similar to a programmable Firebase.
+- **Passwordless Authentication**: Create a personal CA system for passwordless authentication using private keys and pubkeys of devices on-chain.
