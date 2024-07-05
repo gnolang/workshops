@@ -82,9 +82,7 @@ func main() {
         <h3>Intro</h3>
         <ul>
 <li><strong>Goal</strong>: Introduce the concept of an <strong>all-in Go machine</strong>.</li>
-<li><strong>Current State</strong>: Go development splits focus between <strong>Go logic</strong> and
-<strong>non-Go glueing/bridging</strong> (UI/CLI, TCP, HTTP, gRPC, API, db/SQL, FS/Storage,
-...).</li>
+<li><strong>Current State</strong>: Go development splits focus between <strong>Go logic</strong> and <strong>non-Go glueing/bridging</strong> (UI/CLI, TCP, HTTP, gRPC, API, db/SQL, FS/Storage, ...).</li>
 <li><strong>Vision</strong>: Remove <strong>everything</strong> that isn't Go.</li>
 </ul>
 
@@ -106,9 +104,7 @@ func main() {
 <li><strong>Storage</strong>: Go memory is the storage.</li>
 <li>...</li>
 </ul>
-<p><em>Disclaimer: These slides present a mental exercise of what such a computer
-could look like. This is not a critique of current practices, but an exploration
-of using Go everywhere.</em></p>
+<p><em>Disclaimer: These slides present a mental exercise of what such a computer could look like. This is not a critique of current practices, but an exploration of using Go everywhere.</em></p>
 
       
       <span class="pagenumber">4</span>
@@ -137,8 +133,7 @@ of using Go everywhere.</em></p>
       
         <h3>No Marshaling</h3>
         <ul>
-<li><strong>Current State</strong>: Marshaling data between Go and other formats (JSON,
-Protobuf, etc.).</li>
+<li><strong>Current State</strong>: Marshaling data between Go and other formats (JSON, Protobuf, etc.).</li>
 <li><strong>New Approach</strong>: Work with Go types directly.</li>
 </ul>
 
@@ -199,10 +194,8 @@ Protobuf, etc.).</li>
       
         <h3>No Compilation</h3>
         <ul>
-<li><strong>Current State</strong>: Separate compilation (source) and execution phases
-(binaries), relying on the OS to run your apps.</li>
-<li><strong>New Approach</strong>: Directly call exported methods from other apps or via your
-CLI. A single shared VM runtime.</li>
+<li><strong>Current State</strong>: Separate compilation (source) and execution phases (binaries), relying on the OS to run your apps.</li>
+<li><strong>New Approach</strong>: Directly call exported methods from other apps or via your CLI. A single shared VM runtime.</li>
 </ul>
 
   <div class="code" >
@@ -236,8 +229,7 @@ CLI. A single shared VM runtime.</li>
       
         <h3>No FileSystem/Databases</h3>
         <ul>
-<li><strong>Current State</strong>: Using file systems and databases with marshaling, and
-potential failures.</li>
+<li><strong>Current State</strong>: Using file systems and databases with marshaling, and potential failures.</li>
 <li><strong>New Approach</strong>: Memory is the storage, and it is automatically persisted.</li>
 </ul>
 
