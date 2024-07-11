@@ -1,5 +1,5 @@
-# Gno examples
-13 Jul 2024
+# Gno: Examples
+Nebular, 13 Jul 2024, Brussels
 Tags: golang, gnolang  
 Summary: TODO
 
@@ -22,20 +22,42 @@ func main() {
 }
 ```
 
-## Intro
+## Ideas
 
+```
 - **GRC20 Token**: Implement a GRC20 token standard similar to ERC20 in Solidity.
+- **Atomic Swap**: Demonstrate a simple atomic swap mechanism. (https://github.com/gnolang/gno/pull/2510)
+
+- advanced example of composition
+- top DAO with two sub DAOs and composing votes
+- ...
+- **Carmel**: Implement a system to put money behind responses, similar to a jury system with discovery and responses.
 - **Name Resolution**: Create a decentralized name resolution system.
 - **Whitelisting**: Develop a whitelisting mechanism for access control.
 - **Boards and Posts**: Build a forum-like system with boards and posts.
 - **Memeland**: Create a social platform for sharing memes.
 - **Decentralized Exchange (DEX)**: Implement a simple decentralized exchange.
-- **Atomic Swap**: Demonstrate a simple atomic swap mechanism.
 - **Remote Appliance Control**: Enable remote control of an appliance.
 - **Game Character Movement**: Program a game character with customizable movement.
-- **Carmel**: Implement a system to put money behind responses, similar to a jury system with discovery and responses.
 - **Social Account Recovery**: Develop a system for social account recovery.
 - **Full Node Registry**: Create a registry for full nodes with a payment system.
 - **Micropayment Channels**: Implement micropayment channels for small transactions.
 - **Programmable Datastore**: Develop a realm that stores simple data with programmable attributes, similar to a programmable Firebase.
 - **Passwordless Authentication**: Create a personal CA system for passwordless authentication using private keys and pubkeys of devices on-chain.
+```
+
+## grc20/types.gno
+
+Implement a GRC20 token standard similar to ERC20 in Solidity.
+
+.code ./code/grc20-type.gno
+
+## grc20/xxx
+
+## grc20/yyy
+
+## blog
+
+## boards
+
+## user/home
