@@ -70,6 +70,21 @@ func main() {
 
 .code ./code/users_invite.gno
 
+## gno tamagochi
+
+- **Tamagochi:**
+
+.code ./code/tamagochi.gno
+
+## gno tamagochi
+
+- **Tamagochi Render**
+
+.code ./code/tamagochi_render.gno
+
+
+
+
 ## grc20/types.gno
 
 Implement a GRC20 token standard similar to ERC20 in Solidity.
@@ -80,12 +95,20 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 ## grc20/yyy
 
-## blog
+## Blog Post
 
-## guest book
 
-## boards -> post.gno
 
-## boards -> publish.gno
+## Blog Comment
+
+
+
+## Boards Post
+
+.code ./code/board_post.gno
+
+## Board comment
+
+.code ./code/board_comment.gno
 
 ## user/home
