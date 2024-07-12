@@ -54,11 +54,27 @@ func main() {
 
 .code ./code/counter.gno
 
+## gno guest book
+
+.code ./code/guest_book.gno
+
+## gno mini users
+
+- **Register:**
+
+.code ./code/users.gno
+
+## gno mini users
+
+- **Admin Invite:**
+
+.code ./code/users_invite.gno
+
 ## grc20/types.gno
 
 Implement a GRC20 token standard similar to ERC20 in Solidity.
 
-.code ./code/grc20-type.gno
+.code ./code/grc20_type.gno
 
 ## grc20/xxx
 
