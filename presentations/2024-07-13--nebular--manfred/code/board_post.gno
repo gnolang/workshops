@@ -7,12 +7,13 @@ type Post struct {
 	Comments []Post
 }
 
-type Board []Post
+type Board struct {
+	posts []Post
+}
 
 func (b *Board) Post(name, body string) Post {
 	caller := std.GetOrigCaller()
-	post := Post{len(posts), caller, name, body}
-	posts = append(posts, post)
-	postid++
+	post := Post{len(b.posts), caller, name, body}
+	b.posts = append(b.posts, post)
 	return post
 }
