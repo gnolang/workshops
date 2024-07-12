@@ -1,0 +1,34 @@
+=============== May 28, 2024 (PDT) ===============
+06:54:37.005053 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+06:54:37.067111 db@open opening
+06:54:37.068561 version@stat F·[] S·0B[] Sc·[]
+06:54:37.089002 db@janitor F·2 G·0
+06:54:37.089065 db@open done T·21.879138ms
+06:54:37.643179 memdb@flush N·7644 S·3MiB
+06:54:37.685601 memdb@flush created L0@3 N·7644 S·994KiB "s/1,v3":"vminit,v1"
+06:54:37.685702 version@stat F·[1] S·994KiB[994KiB] Sc·[0.25]
+06:54:37.723547 memdb@flush committed F·1 T·80.253591ms
+06:54:37.724382 journal@remove removed @1
+06:54:38.197763 memdb@flush N·6050 S·3MiB
+06:54:38.226077 memdb@flush created L0@5 N·6050 S·778KiB "s/_..a:1,v13650":"s/_..nge,v13466"
+06:54:38.226146 version@stat F·[2] S·1MiB[1MiB] Sc·[0.50]
+06:54:38.245589 memdb@flush committed F·1 T·47.761802ms
+06:54:38.246605 journal@remove removed @2
+06:54:38.668148 table@compaction L0·2 -> L1·0 S·1MiB Q·16458
+06:54:38.717169 table@build created L1@6 N·13642 S·1MiB "s/1,v3":"vminit,v1"
+06:54:38.717296 version@stat F·[0 1] S·1MiB[0B 1MiB] Sc·[0.00 0.02]
+06:54:38.736837 table@compaction committed F-1 S+11KiB Ke·0 D·52 T·68.635839ms
+06:54:38.737297 table@remove removed @5
+06:54:38.737549 table@remove removed @3
+06:54:38.978399 memdb@flush N·5007 S·3MiB
+06:54:39.017137 memdb@flush created L0@8 N·5007 S·1MiB "s/10,v14877":"s/latest,v14384"
+06:54:39.017412 version@stat F·[1 1] S·3MiB[1MiB 1MiB] Sc·[0.25 0.02]
+06:54:39.055930 memdb@flush committed F·1 T·77.460675ms
+06:54:39.058280 journal@remove removed @4
+06:54:39.147515 table@compaction L0·1 -> L1·1 S·3MiB Q·20990
+06:54:39.192477 table@build created L1@9 N·9983 S·2MiB "s/1,v3":"s/_..486,v849"
+06:54:39.228060 table@build created L1@10 N·6592 S·981KiB "s/_..487,v850":"vminit,v1"
+06:54:39.228158 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.03]
+06:54:39.268591 table@compaction committed F~ S-97KiB Ke·0 D·2074 T·120.982514ms
+06:54:39.269293 table@remove removed @8
+06:54:39.269798 table@remove removed @6

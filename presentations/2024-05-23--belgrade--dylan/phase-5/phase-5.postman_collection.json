@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "e73d371a-e6f5-4c2b-894b-3a3fc398d6ca",
+		"name": "gno events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alice creates app",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"package postit\\r\\n\\r\\nvar posts string \\r\\n\\r\\nfunc Post(p string) {\\r\\n\\tposts += \\\"<p>\\\" + p + \\\"<\\/p>\\\"\\r\\n}\\r\\n\\r\\nfunc Render(_ string) string {\\r\\n\\treturn \\\"<html>\\\" + posts + \\\"<\\/html>\\\"\\r\\n}\",\n    \"syncable\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4591/system/create",
+					"host": [
+						"localhost"
+					],
+					"port": "4591",
+					"path": [
+						"system",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bob installs remote app",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postit\",\n    \"address\": \"localhost:4591\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4592/system/install-remote",
+					"host": [
+						"localhost"
+					],
+					"port": "4592",
+					"path": [
+						"system",
+						"install-remote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alice posts something",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postit\",\n    \"func\": \"Post\",\n    \"args\": [\"first post\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4591/system/call",
+					"host": [
+						"localhost"
+					],
+					"port": "4591",
+					"path": [
+						"system",
+						"call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bob posts something",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postit\",\n    \"func\": \"Post\",\n    \"args\": [\"hello Alice, this is Bob\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4592/system/call",
+					"host": [
+						"localhost"
+					],
+					"port": "4592",
+					"path": [
+						"system",
+						"call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alice posts something else",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postit\",\n    \"func\": \"Post\",\n    \"args\": [\"oh hey Bob\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4591/system/call",
+					"host": [
+						"localhost"
+					],
+					"port": "4591",
+					"path": [
+						"system",
+						"call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render App",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4591/postit",
+					"host": [
+						"localhost"
+					],
+					"port": "4591",
+					"path": [
+						"postit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
