@@ -46,6 +46,14 @@ func main() {
 - **Passwordless Authentication**: Create a personal CA system for passwordless authentication using private keys and pubkeys of devices on-chain.
 ```
 
+## gno hello world
+
+.code ./code/hello_world.gno
+
+## gno persistency
+
+.code ./code/counter.gno
+
 ## grc20/types.gno
 
 Implement a GRC20 token standard similar to ERC20 in Solidity.
@@ -58,6 +66,10 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 ## blog
 
-## boards
+## guest book
+
+## boards -> post.gno
+
+## boards -> publish.gno
 
 ## user/home
