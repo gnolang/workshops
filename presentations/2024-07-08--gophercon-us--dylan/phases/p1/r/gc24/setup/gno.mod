@@ -1,0 +1,1 @@
+module gno.land/r/gc24/setup
