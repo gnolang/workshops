@@ -87,9 +87,8 @@ written in a good language.
 
 .code ./code/atomicswap.gno
 
-## composability.gno
-
-.code ./code/composability.gno
+// ## composability.gno
+// .code ./code/composability.gno
 
 ## wugnot.gno
 
