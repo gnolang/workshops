@@ -51,6 +51,22 @@ https://github.com/gnolang
 
 .code ./code/gno-doc-std.txt
 
+## Why Gno?
+
+The **GnoVM** enables
+
+**seamless interoperability** of
+
+**untrusted** user programs
+
+written in a good language.
+
+## alice.gno, bob.gno
+
+.code ./code/interop.gno
+
+.code ./code/interop2.gno
+
 ## users.gno - register
 
 .code ./code/users.gno
