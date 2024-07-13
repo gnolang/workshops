@@ -83,12 +83,25 @@ written in a good language.
 
 .code ./code/tamagotchi_render.gno
 
-## atomicswap.gno
-
-.code ./code/atomicswap.gno
+// ## atomicswap.gno
+// .code ./code/atomicswap.gno
 
 // ## composability.gno
 // .code ./code/composability.gno
+
+## grc20/types.gno
+
+Implement a GRC20 token standard similar to ERC20 in Solidity.
+
+.code ./code/grc20_type.gno
+
+## bar20.gno
+
+.code ./code/bar20.gno
+
+## grc20registry
+
+.code ./code/grc20registry.gno
 
 ## wugnot.gno
 
@@ -98,9 +111,6 @@ written in a good language.
 
 .code ./code/grc20factory.gno
 
-## grc20registry
-
-.code ./code/grc20registry.gno
 
 ## minidex - PlaceOrder
 
@@ -114,23 +124,15 @@ written in a good language.
 
 .code ./code/dao.gno
 
-## grc20/types.gno
 
-Implement a GRC20 token standard similar to ERC20 in Solidity.
+// ## foo20.gno
 
-.code ./code/grc20_type.gno
+// .code ./code/foo20.gno
 
-## foo20.gno
 
-.code ./code/foo20.gno
+// ## Blog Post
 
-## bar20.gno
-
-.code ./code/bar20.gno
-
-## Blog Post
-
-## Blog - Comment
+// ## Blog - Comment
 
 ## Boards Post
 
@@ -148,4 +150,4 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 .code ./code/blog_admin.gno
 
-## user/home
+// ## user/home

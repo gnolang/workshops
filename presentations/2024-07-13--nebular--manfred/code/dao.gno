@@ -1,16 +1,5 @@
 package dao
 
-// Status enum.
-type Status string
-
-var (
-	Accepted    Status = "accepted"
-	Active      Status = "active"
-	NotAccepted Status = "not accepted"
-	Expired     Status = "expired"
-	Succeeded   Status = "succeeded"
-)
-
 // Voter defines the needed methods for a voting system
 type Voter interface {
 	// IsAccepted indicates if the voting process had been accepted
