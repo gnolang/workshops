@@ -15,7 +15,22 @@ https://github.com/gnolang
 
 ## What is Gno?
 
-- 
+- gno is an interpreted, deterministic version of Go with a persistent data store
+gno incorporates a select list of Go features and standard libraries from Go version 1.17
+gno.land is soon to be released blockchain which uses gno as its smart contract programming language
+
+## gno - features and limitations
+
+
+Determinism guaranteed
+Generics not supported (yet)
+No concurrency
+Built in application state persistence
+Import select standard libraries and other packages and applications deployed to a VM instance
+Safe execution in a sandboxed environment
+https://docs.gno.land/reference/go-gno-compatibility
+
+
 
 ## Ideas
 
@@ -45,9 +60,13 @@ https://github.com/gnolang
 
 .code ./code/hello_world.gno
 
-## gno persistency
+## counter.gno - persistency and Render()
 
 .code ./code/counter.gno
+
+## counter.gno - private helpers
+
+.code ./code/counter_2.gno
 
 ## gno guest book
 
@@ -93,9 +112,13 @@ https://github.com/gnolang
 
 .code ./code/grc20registry.gno
 
-## minidex
+## minidex - PlaceOrder
 
 .code ./code/minidex.gno
+
+## minidex - MatchOrders
+
+.code ./code/minidex_2.gno
 
 ## dao.gno
 
@@ -107,9 +130,13 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 .code ./code/grc20_type.gno
 
-## grc20/xxx
+## foo20.gno
 
-## grc20/yyy
+.code ./code/foo20.gno
+
+## bar20.gno
+
+.code ./code/bar20.gno
 
 ## Blog Post
 

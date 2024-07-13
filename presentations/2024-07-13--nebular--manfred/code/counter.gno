@@ -1,11 +1,11 @@
 package counter
 
-var count int
+var Counter int
 
 func Inc() {
-	count = count + 1
+	Counter += 1
 }
 
-func Render() {
-	return "## My Super Counter: " + count
+func Render(path string) string {
+	return "My Super Counter: " + Counter
 }
