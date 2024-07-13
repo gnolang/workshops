@@ -62,29 +62,21 @@ func main() {
 
 .code ./code/gno-doc-std.txt
 
-## gno mini users
-
-- **Register:**
+## users.gno - register
 
 .code ./code/users.gno
 
-## gno mini users
-
-- **Admin Invite:**
+## users.gno - admin invite
 
 .code ./code/users_invite.gno
 
-## gno tamagochi
+## tamagotchi.gno - struct
 
-- **Tamagochi:**
+.code ./code/tamagotchi.gno
 
-.code ./code/tamagochi.gno
+## tamagotchi.gno - render
 
-## gno tamagochi
-
-- **Tamagochi Render**
-
-.code ./code/tamagochi_render.gno
+.code ./code/tamagotchi_render.gno
 
 ## atomicswap.gno
 
@@ -126,11 +118,7 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 ## Blog Post
 
-
-
 ## Blog Comment
-
-
 
 ## Boards Post
 
