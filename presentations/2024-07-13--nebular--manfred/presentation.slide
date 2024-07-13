@@ -1,4 +1,4 @@
-# Gno: Examples
+# Gno: Examples and Comparisons
 Nebular, 13 Jul 2024, Brussels
 Tags: golang, gnolang  
 Summary: TODO
@@ -15,16 +15,21 @@ https://github.com/gnolang
 
 ## What is Gno?
 
-- Gno is a deterministic, transactional, auto-persistent Go interpreter
-- Gno.land is soon to be released blockchain which uses Gno as its smart contract programming language
+- **Gno**: Deterministic, transactional, auto-persistent Go interpreter.
+- **Gno.land**: Upcoming blockchain using Gno for smart contracts.
+- **Key Features**:
+  - Proof of Contribution
+  - Tendermint2, IBCx, ICSx
+  - Hub of the Gno ecosystem
+  - Future AtomOne Hub ICS consumer
 
-## Gno - features and limitations
+## Gno - Features and Limitations
 
-- Determinism guaranteed
-- Generics not supported (yet)
-- Built in application state persistence
-- Safe execution in a sandboxed environment
-- https://docs.gno.land/reference/go-gno-compatibility
+- **Determinism**: Guaranteed
+- **Generics**: Not supported (yet)
+- **State Persistence**: Built-in
+- **Sandboxed Execution**: Safe and secure
+- **More Info**: https://docs.gno.land/reference/go-gno-compatibility
 
 ## gno hello world
 
