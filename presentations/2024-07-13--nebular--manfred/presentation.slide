@@ -113,14 +113,22 @@ Implement a GRC20 token standard similar to ERC20 in Solidity.
 
 ## Blog Post
 
-## Blog Comment
+## Blog - Comment
 
 ## Boards Post
 
 .code ./code/board_post.gno
 
-## Board comment
+## Board - comment
 
 .code ./code/board_comment.gno
+
+## Blog - Post
+
+.code ./code/blog_post.gno
+
+## Blog - Admin
+
+.code ./code/blog_admin.gno
 
 ## user/home
