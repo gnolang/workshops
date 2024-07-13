@@ -90,19 +90,19 @@ func main() {
 
 .code ./code/wugnot.gno
 
-# grc20factory.gno
+## grc20factory.gno
 
 .code ./code/grc20factory.gno
 
-# grc20registry
+## grc20registry
 
 .code ./code/grc20registry.gno
 
-# minidex
+## minidex
 
 .code ./code/minidex.gno
 
-# dao.gno
+## dao.gno
 
 .code ./code/dao.gno
 
