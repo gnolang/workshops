@@ -11,16 +11,11 @@ https://github.com/gnolang
 
 ## Bonjour, Nebular!
 
-```go
-// hello-its-manfred.txt
-package main
+.code ./code/hello.go
 
-import "fmt"
+## What is Gno?
 
-func main() {
-    fmt.Println("Hello, Nebular! It's Manfred.")
-}
-```
+- 
 
 ## Ideas
 
