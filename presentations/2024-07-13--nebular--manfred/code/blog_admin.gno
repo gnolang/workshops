@@ -2,14 +2,16 @@ package blog
 
 type Post struct{}
 
-var admin string = std.GetOrginCaller() // Set deployer as admin
-
-var posts []Post
+var (
+	adminAuthor string = std.GetOrginCaller() // Set deployer as admin
+	postid      int
+	posts       []Post
+)
 
 func Post(name, body string) Post {
 	// Assert caller is admin
 	caller := std.GetOrigCaller()
-	if caller != admin {
+	if caller != adminAuthor {
 		panic("unauthorized")
 	}
 

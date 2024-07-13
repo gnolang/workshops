@@ -9,10 +9,13 @@ type Post struct {
 	Comments []Post
 }
 
+var postid int
+
 var posts []Post
 
 func Post(name, body string) Post {
-	post := Post{len(posts), time.Now(), name, body}
+	post := Post{postid, time.Now(), name, body}
 	posts = append(posts, post)
+	postid++
 	return post
 }
