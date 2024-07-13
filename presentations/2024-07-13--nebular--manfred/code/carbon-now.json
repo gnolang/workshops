@@ -1,0 +1,21 @@
+{
+    "latest-preset": {
+        "t": "blackboard",
+        "bg": "rgba(100,245,145,1)",
+        "wc": false,
+        "fm": "Hack",
+        "fs": "15px",
+        "ln": false,
+        "ds": false,
+        "dsyoff": "20px",
+        "dsblur": "68px",
+        "wa": true,
+        "lh": "133%",
+        "pv": "0px",
+        "ph": "0px",
+        "si": false,
+        "wm": false,
+        "es": "4x",
+        "type": "png"
+    }
+}

@@ -3,4 +3,7 @@
 
 package tools
 
-import _ "golang.org/x/tools/cmd/present"
+import (
+	_ "github.com/soypat/go-presentx"
+	_ "golang.org/x/tools/cmd/present"
+)

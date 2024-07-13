@@ -1,0 +1,153 @@
+# Gno: Examples and Comparisons
+Nebular, 13 Jul 2024, Brussels
+Tags: golang, gnolang  
+Summary: TODO
+
+Manfred Touron  
+VP Eng., Gno.land  
+https://gno.land/  
+https://github.com/gnolang  
+@moul  
+
+## Bonjour, Nebular!
+
+.code ./code/hello.go
+
+## What is Gno?
+
+- **Gno**: Deterministic, transactional, auto-persistent Go interpreter.
+- **Gno.land**: Upcoming blockchain using Gno for smart contracts.
+- **Key Features**:
+  - Proof of Contribution
+  - Tendermint2, IBCx, ICSx
+  - Hub of the Gno ecosystem
+  - Future AtomOne Hub ICS consumer
+
+## Gno - Features and Limitations
+
+- **Determinism**: Guaranteed
+- **Generics**: Not supported (yet)
+- **State Persistence**: Built-in
+- **Sandboxed Execution**: Safe and secure
+- **More Info**: https://docs.gno.land/reference/go-gno-compatibility
+
+## gno hello world
+
+.code ./code/hello_world.gno
+
+## counter.gno - persistency and Render()
+
+.code ./code/counter.gno
+
+## counter.gno - private helpers
+
+.code ./code/counter_2.gno
+
+## gno guest book
+
+.code ./code/guest_book.gno
+
+## import "std"
+
+.code ./code/gno-doc-std.txt
+
+## Why Gno?
+
+The **GnoVM** enables
+
+**seamless interoperability** of
+
+**untrusted** user programs
+
+written in a good language.
+
+## alice.gno, bob.gno
+
+.code ./code/interop.gno
+
+.code ./code/interop2.gno
+
+## users.gno - register
+
+.code ./code/users.gno
+
+## users.gno - admin invite
+
+.code ./code/users_invite.gno
+
+## tamagotchi.gno - struct
+
+.code ./code/tamagotchi.gno
+
+## tamagotchi.gno - render
+
+.code ./code/tamagotchi_render.gno
+
+// ## atomicswap.gno
+// .code ./code/atomicswap.gno
+
+// ## composability.gno
+// .code ./code/composability.gno
+
+## grc20/types.gno
+
+Implement a GRC20 token standard similar to ERC20 in Solidity.
+
+.code ./code/grc20_type.gno
+
+## bar20.gno
+
+.code ./code/bar20.gno
+
+## grc20registry
+
+.code ./code/grc20registry.gno
+
+## wugnot.gno
+
+.code ./code/wugnot.gno
+
+## grc20factory.gno
+
+.code ./code/grc20factory.gno
+
+
+## minidex - PlaceOrder
+
+.code ./code/minidex.gno
+
+## minidex - MatchOrders
+
+.code ./code/minidex_2.gno
+
+## dao.gno
+
+.code ./code/dao.gno
+
+
+// ## foo20.gno
+
+// .code ./code/foo20.gno
+
+
+// ## Blog Post
+
+// ## Blog - Comment
+
+## Boards Post
+
+.code ./code/board_post.gno
+
+## Board - comment
+
+.code ./code/board_comment.gno
+
+## Blog - Post
+
+.code ./code/blog_post.gno
+
+## Blog - Admin
+
+.code ./code/blog_admin.gno
+
+// ## user/home
