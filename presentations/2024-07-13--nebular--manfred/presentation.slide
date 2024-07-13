@@ -58,6 +58,10 @@ func main() {
 
 .code ./code/guest_book.gno
 
+## import "std"
+
+.code ./code/gno-doc-std.txt
+
 ## gno mini users
 
 - **Register:**
@@ -82,8 +86,33 @@ func main() {
 
 .code ./code/tamagochi_render.gno
 
+## atomicswap.gno
 
+.code ./code/atomicswap.gno
 
+## composability.gno
+
+.code ./code/composability.gno
+
+## wugnot.gno
+
+.code ./code/wugnot.gno
+
+# grc20factory.gno
+
+.code ./code/grc20factory.gno
+
+# grc20registry
+
+.code ./code/grc20registry.gno
+
+# minidex
+
+.code ./code/minidex.gno
+
+# dao.gno
+
+.code ./code/dao.gno
 
 ## grc20/types.gno
 
