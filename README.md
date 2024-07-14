@@ -13,7 +13,7 @@ This repo contains materials that can be used to organize workshops or make pres
 | 09.26.2023 | Morgan Bazalgette, Gno Core Team | Chess the Gnolang Way | [Tutorial](https://github.com/gnolang/gnochess/blob/main/tutorial/01_getting_started/README.md) and [resources](https://gnolang.github.io/workshops/presentations/2023-09-26--chess-the-gnolang-way--morgan/slides.html) |  [Recording](https://www.youtube.com/watch?v=JQh7LhqW7ns) | Beginner
 | 10.12.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: Generating Audio with Smart Contracts | [Tutorial] |  [Recording](https://www.youtube.com/watch?v=lmmUIEHhdqA) | Beginner
 
-_(incomplete, please open PRs)_
+TODO: automate this history table. https://github.com/gnolang/workshops/pull/24
 
 ## Resources
 
