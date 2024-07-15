@@ -1,0 +1,38 @@
+# http://gitpod.io/#github.com/gnolang/getting-started-workshop
+
+additionalRepositories:
+  - url: https://github.com/gfanton/gno
+    checkoutLocation: gno
+
+tasks:
+  - name: Gno Deps
+    env:
+      GNO_ROOT: '../gno'
+    before: echo "alias gnodev='gnodev -web-remote=$(gp url 8888)'" >> $HOME/.bashrc
+    init: make deps
+    command: source $HOME/.bashrc
+
+ports:
+  - name: gnoweb
+    description: "the Gno.land web server"
+    port: 8888
+    onOpen: open-preview
+
+  - name: "gnodev RPC"
+    description: "the RPC server, managed by tendermint2"
+    port: 26657
+    onOpen: ignore
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: true
+    addBadge: true
+
+vscode:
+  extensions:
+    - harry-hov.gno
