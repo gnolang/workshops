@@ -2,19 +2,22 @@ Title: **Distributed communities: how to build timeless and decentralized apps, 
 
 Outline:
 
+
 >Gno is a programming language to build decentralized and distributed applications,
 >like blogs, discussion boards and social networks. It is a subset of Go 1.17
->(pre-generics), interepreted by a stack-based virtual machine, made to run
->entirely deterministically. It uses different standard libraries and allows for
->permanent data storage by automatically persisting and restoring global
->variables. Paired with gno.land, it can be used to launch composable and
->succinct backend applications without effort.
+>(pre-generics), interpreted by a stack-based virtual machine, made to run
+>entirely deterministically. It uses different standard libraries and allows
+>for permanent data storage by automatically persisting and restoring global
+>variables.
 >
->Join us as we learn how social platforms can be built on top of gno.land, from
->the application itself, to moderation and governance. We'll briefly present
->the Gno programming language and tools, and show how these can be used to
->compose succinct back-end software. We'll then see how this can come to life in
->a web application, and mobile applications.
+>Join us to learn how Gno and gno.land enable the seamless creation of
+>composable, succinct back-end applications. We'll demonstrate how to build
+>social platforms from the ground up, including application development,
+>moderation, and governance. Everything you need to design a distributed community.
+>
+>The session will also include a brief introduction to the Gno programming
+>language and tools, followed by a hands-on demonstration of bringing these
+>concepts to life in both web and mobile applications.
 
 ## 1. Project presentation
 
@@ -75,4 +78,3 @@ GnoChess).
 	- Still on-line communities, that can outlast the parent companies
 	- For real-time games, gno.land will not be good because it's slower than necessary. Our goal is not to centralize everything on the chain though; everyone can fork, and make their own chain. Gno is just a better way to program dapps; we don't claim though to be making the ultimate blockchain for every use case.
 	- Compare gno.land vs traditional client-server games.
-
