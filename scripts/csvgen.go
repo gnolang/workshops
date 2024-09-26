@@ -39,12 +39,11 @@ func main() {
 	cmd := commands.NewCommand(
 		commands.Metadata{
 			Name:       "",
-			ShortUsage: "gencsg [flags]",
-			ShortHelp:  ``,
+			ShortUsage: "csvgen [flags]",
 		},
 		cfg,
-		func(ctx context.Context, args []string) error {
-			return execGen(cfg, ctx)
+		func(_ context.Context, args []string) error {
+			return execGen(cfg)
 		})
 
 	cmd.Execute(context.Background(), os.Args[1:])
@@ -71,7 +70,7 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 	)
 }
 
-func execGen(cfg *cfg, ctx context.Context) error {
+func execGen(cfg *cfg) error {
 	searchDir := cfg.presentationsPath
 	outputCSV := cfg.outputPath // todo check for err
 
@@ -119,6 +118,8 @@ func execGen(cfg *cfg, ctx context.Context) error {
 			//fmt.Printf("error parsing metadata.yml: %v", err)
 			continue
 		}
+
+		// todo fix local slide links
 
 		// Check for empty fields
 		if err = metadata.Check(abs); err != nil {
