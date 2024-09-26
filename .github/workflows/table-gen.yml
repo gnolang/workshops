@@ -3,10 +3,10 @@ name: "generate table"
 on:
   push:
     paths:
-      - master
+      - main
   pull_request:
     paths:
-      - "docs/**"
+      - "presentations/**"
 
 jobs:
   build:
