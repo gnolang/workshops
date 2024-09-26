@@ -1,0 +1,16 @@
+# Title of the workshop
+title: "Intro to Gno"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+  - "pwnh4"
+# Date of the workshop
+date: "2022-09-29"
+# Location of the workshop
+location: ""
+# At which event the workshop took place, if any
+event: "Cosmoverse"
+# Workshop slides link
+slides: "https://github.com/xplrz/gnoland-workshop"
+# Workshop recording
+recording: ""

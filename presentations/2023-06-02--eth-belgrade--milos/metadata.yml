@@ -1,0 +1,15 @@
+# Title of the workshop
+title: "Alice in Gno.land"
+# GitHub usernames of the speakers
+speakers:
+  - "zivkovicmilos"
+# Date of the workshop
+date: "2023-06-02"
+# Location of the workshop
+location: "Belgrade, Serbia"
+# At which event the workshop took place, if any
+event: "ETH Belgrade"
+# Workshop slides link
+slides: "./README.md"
+# Workshop recording
+recording: ""

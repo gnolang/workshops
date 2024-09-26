@@ -1,0 +1,15 @@
+# Title of the workshop
+title: "Intro to the Gno Smart Contract Platform and Blockchain"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Date of the workshop
+date: "2022-09-13"
+# Location of the workshop
+location: "Berlin, Germany"
+# At which event the workshop took place, if any
+event: "Buckle Up and Build with Cosmos"
+# Workshop slides link
+slides: ""
+# Workshop recording
+recording: "https://www.youtube.com/watch?v=S36kA5RqLvs"
