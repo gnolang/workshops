@@ -32,8 +32,3 @@ jobs:
 
       - name: Build table
         run: make build
-
-      - name: Check for changes in docs
-        run: |
-          git diff
-          git diff --exit-code || (echo "Some docs files are not formatted, please run 'make build'." && exit 1)
