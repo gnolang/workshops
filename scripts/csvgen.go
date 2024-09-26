@@ -5,19 +5,20 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
-	"github.com/gnolang/gno/tm2/pkg/commands"
-	"gopkg.in/yaml.v3"
 	"os"
 	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/gnolang/gno/tm2/pkg/commands"
+	"gopkg.in/yaml.v3"
 )
 
 type cfg struct {
 	presentationsPath string
 	outputPath        string
-	rowamt            string
+	rows              string
 }
 
 type Metadata struct {
@@ -63,8 +64,8 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 		"output csv path, including .csv",
 	)
 	fs.StringVar(
-		&c.rowamt,
-		"rowamt",
+		&c.rows,
+		"rows",
 		"15",
 		"number of rows to generate",
 	)
@@ -104,9 +105,7 @@ func execGen(cfg *cfg, ctx context.Context) error {
 		}
 
 		metadataFile := filepath.Join(searchDir, dir.Name(), "metadata.yml")
-
 		abs, _ := filepath.Abs(metadataFile)
-		//fmt.Println("LOOKING FOR: ", abs)
 
 		// Try to find metadata.yml inside the dir
 		data, err := os.ReadFile(abs)
@@ -121,6 +120,11 @@ func execGen(cfg *cfg, ctx context.Context) error {
 			continue
 		}
 
+		// Check for empty fields
+		if err = metadata.Check(abs); err != nil {
+			return err
+		}
+
 		rows = append(rows, metadata)
 	}
 
@@ -129,13 +133,12 @@ func execGen(cfg *cfg, ctx context.Context) error {
 		return rows[i].Date > rows[j].Date
 	})
 
+	// Write sorted rows to the CSV file
 	// Generate only the last N rows of data
-	rowNum, err := strconv.Atoi(cfg.rowAmt)
+	rowNum, err := strconv.Atoi(cfg.rows)
 	if err != nil {
 		return err
 	}
-
-	// Write sorted rows to the CSV file
 	for _, r := range rows[:rowNum] {
 		err = writer.Write(r.Format())
 		if err != nil {
@@ -175,4 +178,20 @@ func (m Metadata) parseSpeakers() string {
 	}
 
 	return strings.Join(speakers, ", ")
+}
+
+func (m Metadata) Check(path string) error {
+	if strings.TrimSpace(m.Title) == "" {
+		return fmt.Errorf("%s: missing title", path)
+	}
+
+	if len(m.Speakers) == 0 {
+		return fmt.Errorf("%s: missing speakers", path)
+	}
+
+	if strings.TrimSpace(m.Date) == "" {
+		return fmt.Errorf("%s: missing date", path)
+	}
+
+	return nil
 }

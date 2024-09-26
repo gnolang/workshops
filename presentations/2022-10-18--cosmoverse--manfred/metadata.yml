@@ -1,7 +1,7 @@
 # Date of the workshop
 date: "2022-10-18"
 # Title of the workshop
-title: ""
+title: "Gnoland & Concurrent Smart Contracts"
 # GitHub usernames of the speakers
 speakers:
   - "moul"
@@ -12,4 +12,4 @@ event: ""
 # Workshop slides link
 slides: ""
 # Workshop recording
-recording: ""
+recording: "https://www.youtube.com/watch?v=gcZHjlqG8gg&list=PLUg1PF7xcA8WHJ6aXXPi4CckVd7WEukF6&index=8"
