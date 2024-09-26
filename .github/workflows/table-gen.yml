@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: go mod download
 
-      - name: Build docs
+      - name: Build table
         run: make build
 
       - name: Check diff
