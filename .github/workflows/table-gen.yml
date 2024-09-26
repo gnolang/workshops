@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch the full history to allow commit
+          fetch-depth: 0  # Fetch the full history for proper commit
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -35,18 +35,15 @@ jobs:
       - name: Build table
         run: make build
 
-      - name: Configure git for committing
+      - name: Check if there are changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff
+          git diff --exit-code || echo "Changes detected in README.md"
 
-      - name: Check for changes in README.md
-        id: check_changes
-        run: |
-          git diff --quiet README.md || echo "Changes detected" > has_changes.txt
-
-      - name: Commit and push changes
-        if: steps.check_changes.outputs.has_changes == 'true'
+      - name: Commit and push changes if needed
+        if: ${{ steps.Check_if_there_are_changes.outputs.exit_code == 0 }}  # Only commit if changes exist
         run: |
           git add README.md
           git commit -m "CI: Update README.md with generated table"
