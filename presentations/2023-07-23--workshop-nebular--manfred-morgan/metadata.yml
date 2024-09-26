@@ -1,0 +1,14 @@
+# Title of the workshop
+title: "Getting Started with Gno!"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+  - "thehowl"
+# Date of the workshop
+date: "2023-07-23"
+# Location of the workshop
+location: "Paris, France"
+# Workshop slides link
+slides: "./README.md"
+# Workshop recording
+recording: ""

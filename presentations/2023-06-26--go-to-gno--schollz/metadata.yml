@@ -1,0 +1,15 @@
+# Title of the workshop
+title: "Go -> Gno"
+# GitHub usernames of the speakers
+speakers:
+  - "schollz"
+# Date of the workshop
+date: "2023-06-26"
+# Location of the workshop
+location: ""
+# At which event the workshop took place, if any
+event: ""
+# Workshop slides link
+slides: "./slides.pdf"
+# Workshop recording
+recording: ""

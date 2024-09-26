@@ -1,0 +1,13 @@
+# Title of the workshop
+title: "Examining the Gno Core Stack"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Date of the workshop
+date: "2023-07-24"
+# Location of the workshop
+location: "Paris, France"
+# Workshop slides link
+slides: "https://gnolang.github.io/workshops/presentations/2023-07-24--talk-nebular--manfred/presentations.slide.html#1"
+# Workshop recording
+recording: ""
