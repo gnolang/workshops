@@ -3,7 +3,7 @@ name: "generate table"
 on:
   push:
     paths:
-      - main
+      - "presentations/**"
   pull_request:
     paths:
       - "presentations/**"
@@ -22,10 +22,10 @@ jobs:
           go-version: '1.22'
 
       - name: Install mdtable
-        run: go get moul.io/mdtable
+        run: go install moul.io/mdtable@latest
 
       - name: Install embedmd
-        run: go get github.com/campoy/embedmd
+        run: go install github.com/campoy/embedmd@latest
 
       - name: Install dependencies
         run: go mod download
@@ -33,5 +33,7 @@ jobs:
       - name: Build table
         run: make build
 
-      - name: Check diff
-        run: git diff --exit-code || (echo "Some docs files are not formatted, please run 'make build'." && exit 1)
+      - name: Check for changes in docs
+        run: |
+          git diff
+          git diff --exit-code || (echo "Some docs files are not formatted, please run 'make build'." && exit 1)
