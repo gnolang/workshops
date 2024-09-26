@@ -1,10 +1,10 @@
+# Date of the workshop
+date: "2023-09-11"
 # Title of the workshop
 title: "Examining the Gno Core Stack"
 # GitHub usernames of the speakers
 speakers:
   - "moul"
-# Date of the workshop
-date: "2023-09-11"
 # Location of the workshop
 location: "Berlin, Germany"
 # Workshop slides link

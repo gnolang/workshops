@@ -1,10 +1,10 @@
+# Date of the workshop
+date: "2022-09-13"
 # Title of the workshop
 title: "Intro to the Gno Smart Contract Platform and Blockchain"
 # GitHub usernames of the speakers
 speakers:
   - "moul"
-# Date of the workshop
-date: "2022-09-13"
 # Location of the workshop
 location: "Berlin, Germany"
 # At which event the workshop took place, if any

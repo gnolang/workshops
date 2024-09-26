@@ -1,10 +1,10 @@
+# Date of the workshop
+date: "2023-03-16"
 # Title of the workshop
 title: "How to build a forum in Gno.land"
 # GitHub usernames of the speakers
 speakers:
   - "zivkovicmilos"
-# Date of the workshop
-date: "2023-03-16"
 # Location of the workshop
 location: "Online"
 # At which event the workshop took place, if any
