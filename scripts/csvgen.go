@@ -10,12 +10,14 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 )
 
 type cfg struct {
 	presentationsPath string
 	outputPath        string
+	rowamt            string
 }
 
 type Metadata struct {
@@ -59,6 +61,12 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 		"out",
 		"./data.csv",
 		"output csv path, including .csv",
+	)
+	fs.StringVar(
+		&c.rowamt,
+		"rowamt",
+		"15",
+		"number of rows to generate",
 	)
 }
 
@@ -121,8 +129,14 @@ func execGen(cfg *cfg, ctx context.Context) error {
 		return rows[i].Date > rows[j].Date
 	})
 
+	// Generate only the last N rows of data
+	rowNum, err := strconv.Atoi(cfg.rowAmt)
+	if err != nil {
+		return err
+	}
+
 	// Write sorted rows to the CSV file
-	for _, r := range rows {
+	for _, r := range rows[:rowNum] {
 		err = writer.Write(r.Format())
 		if err != nil {
 			return err
