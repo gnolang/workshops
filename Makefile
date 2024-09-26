@@ -1,5 +1,6 @@
 build:
-	go run scripts/csvgen.go
-	mdtable csv metadata.csv
-	# gen md.md
-	# embedmd
+	go run scripts/csvgen.go -path ./presentations -out data.csv
+	cat data.csv | mdtable csv > table.md
+
+	embedmd -w README.md
+	rm data.csv table.md
