@@ -15,7 +15,7 @@ func main() {
 	var es int
 	for _, v := range os.Args[1:] {
 		if err := convertFile(v); err != nil {
-			fmt.Fprintf(os.Stderr, "%s: error converting: %v", v, err)
+			fmt.Fprintf(os.Stderr, "%s: error converting: %v\n", v, err)
 			es = 1
 		}
 	}

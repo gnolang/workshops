@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Distributed Communities</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.6.1/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.6.1/dist/theme/black.css"
+    />
+    
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.6.1/plugin/highlight/monokai.css"
+    />
+    <style>
+       
+      :root {
+        --r-heading-text-transform: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+# Distributed Communities
+
+## how to build timeless and decentralized apps, with Go
+
+Go Turin Meetup, Sept 23, 2024
+
+Morgan Bazalgette \
+Core Team Developer @ gno.land
+
+---
+
+# `$ whoami`
+
+- Morgan Bazalgette
+  - Not Baguette
+- In spite of the surname, not French
+- Pretty much always worked in open source
+- And for a slightly smaller period, always worked in Go
+- Learning Zig to spite Rust programmers &lt;!-- .element: class=&#34;fragment&#34; --&gt;
+- Playing the ukulele to spite my neighbours &lt;!-- .element: class=&#34;fragment&#34; --&gt;
+- Being silly in a company presentation to spite marketing &lt;!-- .element: class=&#34;fragment&#34; --&gt;
+
+&lt;!-- TODO: add serious picture, overlap with silly picture at the end --&gt;
+
+
+---
+
+# What we&#39;ll see today
+
+&lt;span&gt;1. Intro to Gno&lt;/span&gt;
+
+  - Intro to packages and realms
+  - Examples of programs developed in Gno.land
+  - Intro to some programs
+
+&lt;span&gt;2. Live demo&lt;/span&gt;
+
+  - Primer into gno repl and gno debugger
+  - We&#39;ll live-build a small, simple social network
+  - We&#39;ll discover a few tools of the trade, like gnodev and gnobro
+
+---
+
+# What is Gno?
+
+
+A programming language for building decentralized and distributed applications.
+
+- Interpreted and deterministic.
+- Powers gno.land, a blockchain programmed by Gno code.
+  - It&#39;s not launched yet. (But it&#39;s cool, I swear.)
+- Global variables as its persistent data store.
+- Go 1.17 subset - no generics, concurrency (yet...)
+
+---
+
+# Packages and Realms
+
+&lt;!-- Screen is split in 2 sides --&gt;
+
+&lt;div style=&#34;display:flex&#34;&gt;
+&lt;div style=&#34;width: 50%&#34;&gt;
+
+### Packages
+
+- Re-usable pieces of code, like Go
+- Will use our Go-inspired `gno.mod` for versioning
+- Cannot import realms
+- Includes standard library, mimicking Go&#39;s (still WIP)
+
+```go
+// Package ufmt provides utility functions for
+// formatting strings [...]
+package ufmt
+
+import &#34;strconv&#34;
+
+// Sprintf offers similar functionality to Go&#39;s fmt.Sprintf
+// or the sprintf equivalent available in many languages,
+// [...]
+func Sprintf(format string, args ...interface{}) string {
+	end := len(format)
+	argNum := 0
+	argLen := len(args)
+	buf := &#34;&#34;
+
+	for i := 0; i &amp;lt; end; {
+		isLast := i == end-1
+		c := format[i]
+
+		if isLast || c != &#39;%&#39; {
+			buf &#43;= string(c)
+			i&#43;&#43;
+			continue
+		}
+		// ...
+```
+
+&lt;/div&gt;
+&lt;div style=&#34;width:50%&#34;&gt;
+
+### Realms
+
+- End-user &#34;Smart Contracts&#34;
+- Exported functions can be directly called on a Node through RPC
+- Persist state through global variables
+- Can import other realms for Contract-to-Contract interactions
+
+```go
+package counter
+
+import &#34;strconv&#34;
+
+var counter int
+
+func Increment() int {
+	counter&#43;&#43;
+	return counter
+}
+
+func Render(string) string {
+	return strconv.Itoa(counter)
+}
+```
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+---
+
+&lt;video src=&#34;https://drop.howl.moe/f43be6477c-2024-09-23_14-50-03.speed.mp4&#34; controls preload=auto style=&#34;width: 60%&#34;&gt;&lt;/video&gt;
+
+---
+
+# A few examples
+
+![](examples-boards.png) &lt;!-- .element: style=&#34;width:50%&#34; --&gt;
+
+---
+
+### `gno.land/r/demo/boards`
+
+```go
+func CreateThread(bid BoardID, title string, body string) PostID {
+	if !(std.IsOriginCall() || std.PrevRealm().IsUser()) {
+		panic(&#34;invalid non-user call&#34;)
+	}
+	caller := std.GetOrigCaller()
+	if usernameOf(caller) == &#34;&#34; {
+		if !checkAnonFee() {
+			panic(&#34;please register, otherwise minimum fee [...]&#34;)
+		}
+	}
+	board := getBoard(bid)
+	if board == nil {
+		panic(&#34;board not exist&#34;)
+	}
+	thread := board.AddThread(caller, title, body)
+	return thread.id
+}
+```
+&lt;!-- .element: style=&#34;height: 80vh&#34; --&gt;
+
+
+---
+
+# A few examples
+
+![](examples-gnochess.png) &lt;!-- .element: style=&#34;Height: 80vh&#34; --&gt;
+
+---
+
+### `github.com/gnolang/gnochess`
+
+```go
+// MakeMove specifies a move to be done on the given game, specifying in
+// algebraic notation the square where to move the piece. [...]
+func MakeMove(gameID, from, to string, promote chess.Piece) string {
+	assertOriginCall()
+
+	g := getGame(gameID, true)
+
+	// determine if this is a black move
+	isBlack := len(g.Position.Moves)%2 == 1
+
+	caller := std.GetOrigCaller()
+	if (isBlack &amp;&amp; g.Black != caller) ||
+		(!isBlack &amp;&amp; g.White != caller) {
+		// either not a player involved; or not the caller&#39;s turn.
+		panic(&#34;you are not allowed to make a move at this time&#34;)
+	}
+	// ...
+```
+&lt;!-- .element: style=&#34;height: 80vh&#34; --&gt;
+
+
+---
+
+### `github.com/gnolang/gnochess`
+
+```go
+// avl (Adelson-Velsky-Landis) tree is a kind of binary tree
+var gameStore avl.Tree // string (game ID) -&gt; *Game
+
+func getGame(id string, wantOpen bool) *Game {
+	graw, ok := gameStore.Get(id)
+	if !ok {
+		panic(&#34;game not found&#34;)
+	}
+	g := graw.(*Game)
+	if wantOpen &amp;&amp; g.State.IsFinished() {
+		panic(&#34;game is already finished&#34;)
+	}
+	return g
+}
+```
+&lt;!-- .element: style=&#34;height: 80vh&#34; --&gt;
+
+---
+
+# A few examples
+
+![](examples-memeland.png)
+
+---
+
+### `gno.land/r/demo/memeland`
+
+```go
+type Memeland struct {
+	*ownable.Ownable
+	Posts       []*Post
+	MemeCounter seqid.ID
+}
+
+// PostMeme - Adds a new post
+func (m *Memeland) PostMeme(data string, timestamp int64) string {
+	if data == &#34;&#34; || timestamp &lt;= 0 {
+		panic(&#34;timestamp or data cannot be empty&#34;)
+	}
+
+	// Generate ID
+	id := m.MemeCounter.Next().String()
+
+	newPost := &amp;Post{
+		ID:            id,
+		Data:          data,
+		Author:        std.PrevRealm().Addr(),
+		Timestamp:     time.Unix(timestamp, 0),
+		UpvoteTracker: avl.NewTree(),
+	}
+
+	m.Posts = append(m.Posts, newPost)
+	return id
+}
+```
+&lt;!-- .element: style=&#34;height: 80vh&#34; --&gt;
+
+---
+
+### And now, for some frontend
+
+```ts
+const fetchPosts = async (
+  page: number,
+  sort: EPostSort = EPostSort.UPVOTES
+): Promise&lt;IPost[]&gt; =&gt; {
+  if (!provider) {
+    throw new Error(&#39;invalid chain RPC URL&#39;);
+  }
+
+  const startTimestamp: number = constructStartTimestamp(time);
+  const endTimestamp: number = Math.floor(new Date().getTime() / 1000);
+
+  const response: string = await provider.evaluateExpression(
+    Config.REALM_PATH,
+    `GetPostsInRange(${startTimestamp},${endTimestamp},${page},${postsPerFetch},&#34;${sort}&#34;)`
+  );
+
+  // Parse the posts response
+  return parsePostFetchResponse(response);
+};
+```
+&lt;!-- .element: style=&#34;height: 80vh&#34; --&gt;
+
+---
+
+# gno (automatic grpc) &#43;
+# gno.land (distributed aws)
+
+- Using **Gno realms**, you can write simple programs whose exported functions
+  become automatically &#34;API&#34; functions
+  - They can be called by either being imported by another realm (smart contract),
+    or they can be called directly by the end user
+- **gno.land is a blockchain** built on top of Gno
+  - Still not fully launched (but we&#39;re close, come discover and play around --&gt; &lt;https://gno.land&gt;)
+  - It allows to build the applications like those shown in a decentralized/distributed manner.
+  - Each &#34;node&#34; on the blockchain can perform transactions and be used
+  - Builder oriented; we&#39;re more interested in &#34;general-purpose&#34; dApps rather than just finance.
+
+---
+
+# Timeless?
+
+- This is an intention, rather than a promise
+- But apps on gno.land will last as long as the blockchain does, rather than their creators
+- Every realm is 100% open source
+- The chain is always forkable; and even should it shut down, the chain and all of its data can be continued by someone else.
+- =&gt; open, hackable and inspectable backend apps with open data.
+
+---
+
+## Demo time!
+
+---
+
+## Why do we need Web3 dApps?
+
+![Club penguin screenshot](club-penguin.jpg)
+
+---
+
+## Why do we need Web3 dApps?
+
+&gt; https://ourincrediblejourney.tumblr.com/
+
+![Screenshot of Our Incredible Journey, linked above.](our-incredible-journey.png)
+
+---
+
+## Why do we need Web3 dApps?
+
+&gt; https://bitcoin.org/bitcoin.pdf
+
+&gt; Commerce on the Internet has come to rely almost exclusively on financial institutions serving as trusted third parties to process electronic payments. [...] Completely non-reversible transactions are not really possible, since financial institutions cannot avoid mediating disputes. The cost of mediation increases transaction costs, [...] and there is a broader cost in the loss of ability to make non-reversible payments for non-reversible services. With the possibility of reversal, the need for trust spreads. Merchants must be wary of their customers, hassling them for more information than they would otherwise need.
+&gt;
+&gt; [...] These costs and payment uncertainties can be avoided in person by using physical currency, but no mechanism exists to make payments over a communications channel without a trusted party.
+
+What Web3 enables is what Web2 never could: \
+**Achieve trust in a trustless environment.**
+
+---
+
+# Q&amp;A
+
+---
+
+# Thanks!
+
+Come find out about gno:
+
+- https://gno.land
+- https://github.com/gnolang
+- The core team&#39;s here. Let&#39;s have a chat!
+
+And now, time for an aperitivo!
+</textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+    <script>
+         Reveal.initialize(Object.assign({
+           plugins: [RevealMarkdown, RevealNotes, RevealHighlight],
+      }, {"hashOneBasedIndex":true,"hash":true,"center":false,"width":1920,"height":1080}));
+    </script>
+  </body>
+</html>
