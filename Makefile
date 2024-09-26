@@ -7,7 +7,7 @@ build:
 	embedmd -w README.md
 
 	# Find the line where the table embedmd starts
-	TABLE_START=$$(grep -n "$(TABLE_START_LINE)" README.md | cut -d: -f1)
+	TABLE_START=$$(grep -n $(TABLE_START_LINE) README.md | cut -d: -f1)
 
 	# Delete the line immediately after the TABLE_START line
 	sed -i '' "$$((TABLE_START+1))d" README.md
