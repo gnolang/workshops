@@ -1,21 +1,31 @@
-# workshops
+# gno.land workshops
 
-This repo contains materials that can be used to organize workshops or make presentations.
+This repo contains materials that can be used to organize workshops or make 
+presentations.
 
-## History
+## Previous workshops & talks
 
-| Date              | Lead           | Title                             | Documentation  | Recording | Level    |
-|-------------------|----------------|-----------------------------------|----------------|-----------|----------|
-| 03.16.2023 | Miloš Živković, Gno.land Core | How to Build a Forum in Gno.land  | [Tutorial](https://hackmd.io/iB9CgSeZRwac9fbJTR7r2Q?view)    | [Recording](https://www.youtube.com/watch?v=gmP-mH-64HA) | Beginner |
-| 01.20.2023 | Miloš Živković, Gno.land Core | Gno.land Demo | No documentation | [Recording](https://www.youtube.com/watch?v=-BlnEXCs0eI) | Beginner
-| 06.26.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: How to build a microblog | [Tutorial](https://github.com/gnolang/workshops/tree/main/presentations/2023-06-26--go-to-gno--schollz) |  [Recording](https://www.youtube.com/watch?v=F-_dadxcRJM&feature=youtu.be) | Beginner
-| 08.26.2023 | Jae Kwon, Founder of Gno.land | Gno.land: A Transactional Paradigm of Reality | [Presentationk at Blockchain Application Stanford Summit] |  [Recording](https://www.youtube.com/watch?v=Dx8dI6evcP0&t=3s) |
-| 09.26.2023 | Morgan Bazalgette, Gno Core Team | Chess the Gnolang Way | [Tutorial](https://github.com/gnolang/gnochess/blob/main/tutorial/01_getting_started/README.md) and [resources](https://gnolang.github.io/workshops/presentations/2023-09-26--chess-the-gnolang-way--morgan/slides.html) |  [Recording](https://www.youtube.com/watch?v=JQh7LhqW7ns) | Beginner
-| 10.12.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: Generating Audio with Smart Contracts | [Tutorial] |  [Recording](https://www.youtube.com/watch?v=lmmUIEHhdqA) | Beginner
+[embedmd]:# (scripts/table.md)
+|Date       |Title                                                      |Speakers        |Slides                                                                                                                                      |Recording                                                                                                |
+|----       |-----                                                      |--------        |------                                                                                                                                      |---------                                                                                                |
+|2023-09-11 |Gno.land: The Key To Perpetual Transparency                |@moul           |[Slides](https://gnolang.github.io/workshops/presentations/2023-09-11--dappcon-key-perpetual-transparency--manfred/presentation.slide.html) |---                                                                                                      |
+|2023-07-24 |Examining the Gno Core Stack                               |@moul           |[Slides](https://gnolang.github.io/workshops/presentations/2023-07-24--talk-nebular--manfred/presentations.slide.html#1)                    |---                                                                                                      |
+|2023-07-23 |Getting Started with Gno!                                  |@moul, @thehowl |[Slides](./README.md)                                                                                                                       |---                                                                                                      |
+|2023-06-26 |Go -> Gno                                                  |@schollz        |[Slides](./slides.pdf)                                                                                                                      |---                                                                                                      |
+|2023-06-06 |Proof of Contribution in Gno.land                          |@moul           |[Slides](https://gnolang.github.io/workshops/presentations/2023-06-06--buidl-asia--manfred/presentations.slide.html)                        |---                                                                                                      |
+|2023-06-05 |Gno.land for Go Developers                                 |@moul           |[Slides](https://gnolang.github.io/workshops/presentations/2023-06-05--getting-to-gno-seoul--manfred/presentations.slide.html#1)            |---                                                                                                      |
+|2023-06-03 |A journey into Gno.land - the Evolution of Smart Contracts |@moul           |[Slides](https://gnolang.github.io/workshops/presentations/2023-06-03--eth-seoul--manfred/presentations.slide.html#1)                       |---                                                                                                      |
+|2023-06-02 |Alice in Gno.land                                          |@zivkovicmilos  |[Slides](./README.md)                                                                                                                       |---                                                                                                      |
+|2023-03-16 |How to build a forum in Gno.land                           |@zivkovicmilos  |[Slides](./README.md)                                                                                                                       |[Recording](https://www.youtube.com/watch?v=gmP-mH-64HA)                                                 |
+|2023-03-03 |Plan9 as Metaverse                                         |@jaekwon        |[Slides](./README.md)                                                                                                                       |---                                                                                                      |
+|2022-11-29 |Minimal meetup.com clone                                   |@moul, @pwnh4   |[Slides](https://github.com/xplrz/gnoland-meetup)                                                                                           |---                                                                                                      |
+|2022-11-15 |Intro to gno.land                                          |@moul           |---                                                                                                                                         |---                                                                                                      |
+|2022-11-03 |Intro to gno.land                                          |@moul           |---                                                                                                                                         |---                                                                                                      |
+|2022-10-18 |Gnoland & Concurrent Smart Contracts                       |@moul           |---                                                                                                                                         |[Recording](https://www.youtube.com/watch?v=gcZHjlqG8gg&list=PLUg1PF7xcA8WHJ6aXXPi4CckVd7WEukF6&index=8) |
+|2022-09-29 |Intro to Gno                                               |@moul, @pwnh4   |[Slides](https://github.com/xplrz/gnoland-workshop)                                                                                         |---                                                                                                      |
 
-TODO: automate this history table. https://github.com/gnolang/workshops/pull/24
+_This table is autogenerated based on the [./presentations](./presentations) folder._
 
 ## Resources
 
-* https://github.com/moul/gno-basics - Repo used by @moul to create example-oriented code snippet and generate outputs for slides.
 * HTML preview of presentations made using `present` - https://gnolang.github.io/workshops/presentations.html

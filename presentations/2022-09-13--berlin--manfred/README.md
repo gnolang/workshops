@@ -1,10 +1,3 @@
----
-date: "2022-09-13"
-speakers:
-- "manfred"
-location: "Berlin, Germany"
----
-
 # Intro to Gno Smart Contract Platform and Blockchain
 
 * https://www.eventbrite.com/e/buckle-up-and-build-with-cosmos-tickets-407865947027 - event info

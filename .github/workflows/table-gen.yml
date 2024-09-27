@@ -1,0 +1,50 @@
+name: "generate table"
+
+on:
+  push:
+    paths:
+      - "presentations/**"
+  pull_request:
+    paths:
+      - "presentations/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch the full history for proper commit
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install mdtable
+        run: go install moul.io/mdtable@latest
+
+      - name: Install embedmd
+        run: go install github.com/campoy/embedmd@latest
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Build table
+        run: make build
+
+      - name: Check if there are changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff
+          git diff --exit-code || echo "Changes detected in README.md"
+
+      - name: Commit and push changes if needed
+        if: ${{ steps.Check_if_there_are_changes.outputs.exit_code == 0 }}  # Only commit if changes exist
+        run: |
+          git add README.md
+          git commit -m "CI: Update README.md with generated table"
+          git push origin HEAD:${{ github.head_ref }}
