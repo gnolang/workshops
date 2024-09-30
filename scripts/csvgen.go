@@ -118,8 +118,12 @@ func execGen(cfg *cfg) error {
 			continue
 		}
 
-		// todo fix local slide links
-		//fmt.Printf("metadatafile: %s\n", metadataFile)
+		// fix local links
+		if !strings.Contains(metadata.Slides, "http") {
+			metadata.Slides = filepath.Join(searchDir, dir.Name(), metadata.Slides)
+			fmt.Printf("slidesLink: %s\n", metadata.Slides)
+		}
+
 		//fmt.Printf("abs: %s\n", abs)
 		//fmt.Printf("dir: %s\n", dir.Name())
 
