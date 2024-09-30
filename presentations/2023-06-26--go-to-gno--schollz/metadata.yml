@@ -9,7 +9,7 @@ speakers:
 location: ""
 # At which event the workshop took place, if any
 event: ""
-# Workshop slides link
-slides: "./slides.pdf"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "slides.pdf"
 # Workshop recording
-recording: ""
+recording: "https://www.youtube.com/watch?v=F-_dadxcRJM"

@@ -1,15 +1,15 @@
 # Date of the workshop
-date: "2022-11-15"
+date: "2024-08-20"
 # Title of the workshop
-title: "Intro to gno.land"
+title: "A gentle intro to gno.land"
 # GitHub usernames of the speakers
 speakers:
-  - "moul"
+  - "leohhhn"
 # Location of the workshop
-location: "Istanbul, Turkey"
+location: "Berlin, Germany"
 # At which event the workshop took place, if any
-event: ""
+event: "Web3 Summit - BUIDL with Cosmos Tooling 2024"
 # Workshop slides link. If the link is local, only put the file name, without any other path parts.
-slides: "slides.pdf"
+slides: "presentation.pdf"
 # Workshop recording
-recording: ""
+recording: "https://www.youtube.com/watch?v=hTGeG0z09NU"

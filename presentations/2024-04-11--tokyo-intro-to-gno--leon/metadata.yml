@@ -1,12 +1,12 @@
 # Date of the workshop
-date: "2022-11-15"
+date: "2024-04-11"
 # Title of the workshop
-title: "Intro to gno.land"
+title: "Intro to Gno Tokyo"
 # GitHub usernames of the speakers
 speakers:
-  - "moul"
+  - "leohhhn"
 # Location of the workshop
-location: "Istanbul, Turkey"
+location: "Tokyo, Japan"
 # At which event the workshop took place, if any
 event: ""
 # Workshop slides link. If the link is local, only put the file name, without any other path parts.

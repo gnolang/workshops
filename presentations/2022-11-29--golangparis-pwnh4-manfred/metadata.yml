@@ -10,7 +10,7 @@ speakers:
 location: "Paris, France"
 # At which event the workshop took place, if any
 event: "Golang Paris"
-# Workshop slides link
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
 slides: "https://github.com/xplrz/gnoland-meetup"
 # Workshop recording
 recording: ""

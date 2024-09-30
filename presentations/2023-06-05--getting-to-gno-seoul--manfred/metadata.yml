@@ -9,7 +9,7 @@ speakers:
 location: "Seoul, South Korea"
 # At which event the workshop took place, if any
 event: ""
-# Workshop slides link
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
 slides: "https://gnolang.github.io/workshops/presentations/2023-06-05--getting-to-gno-seoul--manfred/presentations.slide.html#1"
 # Workshop recording
 recording: ""
