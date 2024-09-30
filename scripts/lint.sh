@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the file to be processed
-FILE="README.md"
+FILE=$1
 
 # if found line, remove table of size 17 rows
 

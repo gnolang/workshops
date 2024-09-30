@@ -8,4 +8,4 @@ FILE="README.md"
 # Use sed to remove the code block backticks
 sed -i '' '/^```md$/d; /^```$/d' "$FILE"
 
-echo "Removed code block formatting from $FILE."
+echo "Successfully generated table for $FILE."
