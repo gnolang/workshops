@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"slices"
 	"strings"
@@ -42,4 +43,6 @@ func main() {
 			panic("could not find latest item in README table - did you run `make build`?")
 		}
 	}
+
+	fmt.Println("All good!")
 }
