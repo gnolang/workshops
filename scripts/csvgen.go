@@ -121,11 +121,7 @@ func execGen(cfg *cfg) error {
 		// fix local links
 		if !strings.Contains(metadata.Slides, "http") {
 			metadata.Slides = filepath.Join(searchDir, dir.Name(), metadata.Slides)
-			fmt.Printf("slidesLink: %s\n", metadata.Slides)
 		}
-
-		//fmt.Printf("abs: %s\n", abs)
-		//fmt.Printf("dir: %s\n", dir.Name())
 
 		// Check for empty fields
 		if err = metadata.Check(abs); err != nil {
