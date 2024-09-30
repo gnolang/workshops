@@ -12,3 +12,5 @@ build:
 
 	./scripts/del-codeblock.sh $(FILE)
 
+lint:
+	cd ./scripts && go run lint.go
