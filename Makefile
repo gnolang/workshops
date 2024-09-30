@@ -2,7 +2,6 @@ ROWS=15
 FILE="README.md"
 
 build:
-	# Delete table if it already exists
 	./scripts/del-existing-rows.sh $(ROWS) $(FILE)
 
 	go run scripts/csvgen.go -path ./presentations -out scripts/data.csv -rows $(ROWS)
