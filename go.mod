@@ -5,8 +5,8 @@ go 1.22.0
 toolchain go1.22.3
 
 require (
+	github.com/campoy/embedmd v1.0.0
 	github.com/gnolang/gno v0.2.0
-	github.com/leohhhn/embedmd v0.0.0-20240927092809-8e38263bfca4
 	github.com/soypat/go-presentx v1.1.0
 	golang.org/x/tools v0.23.0
 	gopkg.in/yaml.v3 v3.0.1

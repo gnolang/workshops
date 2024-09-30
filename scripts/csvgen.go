@@ -8,7 +8,6 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/gnolang/gno/tm2/pkg/commands"
@@ -18,7 +17,7 @@ import (
 type cfg struct {
 	presentationsPath string
 	outputPath        string
-	rows              string
+	rows              int
 }
 
 type Metadata struct {
@@ -30,7 +29,7 @@ type Metadata struct {
 }
 
 var (
-	csvHeader = []string{"Date", "Title", "Speakers", "Slides", "Recording"}
+	csvHeader = []string{"Date", "Title", "Speakers", "Presentation", "Recording"}
 )
 
 func main() {
@@ -62,10 +61,10 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 		"./data.csv",
 		"output csv path, including .csv",
 	)
-	fs.StringVar(
+	fs.IntVar(
 		&c.rows,
 		"rows",
-		"15",
+		15,
 		"number of rows to generate",
 	)
 }
@@ -120,6 +119,9 @@ func execGen(cfg *cfg) error {
 		}
 
 		// todo fix local slide links
+		//fmt.Printf("metadatafile: %s\n", metadataFile)
+		//fmt.Printf("abs: %s\n", abs)
+		//fmt.Printf("dir: %s\n", dir.Name())
 
 		// Check for empty fields
 		if err = metadata.Check(abs); err != nil {
@@ -136,11 +138,7 @@ func execGen(cfg *cfg) error {
 
 	// Write sorted rows to the CSV file
 	// Generate only the last N rows of data
-	rowNum, err := strconv.Atoi(cfg.rows)
-	if err != nil {
-		return err
-	}
-	for _, r := range rows[:rowNum] {
+	for _, r := range rows[:cfg.rows] {
 		err = writer.Write(r.Format())
 		if err != nil {
 			return err
@@ -160,7 +158,7 @@ func (m Metadata) Format() []string {
 	if m.Recording == "" {
 		m.Recording = "---"
 	} else {
-		m.Recording = fmt.Sprintf("[Recording](%s)", m.Recording)
+		m.Recording = fmt.Sprintf("[Video](%s)", m.Recording)
 	}
 
 	return []string{
