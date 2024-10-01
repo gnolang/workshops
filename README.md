@@ -6,6 +6,7 @@ presentations.
 ## Previous workshops & talks
 
 [embedmd]:# (scripts/table.md)
+
 |Date       |Title                                                                           |Speakers |Presentation                                                                                                       |Recording                                                 |
 |----       |-----                                                                           |-------- |------------                                                                                                       |---------                                                 |
 |2024-09-23 |Distributed Communities - How to build timeless and decentralized apps, with Go |@thehowl |[Slides](presentations/2024-09-23--distributed-communities-morgan/slides.reveal.pdf)                               |---                                                       |
