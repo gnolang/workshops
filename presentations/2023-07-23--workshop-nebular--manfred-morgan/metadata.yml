@@ -1,0 +1,14 @@
+# Date of the workshop
+date: "2023-07-23"
+# Title of the workshop
+title: "Getting Started with Gno!"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+  - "thehowl"
+# Location of the workshop
+location: "Paris, France"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "README.md"
+# Workshop recording
+recording: ""

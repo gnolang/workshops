@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2023-06-06"
+# Title of the workshop
+title: "Proof of Contribution in Gno.land"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Location of the workshop
+location: "Seoul, South Korea"
+# At which event the workshop took place, if any
+event: "BUIDL Asia"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "https://gnolang.github.io/workshops/presentations/2023-06-06--buidl-asia--manfred/presentations.slide.html"
+# Workshop recording
+recording: ""

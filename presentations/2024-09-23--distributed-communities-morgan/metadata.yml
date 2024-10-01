@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2024-09-23"
+# Title of the workshop
+title: "Distributed Communities - How to build timeless and decentralized apps, with Go"
+# GitHub usernames of the speakers
+speakers:
+  - "thehowl"
+# Location of the workshop
+location: "Turin, Italy"
+# At which event the workshop took place, if any
+event: ""
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "slides.reveal.pdf"
+# Workshop recording
+recording: ""

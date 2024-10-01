@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2023-12-14"
+# Title of the workshop
+title: "GnoChess - a Retrospective"
+# GitHub usernames of the speakers
+speakers:
+  - "thehowl"
+# Location of the workshop
+location: "Rouen, France"
+# At which event the workshop took place, if any
+event: ""
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "slides.reveal.md"
+# Workshop recording
+recording: ""

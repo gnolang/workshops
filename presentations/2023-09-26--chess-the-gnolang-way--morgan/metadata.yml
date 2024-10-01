@@ -1,0 +1,13 @@
+# Date of the workshop
+date: "2023-09-26"
+# Title of the workshop
+title: "Chess The Gnolang Way"
+# GitHub usernames of the speakers
+speakers:
+  - "thehowl"
+# Location of the workshop
+location: "San Diego, USA"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.. If the link is local, only put the file name, without any other path parts.
+slides: "slides.reveal.md"
+# Workshop recording
+recording: ""

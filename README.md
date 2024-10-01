@@ -1,21 +1,31 @@
-# workshops
+# gno.land workshops
 
-This repo contains materials that can be used to organize workshops or make presentations.
+This repo contains materials that can be used to organize workshops or make 
+presentations.
 
-## History
+## Previous workshops & talks
 
-| Date              | Lead           | Title                             | Documentation  | Recording | Level    |
-|-------------------|----------------|-----------------------------------|----------------|-----------|----------|
-| 03.16.2023 | Miloš Živković, Gno.land Core | How to Build a Forum in Gno.land  | [Tutorial](https://hackmd.io/iB9CgSeZRwac9fbJTR7r2Q?view)    | [Recording](https://www.youtube.com/watch?v=gmP-mH-64HA) | Beginner |
-| 01.20.2023 | Miloš Živković, Gno.land Core | Gno.land Demo | No documentation | [Recording](https://www.youtube.com/watch?v=-BlnEXCs0eI) | Beginner
-| 06.26.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: How to build a microblog | [Tutorial](https://github.com/gnolang/workshops/tree/main/presentations/2023-06-26--go-to-gno--schollz) |  [Recording](https://www.youtube.com/watch?v=F-_dadxcRJM&feature=youtu.be) | Beginner
-| 08.26.2023 | Jae Kwon, Founder of Gno.land | Gno.land: A Transactional Paradigm of Reality | [Presentationk at Blockchain Application Stanford Summit] |  [Recording](https://www.youtube.com/watch?v=Dx8dI6evcP0&t=3s) |
-| 09.26.2023 | Morgan Bazalgette, Gno Core Team | Chess the Gnolang Way | [Tutorial](https://github.com/gnolang/gnochess/blob/main/tutorial/01_getting_started/README.md) and [resources](https://gnolang.github.io/workshops/presentations/2023-09-26--chess-the-gnolang-way--morgan/slides.html) |  [Recording](https://www.youtube.com/watch?v=JQh7LhqW7ns) | Beginner
-| 10.12.2023 | Zack Scholl, Gno.land Tinker | Go to Gno: Generating Audio with Smart Contracts | [Tutorial] |  [Recording](https://www.youtube.com/watch?v=lmmUIEHhdqA) | Beginner
+[embedmd]:# (scripts/table.md)
+|Date       |Title                                                                           |Speakers |Presentation                                                                                                       |Recording                                                 |
+|----       |-----                                                                           |-------- |------------                                                                                                       |---------                                                 |
+|2024-09-23 |Distributed Communities - How to build timeless and decentralized apps, with Go |@thehowl |[Slides](presentations/2024-09-23--distributed-communities-morgan/slides.reveal.pdf)                               |---                                                       |
+|2024-08-20 |A gentle intro to gno.land                                                      |@leohhhn |[Slides](presentations/2024-08-20--gentle-intro-to-gnoland--leon/presentation.pdf)                                 |[Video](https://www.youtube.com/watch?v=hTGeG0z09NU)      |
+|2024-08-05 |Intro to gno.land                                                               |@leohhhn |[Slides](https://docs.google.com/presentation/d/1tnplCWxhg-RFatDS3w1iJnO0vSfBAuw2ZA0ommNJQOU/edit?usp=sharing)     |---                                                       |
+|2024-07-13 |Gno: Examples and Comparisons                                                   |@moul    |[Slides](https://gnolang.github.io/workshops/presentations/2024-07-13--nebular--manfred/presentation.slide.html#1) |[Video](https://www.youtube.com/watch?v=Zsl3xu_Edcc)      |
+|2024-07-13 |Building with Gno.land: A Practical Workshop on Smart Contracts                 |@gfanton |[Slides](presentations/2024-07-13--nebular--gfanton/README.md)                                                     |[Video](https://www.youtube.com/watch?v=oBQ-t_E0QpI)      |
+|2024-07-09 |Building a Deterministic Interpreter in Go: Readability vs Performance          |@jaekwon |[Slides](presentations/2024-07-09--gophercon-us--jae)                                                              |[Video](https://www.youtube.com/watch?v=betUkghf_jo)      |
+|2024-07-08 |Building a Decentralized App on gno.land                                        |@deelawn |[Slides](presentations/2024-07-08--gophercon-us--dylan)                                                            |[Video](https://www.youtube.com/watch?v=lwL2VyjaV-A)      |
+|2024-06-17 |Envisioning a Go-Powered Ecosystem: The Ultimate Go Computer                    |@moul    |[Slides](presentations/2024-06-17--gophercon-berlin--manfred)                                                      |[Video](https://youtu.be/dLE2-8QPK64?si=IidxNLGrwwS6jbYL) |
+|2024-05-23 |Building Dynamic Applications With Go (and Gno!)                                |@deelawn |[Slides](presentations/2024-05-23--belgrade--dylan/slides.pdf)                                                     |[Video](https://www.youtube.com/watch?v=tNM1DHOxIQ8)      |
+|2024-04-11 |Intro to Gno Tokyo                                                              |@leohhhn |[Slides](presentations/2024-04-11--tokyo-intro-to-gno--leon/slides.pdf)                                            |---                                                       |
+|2024-03-23 |Go to Gno                                                                       |@leohhhn |[Slides](presentations/2024-03-23--seoul-go-to-gno--leon/Go_to_Gno_slides.pdf)                                     |---                                                       |
+|2023-12-14 |GnoChess - a Retrospective                                                      |@thehowl |[Slides](presentations/2023-12-14--gnochess-a-retrospective--morgan/slides.reveal.md)                              |---                                                       |
+|2023-12-13 |Gno: What, Why, and How                                                         |@moul    |[Slides](presentations/2023-12-13--rouen--manfred/slides.md)                                                       |---                                                       |
+|2023-10-09 |Generating Audio                                                                |@schollz |[Slides](presentations/2023-10-09--generating-audio--schollz/presentation.md)                                      |[Video](https://www.youtube.com/watch?v=lmmUIEHhdqA&t=2s) |
+|2023-09-26 |Chess The Gnolang Way                                                           |@thehowl |[Slides](presentations/2023-09-26--chess-the-gnolang-way--morgan/slides.reveal.md)                                 |---                                                       |
 
-TODO: automate this history table. https://github.com/gnolang/workshops/pull/24
+_This table is autogenerated based on the [./presentations](./presentations) folder._
 
 ## Resources
 
-* https://github.com/moul/gno-basics - Repo used by @moul to create example-oriented code snippet and generate outputs for slides.
 * HTML preview of presentations made using `present` - https://gnolang.github.io/workshops/presentations.html

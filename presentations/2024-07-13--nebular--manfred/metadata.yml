@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2024-07-13"
+# Title of the workshop
+title: "Gno: Examples and Comparisons"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Location of the workshop
+location: "Paris, France"
+# At which event the workshop took place, if any
+event: "Nebular Summit 2024"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "https://gnolang.github.io/workshops/presentations/2024-07-13--nebular--manfred/presentation.slide.html#1"
+# Workshop recording
+recording: "https://www.youtube.com/watch?v=Zsl3xu_Edcc"

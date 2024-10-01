@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2024-06-17"
+# Title of the workshop
+title: "Envisioning a Go-Powered Ecosystem: The Ultimate Go Computer"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Location of the workshop
+location: "Berlin, Germany"
+# At which event the workshop took place, if any
+event: ""
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: ""
+# Workshop recording
+recording: "https://youtu.be/dLE2-8QPK64?si=IidxNLGrwwS6jbYL"

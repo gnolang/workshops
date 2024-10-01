@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2024-07-09"
+# Title of the workshop
+title: "Building a Deterministic Interpreter in Go: Readability vs Performance"
+# GitHub usernames of the speakers
+speakers:
+  - "jaekwon"
+# Location of the workshop
+location: "Chicago, USA"
+# At which event the workshop took place, if any
+event: "GopherCon US 2024"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: ""
+# Workshop recording
+recording: "https://www.youtube.com/watch?v=betUkghf_jo"

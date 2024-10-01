@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2023-03-16"
+# Title of the workshop
+title: "How to build a forum in Gno.land"
+# GitHub usernames of the speakers
+speakers:
+  - "zivkovicmilos"
+# Location of the workshop
+location: "Online"
+# At which event the workshop took place, if any
+event: "Online"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "README.md"
+# Workshop recording
+recording: "https://www.youtube.com/watch?v=gmP-mH-64HA"
