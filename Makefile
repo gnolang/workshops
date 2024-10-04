@@ -18,4 +18,4 @@ build:
 
 
 lint:
-	go run ./scripts lint --readme README.md
+	go run ./scripts lint --readme README.md --path ./presentations
