@@ -2,8 +2,6 @@ module github.com/gnolang/workshops
 
 go 1.22
 
-toolchain go1.22.3
-
 require (
 	github.com/campoy/embedmd v1.0.0
 	github.com/gnolang/gno v0.2.0
