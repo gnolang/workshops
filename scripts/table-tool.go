@@ -86,7 +86,7 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 
 func execGen(cfg *cfg) error {
 	searchDir := cfg.presentationsPath
-	outputCSV := cfg.csvOutPath // todo check for err
+	outputCSV := cfg.csvOutPath
 
 	// Create the CSV file
 	csvFile, err := os.Create(outputCSV)
@@ -137,6 +137,8 @@ func execGen(cfg *cfg) error {
 		if !strings.Contains(metadata.Slides, "http") {
 			metadata.Slides = filepath.Join(searchDir, dir.Name(), metadata.Slides)
 		}
+
+		metadata.Date = strings.Replace(metadata.Date, "-", ".", -1)
 
 		// Check for empty fields
 		if err = metadata.Check(abs); err != nil {
