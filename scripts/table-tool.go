@@ -16,8 +16,9 @@ import (
 
 type cfg struct {
 	presentationsPath string
-	outputPath        string
-	rows              int
+	csvOutPath        string
+	readmePath        string
+	rmTable           bool
 }
 
 type Metadata struct {
@@ -32,6 +33,8 @@ var (
 	csvHeader = []string{"Date", "Title", "Speakers", "Presentation", "Recording"}
 )
 
+const ghLink = "https://github.com/"
+
 func main() {
 	cfg := &cfg{}
 
@@ -45,6 +48,11 @@ func main() {
 			return execGen(cfg)
 		})
 
+	cmd.AddSubCommands(
+		newLintCmd(cfg),
+		newFormatCmd(cfg),
+	)
+
 	cmd.Execute(context.Background(), os.Args[1:])
 }
 
@@ -56,22 +64,29 @@ func (c *cfg) RegisterFlags(fs *flag.FlagSet) {
 		"path to dir to walk for presentations files",
 	)
 	fs.StringVar(
-		&c.outputPath,
+		&c.csvOutPath,
 		"out",
 		"./data.csv",
 		"output csv path, including .csv",
 	)
-	fs.IntVar(
-		&c.rows,
-		"rows",
-		15,
-		"number of rows to generate",
+	fs.StringVar(
+		&c.readmePath,
+		"readme",
+		"",
+		"path to the main README",
+	)
+
+	fs.BoolVar(
+		&c.rmTable,
+		"rmtable",
+		false,
+		"rm the table",
 	)
 }
 
 func execGen(cfg *cfg) error {
 	searchDir := cfg.presentationsPath
-	outputCSV := cfg.outputPath // todo check for err
+	outputCSV := cfg.csvOutPath // todo check for err
 
 	// Create the CSV file
 	csvFile, err := os.Create(outputCSV)
@@ -137,8 +152,7 @@ func execGen(cfg *cfg) error {
 	})
 
 	// Write sorted rows to the CSV file
-	// Generate only the last N rows of data
-	for _, r := range rows[:cfg.rows] {
+	for _, r := range rows {
 		err = writer.Write(r.Format())
 		if err != nil {
 			return err
@@ -173,7 +187,8 @@ func (m Metadata) Format() []string {
 func (m Metadata) parseSpeakers() string {
 	var speakers []string
 	for _, speaker := range m.Speakers {
-		speakers = append(speakers, "@"+speaker)
+		speaker = fmt.Sprintf("[@%s](%s%s)", speaker, ghLink, speaker)
+		speakers = append(speakers, speaker)
 	}
 
 	return strings.Join(speakers, ", ")

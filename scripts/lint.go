@@ -1,19 +1,31 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"slices"
 	"strings"
+
+	"github.com/gnolang/gno/tm2/pkg/commands"
 )
 
-const (
-	presFolder = "../presentations"
-	readme     = "../README.md"
-)
+func newLintCmd(cfg *cfg) *commands.Command {
+	cmd := commands.NewCommand(
+		commands.Metadata{
+			Name:      "lint",
+			ShortHelp: "lint the README table",
+		},
+		commands.NewEmptyConfig(),
+		func(_ context.Context, args []string) error {
+			return execLint(cfg)
+		},
+	)
+	return cmd
+}
 
-func main() {
-	dirs, err := os.ReadDir(presFolder)
+func execLint(cfg *cfg) error {
+	dirs, err := os.ReadDir(cfg.presentationsPath)
 	if err != nil {
 		panic(err)
 	}
@@ -31,18 +43,20 @@ func main() {
 	slices.Sort(dates)
 	slices.Reverse(dates)
 
-	rawContents, err := os.ReadFile(readme)
+	rawContents, err := os.ReadFile(cfg.readmePath)
 	if err != nil {
 		panic(err)
 	}
 
 	cts := string(rawContents)
 
-	for _, date := range dates[:15] {
+	for _, date := range dates {
 		if !strings.Contains(cts, date) {
-			panic("could not find latest item in README table - did you run `make build`?")
+			panic("could not find some items in README table - did you run `make build`?")
 		}
 	}
 
 	fmt.Println("All good!")
+
+	return nil
 }

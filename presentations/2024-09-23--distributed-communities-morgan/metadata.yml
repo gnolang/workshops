@@ -10,6 +10,6 @@ location: "Turin, Italy"
 # At which event the workshop took place, if any
 event: ""
 # Workshop slides link. If the link is local, only put the file name, without any other path parts.
-slides: "slides.reveal.pdf"
+slides: "https://gnolang.github.io/workshops/presentations/2024-09-23--distributed-communities/slides.html"
 # Workshop recording
 recording: ""
