@@ -3,10 +3,7 @@ name: github-pages
 
 on:
   push:
-    branches: [main]
-  pull_request:
-      paths:
-        - "."
+    branches: [*]
 
   #schedule:
   #  - cron: "42 * * * *"
