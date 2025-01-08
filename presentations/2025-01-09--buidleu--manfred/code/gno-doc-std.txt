@@ -1,0 +1,20 @@
+package std // import "std"
+
+func AssertOriginCall()
+func Emit(typ string, attrs ...string)
+func GetChainID() string
+func GetHeight() int64
+func IsOriginCall() bool
+type Address string
+    func DerivePkgAddr(pkgPath string) Address
+    func GetOrigCaller() Address
+type Banker interface{ ... }
+    func GetBanker(bt BankerType) Banker
+type Coin struct{ ... }
+    func NewCoin(denom string, amount int64) Coin
+type Coins []Coin
+    func GetOrigSend() Coins
+    func NewCoins(coins ...Coin) Coins
+type Realm struct{ ... }
+    func CurrentRealm() Realm
+    func PrevRealm() Realm
