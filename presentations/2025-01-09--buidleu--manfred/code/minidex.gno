@@ -1,6 +1,6 @@
 package dex
 
-func (dex *DEX) PlaceOrder(tokenFrom, tokenTo *grc20.Bank, amount uint64, isBuy bool) int {
+func (dex *DEX) PlaceOrder(tokenFrom, tokenTo grc20.Token, amount uint64, isBuy bool) int {
 	trader, contract := std.PrevRealm().Addr(), std.CurrentRealm().Addr()
 	userBanker := grc20.AccountBanker(tokenFrom, "")
 

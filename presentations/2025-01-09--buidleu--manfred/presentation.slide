@@ -1,70 +1,43 @@
-# Designing Seamless Interconnected dApps with Gno
-BUIDL Eu, 9 Jan 2025, Lisbon
+# designing seamless interconnected dApps with gno
+BUIDL Europe, 9 Jan 2025, Lisbon
 Tags: golang, gnolang  
 Summary: TODO
 
 Manfred Touron  
-VP Eng., Gno.land  
+VP Eng., gno.land  
 https://gno.land/  
 https://github.com/gnolang  
 @moul  
 
-## Introduction
+## bonjour, BUIDL!
 
-- Decentralized applications are the future of Web3.
-- **Challenges:** Lack of modularity, limited interoperability, and siloed ecosystems.
-- **Goal:** Showcase Gno’s unique capabilities for building next-gen interconnected dApps.
+.code ./code/hello.go
 
-## What is Gno?
+- Manfred Touron
+- started with code, stuck with Go  
+- built Scaleway, Berty, and now gno.land  
 
-- **Gno**: Deterministic, transactional, auto-persistent Go interpreter.
-- **Gno.land**: Blockchain designed for modular, interoperable dApps.
-- **Key Features**:
-  - Composable DAOs
-  - Safe Objects and Pausable Closures
-  - Hub for Gno ecosystem
+## introduction
 
-## Key Features Overview
+- dApps are the future of Web3
+- **challenges:** lack of modularity and composability, limited interoperability, and siloed ecosystems
+- **goal:** showcase Gno’s unique capabilities for building next-gen interconnected dApps
 
-- **Safe Objects**:
-  - Gno objects act like mini-dApps with secure boundaries.
-  - Factory contracts can create independent objects accessible to other contracts.
+## what is gno?
 
-## Full Type Safety
-
-- Highlights how Gno avoids Solidity’s pitfalls (e.g., unsafe casting, complicated Yul interactions).
-- Contracts are imported directly, exposing clean interfaces like GRC20.
-- Eliminates casting addresses to contracts for safer development.
-
-## Following Go Design Principles
-
-- Gno tooling simplifies development with built-in optimizations (-cover, -profile, -metrics).
-- All-in-one development using gnodev, avoiding reliance on third-party frameworks like Hardhat or Foundry.
-- Debugger support, with plans to debug transaction execution.
-
-## Unique Exploration with gnoweb
-
-- Blockchain provides discovery features (e.g., Hall of Fame) instead of company-specific marketing.
-- Package paths offer a new way to explore the ecosystem.
-
-## Writing Go (Gno) Only
-
-- No need to learn JS/TS for frontend development.
-- Streamlined dApp development fully in Gno.
-
-## Built-in Coins vs. GRC20
-
-- Offers built-in coin mechanisms as an alternative to token standards.
-- Simplifies use cases requiring native token functionalities.
+- **gno**: transactional VM
+  - determinism: guaranteed
+  - state persistence: built-in
+  - sandboxed execution: Safe and secure
+  - more info: https://docs.gno.land/reference/go-gno-compatibility
+- **gno.land**: blockchain designed for modular, transparent, and interoperable dApps
+  - "proof of ...": new consensus mechanism
+  - tendermint2, IBCx, ICSx
+  - hub of the gno ecosystem
 
 ## gno hello world
 
 .code ./code/hello_world.gno
-
-## Pausable Closures
-
-- Transactions can pause and resume seamlessly.
-- Preserve state and ownership for asynchronous execution.
 
 ## counter.gno - persistency and Render()
 
@@ -74,14 +47,16 @@ https://github.com/gnolang
 
 .code ./code/counter_2.gno
 
-## Advanced Use Cases
+## guestbook.gno
 
-- **Composable DAOs**:
-  - Flexible, collaborative governance systems.
-  - Example: Multi-layered decision-making via interconnected smart contracts.
-  - DAO pointers for automatic proposal execution.
-- **Connected Applications**:
-  - Enable cross-dApp interactions with shared functionality.
+.code ./code/guest_book.gno
+
+## why gno?
+
+the **gnoVM** enables:  
+**seamless interoperability** of  
+**untrusted** user programs  
+written in a good language.
 
 ## alice.gno, bob.gno
 
@@ -89,45 +64,95 @@ https://github.com/gnolang
 
 .code ./code/interop2.gno
 
-## Gas Fee Rewards for Developers
+## packages and realms
 
-- Usage of packages can allocate part of gas fees to deployers.
-- Incentivizes creation and maintenance of reusable components.
+- **packages**
+  - reusable code modules
+  - pure: stateless, cannot import realms
+- **realms**
+  - end-user "smart contracts" with persistent state via global variables
+  - exported functions accessible through RPC
+  - supports contract-to-contract interactions
 
-## Technical Design
-
-- Gno emphasizes modularity, allowing reusable contract components.
-- Interoperability supports seamless interactions between dApps.
-
-## Why Gno?
-
-The **GnoVM** enables:  
-**Seamless interoperability** of  
-**untrusted** user programs  
-written in a secure language.
-
-## grc20/types.gno
-
-Implement a GRC20 token standard, similar to ERC20 in Solidity.
+## gno grc20 package
 
 .code ./code/grc20_type.gno
 
-## Road Ahead
+## gno buidl20 realm
 
-- Launching soon as an experimental chain.
-- Opportunities for developers to contribute and innovate.
+.code ./code/buidl20.gno
 
-## Conclusion
+## gno safe objects
 
-- Gno is designed for the next generation of modular, interoperable dApps.
-- Join the community and start building today!
+- gno objects can act like mini-dApps with secure boundaries
+- factory contracts can create independent objects accessible to other contracts.
 
-## Resources
+## gno grc20reg realm
 
-- Documentation: https://docs.gno.land  
-- GitHub: https://github.com/gnolang  
-- Discord: [Invite Link]
+.code ./code/grc20reg.gno
 
-## Questions?
+## gno grc20factory realm
 
-Thank you!
+.code ./code/grc20factory.gno
+
+## gno full type safety
+
+- how gno avoids Solidity’s pitfalls (e.g., unsafe casting, complicated Yul interactions).
+- contracts are imported directly, exposing clean interfaces like GRC20.
+- eliminates casting addresses to contracts for safer development.
+
+.code ./code/solidity_721.sol
+
+## gno minidex
+
+.code ./code/minidex.gno
+
+## gno pausable closures
+
+- closures instanciated during transactions can pause and resume seamlessly
+- preserve state and ownership for asynchronous execution
+- allows arbitrary code execution for governance proposals
+
+## gno govdao proposal
+
+.code ./code/executable_proposal.gno
+
+## gno composition
+
+- similar to Go composition
+- can compose package logic, or realms with state
+
+## a gno DAO interface
+
+.code ./code/dao_type.gno
+
+## a gno DAO implementation
+
+.code ./code/dao_impl.gno
+
+## a gno DAO aggregator
+
+.code ./code/dao_aggregated.gno
+
+## a gno DAO composition
+
+.code ./code/dao_composition.gno
+
+## advanced use cases
+
+- **composable DAOs**:
+  - flexible, collaborative governance systems
+  - example: multi-layered decision-making via interconnected smart contracts
+  - DAO pointers for automatic proposal execution
+- **connected dApps**:
+  - enable cross-dApp interactions with shared functionality
+
+## road ahead
+
+- gno is designed for the next generation of modular, interoperable dApps
+- launching soon as an experimental chain
+- opportunities for developers to contribute and innovate
+- join the community and start building today!
+- -> https://gno.land
+
+Thank you

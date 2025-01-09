@@ -7,3 +7,6 @@
 
 # generated files from reveal tool
 slides.html
+
+presentations/static/
+presentations/templates

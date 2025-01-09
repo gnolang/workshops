@@ -8,7 +8,7 @@ var (
 )
 
 func Inc() int {
-	return addToCounter(amount)
+	return addToCounter(1)
 }
 
 func Add(amount int) int {

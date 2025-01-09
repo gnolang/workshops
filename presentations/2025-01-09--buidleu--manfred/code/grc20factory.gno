@@ -1,24 +1,23 @@
-package foo20
-
-import (
-	"std"
-	"strings"
-
-	"gno.land/p/demo/grc/grc20"
-	"gno.land/r/demo/grc20reg"
-)
+// gno.land/r/demo/grc20factory
+package grc20factory
 
 var instances avl.Tree // symbol -> instance
 
-func New(name, symbol string, decimals uint, initialMint, faucet uint64) {
-	admin := std.PrevRealm().Addr()
-	bank := grc20.NewBank(name, symbol, decimals)
-	bank.Mint(admin, initialMint)
-	inst := instance{bank: bank, admin: ownable.NewWithAddress(admin), faucet: faucet}
-	instances.Set(symbol, &inst)
-	grc20reg.Register(bank, symbol)
+type instance struct {
+	token  *grc20.Token
+	ledger *grc20.PrivateLedger
+	admin  *ownable.Ownable
+	faucet uint64 // per-request amount. disabled if 0.
 }
 
-func Bank(symbol string) *grc20.Bank {
-	return mustGetInstance(symbol).bank
+func New(name, symbol string, decimals uint, initialMint, faucet uint64) {
+	caller := std.PrevRealm().Addr()
+	token, ledger := grc20.NewToken(name, symbol, decimals)
+	if initialMint > 0 {
+		ledger.Mint(admin, initialMint)
+	}
+	owner := ownable.NewWithAddress(admin)
+	inst := instance{token: token, ledger: ledger, admin: owner, faucet: faucet}
+	instances.Set(symbol, &inst)
+	grc20reg.Register(token.Getter(), symbol)
 }
