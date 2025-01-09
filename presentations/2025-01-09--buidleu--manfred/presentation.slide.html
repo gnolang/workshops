@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>designing seamless interconnected dApps with gno</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>designing seamless interconnected dApps with gno</h1>
+        <h3>BUIDL Europe, 9 Jan 2025, Lisbon</h3>
+        
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., gno.land  
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>bonjour, BUIDL!</h3>
+        
+  <div class="code" >
+<pre><span num="1">package main</span>
+<span num="2"></span>
+<span num="3">func main() {</span>
+<span num="4">    println(&#34;Hello, BUIDL! It&#39;s Manfred.&#34;)</span>
+<span num="5">}</span>
+</pre>
+</div>
+<ul>
+<li>Manfred Touron</li>
+<li>started with code, stuck with Go</li>
+<li>built Scaleway, Berty, and now gno.land</li>
+</ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>introduction</h3>
+        <ul>
+<li>dapps are the future of web3</li>
+<li>challenges: lack of modularity and composability, limited interoperability, siloed ecosystems</li>
+<li>goal: showcase gno's unique capabilities for building next-gen interconnected dapps</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>what is gno?</h3>
+        <ul>
+<li>gno: transactional vm
+<ul>
+<li>determinism: guaranteed</li>
+<li>state persistence: built-in</li>
+<li>sandboxed execution: safe and secure</li>
+<li>more info: https://docs.gno.land/reference/go-gno-compatibility</li>
+</ul>
+</li>
+<li>gno.land: blockchain designed for modular, transparent, interoperable dapps
+<ul>
+<li>proof of ...: new consensus mechanism</li>
+<li>tendermint2, ibcx, icsx</li>
+<li>hub of the gno ecosystem</li>
+</ul>
+</li>
+</ul>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno hello world</h3>
+        
+  <div class="code" >
+<pre><span num="1">package hello</span>
+<span num="2"></span>
+<span num="3">func Hello() string {</span>
+<span num="4">    return &#34;hello world&#34;</span>
+<span num="5">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>counter.gno - persistency and Render()</h3>
+        
+  <div class="code" >
+<pre><span num="1">package counter</span>
+<span num="2"></span>
+<span num="3">var Counter int</span>
+<span num="4"></span>
+<span num="5">func Inc() {</span>
+<span num="6">    Counter &#43;= 1</span>
+<span num="7">}</span>
+<span num="8"></span>
+<span num="9">func Render(path string) string {</span>
+<span num="10">    return &#34;My Super Counter: &#34; &#43; Counter</span>
+<span num="11">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>counter.gno - private helpers</h3>
+        
+  <div class="code" >
+<pre><span num="1">package counter</span>
+<span num="2"></span>
+<span num="3">import &#34;std&#34;</span>
+<span num="4"></span>
+<span num="5">var (</span>
+<span num="6">    Counter    int</span>
+<span num="7">    LastCaller std.Address</span>
+<span num="8">)</span>
+<span num="9"></span>
+<span num="10">func Inc() int {</span>
+<span num="11">    return addToCounter(1)</span>
+<span num="12">}</span>
+<span num="13"></span>
+<span num="14">func Add(amount int) int {</span>
+<span num="15">    return addToCounter(amount)</span>
+<span num="16">}</span>
+<span num="17"></span>
+<span num="18">func addToCounter(amount int) int {</span>
+<span num="19">    Counter &#43;= amount</span>
+<span num="20">    LastCaller = std.GetOrigCaller()</span>
+<span num="21">    return Counter</span>
+<span num="22">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>guestbook.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package guest</span>
+<span num="2"></span>
+<span num="3">import &#34;std&#34;</span>
+<span num="4"></span>
+<span num="5">var messages avl.Tree // std.Address -&gt; string (message)</span>
+<span num="6"></span>
+<span num="7">func AddMessage(message string) {</span>
+<span num="8">    caller := std.GetOrigCaller()</span>
+<span num="9">    if _, ok := messages.Get(caller); ok {</span>
+<span num="10">        panic(&#34;this user already post a message&#34;)</span>
+<span num="11">    }</span>
+<span num="12">    messages.Set(caller, message) // add message to our messages list</span>
+<span num="13">}</span>
+<span num="14"></span>
+<span num="15">func Render(path string) string {</span>
+<span num="16">    var view string</span>
+<span num="17">    for _, message := range messages {</span>
+<span num="18">        view = view &#43; &#34;\n&#34; &#43; message // add message to the render</span>
+<span num="19">    }</span>
+<span num="20">    return view</span>
+<span num="21">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>why gno?</h3>
+        <p>the gnovm enables:</p>
+<p>seamless interoperability of</p>
+<p>untrusted user programs</p>
+<p>written in a good language</p>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>alice.gno, bob.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package alice</span>
+<span num="2"></span>
+<span num="3">var x int</span>
+<span num="4"></span>
+<span num="5">func GetX() int {</span>
+<span num="6">    return x</span>
+<span num="7">}</span>
+<span num="8"></span>
+<span num="9">func SetX(n int) {</span>
+<span num="10">    x = n</span>
+<span num="11">}</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">package bob</span>
+<span num="2"></span>
+<span num="3">import &#34;alice&#34;</span>
+<span num="4"></span>
+<span num="5">func IncrAlice() {</span>
+<span num="6">    x := alice.GetX()</span>
+<span num="7">    alice.SetX(x &#43; 1)</span>
+<span num="8">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>packages and realms</h3>
+        <ul>
+<li>packages
+<ul>
+<li>reusable code modules</li>
+<li>pure: stateless, cannot import realms</li>
+</ul>
+</li>
+<li>realms
+<ul>
+<li>end-user smart contracts with persistent state via global variables</li>
+<li>exported functions accessible through rpc</li>
+<li>supports contract-to-contract interactions</li>
+</ul>
+</li>
+</ul>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno grc20 package</h3>
+        
+  <div class="code" >
+<pre><span num="1">package grc20 // gno.land/p/demo/grc/grc20</span>
+<span num="2"></span>
+<span num="3">type Teller interface {</span>
+<span num="4">    TotalSupply() uint64</span>
+<span num="5">    BalanceOf(account std.Address) uint64</span>
+<span num="6">    Transfer(to std.Address, amount uint64) error</span>
+<span num="7">    Allowance(owner, spender std.Address) uint64</span>
+<span num="8">    Approve(spender std.Address, amount uint64) error</span>
+<span num="9">    TransferFrom(from, to std.Address, amount uint64) error</span>
+<span num="10">}</span>
+<span num="11"></span>
+<span num="12">type Token struct {</span>
+<span num="13">    name, symbol string</span>
+<span num="14">    decimals     uint</span>
+<span num="15">    ledger       *PrivateLedger</span>
+<span num="16">}</span>
+<span num="17"></span>
+<span num="18">type PrivateLedger struct {</span>
+<span num="19">    totalSupply          uint64</span>
+<span num="20">    balances, allowances avl.Tree</span>
+<span num="21">}</span>
+<span num="22"></span>
+<span num="23">func NewToken(name, symbol string, decs uint) (*Token, *PrivateLedger) { /*...*/ }</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno buidl20 realm</h3>
+        
+  <div class="code" >
+<pre><span num="1">// https://gno.land/r/moul/x/buidl20$source</span>
+<span num="2">package buidl20</span>
+<span num="3"></span>
+<span num="4">import (</span>
+<span num="5">    &#34;std&#34;</span>
+<span num="6">    &#34;gno.land/p/demo/grc/grc20&#34;</span>
+<span num="7">)</span>
+<span num="8"></span>
+<span num="9">// Token: public safe object for composability</span>
+<span num="10">// adm:   privileged object for minting</span>
+<span num="11">var Token, adm = grc20.NewToken(&#34;Buidl&#34;, &#34;BDL&#34;, 4) </span>
+<span num="12"></span>
+<span num="13">// grc20 API for the caller</span>
+<span num="14">var UserTeller = Token.CallerTeller()</span>
+<span num="15"></span>
+<span num="16">func init() {</span>
+<span num="17">     adm.Mint(1_000_000, std.GetOrigCaller()) // mint 1M to the contract deployer.  </span>
+<span num="18">}</span>
+<span num="19"></span>
+<span num="20">// optional helpers</span>
+<span num="21">// [...]</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno safe objects</h3>
+        <ul>
+<li>gno objects can act like mini-dApps with secure boundaries</li>
+<li>factory contracts can create independent objects accessible to other contracts</li>
+</ul>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno grc20reg realm</h3>
+        
+  <div class="code" >
+<pre><span num="1">// gno.land/r/demo/grc20reg</span>
+<span num="2">package grc20reg </span>
+<span num="3"></span>
+<span num="4">var registry = avl.NewTree() // rlmPath -&gt; TokenGetter</span>
+<span num="5"></span>
+<span num="6">func Register(tokenGetter grc20.TokenGetter) {</span>
+<span num="7">    rlmPath := std.PrevRealm().PkgPath()</span>
+<span num="8">    registry.Set(rlmPath, tokenGetter)</span>
+<span num="9">}</span>
+<span num="10"></span>
+<span num="11">func Get(key string) grc20.TokenGetter {</span>
+<span num="12">    tokenGetter, _ := registry.Get(key)</span>
+<span num="13">    return tokenGetter</span>
+<span num="14">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno grc20factory realm</h3>
+        
+  <div class="code" >
+<pre><span num="1">// gno.land/r/demo/grc20factory</span>
+<span num="2">package grc20factory</span>
+<span num="3"></span>
+<span num="4">var instances avl.Tree // symbol -&gt; instance</span>
+<span num="5"></span>
+<span num="6">type instance struct {</span>
+<span num="7">    token  *grc20.Token</span>
+<span num="8">    ledger *grc20.PrivateLedger</span>
+<span num="9">    admin  *ownable.Ownable</span>
+<span num="10">    faucet uint64 // per-request amount. disabled if 0.</span>
+<span num="11">}</span>
+<span num="12"></span>
+<span num="13">func New(name, symbol string, decimals uint, initialMint, faucet uint64) {</span>
+<span num="14">    caller := std.PrevRealm().Addr()</span>
+<span num="15">    token, ledger := grc20.NewToken(name, symbol, decimals)</span>
+<span num="16">    if initialMint &gt; 0 {</span>
+<span num="17">        ledger.Mint(admin, initialMint)</span>
+<span num="18">    }</span>
+<span num="19">    owner := ownable.NewWithAddress(admin)</span>
+<span num="20">    inst := instance{token: token, ledger: ledger, admin: owner, faucet: faucet}</span>
+<span num="21">    instances.Set(symbol, &amp;inst)</span>
+<span num="22">    grc20reg.Register(token.Getter(), symbol)</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno full type safety</h3>
+        <ul>
+<li>how gno avoids Solidity's pitfalls (e.g., unsafe casting, complicated Yul interactions)</li>
+<li>contracts are imported directly, exposing clean interfaces like GRC20</li>
+<li>eliminates casting addresses to contracts for safer development</li>
+</ul>
+
+  <div class="code" >
+<pre><span num="1">// Solidity example for ERC721Receiver check</span>
+<span num="2">interface IERC721Receiver {</span>
+<span num="3">    function onERC721Received(</span>
+<span num="4">        address operator,</span>
+<span num="5">        address from,</span>
+<span num="6">        uint256 tokenId,</span>
+<span num="7">        bytes calldata data</span>
+<span num="8">    ) external returns (bytes4);</span>
+<span num="9">}</span>
+<span num="10"></span>
+<span num="11">// Solidity relies on checking bytes4 signature</span>
+<span num="12">require(</span>
+<span num="13">    contract.onERC721Received.selector == bytes4(keccak256(&#34;onERC721Received(address,address,uint256,bytes)&#34;)),</span>
+<span num="14">    &#34;Invalid ERC721 receiver&#34;</span>
+<span num="15">);</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno minidex</h3>
+        
+  <div class="code" >
+<pre><span num="1">package dex</span>
+<span num="2"></span>
+<span num="3">func (dex *DEX) PlaceOrder(tokenFrom, tokenTo grc20.Token, amount uint64, isBuy bool) int {</span>
+<span num="4">    trader, contract := std.PrevRealm().Addr(), std.CurrentRealm().Addr()</span>
+<span num="5">    userBanker := grc20.AccountBanker(tokenFrom, &#34;&#34;)</span>
+<span num="6"></span>
+<span num="7">    allowance := userBanker.Allowance(trader, contract)</span>
+<span num="8">    require(allowance &gt;= amount, &#34;insufficient allowance&#34;)</span>
+<span num="9">    err := userBanker.TransferFrom(trader, contract, amount)</span>
+<span num="10">    checkErr(err, &#34;cannot retrieve tokens from allowance&#34;)</span>
+<span num="11"></span>
+<span num="12">    order := &amp;Order{trader: trader, tokenFrom: tokenFrom, tokenTo: tokenTo, amount: amount, isBuy: isBuy}</span>
+<span num="13">    dex.Append(order)</span>
+<span num="14">    std.Emit(</span>
+<span num="15">        &#34;order_placed&#34;,</span>
+<span num="16">        &#34;trader&#34;, trader.String(),</span>
+<span num="17">        &#34;tokenFrom&#34;, tokenFrom.GetName(),</span>
+<span num="18">        &#34;tokenTo&#34;, tokenTo.GetName(),</span>
+<span num="19">        &#34;amount&#34;, ufmt.Sprintf(&#34;%d&#34;, amount),</span>
+<span num="20">    )</span>
+<span num="21"></span>
+<span num="22">    return dex.matchPairOrders(tokenFrom, tokenTo)</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno pausable closures</h3>
+        <ul>
+<li>closures instanciated during transactions can pause and resume seamlessly</li>
+<li>preserve state and ownership for asynchronous execution</li>
+<li>allows arbitrary code execution for governance proposals</li>
+</ul>
+
+      
+      <span class="pagenumber">19</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno govdao proposal</h3>
+        
+  <div class="code" >
+<pre><span num="1">// prop1.gno</span>
+<span num="2"></span>
+<span num="3">import &#34;gno.land/r/gov/dao&#34;</span>
+<span num="4">import &#34;gno.land/r/buidl/buidl20&#34;</span>
+<span num="5"></span>
+<span num="6">func init() {</span>
+<span num="7">    closure := func() error {</span>
+<span num="8">        // this closure will preserve the execution context at the time of</span>
+<span num="9">        // creation, even if the proposal is executed by someone else.</span>
+<span num="10">        return executor()</span>
+<span num="11">    }</span>
+<span num="12">    prop := dao.ProposalRequest{</span>
+<span num="13">        Title:       &#34;&#34;,</span>
+<span num="14">        Description: &#34;lorem ipsum dolor sit amet&#34;,</span>
+<span num="15">        Executor:    closure,</span>
+<span num="16">    }</span>
+<span num="17">    dao.Propose(prop)</span>
+<span num="18">}</span>
+<span num="19"></span>
+<span num="20">func executor() error {</span>
+<span num="21">  buidl20.TransferTo(&#34;g12345678&#34;, 1_000_000) // transfer 1M $BUIDL</span>
+<span num="22">  return nil</span>
+<span num="23">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">20</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno composition</h3>
+        <ul>
+<li>similar to Go composition</li>
+<li>can compose package logic, or realms with state</li>
+</ul>
+
+      
+      <span class="pagenumber">21</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>a gno DAO interface</h3>
+        
+  <div class="code" >
+<pre><span num="1">// gno.land/p/dao</span>
+<span num="2">package dao</span>
+<span num="3"></span>
+<span num="4">type DAO interface {</span>
+<span num="5">    // Core proposal operations</span>
+<span num="6">    Propose(def PropDefinition) (Proposal, error)</span>
+<span num="7">    GetProposal(proposalID uint64) (Proposal, error)</span>
+<span num="8">    Execute(proposalID uint64) error</span>
+<span num="9"></span>
+<span num="10">    // List operations</span>
+<span num="11">    ActiveProposals() PropList</span>
+<span num="12">    ArchivedProposals() PropList</span>
+<span num="13">    Len() int</span>
+<span num="14">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">22</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>a gno DAO implementation</h3>
+        
+  <div class="code" >
+<pre><span num="1">package foodao</span>
+<span num="2"></span>
+<span num="3">import &#34;gno.land/p/dao&#34; // interface</span>
+<span num="4"></span>
+<span num="5">// FooDAO implements the dao.DAO interface.</span>
+<span num="6">type FooDAO struct { proposals []dao.Proposal, voters []std.Address }</span>
+<span num="7"></span>
+<span num="8">func (d *FooDAO) Propose(def PropDefinition) (Proposal, error) { /* [...] */ }</span>
+<span num="9">func (d *FooDAO) GetProposal(proposalID uint64) (Proposal, error) { /* [...] */ }</span>
+<span num="10">func (d *FooDAO) Execute(proposalID uint64) error { /* [...] */ }</span>
+<span num="11">func (d *FooDAO) ActiveProposals() PropList { /* [...] */ }</span>
+<span num="12">func (d *FooDAO) ArchivedProposals() PropList { /* [...] */ }</span>
+<span num="13">func (d *FooDAO) Len() int { /* [...] */ }</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">23</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>a gno DAO aggregator</h3>
+        
+  <div class="code" >
+<pre><span num="1">package aggregateddao</span>
+<span num="2"></span>
+<span num="3">import &#34;gno.land/p/dao&#34;</span>
+<span num="4"></span>
+<span num="5">type AggregatedDAO struct { dao1, dao2 dao.DAO }</span>
+<span num="6"></span>
+<span num="7">func (a *AggregatedDAO) Propose(def dao.PropDefinition) (dao.Proposal, error) {</span>
+<span num="8">    prop1, _ := a.dao1.Propose(def)</span>
+<span num="9">    prop2, _ := a.dao2.Propose(def)</span>
+<span num="10">    // [...]</span>
+<span num="11">}</span>
+<span num="12"></span>
+<span num="13">func (a *AggregatedDAO) Len() int { return a.dao1.Len() &#43; a.dao2.Len() }</span>
+<span num="14"></span>
+<span num="15">func (a *AggregatedDAO) ActiveProposals() dao.PropList {</span>
+<span num="16">    return append(a.dao1.ActiveProposals(), a.dao2.ActiveProposals()...)</span>
+<span num="17">}</span>
+<span num="18"></span>
+<span num="19">func (a *AggregatedDAO) ArchivedProposals() dao.PropList {</span>
+<span num="20">    return append(a.dao1.ArchivedProposals(), a.dao2.ArchivedProposals()...)</span>
+<span num="21">}</span>
+<span num="22"></span>
+<span num="23">// [...]</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">24</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>a gno DAO composition</h3>
+        
+  <div class="code" >
+<pre><span num="1">// gno.land/r/foobardao</span>
+<span num="2">package foobardao</span>
+<span num="3"></span>
+<span num="4">import (</span>
+<span num="5">  &#34;gno.land/r/foodao&#34;</span>
+<span num="6">  &#34;gno.land/r/bardao&#34;</span>
+<span num="7">  &#34;gno.land/p/aggregateddao&#34;</span>
+<span num="8">)</span>
+<span num="9"></span>
+<span num="10">var FooBarDAO = aggregateddao.New(foodao.DAO, bardao.DAO)</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">25</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>DAO compositions ideas</h3>
+        <ul>
+<li>sum: combine daos by aggregating proposals and votes</li>
+<li>weighted: assign different voting weights to daos</li>
+<li>delayed: wrap daos to enforce delays before actions</li>
+<li>fallback: use secondary dao if primary lacks data</li>
+<li>sharded: partition proposals into different daos</li>
+<li>proxy: forward actions to another dao without exposure</li>
+<li>crosschain: aggregate daos across different blockchains</li>
+<li>dynamic: switch daos based on external conditions</li>
+<li>routing: pass specific proposals to certain daos</li>
+<li>hybrid: mix centralized and decentralized governance</li>
+<li>...</li>
+</ul>
+
+      
+      <span class="pagenumber">26</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>road ahead</h3>
+        <ul>
+<li>gno is designed for next-gen modular, interoperable dapps</li>
+<li>launching soon as experimental chain</li>
+<li>opportunities for developers to contribute and innovate</li>
+<li>join the community and start building today</li>
+<li>-&gt; https://gno.land</li>
+</ul>
+<p>thank you!</p>
+
+      
+      <span class="pagenumber">27</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., gno.land  
+  </p>
+  
+<p class="link"><a href="https://gno.land/%20%20" target="_blank">https://gno.land/  </a></p><p class="link"><a href="https://github.com/gnolang%20%20" target="_blank">https://github.com/gnolang  </a></p><p class="link"><a href="http://twitter.com/moul%20%20" target="_blank">@moul  </a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
