@@ -32,6 +32,11 @@ func execLint(cfg *cfg) error {
 
 	var dates []string
 	for _, dir := range dirs {
+		// Skip special dirs
+		switch dir.Name() {
+		case "static", "templates":
+			continue
+		}
 		// Skip non-dirs
 		if !dir.IsDir() {
 			continue
@@ -51,8 +56,9 @@ func execLint(cfg *cfg) error {
 	cts := string(rawContents)
 
 	for _, date := range dates {
+		date = strings.ReplaceAll(date, "-", ".")
 		if !strings.Contains(cts, date) {
-			panic("could not find some items in README table - did you run `make build`?")
+			panic("could not find some items in README table - did you run `make build`? (" + date + ")")
 		}
 	}
 
