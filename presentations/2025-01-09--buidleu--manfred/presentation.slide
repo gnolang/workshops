@@ -138,14 +138,19 @@ written in a good language.
 
 .code ./code/dao_composition.gno
 
-## advanced use cases
+## DAO compositions ideas
 
-- **composable DAOs**:
-  - flexible, collaborative governance systems
-  - example: multi-layered decision-making via interconnected smart contracts
-  - DAO pointers for automatic proposal execution
-- **connected dApps**:
-  - enable cross-dApp interactions with shared functionality
+- **sum**: combine DAOs by aggregating proposals and votes  
+- **weighted**: assign different voting weights to DAOs  
+- **delayed**: wrap DAOs to enforce delays before actions  
+- **fallback**: use a secondary DAO if the primary lacks data  
+- **sharded**: partition proposals into different DAOs  
+- **proxy**: forward actions to another DAO without exposure  
+- **crosschain**: aggregate DAOs across different blockchains  
+- **dynamic**: switch DAOs based on external conditions  
+- **routing**: pass only specific proposals to certain DAOs  
+- **hybrid**: mix centralized and decentralized governance
+- ...
 
 ## road ahead
 
@@ -155,4 +160,4 @@ written in a good language.
 - join the community and start building today!
 - -> https://gno.land
 
-Thank you
+thank you!
