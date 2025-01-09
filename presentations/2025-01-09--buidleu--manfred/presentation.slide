@@ -19,20 +19,20 @@ https://github.com/gnolang
 
 ## introduction
 
-- dApps are the future of Web3
-- **challenges:** lack of modularity and composability, limited interoperability, and siloed ecosystems
-- **goal:** showcase Gno’s unique capabilities for building next-gen interconnected dApps
+- dapps are the future of web3
+- challenges: lack of modularity and composability, limited interoperability, siloed ecosystems
+- goal: showcase gno's unique capabilities for building next-gen interconnected dapps
 
 ## what is gno?
 
-- **gno**: transactional VM
+- gno: transactional vm
   - determinism: guaranteed
   - state persistence: built-in
-  - sandboxed execution: Safe and secure
+  - sandboxed execution: safe and secure
   - more info: https://docs.gno.land/reference/go-gno-compatibility
-- **gno.land**: blockchain designed for modular, transparent, and interoperable dApps
-  - "proof of ...": new consensus mechanism
-  - tendermint2, IBCx, ICSx
+- gno.land: blockchain designed for modular, transparent, interoperable dapps
+  - proof of ...: new consensus mechanism
+  - tendermint2, ibcx, icsx
   - hub of the gno ecosystem
 
 ## gno hello world
@@ -53,10 +53,13 @@ https://github.com/gnolang
 
 ## why gno?
 
-the **gnoVM** enables:  
-**seamless interoperability** of  
-**untrusted** user programs  
-written in a good language.
+the gnovm enables:
+
+seamless interoperability of
+
+untrusted user programs
+
+written in a good language
 
 ## alice.gno, bob.gno
 
@@ -66,12 +69,12 @@ written in a good language.
 
 ## packages and realms
 
-- **packages**
+- packages
   - reusable code modules
   - pure: stateless, cannot import realms
-- **realms**
-  - end-user "smart contracts" with persistent state via global variables
-  - exported functions accessible through RPC
+- realms
+  - end-user smart contracts with persistent state via global variables
+  - exported functions accessible through rpc
   - supports contract-to-contract interactions
 
 ## gno grc20 package
@@ -85,7 +88,7 @@ written in a good language.
 ## gno safe objects
 
 - gno objects can act like mini-dApps with secure boundaries
-- factory contracts can create independent objects accessible to other contracts.
+- factory contracts can create independent objects accessible to other contracts
 
 ## gno grc20reg realm
 
@@ -97,9 +100,9 @@ written in a good language.
 
 ## gno full type safety
 
-- how gno avoids Solidity’s pitfalls (e.g., unsafe casting, complicated Yul interactions).
-- contracts are imported directly, exposing clean interfaces like GRC20.
-- eliminates casting addresses to contracts for safer development.
+- how gno avoids Solidity's pitfalls (e.g., unsafe casting, complicated Yul interactions)
+- contracts are imported directly, exposing clean interfaces like GRC20
+- eliminates casting addresses to contracts for safer development
 
 .code ./code/solidity_721.sol
 
@@ -140,24 +143,24 @@ written in a good language.
 
 ## DAO compositions ideas
 
-- **sum**: combine DAOs by aggregating proposals and votes  
-- **weighted**: assign different voting weights to DAOs  
-- **delayed**: wrap DAOs to enforce delays before actions  
-- **fallback**: use a secondary DAO if the primary lacks data  
-- **sharded**: partition proposals into different DAOs  
-- **proxy**: forward actions to another DAO without exposure  
-- **crosschain**: aggregate DAOs across different blockchains  
-- **dynamic**: switch DAOs based on external conditions  
-- **routing**: pass only specific proposals to certain DAOs  
-- **hybrid**: mix centralized and decentralized governance
+- sum: combine daos by aggregating proposals and votes
+- weighted: assign different voting weights to daos
+- delayed: wrap daos to enforce delays before actions
+- fallback: use secondary dao if primary lacks data
+- sharded: partition proposals into different daos
+- proxy: forward actions to another dao without exposure
+- crosschain: aggregate daos across different blockchains
+- dynamic: switch daos based on external conditions
+- routing: pass specific proposals to certain daos
+- hybrid: mix centralized and decentralized governance
 - ...
 
 ## road ahead
 
-- gno is designed for the next generation of modular, interoperable dApps
-- launching soon as an experimental chain
+- gno is designed for next-gen modular, interoperable dapps
+- launching soon as experimental chain
 - opportunities for developers to contribute and innovate
-- join the community and start building today!
+- join the community and start building today
 - -> https://gno.land
 
 thank you!
