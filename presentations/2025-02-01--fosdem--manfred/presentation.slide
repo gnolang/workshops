@@ -59,9 +59,19 @@ with built-in **state persistence** and **safe execution**.
 - global variables persist across transactions
 - no need for external storage or db
 
-## microposts.gno
+## microposts
 
 .image ./img/microposts.png _ 1000
+
+## microposts/post.gno
+
+// .code ./code/micropost1.gno
+.code ./code/micropost_post.gno
+
+## microposts/realm.gno
+
+// .code ./code/micropost2.gno
+.code ./code/micropost_realm.gno
 
 ## microposts demo
 
