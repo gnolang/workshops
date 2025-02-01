@@ -14,15 +14,14 @@ https://github.com/gnolang
 .code ./code/hello.go
 
 - manfred touron (@moul)
-- built scaleway, berty, now gno
 - stuck with go for 10 years
+- built scaleway, berty, now gno
 - unapologetically open-source maximalist
 
-## intro
+## why gno?
 
 - go is an amazing language: simple, efficient, safe
 - not built for decentralized apps (dapps)
-- existing decentralized app platforms are complex, fragmented, and unfamiliar
 - what if you could write dapps in pure go?
 - meet gno: go for dapps, designed for modularity, composability, and safety
 
@@ -34,17 +33,12 @@ with built-in **state persistence** and **safe execution**.
 
 ## gno hello world
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
 .code ./code/hello_world.gno
 
 ## the gno paradigm
 
 - **no json, no grpc**: function calls instead of rpc
+- **no microservices**: use `import`
 - **no orm, no db drivers**: state is a first-class concept
 - **no external dependencies**: everything is go code
 - **no bytecode**: interpreted, readable go syntax
