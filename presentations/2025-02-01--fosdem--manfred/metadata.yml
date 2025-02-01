@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2025-02-01"
+# Title of the workshop
+title: "building decentralized apps in go: meet gno"
+# GitHub usernames of the speakers
+speakers:
+  - "moul"
+# Location of the workshop
+location: "Brussels, Belgium"
+# At which event the workshop took place, if any
+event: "FOSDEM 2025"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "https://gnolang.github.io/workshops/presentations/2025-02-01--fosdem--manfred/presentation.slide.html#1"
+# Workshop recording
+#recording: ""
