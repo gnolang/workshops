@@ -188,7 +188,7 @@ with built-in <strong>state persistence</strong> and <strong>safe execution</str
   
       <article >
       
-        <h3>microposts.gno</h3>
+        <h3>microposts</h3>
         
 <div class="image">
   <img src="img/microposts.png" width="1000">
@@ -196,6 +196,76 @@ with built-in <strong>state persistence</strong> and <strong>safe execution</str
 
       
       <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>microposts/post.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package microposts</span>
+<span num="2"></span>
+<span num="3">import (</span>
+<span num="4">    &#34;std&#34;</span>
+<span num="5">    &#34;time&#34;</span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">type Post struct {</span>
+<span num="9">    text      string</span>
+<span num="10">    author    std.Address</span>
+<span num="11">    createdAt time.Time</span>
+<span num="12">}</span>
+<span num="13"></span>
+<span num="14">func (p Post) String() string {</span>
+<span num="15">    out := p.text &#43; &#34;\n&#34;</span>
+<span num="16">    out &#43;= &#34;_&#34; &#43; p.createdAt.Format(&#34;02 Jan 2006, 15:04&#34;) &#43; &#34;, by &#34; &#43; p.author.String() &#43; &#34;_&#34;</span>
+<span num="17">    return out</span>
+<span num="18">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>microposts/realm.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package microposts</span>
+<span num="2"></span>
+<span num="3">import (</span>
+<span num="4">    &#34;std&#34;</span>
+<span num="5">    &#34;time&#34;</span>
+<span num="6">)</span>
+<span num="7"></span>
+<span num="8">var posts []*Post // automatically persisted</span>
+<span num="9"></span>
+<span num="10">func CreatePost(text string) {</span>
+<span num="11">    posts = append(posts, &amp;Post{</span>
+<span num="12">        text:      text,</span>
+<span num="13">        author:    std.PrevRealm().Addr(), // provided by env</span>
+<span num="14">        createdAt: time.Now(),</span>
+<span num="15">    })</span>
+<span num="16">}</span>
+<span num="17"></span>
+<span num="18">func Render(_ string) string {</span>
+<span num="19">    out := &#34;# Posts\n&#34;</span>
+<span num="20">    for i := len(posts) - 1; i &gt;= 0; i-- {</span>
+<span num="21">        out &#43;= &#34;### Post &#34; &#43; strconv.Itoa(i) &#43; &#34;\n&#34; &#43; posts[i].String()</span>
+<span num="22">    }</span>
+<span num="23">    return out</span>
+<span num="24">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">10</span>
       </article>
   
   
@@ -222,7 +292,7 @@ with built-in <strong>state persistence</strong> and <strong>safe execution</str
 <p><a href="https://gno.land/r/leon/fosdem25/microposts" target="_blank" rel="noopener">gno.land/r/leon/fosdem25/microposts</a></p>
 
       
-      <span class="pagenumber">9</span>
+      <span class="pagenumber">11</span>
       </article>
   
   
@@ -258,7 +328,7 @@ with built-in <strong>state persistence</strong> and <strong>safe execution</str
 </ul>
 
       
-      <span class="pagenumber">10</span>
+      <span class="pagenumber">12</span>
       </article>
   
   
@@ -284,7 +354,7 @@ with built-in <strong>state persistence</strong> and <strong>safe execution</str
 <br/>
 thank you!
       
-      <span class="pagenumber">11</span>
+      <span class="pagenumber">13</span>
       </article>
   
   
