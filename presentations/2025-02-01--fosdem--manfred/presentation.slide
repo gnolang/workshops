@@ -1,0 +1,108 @@
+# building decentralized apps in go: meet gno
+Fosdem, 1 Feb 2025, Brussels
+Tags: golang, gnolang  
+Summary: TODO
+
+Manfred Touron  
+VP Eng., gno.land  
+https://gno.land/  
+https://github.com/gnolang  
+@moul  
+
+## bonjour, FOSDEM!
+
+.code ./code/hello.go
+
+- manfred touron (@moul)
+- built scaleway, berty, now gno
+- stuck with go for 10 years
+- unapologetically open-source maximalist
+
+## intro
+
+- go is an amazing language: simple, efficient, safe
+- not built for decentralized apps (dapps)
+- existing decentralized apps platforms are complex, fragmented, and unfamiliar
+- what if you could write dapps in pure go?
+- meet gno: go for dapps, designed for modularity, composability, and safety
+
+## gno in one sentence
+
+gno is a **transactional vm**<br/>
+that lets you write **decentralized apps** in **go**,<br/>
+with built-in **state persistence** and **safe execution**.
+
+## gno hello world
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+.code ./code/hello_world.gno
+
+## the gno paradigm
+
+- **no json, no grpc**: function calls instead of rpc
+- **no orm, no db drivers**: state is a first-class concept
+- **no external dependencies**: everything is go code
+- **no bytecode**: interpreted, readable go syntax
+- **no hidden magic**: all code is visible and auditable
+
+\... but it's just like go.
+
+## persistence: counter.gno
+
+.code ./code/counter.gno
+
+- global variables persist across transactions
+- no need for external storage or db
+
+## microposts.gno
+
+.image ./img/microposts.png _ 1000
+
+## microposts demo
+
+.image ./img/micropost1.png _ 500
+
+.code ./code/micropost-query.sh
+
+.image ./img/micropost2.png _ 500
+
+[gno.land/r/leon/fosdem25/microposts](https://gno.land/r/leon/fosdem25/microposts)
+
+## interoperability: alice.gno & bob.gno
+
+Another app could use micropost...
+
+.code ./code/interop.gno
+.code ./code/interop2.gno
+
+- call functions from other contracts like normal go packages
+- no need for low-level calls or address casting
+
+## conclusion
+
+<br/>
+
+.code ./code/we-are-building.txt
+
+
+// ```
+// We’re building a user-owned internet
+// where governance is fair,
+//development is open,
+// and innovation is rewarded
+// ```
+
+<br/>
+
+- gno makes go the first-class language for decentralized applications
+- if you know go, you already know gno
+- opportunities for developers to contribute and innovate
+- -> https://gno.land
+
+<br/>
+thank you!
