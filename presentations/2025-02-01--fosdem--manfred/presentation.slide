@@ -35,6 +35,14 @@ with built-in **state persistence** and **safe execution**.
 
 .code ./code/hello_world.gno
 
+## gno.land
+
+- aws -> gno.land
+- go -> gno
+- app -> dapp
+
+.code ./code/we-are-building.txt
+
 ## the gno paradigm
 
 - **no json, no grpc**: function calls instead of rpc
