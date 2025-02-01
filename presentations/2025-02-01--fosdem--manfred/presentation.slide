@@ -22,7 +22,7 @@ https://github.com/gnolang
 
 - go is an amazing language: simple, efficient, safe
 - not built for decentralized apps (dapps)
-- existing decentralized apps platforms are complex, fragmented, and unfamiliar
+- existing decentralized app platforms are complex, fragmented, and unfamiliar
 - what if you could write dapps in pure go?
 - meet gno: go for dapps, designed for modularity, composability, and safety
 
@@ -88,14 +88,6 @@ Another app could use micropost...
 <br/>
 
 .code ./code/we-are-building.txt
-
-
-// ```
-// We’re building a user-owned internet
-// where governance is fair,
-//development is open,
-// and innovation is rewarded
-// ```
 
 <br/>
 
