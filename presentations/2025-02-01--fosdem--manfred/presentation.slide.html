@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>building decentralized apps in go: meet gno</title>
+    <meta charset='utf-8'>
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src='../../static/slides.js'></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+
+      <article>
+        <h1>building decentralized apps in go: meet gno</h1>
+        <h3>Fosdem, 1 Feb 2025, Brussels</h3>
+        
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., gno.land  
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article >
+      
+        <h3>bonjour, FOSDEM!</h3>
+        
+  <div class="code" >
+<pre><span num="1">package main</span>
+<span num="2"></span>
+<span num="3">func main() {</span>
+<span num="4">    println(&#34;Hello, Fosdem! It&#39;s Manfred.&#34;)</span>
+<span num="5">}</span>
+</pre>
+</div>
+<ul>
+<li>manfred touron (@moul)</li>
+<li>built scaleway, berty, now gno</li>
+<li>stuck with go for 10 years</li>
+<li>unapologetically open-source maximalist</li>
+</ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>intro</h3>
+        <ul>
+<li>go is an amazing language: simple, efficient, safe</li>
+<li>not built for decentralized apps (dapps)</li>
+<li>existing decentralized app platforms are complex, fragmented, and unfamiliar</li>
+<li>what if you could write dapps in pure go?</li>
+<li>meet gno: go for dapps, designed for modularity, composability, and safety</li>
+</ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno in one sentence</h3>
+        <p>gno is a <strong>transactional vm</strong><br/>
+that lets you write <strong>decentralized apps</strong> in <strong>go</strong>,<br/>
+with built-in <strong>state persistence</strong> and <strong>safe execution</strong>.</p>
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>gno hello world</h3>
+        <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+  <div class="code" >
+<pre><span num="1">package hello</span>
+<span num="2"></span>
+<span num="3">func Hello() string {</span>
+<span num="4">    return &#34;hello world&#34;</span>
+<span num="5">}</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>the gno paradigm</h3>
+        <ul>
+<li><strong>no json, no grpc</strong>: function calls instead of rpc</li>
+<li><strong>no orm, no db drivers</strong>: state is a first-class concept</li>
+<li><strong>no external dependencies</strong>: everything is go code</li>
+<li><strong>no bytecode</strong>: interpreted, readable go syntax</li>
+<li><strong>no hidden magic</strong>: all code is visible and auditable</li>
+</ul>
+<p>... but it's just like go.</p>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>persistence: counter.gno</h3>
+        
+  <div class="code" >
+<pre><span num="1">package counter</span>
+<span num="2"></span>
+<span num="3">import &#34;strconv&#34;</span>
+<span num="4"></span>
+<span num="5">var counter int</span>
+<span num="6"></span>
+<span num="7">func Incr() {</span>
+<span num="8">    counter &#43;= 1</span>
+<span num="9">}</span>
+<span num="10"></span>
+<span num="11">func Render(_ string) string {</span>
+<span num="12">    return &#34;my decentralized counter: &#34; &#43; strconv.Itoa(counter)</span>
+<span num="13">}</span>
+</pre>
+</div>
+<ul>
+<li>global variables persist across transactions</li>
+<li>no need for external storage or db</li>
+</ul>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>microposts.gno</h3>
+        
+<div class="image">
+  <img src="img/microposts.png" width="1000">
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>microposts demo</h3>
+        
+<div class="image">
+  <img src="img/micropost1.png" width="500">
+</div>
+
+  <div class="code" >
+<pre><span num="1">gnokey maketx call \</span>
+<span num="2">       -pkgpath &#34;gno.land/r/leon/fosdem25/microposts&#34; \</span>
+<span num="3">       -func &#34;CreatePost&#34; \</span>
+<span num="4">       -args &#34;Hello FOSDEM people! Welcome &lt;3&#34; ...</span>
+</pre>
+</div>
+
+<div class="image">
+  <img src="img/micropost2.png" width="500">
+</div>
+<p><a href="https://gno.land/r/leon/fosdem25/microposts" target="_blank" rel="noopener">gno.land/r/leon/fosdem25/microposts</a></p>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>interoperability: alice.gno &amp; bob.gno</h3>
+        <p>Another app could use micropost...</p>
+
+  <div class="code" >
+<pre><span num="1">package alice</span>
+<span num="2"></span>
+<span num="3">var x int</span>
+<span num="4">func GetX() int  { return x }</span>
+<span num="5">func SetX(n int) { x = n }</span>
+</pre>
+</div>
+
+  <div class="code" >
+<pre><span num="1">package bob</span>
+<span num="2"></span>
+<span num="3">import &#34;alice&#34;</span>
+<span num="4"></span>
+<span num="5">func IncrAlice() {</span>
+<span num="6">    x := alice.GetX()</span>
+<span num="7">    alice.SetX(x &#43; 1)</span>
+<span num="8">}</span>
+</pre>
+</div>
+<ul>
+<li>call functions from other contracts like normal go packages</li>
+<li>no need for low-level calls or address casting</li>
+</ul>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article >
+      
+        <h3>conclusion</h3>
+        <br/>
+  <div class="code" >
+<pre><span num="1">we’re building a user-owned internet</span>
+<span num="2">where governance is fair,</span>
+<span num="3">development is open,</span>
+<span num="4">and innovation is rewarded.</span>
+</pre>
+</div>
+<br/>
+<ul>
+<li>gno makes go the first-class language for decentralized applications</li>
+<li>if you know go, you already know gno</li>
+<li>opportunities for developers to contribute and innovate</li>
+<li>-&gt; https://gno.land</li>
+</ul>
+<br/>
+thank you!
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Manfred Touron  
+  </p>
+  
+
+  
+  <p>
+    VP Eng., gno.land  
+  </p>
+  
+<p class="link"><a href="https://gno.land/%20%20" target="_blank">https://gno.land/  </a></p><p class="link"><a href="https://github.com/gnolang%20%20" target="_blank">https://github.com/gnolang  </a></p><p class="link"><a href="http://twitter.com/moul%20%20" target="_blank">@moul  </a></p>
+          </div>
+        
+      </article>
+
+    </section>
+
+    <div id="help">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  </body>
+</html>
