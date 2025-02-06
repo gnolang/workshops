@@ -1,0 +1,15 @@
+# Date of the workshop
+date: "2025-02-05"
+# Title of the workshop
+title: "Building dApps in gno.land"
+# GitHub usernames of the speakers
+speakers:
+  - "leohhhn"
+# Location of the workshop
+location: "Paris, France"
+# At which event the workshop took place, if any
+event: "Epitech University Career Day"
+# Workshop slides link. If the link is local, only put the file name, without any other path parts.
+slides: "building-dapps.pdf"
+# Workshop recording
+recording: ""
