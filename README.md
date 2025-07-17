@@ -1,4 +1,4 @@
-# gno.land workshops
+# Gno.land Workshops
 
 This repo contains materials that can be used to organize workshops or make 
 presentations.
