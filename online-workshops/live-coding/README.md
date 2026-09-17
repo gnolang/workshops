@@ -12,6 +12,6 @@ Each subfolder of this directory is meant to contain a few things:
 improvements to the code built during the session.
 - Other useful information
 
-Currently, the sessions are hosted on the [official gno.land Discord server](https://discord.gg/S8nKUqwkPn).
+Currently, the sessions are hosted on the [official gno.land Discord server](https://discord.com/invite/gnoland).
 Check out the active events on the server for the upcoming Gno Live Coding session.
 
